@@ -1,0 +1,385 @@
+@font-face {
+  font-family: "discors-p-font";
+  src: url("splash/p-font.woff") format('woff');
+}
+
+@font-face {
+  font-family: "discors-font";
+  src: url("splash/discors-font-bold.woff") format('woff');
+  font-weight: bold;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+.splash-header {
+  font-family: discors-p-font;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  height: 72px;
+  padding: 8px 0;
+  position: relative;
+  width: 100%;
+  z-index: 5;
+}
+
+.splash-body {
+  font-family: discors-p-font;
+  background: #26262b;
+  min-height: 100vh;
+  display: block;
+  margin: 0 auto;
+}
+
+.openButton {
+  border: 2px solid hsla(0,0%,100%,.8);
+  border-radius: 20px;
+  color: hsla(0,0%,100%,.8);
+  padding: 5px 17px 7px;
+}
+
+.openButton:hover {
+  border: 2px solid hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,1);
+}
+
+.splash-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  margin: auto;
+  max-width: 1600px;
+  padding: 0 30px;
+}
+
+.rightNav {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+.splash-main {
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 1200px;
+  padding: 72px 50px 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 72px 0;
+  text-align: center;
+  font-weight: 400;
+  align-items: center;
+}
+
+.splash-main h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  color: #fff;
+  font-family: discors-font;
+}
+
+.splash-main p {
+  color: hsla(0,0%,100%,.6);
+  margin-bottom: 30px;
+  max-width: 710px;
+  font-family: discors-p-font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 12px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.open-discors-top {
+  background-color: #7289da;
+  border-radius: 3px;
+  color: #fff;
+  height: 45px;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 45px;
+  overflow: hidden;
+  vertical-align: top;
+  width: 250px;
+}
+
+.open-discors-top:hover,
+.downloadMac:hover {
+  transform: translateY(1px);
+}
+
+.downloadMac {
+  background-color: #fff;
+  color: #18191c;
+  display: flex;
+  font-size: 15px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  height: 45px;
+  margin-right: 40px;
+  width: 250px;
+}
+
+.images {
+  height: 638px;
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.pic {
+  left: 50%;
+  position: absolute;
+}
+
+.computer {
+  margin-left: -289.5px;
+  bottom: 10px;
+}
+.laptop {
+  margin-left: -4px;
+  bottom: 10px;
+}
+.controller {
+  margin-left: -255px;
+  bottom: 10px;
+}
+.iphone {
+  margin-left: -401.5px;
+  bottom: 10px;
+}
+.android {
+  margin-left: -548px;
+  bottom: 10px;
+}
+.flask {
+  margin-left: -609px;
+  bottom: 10px;
+}
+.speaker {
+  margin-left: 423px;
+  bottom: 10px;
+}
+.question {
+  bottom: 462px;
+  margin-left: -239px;
+}
+.square1 {
+  bottom: 600px;
+  margin-left: 331px;
+  opacity: .3;
+}
+.square2 {
+  bottom: 400px;
+  margin-left: 431px;
+  opacity: .3;
+}
+.triangle1 {
+  bottom: 550px;
+  margin-left: 31px;
+  opacity: .3;
+}
+.triangle2 {
+  bottom: 300px;
+  margin-left: -579px;
+  opacity: .3;
+}
+.circle1 {
+  bottom: 530px;
+  margin-left: -359px;
+  opacity: .3;
+}
+.circle2 {
+  bottom: 280px;
+  margin-left: 576px;
+  opacity: .3;
+}
+.dot1 {
+  bottom: 600px;
+  margin-left: -319px;
+  opacity: .3;
+}
+.dot2 {
+  bottom: 500px;
+  margin-left: 181px;
+  opacity: .3;
+}
+.dot3 {
+  bottom: 140px;
+  margin-left: 621px;
+  opacity: .3;
+}
+.dot4 {
+  bottom: 200px;
+  margin-left: -599px;
+  opacity: .3;
+}
+.x1 {
+  bottom: 510px;
+  margin-left: -579px;
+  opacity: .3;
+}
+.x2 {
+  bottom: 220px;
+  margin-left: 541px;
+  opacity: .3;
+}
+.headphones {
+  bottom: 142px;
+  margin-left: 270px;
+  transform: scale(.75);
+}
+.coin1 {
+  bottom: 530px;
+  margin-left: 80px;
+  animation-name: updown;
+  animation-duration: 1.5s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running; 
+}
+.coin2 {
+  bottom: 300px;
+  margin-left: -428px;
+  animation-name: updown;
+  animation-duration: 1.5s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running; 
+}
+.bomb {
+  bottom: 335px;
+  margin-left: -481px;
+  animation-name: bombdown;
+  animation-duration: 1.5s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0.4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running; 
+}
+.floppy {
+  bottom: 392px;
+  margin-left: 250px;
+  animation-name: updown;
+  animation-duration: 1.5s; 
+  animation-timing-function: ease-in-out; 
+  animation-delay: 0.4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running; 
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(0px);
+  }
+  
+  100% {
+    transform: translateY(7px);
+  }
+  
+}
+
+@keyframes bombdown {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(7px);
+  }
+  
+}
+
+.splash-footer {
+  bottom: -100%;
+  font-weight: 400;
+  padding: 80px 160px 48px;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  margin: auto;
+  max-width: 1600px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-content h2 {
+  color: #fff;
+  font-size: 26px;
+  line-height: 34px;
+}
+
+.footer-content h3 {
+  color: hsla(0,0%,100%,.6);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.open-discors-bottom {
+  border-radius: 3px;
+  font-size: 15px;
+  height: 15px;
+  line-height: 15px;
+  padding: 16px;
+  background-color: #7289da;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.open-discors-bottom:hover {
+  transform: translateY(-1px);
+}
+
+i {
+  font-family: "Font Awesome 5 Brands";
+  color: hsla(0,0%,100%,.8);
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+i:hover {
+  color: hsla(0,0%,100%,1);
+}
+
+.discorLogo {
+  height: 36px
+}
+
+.underline {
+  height: 1px;
+  margin: 34px 0;
+  opacity: .1;
+  width: 100%;
+}

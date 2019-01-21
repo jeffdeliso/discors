@@ -1,0 +1,204 @@
+@font-face {
+    font-family: "login1";
+    src: url("login/login1.woff") format('woff');
+}
+@font-face {
+    font-family: "login2";
+    src: url("login/login2.woff") format('woff');
+}
+@font-face {
+    font-family: "login3";
+    src: url("login/login3.woff") format('woff');
+}
+@font-face {
+    font-family: "login4";
+    src: url("login/login4.woff") format('woff');
+}
+
+.background-image {
+    z-index: -1;
+    min-height: 100%;
+    min-width: 1404px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 1400px) {
+  img.bg {
+    left: 50%;
+    margin-left: -960px;
+  }
+}
+
+.login-body {
+    /* font-family: discors-p-font; */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    align-items: center;
+    user-select: none;
+}
+
+.login-form {
+    background: #36393f;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+    box-sizing: border-box;
+    color: #72767d;
+    font-size: 18px;
+    padding: 40px;
+    width: 480px;
+    z-index: 2;
+}
+
+.form-header {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 8px;
+    color: #fff;
+    font-family: login1;
+    user-select: none;
+}
+
+.login-form-inner {
+    text-align: center;
+}
+
+.login-form-subtitle {
+    color: #72767d;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: login1;
+    margin-bottom: 8px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.form-input h5 {
+    letter-spacing: .5px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: login4;
+    color: #b9bbbe;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#password-container {
+    margin-bottom: 0;
+}
+
+.form-input input {
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgba(0,0,0,.1);
+    border-color: rgba(0,0,0,.3);
+    color: #f6f6f7;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.form-input input:hover {
+   border-color: #040405;
+}
+
+.form-input input:focus {
+    border-color: #7289da;
+}
+
+.forgot-password-container {
+    margin-bottom: 20px;
+    margin-top: 4px;
+    width: auto;
+    height: auto;
+    padding: 2px 4px;
+    font-family: login3;
+}
+
+.forgot-password-container a {
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #7289da;
+    display: block;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+.forgot-password-container a:hover {
+    text-decoration: underline;
+}
+
+.form-input button:hover {
+    background-color: #677bc4;
+}
+
+.form-input button {
+    background-color: #7289da;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 8px;
+    height: 44px;
+    min-height: 44px;
+    min-width: 130px;
+    width: 100%;
+    align-items: center;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    justify-content: center;
+    padding: 2px 16px;
+    cursor: pointer;
+    font-family: login2;
+}
+
+  .need-account {
+    margin-top: 4px;
+    font-family: login3;
+    font-size: 14px;
+    line-height: 16px;
+}
+.need-account a {
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #7289da;
+
+}
+
+.need-account a:hover {
+    text-decoration: underline;
+}
+
+.login-logo {
+    left: 60px;
+    top: 60px;
+    height: 36px;
+    position: absolute;
+    width: 130px;
+}
