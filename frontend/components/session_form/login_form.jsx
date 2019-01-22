@@ -35,23 +35,21 @@ class LoginForm extends React.Component {
               <div className="email-container">
                 <div className="session-error-wrapper">
                   <h5 className={`email-label ${this.props.errors[0] ? 'session-error-label' : ''}`}>USERNAME</h5>
-                  <span className="session-errors">{this.props.errors[0] ? `-  ${this.props.errors[0]}` : ''}</span>
+                  <span className="session-errors">{this.props.errors[0] ? `- ${this.props.errors[0]}` : ''}</span>
                 </div>
-                {/* <input type="text"></input> */}
                 <input type="text"
                   value={this.state.username}
                   onChange={this.update('username')}
-                  className={`${this.props.errors[0] ? 'session-error' : 'session-input'}`}
+                  className={this.props.errors[0] ? 'session-error' : 'session-input'}
                 />
               </div>
               <div>
                 <h5 className={`password-label ${this.props.errors[0] ? 'session-error-label' : ''}`}>PASSWORD</h5>
-                {/* <input type="password" id="password-container"></input> */}
                 <input type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   id="password-container"
-                  className={`${this.props.errors[0] ? 'session-error' : 'session-input'}`}
+                  className={this.props.errors[0] ? 'session-error' : 'session-input'}
                 />
               </div>
               <div className="forgot-password-container">

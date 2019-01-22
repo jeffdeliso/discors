@@ -40,11 +40,10 @@ class SignupForm extends React.Component {
                   <h5 className={`email-label ${emailError ? 'session-error-label' : ''}`}>EMAIL</h5>
                   <span className="session-errors">{emailError ? `-  ${emailError}` : ''}</span>
                 </div>
-                {/* <input type="email" name="" id=""></input> */}
                 <input type="email"
                   value={this.state.email}
                   onChange={this.update('email')}
-                  className={`${emailError ? 'session-error' : 'session-input'}`}
+                  className={emailError ? 'session-error' : 'session-input'}
                 />
               </div>
               <div>
@@ -52,11 +51,10 @@ class SignupForm extends React.Component {
                   <h5 className={`email-label ${usernameError ? 'session-error-label' : ''}`}>USERNAME</h5>
                   <span className="session-errors">{usernameError ? `-  ${usernameError}` : ''}</span>
                 </div>
-                {/* <input type="text" name="" id=""></input> */}
                 <input type="text"
                   value={this.state.username}
                   onChange={this.update('username')}
-                  className={`${usernameError ? 'session-error' : 'session-input'}`}
+                  className={usernameError ? 'session-error' : 'session-input'}
                 />
               </div>
               <div>
@@ -64,14 +62,12 @@ class SignupForm extends React.Component {
                   <h5 className={`email-label ${passwordError ? 'session-error-label' : ''}`}>PASSWORD</h5>
                   <span className="session-errors">{passwordError ? `-  ${passwordError}` : ''}</span>
                 </div>
-                {/* <input type="password" name="" id=""></input> */}
                 <input type="password"ß
                   value={this.state.password}
                   onChange={this.update('password')}
-                  className={` ${passwordError ? 'session-error' : 'session-input'}`}
+                  className={passwordError ? 'session-error' : 'session-input'}
                 />
               </div>
-              {/* <input type="submit" value="Register" className="submit-button"/> */}
               <button>Register</button>
               <div className="need-account">
                 <Link to="/login">Already have an account?</Link>
