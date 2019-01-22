@@ -23,7 +23,7 @@ class Splash extends React.Component {
                 </a>
               </li>
               <li>
-                <Link to="/login" className="openButton">Open</Link>
+                <Link to="/login" className="openButton">{this.props.currentUserId ? 'Open' : 'Login'}</Link>
               </li>
             </ul>
           </nav>
@@ -39,7 +39,7 @@ class Splash extends React.Component {
       </p>
             <div className="buttons">
               <a href="" className="downloadMac">Download for macOS</a>
-              <Link to="/login" className="open-discors-top">Open Discors</Link>
+              <Link to="/login" className="open-discors-top">{this.props.currentUserId ? 'Open' : 'Open Discors in your browser'}</Link>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ class Splash extends React.Component {
               <h2>Ready to try Discors? It's free!</h2>
               <h3>JOIN OVER 150 MILLION PLAYERS TODAY</h3>
             </div>
-            <Link to="/login" className="open-discors-bottom">Open Discors</Link>
+            <Link to="/register" className="open-discors-bottom">{this.props.currentUserId ? 'Open Discors' : 'Sign Up Now'}</Link>
           </div>
         </footer>
       </div>

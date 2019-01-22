@@ -14,13 +14,15 @@
 
 class User < ApplicationRecord
 
+  DEFAULT_ICONS = %w(blue gray red yellow green)
+
   attr_reader :password
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_icon
 
   attr_reader :password
 
@@ -39,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    self.generate_unique_session_token
+    generate_unique_session_token
     self.save!
     self.session_token
   end
@@ -47,7 +49,7 @@ class User < ApplicationRecord
   private
 
   def ensure_session_token
-    self.generate_unique_session_token unless self.session_token
+    generate_unique_session_token unless self.session_token
   end
 
   def new_session_token
@@ -55,11 +57,14 @@ class User < ApplicationRecord
   end
 
   def generate_unique_session_token
-    self.session_token = self.new_session_token
+    self.session_token = new_session_token
     while User.find_by(session_token: self.session_token)
-      self.session_token = self.new_session_token
+      self.session_token = new_session_token
     end
     self.session_token
   end
 
+  def ensure_icon
+    self.image_url ||= "/assets/user_icons/#{DEFAULT_ICONS.sample}.png"
+  end
 end
