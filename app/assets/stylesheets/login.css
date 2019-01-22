@@ -82,7 +82,9 @@
     user-select: none;
 }
 
-.form-input h5 {
+.username-label,
+.email-label,
+.password-label {
     letter-spacing: .5px;
     font-size: 12px;
     line-height: 16px;
@@ -101,7 +103,7 @@
     margin-bottom: 0;
 }
 
-.form-input input {
+.session-input {
     height: 40px;
     padding: 10px;
     font-size: 16px;
@@ -117,11 +119,11 @@
     margin-bottom: 20px;
 }
 
-.form-input input:hover {
+.session-input:hover {
    border-color: #040405;
 }
 
-.form-input input:focus {
+.session-input:focus {
     border-color: #7289da;
 }
 
@@ -201,4 +203,40 @@
     height: 36px;
     position: absolute;
     width: 130px;
+}
+
+.session-error-wrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.session-errors {
+    padding-left: 2px;
+    font-size: 12px;
+    font-style: italic;
+    color: #f04747;
+    font-weight: 400;
+    font-family: login1;
+    margin-bottom: 8px;
+    vertical-align: bottom;
+}
+
+.session-error {
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgba(0,0,0,.1);
+    color: #f6f6f7;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-color: #f04747;
+}
+
+.session-error-label {
+    color: #f04747;
 }

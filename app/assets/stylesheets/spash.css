@@ -32,6 +32,7 @@
   min-height: 100vh;
   display: block;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .openButton {
