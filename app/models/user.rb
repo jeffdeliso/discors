@@ -26,6 +26,16 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :server_memberships
+
+  has_many :servers,
+    through: :server_memberships,
+    source: :server
+
+  has_many :admin_servers,
+    class_name: :Server,
+    foreign_key: :admin_id
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil

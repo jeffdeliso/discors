@@ -78,9 +78,8 @@ class SignupForm extends React.Component {
                 />
               </div>
               <div className="forgot-password-container">
-                <a href="">Demo User</a>
               </div>
-              <button>Register</button>
+              <button id="session-submit">Register</button>
               <div className="need-account">
                 <Link to="/login" onClick={() => this.props.removeErrors()}>Already have an account?</Link>
               </div>
