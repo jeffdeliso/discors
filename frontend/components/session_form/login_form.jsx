@@ -9,6 +9,8 @@ class LoginForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
+    this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +25,36 @@ class LoginForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  loginAsGuest(e) {
+    e.preventDefault();
+    const username = 'guest'.split('');
+    const password = 'starwars'.split('');
+    const submit = document.getElementById('session-submit');
+    this.setState({ username: '', password: '' }, () =>
+      this.loginAsGuestHelper(username, password, submit)
+    );
+  }
+
+  loginAsGuestHelper(username, password, submit) {
+    if (username.length > 0) {
+      this.setState(
+        { username: this.state.username + username.shift() }, () => {
+          window.setTimeout(() =>
+            this.loginAsGuestHelper(username, password, submit), 50);
+        }
+      );
+    } else if (password.length > 0) {
+      this.setState(
+        { password: this.state.password + password.shift() }, () => {
+          window.setTimeout(() =>
+            this.loginAsGuestHelper(username, password, submit), 50);
+        }
+      );
+    } else {
+      submit.click();
+    }
   }
 
   handleSubmit(e) {
@@ -61,9 +93,9 @@ class LoginForm extends React.Component {
                 />
               </div>
               <div className="forgot-password-container">
-                <a href="">Demo User</a>
+                <button id="demo" onClick={this.loginAsGuest}>Demo User</button>
               </div>
-              <button>Login</button>
+              <button id="session-submit">Login</button>
               <div className="need-account">
                 <span>Need an account?</span>
                 <Link to="/register" onClick={() => this.props.removeErrors()}>Register</Link>
