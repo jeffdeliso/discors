@@ -62,15 +62,19 @@ class SignupForm extends React.Component {
                   <h5 className={`email-label ${passwordError ? 'session-error-label' : ''}`}>PASSWORD</h5>
                   <span className="session-errors">{passwordError ? `-  ${passwordError}` : ''}</span>
                 </div>
-                <input type="password"ß
+                <input type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   className={passwordError ? 'session-error' : 'session-input'}
+                  id="password-container"
                 />
+              </div>
+              <div className="forgot-password-container">
+                <a href="">Demo User</a>
               </div>
               <button>Register</button>
               <div className="need-account">
-                <Link to="/login">Already have an account?</Link>
+                <Link to="/login" onClick={() => this.props.removeErrors()}>Already have an account?</Link>
               </div>
             </div>
           </div>

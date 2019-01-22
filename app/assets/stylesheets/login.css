@@ -34,7 +34,6 @@
 }
 
 .login-body {
-    /* font-family: discors-p-font; */
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -104,6 +103,7 @@
 }
 
 .session-input {
+    font-family: login1;
     height: 40px;
     padding: 10px;
     font-size: 16px;
@@ -222,6 +222,7 @@
 }
 
 .session-error {
+    font-family: login1;
     height: 40px;
     padding: 10px;
     font-size: 16px;

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
-import { logout } from '../../../actions/session_actions';
-import Main from './main';
+import AppRoot from './app_root';
+import { logout } from '../../actions/session_actions';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -9,5 +9,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Main);
-
+export default connect(null, mapDispatchToProps)(AppRoot);

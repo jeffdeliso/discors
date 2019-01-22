@@ -53,12 +53,12 @@ class LoginForm extends React.Component {
                 />
               </div>
               <div className="forgot-password-container">
-                <a href="">Forgot your password?</a>
+                <a href="">Demo User</a>
               </div>
               <button>Login</button>
               <div className="need-account">
                 <span>Need an account?</span>
-                <Link to="/register">Register</Link>
+                <Link to="/register" onClick={() => this.props.removeErrors()}>Register</Link>
               </div>
             </div>
           </div>
