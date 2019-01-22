@@ -12,6 +12,14 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    document.body.style = "overflow: hidden;";
+  }
+
+  componentWillUnmount() {
+    document.body.removeAttribute("style");
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
