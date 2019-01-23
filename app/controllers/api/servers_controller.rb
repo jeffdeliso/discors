@@ -6,12 +6,18 @@ class Api::ServersController < ApplicationController
       current_user.server_memberships.create!(server_id: @server.id)
       render "api/servers/show"
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @server.errors.full_messages, status: 422
     end
   end
 
   def show
-    current_server
+    @server = Server.find_by(name: server_params[:name])
+    if @server 
+      current_user.server_memberships.create(server_id: @server.id)
+      render :show
+    else
+      render json: ["Server does not exist"], status: 401
+    end
   end
 
   def index

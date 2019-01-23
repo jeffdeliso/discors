@@ -10,6 +10,7 @@
 #
 
 class Server < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
 
   belongs_to :admin,
     class_name: :User
