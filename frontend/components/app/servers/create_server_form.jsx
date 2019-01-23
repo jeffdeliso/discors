@@ -29,7 +29,9 @@ class CreateServerForm extends React.Component {
           <h5>CREATE YOUR SERVER</h5>
           <p>By creating a server you will have access to free text chat to use amongst your friends.</p>
           <div className="create-server-form-input">
-            <label>SERVER NAME</label>
+            <label 
+              id={this.props.errors[0] ? 'server-errors' : ''}
+            >SERVER NAME<span>{ this.props.errors[0] ? `  -  ${this.props.errors[0]}` : '' }</span></label>
             <input type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
           </div>
         </div>

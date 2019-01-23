@@ -3,6 +3,7 @@ import * as APIUtil from '../util/server_api_utl';
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
+export const REMOVE_SERVER_ERRORS = 'REMOVE_SERVER_ERRORS';
 
 export const receiveServers = servers => ({
   type: RECEIVE_SERVERS,
@@ -18,6 +19,11 @@ export const receiveErrors = errors => ({
   type: RECEIVE_SERVER_ERRORS,
   errors
 });
+
+export const removeServerErrors = errors => ({
+  type: REMOVE_SERVER_ERRORS,
+});
+
 
 export const fetchServers = () => dispatch => (
   APIUtil.fetchServers().then(servers => (

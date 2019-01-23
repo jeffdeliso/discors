@@ -29,7 +29,7 @@ class JoinServerForm extends React.Component {
           <p id="join-server-message">Enter a server name below to join an existing server.</p>
           <div className="create-server-form-input">
             <label>SERVER NAME</label>
-            <input type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
+            <input id="join-server-text-input" type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
           </div>
         </div>
 

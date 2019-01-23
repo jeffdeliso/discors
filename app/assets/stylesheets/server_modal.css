@@ -195,6 +195,9 @@ color: #87909c;
 .create-server-form-input input:focus {
         border-color: #7289da;
 }
+#join-server-text-input:focus {
+        border-color: #43b581;
+}
 
 
 .create-server-form-top {
@@ -236,4 +239,13 @@ padding: 28px 40px 0;
 }
 #join-server-message {
   margin-bottom: 77px;
+}
+
+#server-errors {
+  color: #f04747;
+}
+
+#server-errors span {
+  font-family: main1;
+  font-style: italic;
 }

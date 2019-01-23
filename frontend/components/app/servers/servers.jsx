@@ -25,6 +25,7 @@ class Servers extends React.Component {
 
   handleCloseModal() {
     this.setState({ showModal: false , content: ''});
+    this.props.removeServerErrors();
   }
 
   updateContent(type) {
@@ -38,7 +39,7 @@ class Servers extends React.Component {
     Modal.setAppElement('#root');
     let content;
     if (this.state.content === "create") {
-      content = <CreateServerForm createServer={this.props.createServer} closeModal={this.handleCloseModal} />;
+      content = <CreateServerForm createServer={this.props.createServer} closeModal={this.handleCloseModal} errors={this.props.errors}/>;
     } else if (this.state.content === "join") {
       content = <JoinServerForm />;
     } else {

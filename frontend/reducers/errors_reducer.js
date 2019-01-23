@@ -5,6 +5,5 @@ import server from './server_errors_reducer';
 
 export default combineReducers({
   session,
-  server
-
+  server,
 });
