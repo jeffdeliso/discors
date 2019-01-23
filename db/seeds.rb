@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.delete_all
+Server.delete_all
+ServerMembership.delete_all
+
+guest = User.create!(username: 'guest', email: 'guest@guest.com', password: 'starwars')
+
+server1 = guest.admin_servers.create!(name: 'First Server')
+server2 = guest.admin_servers.create!(name: 'Second Server')
+ServerMembership.create!(user_id: guest.id, server_id: server1.id)
+ServerMembership.create!(user_id: guest.id, server_id: server2.id)

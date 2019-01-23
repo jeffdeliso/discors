@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Servers from './servers/servers';
+import Servers from './servers/servers_container';
 import Channels from './channels/channels_container';
 import Header from './header/header';
 import Chat from './chat/chat';

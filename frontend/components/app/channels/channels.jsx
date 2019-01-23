@@ -41,7 +41,7 @@ class Channels extends React.Component {
             <div className="user-icon">
 
             </div>
-            <div className="actions-username">deliso346</div>
+            <div className="actions-username">{this.props.currentUser.username}</div>
           </div>
           <button className="gear" onClick={() => this.props.logout()}>
             <svg name="Gear" width="18" height="18" viewBox="0 0 18 18">
