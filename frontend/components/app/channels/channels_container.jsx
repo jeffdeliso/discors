@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     currentUser: state.entities.users[state.session.id],
     server: state.entities.servers[ownProps.match.params.serverId] || {},
