@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
 
   componentDidMount() {
     document.body.style = "overflow: hidden;";
+    this.nameInput.focus();
   }
 
   componentWillUnmount() {
@@ -81,6 +82,7 @@ class LoginForm extends React.Component {
                   value={this.state.username}
                   onChange={this.update('username')}
                   className={this.props.errors[0] ? 'session-error' : 'session-input'}
+                  ref={(input) => { this.nameInput = input; }}
                 />
               </div>
               <div>

@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
 
   componentDidMount() {
     document.body.style = "overflow: hidden;";
+    this.nameInput.focus();
   }
 
   componentWillUnmount() {
@@ -52,6 +53,7 @@ class SignupForm extends React.Component {
                   value={this.state.email}
                   onChange={this.update('email')}
                   className={emailError ? 'session-error' : 'session-input'}
+                  ref={(input) => { this.nameInput = input; }}
                 />
               </div>
               <div>
