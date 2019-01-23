@@ -1,19 +1,22 @@
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-import { logout } from '../../../actions/session_actions';
 import Channels from './channels';
+import { fetchChannels, createChannel } from '../../../actions/channel_actions';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
+  // debugger
   return {
     currentUser: state.entities.users[state.session.id],
-    // currentServer: state.entities.servers[ownProps.match.params.serverId]
+    currentServer: state.entities.servers[ownProps.match.params.serverId] || {},
+    channels: Object.values(state.entities.channels),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout()),
-  };
+    fetchChannels: () => dispatch(fetchChannels()),
+    createChannel: channel => dispatch(createChannel(channel)),
+  }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Channels);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Channels));

@@ -21,7 +21,7 @@ const App = () => (
     <AuthRoute exact path="/register" component={SignupForm} />
     <ProtectedRoute path="/channels" component={AppRoot} />
     <Route path="/" component={Splash} />
-  </Switch >
+  </Switch>
 );
 
 export default App;

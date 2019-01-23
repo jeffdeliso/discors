@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Channels extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchChannels();
+  }
+
 
   render() {
     return (
       <div className="right-main">
         <div className="channels">
           <div className="channel-header">
-            <span className="server-name">Server</span>
+            <span className="server-name">{this.props.currentServer.name}</span>
           </div>
           <div className="channel-scroll-wrapper">
             <div className="channel-overflow-container">

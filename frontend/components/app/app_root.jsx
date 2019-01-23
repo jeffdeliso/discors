@@ -30,6 +30,7 @@ class AppRoot extends React.Component {
         <Switch >
           <Route path="/channels/@me" component={MeRoute} />
           <Route path="/channels/:serverId/:channelId" component={ServerRoute} />
+          <Route path="/channels/:serverId" component={ServerRoute} />
           <Route path="/channels" component={MeRoute} />
         </Switch >
       </div>
