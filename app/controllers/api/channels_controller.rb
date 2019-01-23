@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
   def create
-    # @channel = current_user.admin_servers.new(name: server_params[:name])
+    @channel = Channel.new(channel_params)
 
     if @channel.save
       render "api/channels/show"
@@ -16,7 +16,6 @@ class Api::ChannelsController < ApplicationController
   def index
     server = Server.find(channel_params[:server_id])
     @channels = server.channels
-    # debugger
     render :index
   end
 

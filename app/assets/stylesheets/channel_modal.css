@@ -1,0 +1,60 @@
+.create-channel-form {
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.create-channel-form header {
+  padding: 20px;
+}
+.create-channel-form main {
+  margin-top: 18px;
+  margin-bottom: 66px;
+  padding: 20px;
+}
+
+.create-channel-form h4 {
+  color: #f6f6f7;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: .3px;
+  font-family: main4;
+}
+
+.create-channel-form p {
+      color: #b9bbbe;
+      line-height: 16px;
+          font-size: 12px;
+          font-family: main2;
+          margin-bottom: 20px;
+}
+
+.create-channel-form-bottom {
+  background-color: #2f3136;
+    box-shadow: inset 0 1px 0 rgba(47,49,54,.6);
+   padding: 20px;
+   height: 78px;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   box-sizing: border-box;
+}
+
+.create-channel-form #session-submit {
+  width: 123px;
+  margin-bottom: 0;
+}
+
+.create-channel-cancel {
+      font-size: 14px;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 16px;
+    padding: 2px 16px;
+    height: 38px;
+        color: #fff;
+        font-family: main2;
+}
+
+.create-channel-cancel:hover {
+  text-decoration: underline;
+}

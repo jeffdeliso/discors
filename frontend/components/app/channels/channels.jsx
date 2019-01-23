@@ -2,8 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import Channel from './channel';
+import Modal from 'react-modal';
+import CreateChannelForm from './create_channel_form';
 
 class Channels extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showModal: false };
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchChannels(this.props.match.params.serverId);
@@ -13,6 +21,19 @@ class Channels extends React.Component {
     if (prevProps.server.id != this.props.match.params.serverId) {
       this.props.fetchChannels(this.props.match.params.serverId);
     }
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
+    this.props.removeChannelErrors();
+  }
+
+  updateContent(type) {
+    this.setState({ content: type });
   }
 
   render() {
@@ -31,7 +52,7 @@ class Channels extends React.Component {
               <div className="channel-list">
                 <div className="text-channels-label">
                   <div>
-                    <button className="text-channels-button">+</button>
+                    <button className="text-channels-button" onClick={this.handleOpenModal}>+</button>
                     <h3 id="text-channels">Text Channels</h3>
                   </div>
                 </div>
@@ -52,6 +73,38 @@ class Channels extends React.Component {
             </button>
           </div>
         </div>
+        <Modal
+          isOpen={this.state.showModal}
+          contentLabel="onRequestClose Example"
+          onRequestClose={this.handleCloseModal}
+          style={{
+            overlay: {
+              backgroundColor: 'rgb(0, 0, 0, 0.85)',
+              zIndex: 99,
+            },
+            content: {
+              height: '382px',
+              width: '440px',
+              padding: 0,
+              borderRadius: '5px',
+              margin: 'auto',
+              boxShadow: '0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2)',
+
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'column',
+              backgroundColor: '#36393f',
+              border: 'none'
+            }
+          }}
+        >
+          <CreateChannelForm
+            server={this.props.server}
+            createChannel={this.props.createChannel}
+            closeModal={this.handleCloseModal}
+            errors={this.props.errors} 
+            />
+        </Modal>
       </div>
     )
   }
