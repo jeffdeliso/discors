@@ -38,7 +38,7 @@ class Servers extends React.Component {
     Modal.setAppElement('#root');
     let content;
     if (this.state.content === "create") {
-      content = <CreateServerForm />;
+      content = <CreateServerForm createServer={this.props.createServer} closeModal={this.handleCloseModal} />;
     } else if (this.state.content === "join") {
       content = <JoinServerForm />;
     } else {
