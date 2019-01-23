@@ -4,8 +4,6 @@ import Server from './server';
 import Modal from 'react-modal';
 import CreateServerForm from './create_server_form';
 import JoinServerForm from './join_server_form';
-import {CSSTransition} from 'react-transition-group';
-
 
 class Servers extends React.Component {
   constructor(props) {

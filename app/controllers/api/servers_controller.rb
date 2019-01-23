@@ -10,7 +10,7 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  def show
+  def join
     @server = Server.find_by(name: server_params[:name])
     if @server 
       current_user.server_memberships.create(server_id: @server.id)
@@ -18,6 +18,10 @@ class Api::ServersController < ApplicationController
     else
       render json: ["Server does not exist"], status: 401
     end
+  end
+
+  def show
+    current_server
   end
 
   def index

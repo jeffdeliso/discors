@@ -8,7 +8,7 @@ export const createServer = server => (
 
 export const fetchServer = id => (
   $.ajax({
-    method: 'POST',
+    method: 'GET',
     url: `/api/servers/${id}`,
   })
 );
@@ -22,8 +22,8 @@ export const fetchServers = () => (
 
 export const joinServer = server => (
   $.ajax({
-    method: 'GET',
-    url: `/api/servers/${server.name}`,
+    method: 'POST',
+    url: `/api/servers/join`,
     data: { server }
   })
 );
