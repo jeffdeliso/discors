@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Servers from './servers';
 import { fetchServers, createServer, joinServer } from '../../../actions/server_actions';
 import { removeServerErrors } from '../../../actions/server_actions';
-
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Servers);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Servers));

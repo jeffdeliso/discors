@@ -25,8 +25,8 @@ export const removeChannelErrors = () => ({
 });
 
 
-export const fetchChannels = () => dispatch => (
-  APIUtil.fetchChannels().then(channels => (
+export const fetchChannels = (serverId) => dispatch => (
+  APIUtil.fetchChannels(serverId).then(channels => (
     dispatch(receiveChannels(channels))
   ))
 );

@@ -4,12 +4,14 @@ import Channels from '../channels/channels_container';
 import Header from '../header/header';
 import Chat from '../chat/chat';
 import ServerMembers from '../server_members/server_members';
+import Servers from '../servers/servers_container';
 
 class ServerRoute extends React.Component {
 
   render() {
     return (
       <>
+        <Servers />
         <Channels />
         <div className="chat-container">
           <Header />

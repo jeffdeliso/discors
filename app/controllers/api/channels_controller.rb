@@ -10,18 +10,14 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    # @server = Server.find_by(name: server_params[:name])
-    # if @server 
-    #   current_user.server_memberships.create(server_id: @server.id)
-    #   render :show
-    # else
-    #   render json: ["Server does not exist"], status: 401
-    # end
     current_channel
   end
 
   def index
-    @channels = Channel.all
+    server = Server.find(channel_params[:server_id])
+    @channels = server.channels
+    # debugger
+    render :index
   end
 
   private
@@ -30,7 +26,7 @@ class Api::ChannelsController < ApplicationController
     @channel ||= Channel.find(params[:id])
   end
 
-  def server_params
+  def channel_params
     params.require(:channel).permit(:name, :server_id)
   end
 end
