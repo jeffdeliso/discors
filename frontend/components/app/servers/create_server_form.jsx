@@ -1,10 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class CreateServerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +21,12 @@ class CreateServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createServer(this.state).then(this.props.closeModal);
+    this.props.createServer(this.state).then(this.handleRedirect);
+  }
+
+  handleRedirect(action) {
+    this.props.closeModal();
+    this.props.history.push(`/channels/${action.server.id}`);
   }
 
   render() {
@@ -44,4 +51,4 @@ class CreateServerForm extends React.Component {
   }
 }
 
-export default CreateServerForm;
+export default withRouter(CreateServerForm);

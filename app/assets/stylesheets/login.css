@@ -129,7 +129,7 @@
 
 .forgot-password-container {
     margin-bottom: 20px;
-    margin-top: 4px;
+    margin-top: 0;
     width: auto;
     height: auto;
     padding: 2px 4px;
@@ -184,6 +184,7 @@
     font-family: login3;
     font-size: 14px;
     line-height: 16px;
+    
 }
 .need-account a {
     margin: 0 auto;
@@ -191,6 +192,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #7289da;
+        margin-left: 4px;
 
 }
 
