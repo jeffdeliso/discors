@@ -38,3 +38,11 @@ export const createServer = (server) => dispatch => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
+
+export const joinServer = (server) => dispatch => (
+  APIUtil.joinServer(server).then(server => (
+    dispatch(receiveServer(server))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);

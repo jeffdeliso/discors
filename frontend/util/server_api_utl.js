@@ -19,3 +19,11 @@ export const fetchServers = () => (
     url: '/api/servers',
   })
 );
+
+export const joinServer = server => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/servers/${server.name}`,
+    data: { server }
+  })
+);

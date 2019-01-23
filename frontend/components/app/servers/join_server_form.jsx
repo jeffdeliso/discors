@@ -19,6 +19,7 @@ class JoinServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.joinServer(this.state).then(this.props.closeModal);
   }
 
   render() {
@@ -28,7 +29,9 @@ class JoinServerForm extends React.Component {
           <h5 id="join-server-header">JOIN A SERVER</h5>
           <p id="join-server-message">Enter a server name below to join an existing server.</p>
           <div className="create-server-form-input">
-            <label>SERVER NAME</label>
+            <label id={this.props.errors[0] ? 'server-errors' : ''}>SERVER NAME
+              <span>{this.props.errors[0] ? `  -  ${this.props.errors[0]}` : ''}</span>
+            </label>
             <input id="join-server-text-input" type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
           </div>
         </div>

@@ -39,9 +39,15 @@ class Servers extends React.Component {
     Modal.setAppElement('#root');
     let content;
     if (this.state.content === "create") {
-      content = <CreateServerForm createServer={this.props.createServer} closeModal={this.handleCloseModal} errors={this.props.errors}/>;
+      content = <CreateServerForm 
+        createServer={this.props.createServer} 
+        closeModal={this.handleCloseModal} 
+        errors={this.props.errors}/>;
     } else if (this.state.content === "join") {
-      content = <JoinServerForm />;
+      content = <JoinServerForm 
+        joinServer={this.props.joinServer}
+        closeModal={this.handleCloseModal}
+        errors={this.props.errors} />;
     } else {
       content = (
         <div className="server-modal-content-wrapper">
