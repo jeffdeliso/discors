@@ -95,7 +95,7 @@ class LoginForm extends React.Component {
                 />
               </div>
               <div className="forgot-password-container">
-                <button id="demo" onClick={this.loginAsGuest}>Demo User</button>
+                <button type="button" id="demo" onClick={this.loginAsGuest}>Demo User</button>
               </div>
               <button id="session-submit">Login</button>
               <div className="need-account">
