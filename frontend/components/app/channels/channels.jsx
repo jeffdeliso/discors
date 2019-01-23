@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import Channel from './channel';
 
 class Channels extends React.Component {
 
@@ -10,11 +11,15 @@ class Channels extends React.Component {
 
 
   render() {
+    const channels = this.props.channels.map((channel, idx) => {
+      return <Channel server={this.props.server} channel={channel} key={idx} />;
+    });
+
     return (
       <div className="right-main">
         <div className="channels">
           <div className="channel-header">
-            <span className="server-name">{this.props.currentServer.name}</span>
+            <span className="server-name">{this.props.server.name}</span>
           </div>
           <div className="channel-scroll-wrapper">
             <div className="channel-overflow-container">
@@ -25,6 +30,7 @@ class Channels extends React.Component {
                     <h3 id="text-channels">Text Channels</h3>
                   </div>
                 </div>
+
                 <div className="channel selected">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className="colorDefaultText-oas-QM icon-sxakjD">
                     <path className="foreground-2W-aJk" fill="currentColor" d="M2.27333333,12 L2.74666667,9.33333333 L0.08,9.33333333 L0.313333333,8 L2.98,8 L3.68666667,4 L1.02,4 L1.25333333,2.66666667 L3.92,2.66666667 L4.39333333,0 L5.72666667,0 L5.25333333,2.66666667 L9.25333333,2.66666667 L9.72666667,0 L11.06,0 L10.5866667,2.66666667 L13.2533333,2.66666667 L13.02,4 L10.3533333,4 L9.64666667,8 L12.3133333,8 L12.08,9.33333333 L9.41333333,9.33333333 L8.94,12 L7.60666667,12 L8.08,9.33333333 L4.08,9.33333333 L3.60666667,12 L2.27333333,12 L2.27333333,12 Z M5.02,4 L4.31333333,8 L8.31333333,8 L9.02,4 L5.02,4 L5.02,4 Z"
@@ -32,6 +38,8 @@ class Channels extends React.Component {
                   </svg>
                   <div className="channel-name">general</div>
                 </div>
+
+                {channels}
 
                 <div className="channel">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className="colorDefaultText-oas-QM icon-sxakjD">

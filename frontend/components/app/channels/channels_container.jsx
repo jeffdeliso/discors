@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   // debugger
   return {
     currentUser: state.entities.users[state.session.id],
-    currentServer: state.entities.servers[ownProps.match.params.serverId] || {},
+    server: state.entities.servers[ownProps.match.params.serverId] || {},
     channels: Object.values(state.entities.channels),
   };
 };
