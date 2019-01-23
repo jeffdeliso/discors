@@ -8,6 +8,7 @@ class Server extends React.Component {
       <NavLink to={`/channels/${this.props.server.id}`}
         className="home-icon server"
         activeClassName="serverSelected"
+        activeStyle={{pointerEvents: 'none', cursor: 'pointer'}}
       ><div className="server-active-icon"></div><img src="/assets/main/white_logo.png" alt=""></img></NavLink>
     )
   };

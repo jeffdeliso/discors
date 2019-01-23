@@ -1,10 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class JoinServerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   componentDidMount() {
@@ -19,8 +21,15 @@ class JoinServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.joinServer(this.state).then(this.props.closeModal);
+    this.props.joinServer(this.state).then(this.handleRedirect);
   }
+
+
+  handleRedirect(action) {
+    this.props.closeModal();
+    this.props.history.push(`/channels/${action.server.id}`);
+  }
+
 
   render() {
     return (
@@ -44,4 +53,4 @@ class JoinServerForm extends React.Component {
   }
 }
 
-export default JoinServerForm;
+export default withRouter(JoinServerForm);

@@ -5,14 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
-  // const channelId = ownProps.match.params.channelId;
-  // const serverId = ownProps.match.params.serverId;
-  // if (server_id === '@me')
-
-  // channel: state.channels[ownProps.match.params.channelId]
-
   return {
-    // channel: state.channels[ownProps.match.params.channelId]
+    channel: state.entities.channels[ownProps.match.params.channelId] || {},
   };
 };
 

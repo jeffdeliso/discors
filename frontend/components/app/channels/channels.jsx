@@ -14,12 +14,14 @@ class Channels extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchChannels(this.props.match.params.serverId);
+    if (this.props.match.params.serverId) {
+      this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.server.id != this.props.match.params.serverId) {
-      this.props.fetchChannels(this.props.match.params.serverId);
+      this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
     }
   }
 
