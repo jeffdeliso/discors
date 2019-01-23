@@ -4,6 +4,7 @@ import Server from './server';
 import Modal from 'react-modal';
 import CreateServerForm from './create_server_form';
 import JoinServerForm from './join_server_form';
+import {CSSTransition} from 'react-transition-group';
 
 
 class Servers extends React.Component {
@@ -38,10 +39,8 @@ class Servers extends React.Component {
     let content;
     if (this.state.content === "create") {
       content = <CreateServerForm />;
-      // content = createContent();
     } else if (this.state.content === "join") {
       content = <JoinServerForm />;
-      // content = joinContent();
     } else {
       content = (
         <div className="server-modal-content-wrapper">
