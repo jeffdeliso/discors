@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: <%= ENV['REDIS_URL'] %>
-  channel_prefix: discors_production
+  channel_prefix: test_message_app_production
