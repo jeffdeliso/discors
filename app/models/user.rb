@@ -75,6 +75,6 @@ class User < ApplicationRecord
   end
 
   def ensure_icon
-    self.image_url ||= "/assets/user_icons/#{DEFAULT_ICONS.sample}.png"
+    self.image_url ||= "https://s3.amazonaws.com/discors-dev/User+Icons/#{DEFAULT_ICONS.sample}.png"
   end
 end
