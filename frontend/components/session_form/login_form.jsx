@@ -66,8 +66,8 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-body">
-        <img src="/assets/login/background.jpg" alt="" className="background-image"></img>
-        <img src="/assets/login/discors.svg" alt="" className="login-logo"></img>
+        <img src="https://s3.amazonaws.com/discors-dev/Login/background.jpg" alt="" className="background-image"></img>
+        <img src="https://s3.amazonaws.com/discors-dev/Login/discors.svg" alt="" className="login-logo"></img>
         <form action="" className="login-form" onSubmit={this.handleSubmit}>
           <div className="login-form-inner">
             <h3 className="form-header">Welcome back!</h3>

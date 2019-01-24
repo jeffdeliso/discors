@@ -3,7 +3,7 @@
 }
 
 .server-modal-content-wrapper {
-  background-image: url(/assets/main/server-modal-left.png), url(/assets/main/server-modal-right.png);
+  background-image: url(https://s3.amazonaws.com/discors-dev/Main/server-modal-left.png), url(https://s3.amazonaws.com/discors-dev/Main/server-modal-right.png);
   background-position: 0 100%,100% 100%;
   background-repeat: no-repeat;
   background-size: 155px auto,75px auto;
@@ -59,7 +59,7 @@
 }
 
 .modal-join-server div {
-  background-image: url(/assets/main/join-server.png);
+  background-image: url(https://s3.amazonaws.com/discors-dev/Main/join-server.png);
   background-size: 178.5px 78px;
     height: 78px;
     background-position: 50%;
@@ -69,7 +69,7 @@
 }
 
 .modal-create-server div {
-  background-image: url(/assets/main/create-server.png);
+  background-image: url(https://s3.amazonaws.com/discors-dev/Main/create-server.png);
         background-size: 112px 78px;
     height: 78px;
     background-position: 50%;

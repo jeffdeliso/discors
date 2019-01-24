@@ -1,6 +1,6 @@
 @font-face {
     font-family: "login1";
-    src: url("login/login1.woff") format('woff');
+    src: font-url("login/login1.woff") format('woff');
 }
 @font-face {
     font-family: "login2";
