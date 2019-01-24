@@ -21,6 +21,11 @@ class Api::ServersController < ApplicationController
     end
   end
 
+  def members
+    @users = current_server.members
+    render "api/users/index"
+  end
+
   def show
     current_server
   end
@@ -35,7 +40,7 @@ class Api::ServersController < ApplicationController
     else
       current_user.server_memberships.find(server_id: current_server.id).destroy
     end
-    
+
     render :show
   end
 

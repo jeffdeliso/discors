@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Channels from '../channels/channels_container';
 import Header from '../header/header_container';
 import Chat from '../chat/chat';
-import ServerMembers from '../server_members/server_members';
+import ServerMembers from '../server_members/server_members_container';
 import Servers from '../servers/servers_container';
 
 class ServerRoute extends React.Component {

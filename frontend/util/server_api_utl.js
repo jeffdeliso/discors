@@ -13,6 +13,13 @@ export const fetchServer = id => (
   })
 );
 
+export const fetchMembers = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/servers/${id}/members`,
+  })
+);
+
 export const fetchServers = () => (
   $.ajax({
     method: 'GET',

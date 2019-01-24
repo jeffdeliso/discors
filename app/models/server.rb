@@ -19,7 +19,7 @@ class Server < ApplicationRecord
     class_name: :ServerMembership,
     dependent: :destroy
 
-  has_many :users,
+  has_many :members,
       through: :memberships,
       source: :user
 

@@ -72,7 +72,7 @@ class Channels extends React.Component {
           </div>
           <div className="user-actions">
             <div className="icon-name-wrapper">
-              <div className="user-icon"></div>
+              <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }}></div>
               <div className="actions-username">{this.props.currentUser.username}</div>
             </div>
             <button className="gear" onClick={() => this.props.logout()}>

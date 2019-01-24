@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       collection do
         post 'join'
       end
+      member do 
+        get 'members'
+      end
     end
     resources :channels, only: [:create, :show, :index]
   end
