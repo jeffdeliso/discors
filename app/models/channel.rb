@@ -16,4 +16,7 @@ class Channel < ApplicationRecord
   belongs_to :server,
     optional: true
 
+  has_many :messages,
+    dependent: :destroy
+
 end
