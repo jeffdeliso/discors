@@ -1,22 +1,22 @@
 @font-face {
     font-family: "main1";
-    src: url("main/font/thinner.woff") format('woff');
+    src: font_url("main/font/thinner.woff") format('woff');
 }
 @font-face {
     font-family: "main2";
-    src: url("main/font/thin.woff") format('woff');
+    src: font_url("main/font/thin.woff") format('woff');
 }
 @font-face {
     font-family: "main3";
-    src: url("main/font/middle.woff") format('woff');
+    src: font_url("main/font/middle.woff") format('woff');
 }
 @font-face {
     font-family: "main4";
-    src: url("main/font/fat.woff") format('woff');
+    src: font_url("main/font/fat.woff") format('woff');
 }
 @font-face {
     font-family: "main5";
-    src: url("main/font/fatter.woff") format('woff');
+    src: font_url("main/font/fatter.woff") format('woff');
 }
 
 .side-bar {
@@ -173,7 +173,7 @@
   width: 50px;
   margin-bottom: 10px;
   margin-left: 10px;
-  background-image: url(https://s3.amazonaws.com/discors-dev/Main/white_logo.png);
+  background-image: image_url('main/white_logo.png');
   background-clip: padding-box;
   background-position: 50%;
   background-size: 180%;

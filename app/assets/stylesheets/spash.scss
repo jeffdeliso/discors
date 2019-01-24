@@ -1,11 +1,11 @@
 @font-face {
   font-family: "discors-p-font";
-  src: url("splash/p-font.woff") format('woff');
+  src: font_url("splash/p-font.woff") format('woff');
 }
 
 @font-face {
   font-family: "discors-font";
-  src: url("splash/discors-font-bold.woff") format('woff');
+  src: font_url("splash/discors-font-bold.woff") format('woff');
   font-weight: bold;
 }
 
