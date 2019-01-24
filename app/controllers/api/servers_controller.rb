@@ -29,6 +29,16 @@ class Api::ServersController < ApplicationController
     @servers = current_user.servers
   end
 
+  def destroy
+    if current_user.id == current_server.admin_id
+      current_server.destroy
+    else
+      current_user.server_memberships.find(server_id: current_server.id).destroy
+    end
+    
+    render :show
+  end
+
   private
 
   def current_server

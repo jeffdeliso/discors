@@ -3,6 +3,8 @@ import Channels from './channels';
 import { fetchChannels, createChannel, removeChannelErrors } from '../../../actions/channel_actions';
 import { withRouter } from 'react-router-dom';
 import { logout } from '../../../actions/session_actions';
+import { deleteServer } from '../../../actions/server_actions';
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -19,6 +21,7 @@ const mapDispatchToProps = dispatch => {
     createChannel: channel => dispatch(createChannel(channel)),
     logout: () => dispatch(logout()),
     removeChannelErrors: () => dispatch(removeChannelErrors()),
+    deleteServer: (id) => dispatch(deleteServer(id)),
   };
 };
 

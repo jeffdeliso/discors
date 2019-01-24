@@ -4,6 +4,7 @@ export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const REMOVE_SERVER_ERRORS = 'REMOVE_SERVER_ERRORS';
+export const REMOVE_SERVER = 'REMOVE_SERVER';
 
 export const receiveServers = servers => ({
   type: RECEIVE_SERVERS,
@@ -13,6 +14,11 @@ export const receiveServers = servers => ({
 export const receiveServer = server => ({
   type: RECEIVE_SERVER,
   server
+});
+
+export const removeServer = serverId => ({
+  type: REMOVE_SERVER,
+  serverId
 });
 
 export const receiveErrors = errors => ({
@@ -37,6 +43,13 @@ export const createServer = (server) => dispatch => (
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
+);
+
+export const deleteServer = id => dispatch => (
+  APIUtil.deleteServer(id).then(() => (
+    dispatch(removeServer(id))
+    )
+  )
 );
 
 export const joinServer = (server) => dispatch => (

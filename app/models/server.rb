@@ -16,12 +16,14 @@ class Server < ApplicationRecord
     class_name: :User
 
   has_many :memberships,
-    class_name: :ServerMembership
+    class_name: :ServerMembership,
+    dependent: :destroy
 
   has_many :users,
       through: :memberships,
       source: :user
 
-  has_many :channels
+  has_many :channels,
+    dependent: :destroy
 
 end

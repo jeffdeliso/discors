@@ -11,6 +11,7 @@ class Channels extends React.Component {
     this.state = { showModal: false };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.removeServer = this.removeServer.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,12 @@ class Channels extends React.Component {
     this.setState({ content: type });
   }
 
+  removeServer() {
+    this.props.deleteServer(this.props.server.id).then(() => (
+      this.props.history.push('/channels/@me')
+    ));
+  }
+
   render() {
     const channels = this.props.channels.map((channel, idx) => {
       return <Channel server={this.props.server} channel={channel} key={idx} />;
@@ -48,6 +55,7 @@ class Channels extends React.Component {
         <div className="channels">
           <div className="channel-header">
             <span className="server-name">{this.props.server.name}</span>
+            <svg width="18" height="18" className="leave-server-button" onClick={this.removeServer}><g fill="none" fillRule="evenodd"><path d="M0 0h18v18H0"></path><path stroke="#FFF" d="M4.5 4.5l9 9" strokeLinecap="round"></path><path stroke="#FFF" d="M13.5 4.5l-9 9" strokeLinecap="round"></path></g></svg>
           </div>
           <div className="channel-scroll-wrapper">
             <div className="channel-overflow-container">

@@ -615,4 +615,13 @@
   margin-right: 10px;
   outline: inherit;
 }
+
+.leave-server-button {
+  margin-right: 4px;
+  cursor: pointer;
+      opacity: .8;
+}
+.leave-server-button:hover {
+  opacity: 1;
+}
   

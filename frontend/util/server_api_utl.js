@@ -27,3 +27,10 @@ export const joinServer = server => (
     data: { server }
   })
 );
+
+export const deleteServer = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `/api/servers/${id}`,
+  })
+);
