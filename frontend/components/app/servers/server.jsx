@@ -11,7 +11,7 @@ class Server extends React.Component {
           className="home-icon server"
           activeClassName="serverSelected"
           activeStyle={{ pointerEvents: 'none', cursor: 'pointer' }}
-        ><div className="server-active-icon"></div><img src="/assets/main/white_logo.png" alt=""></img></NavLink>
+        ><div className="server-active-icon"></div></NavLink>
       }
         position="right center"
         on="hover"
@@ -21,10 +21,10 @@ class Server extends React.Component {
         }}
         arrowStyle={{
           backgroundColor: 'black',
-          zIndex: 99,
+          zIndex: 4,
         }}
         contentStyle={{
-          zIndex: 99,
+          zIndex: 4,
           width: `auto`,
           whiteSpace: 'nowrap',
           fontFamily: 'main3',

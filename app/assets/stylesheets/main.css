@@ -164,7 +164,6 @@
 
 .home-icon {
   cursor: pointer;
-  overflow: visible;
   text-align: center;
   border-radius: 25px;
   background-color: rgb(47, 49, 54);
@@ -176,7 +175,10 @@
   width: 50px;
   margin-bottom: 10px;
   margin-left: 10px;
-  overflow: hidden;
+  background-image: url(/assets/main/white_logo.png);
+  background-clip: padding-box;
+  background-position: 50%;
+  background-size: 180%;
 }
 
 .home-icon:hover {
@@ -193,6 +195,7 @@
   top: -20px;
   left: -20px;
   user-select: none;
+  clip: rect(20px,20px,20px,20px);
 }
 
 .separator {
@@ -605,6 +608,7 @@
   border-radius: 20px;
   height: 40px;
   margin-top: -20px;
+  z-index: 99;
 }
 
 .hide-members {

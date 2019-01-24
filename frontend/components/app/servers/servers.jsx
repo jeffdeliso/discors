@@ -73,7 +73,7 @@ class Servers extends React.Component {
     return (
       <div className="side-bar">
         <NavLink to='/channels/@me' className="home-icon" activeClassName="serverSelected">
-          <div className="server-active-icon"></div><img src="/assets/main/white_logo.png" alt=""></img>
+          <div className="server-active-icon"></div>
         </NavLink>
         <div className="separator"></div>
         <div className="side-scroll-container">
