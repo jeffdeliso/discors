@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :channels, only: [:create, :show, :index]
   end
 
+  mount ActionCable.server, at: '/cable'
+
   root "static_pages#root"
 end
