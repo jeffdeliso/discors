@@ -13,7 +13,7 @@ class Header extends React.Component {
           </svg>
           <span className="username">{this.props.channel.name}</span>
         </div>
-        <span tabIndex="0" className="hide-members" role="button"><svg
+        <span tabIndex="0" className="hide-members" role="button" onClick={this.props.toggleShowMembers}><svg
           width="24" height="24" viewBox="0 0 24 24">
           <g fill="none" fillRule="evenodd">
             <polygon points="0 0 24 0 24 24 0 24"></polygon>

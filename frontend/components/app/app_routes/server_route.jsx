@@ -5,6 +5,7 @@ import Header from '../header/header_container';
 import Chat from '../chat/chat_container';
 import ServerMembers from '../server_members/server_members_container';
 import Servers from '../servers/servers_container';
+import Main from './main';
 
 class ServerRoute extends React.Component {
 
@@ -13,13 +14,7 @@ class ServerRoute extends React.Component {
       <>
         <Servers />
         <Channels />
-        <div className="chat-container">
-          <Header />
-          <div className="chat-main-container">
-            <Chat />
-            <ServerMembers />
-          </div>
-        </div>
+        <Main />
       </>
     )
   }
