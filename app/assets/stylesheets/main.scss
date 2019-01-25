@@ -158,6 +158,7 @@
   white-space: nowrap;
   color: #fff;
   user-select: none;
+  margin-left: 4px;
 }
 
 .home-icon {
@@ -354,10 +355,10 @@
 .actions-username {
   display: block;
   max-width: 84px;
-  overflow: hidden;
+  font-size: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: main2;
+  font-family: main3;
 }
 
 .icon-name-wrapper {

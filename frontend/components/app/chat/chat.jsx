@@ -13,33 +13,26 @@ class Chat extends React.Component {
 
   componentDidMount() {
     const channelId = this.props.match.params.channelId;
-
-    App.cable.subscriptions.create(
-      { channel: "ChatChannel", channelId },
-      {
-        received: data => {
-          switch (data.type) {
-            case "message":
-              this.setState({
-                messages: this.state.messages.concat(data.message)
-              });
-              break;
-            case "messages":
-              this.setState({ messages: data.messages });
-              break;
-          }
-        },
-        speak: function (data) { return this.perform("speak", data); },
-        load: function (data) { return this.perform("load", data); }
-      }
-    );
-    // App.cable.subscriptions.subscriptions[0].load({ channelId });
+    this.subscribe(channelId);
   }
 
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
     if (channelId && prevProps.channelId !== this.props.match.params.channelId) {
+      this.subscribe(channelId);
+    }
+    this.bottom.current.scrollIntoView();
+  }
+
+  subscribe(channelId) {
+    const subscription = App.cable.subscriptions.subscriptions.find((subscription) => (
+      subscription.identifier === `{"channel":"ChatChannel","channelId":"${channelId}"}`
+    ));
+
+    if (subscription) {
+      subscription.load({ channelId });
+    } else {
       App.cable.subscriptions.create(
         { channel: "ChatChannel", channelId },
         {
@@ -59,11 +52,8 @@ class Chat extends React.Component {
           load: function (data) { return this.perform("load", data); }
         }
       );
-      App.cable.subscriptions.subscriptions[0].load({ channelId });
     }
-    this.bottom.current.scrollIntoView();
   }
-
 
   render() {
     const messageList = this.state.messages.map((message, idx) => {
@@ -82,7 +72,7 @@ class Chat extends React.Component {
             </div>
           </div>
         </div>
-        <MessageForm user={this.props.currentUser} channelId={this.props.channelId} />
+        <MessageForm user={this.props.currentUser} channel={this.props.channel} channelId={this.props.channelId} />
       </div>
     )
   }

@@ -1,16 +1,11 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Chat from './chat';
+import MeHeader from './me_header';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const channelId = ownProps.match.params.channelId;
-  debugger
   return {
     currentUser: state.entities.users[state.session.id],
-    channelId,
-    users: state.entities.users,
-    channel: state.entities.channels[channelId],
   };
 };
 
@@ -19,4 +14,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Chat));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MeHeader));
