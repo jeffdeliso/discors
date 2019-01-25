@@ -5,7 +5,6 @@ import Chat from './chat';
 
 const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.match.params.channelId;
-  debugger
   return {
     currentUser: state.entities.users[state.session.id],
     channelId,

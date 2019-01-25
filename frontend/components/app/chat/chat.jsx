@@ -29,7 +29,6 @@ class Chat extends React.Component {
     const subscription = App.cable.subscriptions.subscriptions.find((subscription) => (
       subscription.identifier === `{"channel":"ChatChannel","channelId":"${channelId}"}`
     ));
-
     if (subscription) {
       subscription.load({ channelId });
     } else {
@@ -53,6 +52,12 @@ class Chat extends React.Component {
         }
       );
     }
+  }
+
+  componentWillUnmount() {
+    App.cable.subscriptions.subscriptions.forEach(subscription => {
+      App.cable.subscriptions.remove(subscription);
+    });
   }
 
   render() {

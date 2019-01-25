@@ -19,4 +19,12 @@ class Channel < ApplicationRecord
   has_many :messages,
     dependent: :destroy
 
+  has_many :dm_memberships,
+    class_name: :DmChannelMembership,
+    dependent: :destroy
+
+  has_many :members,
+    through: :dm_memberships,
+    source: :user
+
 end
