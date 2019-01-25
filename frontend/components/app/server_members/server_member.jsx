@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
+import { withRouter } from 'react-router-dom';
 
 class ServerMember extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class ServerMember extends React.Component {
   // }
 
   handleClick() {
-    this.props.createDmChannel(this.props.user.id);
+    this.props.createDmChannel(this.props.user.id).then((action) => this.props.history.push(`/channels/@me/${action.channel.id}`));
   }
 
   render() {
@@ -81,4 +82,4 @@ class ServerMember extends React.Component {
   }
 }
 
-export default ServerMember;
+export default withRouter(ServerMember);

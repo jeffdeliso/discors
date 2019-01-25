@@ -1,5 +1,6 @@
 import React from "react";
 import {merge} from 'lodash';
+import { withRouter } from 'react-router-dom';
 
 class MessageForm extends React.Component {
   constructor(props) {
@@ -23,11 +24,24 @@ class MessageForm extends React.Component {
   }
 
   render() {
+    let placeholder = '';
+    if (this.props.channel && this.props.match.params.serverId) {
+      placeholder = `Message #${this.props.channel.name}`;
+    } else if (this.props.channel) {
+      const nameArr = this.props.channel.name.split('-');
+      let userId;
+      if (nameArr[0] == this.props.user.id) {
+        userId = nameArr[1];
+      } else {
+        userId = nameArr[0];
+      }
+      placeholder = `Message @${this.props.users[userId].username}`;
+    }
     return (
       <form onSubmit={this.handleSubmit} className="message-form">
         <input 
           type="text"
-          placeholder={`Message #${this.props.channel ? this.props.channel.name : ''}`}
+          placeholder={placeholder}
           className="text-area"
           value={this.state.body}
           onChange={this.update()}
@@ -37,4 +51,4 @@ class MessageForm extends React.Component {
   }
 }
 
-export default MessageForm;
+export default withRouter(MessageForm);

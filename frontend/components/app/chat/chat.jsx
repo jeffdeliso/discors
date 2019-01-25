@@ -77,7 +77,7 @@ class Chat extends React.Component {
             </div>
           </div>
         </div>
-        <MessageForm user={this.props.currentUser} channel={this.props.channel} channelId={this.props.channelId} />
+        <MessageForm user={this.props.currentUser} channel={this.props.channel} channelId={this.props.channelId} users={this.props.users} />
       </div>
     )
   }

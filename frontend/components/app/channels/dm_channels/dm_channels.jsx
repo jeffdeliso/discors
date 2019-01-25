@@ -58,7 +58,7 @@ class DMChannels extends React.Component {
   // }
 
   render() {
-    // debugger
+
     const that = this;
     const channels = this.props.channels.map((channel, idx) => {
       const nameArr = channel.name.split('-');
@@ -68,8 +68,8 @@ class DMChannels extends React.Component {
       } else {
         userId = nameArr[0];
       }
-      debugger
-      return <DmChannel channel={channel} user={that.props.users[userId]} key={idx} />;
+
+      return <DmChannel channel={channel} user={that.props.users[userId] || {}} key={idx} />;
     });
 
     return (

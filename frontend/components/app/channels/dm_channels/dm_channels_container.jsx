@@ -8,7 +8,7 @@ import { fetchDmChannels } from '../../../../actions/channel_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
+
   return {
     currentUser: state.entities.users[state.session.id],
     // server: state.entities.servers[ownProps.match.params.serverId] || {},
