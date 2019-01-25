@@ -1,23 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-// import Channel from './channel';
+import Channel from '..//channel';
 import Modal from 'react-modal';
+import DmChannel from './dm_channel';
 // import CreateChannelForm from './create_channel_form';
 
 class DMChannels extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = { showModal: false };
-    // this.handleOpenModal = this.handleOpenModal.bind(this);
-    // this.handleCloseModal = this.handleCloseModal.bind(this);
-    // this.removeServer = this.removeServer.bind(this);
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = { showModal: false };
+  //   // this.handleOpenModal = this.handleOpenModal.bind(this);
+  //   // this.handleCloseModal = this.handleCloseModal.bind(this);
+  //   // this.removeServer = this.removeServer.bind(this);
+  // }
+
+  componentDidMount() {
+      this.props.fetchDmChannels();
+      // .then((action) => fetchDmUsers(action.channels));
+      // .then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
   }
 
-  // componentDidMount() {
-  //   if (this.props.match.params.serverId) {
-  //     this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
-  //   }
+  // fetchDmUsers(channels) {
+  //   const userIds = Object.values(channels).map((channel) => {
+  //     const nameArr = channel.name.split('-');
+  //     if (nameArr[0] == this,props.currentUser.id) {
+  //       return nameArr[1];
+  //     } else {
+  //       return nameArr[1];
+  //     }
+  //   });
   // }
 
   // componentDidUpdate(prevProps) {
@@ -46,9 +58,19 @@ class DMChannels extends React.Component {
   // }
 
   render() {
-    // const channels = this.props.channels.map((channel, idx) => {
-    //   return <Channel server={this.props.server} channel={channel} key={idx} />;
-    // });
+    // debugger
+    const that = this;
+    const channels = this.props.channels.map((channel, idx) => {
+      const nameArr = channel.name.split('-');
+      let userId;
+      if (nameArr[0] == this.props.currentUser.id) {
+        userId = nameArr[1];
+      } else {
+        userId = nameArr[0];
+      }
+      debugger
+      return <DmChannel channel={channel} user={that.props.users[userId]} key={idx} />;
+    });
 
     return (
       <div className="right-main">
@@ -66,7 +88,7 @@ class DMChannels extends React.Component {
                     <h3 id="text-channels">DIRECT MESSAGES</h3>
                   </div>
                 </div>
-                {/* {channels} */}
+                {channels}
               </div>
             </div>
           </div>

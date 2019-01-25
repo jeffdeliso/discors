@@ -28,3 +28,10 @@ export const fetchChannels = (server_id) => (
     data: { channel: {server_id} }
   })
 );
+
+export const fetchDmChannels = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/channels/dm_index',
+  })
+);

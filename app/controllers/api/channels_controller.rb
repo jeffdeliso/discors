@@ -23,7 +23,13 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.create!(name: "#{current_user.id}-#{params[:user_id]}")
     @channel.dm_memberships.create!(user_id: current_user.id)
     @channel.dm_memberships.create!(user_id: params[:user_id])
-    render :show
+    render "api/channels/show"
+  end
+
+  def dm_index
+    @channels = current_user.dm_channels
+    @users = current_user.dm_users
+    render "api/channels/dm_index"
   end
 
   private

@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/channel_api_util';
+import { receiveUsers } from './server_actions';
 
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
@@ -31,6 +32,13 @@ export const fetchChannels = (serverId) => dispatch => (
   ))
 );
 
+export const fetchDmChannels = () => dispatch => (
+  APIUtil.fetchDmChannels().then(({channels, users}) => {
+    dispatch(receiveUsers(users));
+    return dispatch(receiveChannels(channels));
+  })
+);
+
 export const createChannel = (channel) => dispatch => (
   APIUtil.createChannel(channel).then(channel => (
     dispatch(receiveChannel(channel))
@@ -44,3 +52,4 @@ export const createDmChannel = (userId) => dispatch => (
     dispatch(receiveChannel(channel))
   ))
 );
+
