@@ -455,6 +455,11 @@
   border-radius: 50%;
   margin-right: 20px;
   flex-shrink: 0;
+  cursor: pointer;
+}
+
+.user-image:hover {
+  opacity: .8;
 }
 
 .username-time {
@@ -468,6 +473,11 @@
   letter-spacing: 0;
   font-family: main3;
   color: #fff;
+  cursor: pointer;
+}
+
+.username-time h4:hover {
+  text-decoration: underline;
 }
 
 .username-time h5 {

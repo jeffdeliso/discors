@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Chat from './chat';
+import { createDmChannel } from '../../../actions/channel_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    createDmChannel: userId => dispatch(createDmChannel(userId)),
   };
 };
 

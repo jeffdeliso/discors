@@ -19,13 +19,13 @@ class ServerMembers extends React.Component {
       return member.id === this.props.server.admin_id;
     }) || {};
 
-    const adminEl = <ServerMember user={admin} createDmChannel={this.props.createDmChannel} />;
+    const adminEl = <ServerMember user={admin} createDmChannel={this.props.createDmChannel} currentUser={this.props.currentUser}/>;
 
     const members = this.props.members.map((member, idx) => {
       if (member.id === this.props.server.admin_id) {
         return null
       } else {
-        return <ServerMember key={idx} user={member} createDmChannel={this.props.createDmChannel} />;
+        return <ServerMember key={idx} user={member} createDmChannel={this.props.createDmChannel} currentUser={this.props.currentUser}/>;
       }
     });
     return (

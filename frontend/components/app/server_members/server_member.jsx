@@ -62,7 +62,8 @@ class ServerMember extends React.Component {
           padding: '0',
           display: 'flex',
           flexDirection: 'column',
-
+          backgroundColor: 'black',
+          overflow: 'auto',
         }}
       >
         <div className="user-popup">
@@ -71,10 +72,10 @@ class ServerMember extends React.Component {
             <h5>{this.props.user.username}</h5>
           </div>
           <div className="user-popup-bottom">
-            <button id="session-submit" 
+            {this.props.user.id === this.props.currentUser.id ? null : <button id="session-submit" 
               style={{marginBottom: 0}}
               onClick={this.handleClick}
-            >{`Message @${this.props.user.username}`}</button>
+            >{`Message @${this.props.user.username}`}</button>}
           </div>
         </div>
       </Popup>

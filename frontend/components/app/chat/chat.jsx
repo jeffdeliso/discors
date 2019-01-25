@@ -63,7 +63,13 @@ class Chat extends React.Component {
   render() {
     const messageList = this.state.messages.map((message, idx) => {
       return (
-        <Message key={idx} message={message} user={this.props.users[message.author_id] || {}} bottom={this.bottom} />
+        <Message key={idx}
+          message={message}
+          user={this.props.users[message.author_id] || {}}
+          currentUser={this.props.currentUser}
+          channel={this.props.channel}
+          createDmChannel={this.props.createDmChannel}
+        />
       );
     });
 

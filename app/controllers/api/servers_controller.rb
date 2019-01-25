@@ -38,7 +38,7 @@ class Api::ServersController < ApplicationController
     if current_user.id == current_server.admin_id
       current_server.destroy
     else
-      current_user.server_memberships.find(server_id: current_server.id).destroy
+      current_user.server_memberships.find_by(server_id: current_server.id).destroy
     end
 
     render :show

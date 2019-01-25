@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     server: state.entities.servers[ownProps.match.params.serverId] || {},
     members: Object.values(state.entities.users),
+    currentUser: state.entities.users[state.session.id],
   };
 };
 
