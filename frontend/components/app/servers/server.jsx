@@ -3,6 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import Popup from 'reactjs-popup'
 
 class Server extends React.Component {
+  onKeyPress(event) {
+    if (event.which === 13 ) {
+      event.preventDefault();
+    }
+  }
 
   render() {
     return (
@@ -11,6 +16,9 @@ class Server extends React.Component {
           className="home-icon server"
           activeClassName="serverSelected"
           activeStyle={{ pointerEvents: 'none', cursor: 'pointer' }}
+          // onKeyPress={(e) => e.preventDefault()}
+          onKeyDown={(e) => e.preventDefault()}
+          // onKeyUp={(e) => e.preventDefault()}
         ><div className="server-active-icon"></div></NavLink>
       }
         position="right center"

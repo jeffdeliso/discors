@@ -1,9 +1,10 @@
 import React from "react";
+import {merge} from 'lodash';
 
 class MessageForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: "", author_id: props.user.id, channel_id: props.channelId };
+    this.state = { body: "", author_id: props.user.id };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -14,9 +15,10 @@ class MessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({channel_id: this.props.channelId});
     App.cable.subscriptions.subscriptions.find((subscription) => (
       subscription.identifier === `{"channel":"ChatChannel","channelId":"${this.props.channelId}"}`
-    )).speak({message: this.state});
+    )).speak({message: merge({channel_id: this.props.channelId}, this.state)});
     this.setState({ body: "" });
   }
 
@@ -25,7 +27,7 @@ class MessageForm extends React.Component {
       <form onSubmit={this.handleSubmit} className="message-form">
         <input 
           type="text"
-          // placeholder={`Message #${channel.name}`}
+          placeholder={`Message #${this.props.channel ? this.props.channel.name : ''}`}
           className="text-area"
           value={this.state.body}
           onChange={this.update()}
