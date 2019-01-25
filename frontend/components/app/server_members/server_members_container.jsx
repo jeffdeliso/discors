@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ServerMembers from './server_members';
 import { fetchMembers } from '../../../actions/server_actions';
+import { createDmChannel } from '../../../actions/channel_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMembers: id => dispatch(fetchMembers(id)),
+    createDmChannel: userId => dispatch(createDmChannel(userId)),
   };
 };
 

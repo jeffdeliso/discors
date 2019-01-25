@@ -6,6 +6,14 @@ export const createChannel = channel => (
   })
 );
 
+export const createDmChannel = user_id => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/channels/dm_create',
+    data: { user_id }
+  })
+);
+
 export const fetchChannel = id => (
   $.ajax({
     method: 'GET',

@@ -38,3 +38,9 @@ export const createChannel = (channel) => dispatch => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
+
+export const createDmChannel = (userId) => dispatch => (
+  APIUtil.createDmChannel(userId).then(channel => (
+    dispatch(receiveChannel(channel))
+  ))
+);

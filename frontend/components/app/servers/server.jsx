@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Popup from 'reactjs-popup'
+import Popup from 'reactjs-popup';
 
 class Server extends React.Component {
   onKeyPress(event) {

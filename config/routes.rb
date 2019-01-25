@@ -11,7 +11,11 @@ Rails.application.routes.draw do
         get 'members'
       end
     end
-    resources :channels, only: [:create, :show, :index]
+    resources :channels, only: [:create, :show, :index] do 
+      collection do
+        post 'dm_create'
+      end
+    end
   end
 
   mount ActionCable.server, at: '/cable'

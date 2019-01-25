@@ -1,0 +1,36 @@
+.user-popup-top {
+  padding: 20px 10px;
+  background-color: #202225;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-popup{
+      color: #fff;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.user-popup-img {
+      height: 90px;
+    width: 90px;
+        border-radius: 50%;
+        background-clip: padding-box;
+    background-position: 50%;
+    background-size: 100%;
+        margin-bottom: 10px;
+}
+
+.user-popup-top h5 {
+  font-weight: 600;
+      color: #fff;
+      font-family: main3;
+}
+
+.user-popup-bottom {
+      background-color: #2f3136;
+          padding: 10px;
+}

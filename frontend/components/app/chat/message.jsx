@@ -7,7 +7,7 @@ class Message extends React.Component {
 
   parseDate() {
     const dateArr = this.props.message.created_at.split('T')[0].split('-');
-    return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}.`;
+    return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
   }
 
   render() {
