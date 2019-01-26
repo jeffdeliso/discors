@@ -6,32 +6,31 @@
   align-content: center;
   align-items: center;
   flex-direction: column;
-//   border-radius: 5px 5px 5px 5px
 }
 
 .user-popup{
-      color: #fff;
+    color: #fff;
     line-height: 20px;
     font-size: 16px;
 }
 
 .user-popup-img {
-      height: 90px;
+    height: 90px;
     width: 90px;
-        border-radius: 50%;
-        background-clip: padding-box;
+    border-radius: 50%;
+    background-clip: padding-box;
     background-position: 50%;
     background-size: 100%;
-        margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .user-popup-top h5 {
-  font-weight: 600;
-      color: #fff;
-      font-family: main3;
+    font-weight: 600;
+    color: #fff;
+    font-family: main3;
 }
 
 .user-popup-bottom {
-      background-color: #2f3136;
-          padding: 10px;
+    background-color: #2f3136;
+    padding: 10px;
 }

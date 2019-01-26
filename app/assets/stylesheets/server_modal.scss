@@ -1,7 +1,3 @@
-.create-server-header {
-
-}
-
 .server-modal-content-wrapper {
   background-image: url(https://s3.amazonaws.com/discors-dev/Main/server-modal-left.png), url(https://s3.amazonaws.com/discors-dev/Main/server-modal-right.png);
   background-position: 0 100%,100% 100%;
@@ -16,28 +12,28 @@
 }
 
 .server-modal-content h3 {
-      font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    margin-top: 6px;
-    padding: 0;
-    text-align: center;
-        color: #7289da;
-        font-family: main4;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  margin-top: 6px;
+  padding: 0;
+  text-align: center;
+  color: #7289da;
+  font-family: main4;
 }
 
 .modal-create-server,
 .modal-join-server {
-      background: hsla(0,0%,100%,.75);
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 2px 4px rgba(0,0,0,.08);
-    border-radius: 3px;
-        padding: 10px;
-    width: 228px;
-    box-sizing: content-box;
-    font-family: main3;
-    text-align: center;
-    cursor: pointer;
+  background: hsla(0,0%,100%,.75);
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  border-radius: 3px;
+  padding: 10px;
+  width: 228px;
+  box-sizing: content-box;
+  font-family: main3;
+  text-align: center;
+  cursor: pointer;
 }
 
 .modal-join-server {
@@ -46,8 +42,8 @@
 
 .modal-create-join h4 {
   font-size: 18px;
-    font-weight: 500;
-    margin-top: 20px;
+  font-weight: 500;
+  margin-top: 20px;
 }
 
 .modal-join-server {
@@ -61,30 +57,30 @@
 .modal-join-server div {
   background-image: url(https://s3.amazonaws.com/discors-dev/Main/join-server.png);
   background-size: 178.5px 78px;
-    height: 78px;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    margin: 26px 0;
-    width: 100%;
-}
+  height: 78px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  margin: 26px 0;
+  width: 100%;
+  }
 
 .modal-create-server div {
   background-image: url(https://s3.amazonaws.com/discors-dev/Main/create-server.png);
-        background-size: 112px 78px;
-    height: 78px;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    margin: 26px 0;
-    width: 100%;
+  background-size: 112px 78px;
+  height: 78px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  margin: 26px 0;
+  width: 100%;
 }
 
 .modal-create-join p {
   color: #99aab5;
-      font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    margin-top: 16px;
-    padding: 0 15px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 16px;
+  padding: 0 15px;
 }
 
 .modal-create-join {
@@ -93,63 +89,62 @@
 
 .modal-join-button,
 .modal-create-button {
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    padding: 14px 20px;
-    transition: background-color .2s ease;
-    width: 100%;
-    color: #fff;
-    font-family: main4;
-    text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 14px 20px;
+  transition: background-color .2s ease;
+  width: 100%;
+  color: #fff;
+  font-family: main4;
+  text-align: center;
 }
 
 .modal-join-button {
-background-color: #3ca374;
+  background-color: #3ca374;
 }
 
 .modal-create-button {
-background-color: #7289da;
+  background-color: #7289da;
 }
 
 .create-server-form {
-      display: flex;
-      text-align: center;
-      flex-direction: column;
-      height: 420px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  height: 420px;
 
 }
 .create-server-form h5 {
-  
   color: #7289da;
-      font-size: 18px;
-    text-align: center;
-            font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 4px;
-    font-family: main4;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  font-family: main4;
 }
 .create-server-form p {
-color: #99aab5;
-padding: 10px 0;
-    font-weight: 500;
-    line-height: 1.2;
-    font-family: main3;
-    font-size: 18px;
-    height: 100%;
+  color: #99aab5;
+  padding: 10px 0;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: main3;
+  font-size: 18px;
+  height: 100%;
 }
 
 .create-server-form-bottom {
   background-color: #f6f6f7;
-    box-shadow: inset 0 1px 0 rgba(246,246,247,.6);
-    padding: 18px 40px;
-    height: 74px;
-    box-sizing: border-box;
-    margin-top: 100px;
-    display: flex;
-    justify-content: flex-end;
+  box-shadow: inset 0 1px 0 rgba(246,246,247,.6);
+  padding: 18px 40px;
+  height: 74px;
+  box-sizing: border-box;
+  margin-top: 100px;
+  display: flex;
+  justify-content: flex-end;
     
 }
 
@@ -161,28 +156,28 @@ padding: 10px 0;
   justify-content: space-between;
 }
 .create-server-form-input label {
-color: #87909c;
-    font-size: 11px;
-    font-weight: 700;
-    font-family: main3;
-    text-align: left;
+  color: #87909c;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: main3;
+  text-align: left;
 }
 
 .create-server-form-input input {
-    border-bottom-style: solid;
-    border-radius: 0;
-    border-width: 0 0 2px;
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 12px;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding: 10px;
-    width: 100%;
-        background: transparent;
-    border-bottom-color: #f0f0f0;
-    color: #2f3136;
-    font-family: main3;
+  border-bottom-style: solid;
+  border-radius: 0;
+  border-width: 0 0 2px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 12px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding: 10px;
+  width: 100%;
+  background: transparent;
+  border-bottom-color: #f0f0f0;
+  color: #2f3136;
+  font-family: main3;
 }
 
 .create-server-form-input input::placeholder {
@@ -190,53 +185,55 @@ color: #87909c;
 }
 
 .create-server-form-input input:hover {
-    border-color: #b9bbbe;
-}
-.create-server-form-input input:focus {
-        border-color: #7289da;
-}
-#join-server-text-input:focus {
-        border-color: #43b581;
+  border-color: #b9bbbe;
 }
 
+.create-server-form-input input:focus {
+  border-color: #7289da;
+}
+
+#join-server-text-input:focus {
+  border-color: #43b581;
+}
 
 .create-server-form-top {
-padding: 28px 40px 0;
+  padding: 28px 40px 0;
 }
 
 .create-server-form-bottom button {
   background-color: #7289da;
-    color: #fff;
-        min-width: 96px;
-            height: 38px;
-                display: flex;
-    font-size: 14px;
-    font-weight: 500;
-    justify-content: center;
-    line-height: 16px;
-    padding: 2px 16px;
-    position: relative;
-    user-select: none;
-        border-radius: 3px;
-    box-sizing: border-box;
-    font-family: main3;
-
+  color: #fff;
+  min-width: 96px;
+  height: 38px;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 16px;
+  padding: 2px 16px;
+  position: relative;
+  user-select: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: main3;
 }
 
 .create-server-form-bottom button:hover {
-
-    background-color: #677bc4;
+  background-color: #677bc4;
 }
 
 #join-server-button {
   background-color: #43b581;
 }
+
 #join-server-button:hover {
-      background-color: #3ca374;
+  background-color: #3ca374;
 }
+
 #join-server-header {
   color: #43b581;
 }
+
 #join-server-message {
   margin-bottom: 77px;
 }

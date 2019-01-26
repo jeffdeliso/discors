@@ -7,18 +7,7 @@ class ServerMember extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    // this.state = { open: false };
-    // this.openModal = this.openModal.bind(this);
-    // this.closeModal = this.closeModal.bind(this);
   }
-
-  // openModal() {
-  //   this.setState({ open: true });
-  // }
-
-  // closeModal() {
-  //   this.setState({ open: false });
-  // }
 
   handleClick() {
     this.props.createDmChannel(this.props.user.id).then((action) => this.props.history.push(`/channels/@me/${action.channel.id}`));
@@ -36,13 +25,11 @@ class ServerMember extends React.Component {
         position="left center"
         closeOnDocumentClick
         on="click"
-        // open={this.state.open}
-        // onClose={this.closeModal}
         offsetY={-90}
         offsetX={-15}
-        // overlayStyle={{
-        //   position: 'relative'
-        // }}
+        overlayStyle={{
+          zIndex: 98,
+        }}
 
         contentStyle={{
           borderRadius: '5px',
@@ -60,7 +47,7 @@ class ServerMember extends React.Component {
           flexDirection: 'column',
           backgroundColor: 'black',
           overflow: 'auto',
-          // position: 'absolute'
+          zIndex: 99,
         }}
       >
         <div className="user-popup">

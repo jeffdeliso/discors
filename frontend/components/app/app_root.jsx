@@ -13,7 +13,7 @@ import {
   HashRouter
 } from 'react-router-dom';
 import MeRoute from './app_routes/me_route';
-import FriendsRoute from './app_routes/FriendsRoute';
+import FriendsRoute from './app_routes/friends_route';
 
 class AppRoot extends React.Component {
   componentDidMount() {
@@ -32,7 +32,7 @@ class AppRoot extends React.Component {
           <Route path="/channels/@me" component={FriendsRoute} />
           <Route path="/channels/:serverId/:channelId" component={ServerRoute} />
           <Route path="/channels/:serverId" component={ServerRoute} />
-          <Route path="/channels" component={FriendsRoute} />
+          <Route path="/" component={FriendsRoute} />
         </Switch >
       </div>
     )
