@@ -38,16 +38,12 @@ class ServerMember extends React.Component {
         on="click"
         // open={this.state.open}
         // onClose={this.closeModal}
-        // offsetY={165}
+        offsetY={-90}
         offsetX={-15}
         // overlayStyle={{
-        //   width: `auto`,
-        //   backgroundColor: 'black',
+        //   position: 'relative'
         // }}
-        // arrowStyle={{
-        //   backgroundColor: 'black',
-        //   zIndex: 4,
-        // }}
+
         contentStyle={{
           borderRadius: '5px',
           boxShadow: '0 2px 10px 0 rgba(0, 0, 0, .2), 0 0 0 1px rgba(32, 34, 37, .6)',
@@ -64,6 +60,7 @@ class ServerMember extends React.Component {
           flexDirection: 'column',
           backgroundColor: 'black',
           overflow: 'auto',
+          // position: 'absolute'
         }}
       >
         <div className="user-popup">
