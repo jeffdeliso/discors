@@ -49,6 +49,25 @@ class User < ApplicationRecord
     through: :dm_channels,
     source: :members
 
+  has_many :friend_requests
+
+  has_many :incoming_friend_requests,
+    class_name: :FriendRequest,
+    foreign_key: :friend_id
+
+  has_many :incoming_friends,
+    through: :incoming_friend_requests,
+    source: :user
+
+  has_many :pending_friends, 
+    through: :friend_requests, 
+    source: :friend
+
+  has_many :friendships
+
+  has_many :friends, 
+    through: :friendships
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
@@ -67,6 +86,10 @@ class User < ApplicationRecord
     generate_unique_session_token
     self.save!
     self.session_token
+  end
+
+  def remove_friend(friend)
+    current_user.friends.destroy(friend)
   end
 
   private

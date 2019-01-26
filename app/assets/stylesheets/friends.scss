@@ -1,0 +1,145 @@
+.friends-table-header {
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  padding: 8px 30px;
+  color: hsla(0,0%,100%,.3);
+  font-family: main3;
+  width: calc(100vw - 310px);
+}
+
+.friends-column {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  // display: inline-block;
+  // text-align: 
+  line-height: 1.56;
+}
+
+.friends-name {
+  width: 180px;
+}
+
+.friends-servers {
+  // width: 200px;
+  width: 100%;
+}
+
+.friends-status {
+  width: 225px;
+};
+
+
+.friends-column-separator {
+  background-color: hsla(0,0%,100%,.1);
+  content: " ";
+  display: inline-block;
+  flex-shrink: 0;
+  height: 18px;
+  margin: 0 20px;
+  width: 1px;
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 8px;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.friends-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-left: 30px;
+  margin-right: 12px;
+  overflow: hidden;
+  height: 62px;
+}
+
+.friend-container {
+  color: hsla(0,0%,100%,.6);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 180px;
+}
+
+.friend-icon {
+  background-position: 50%;
+  background-size: 100% 100%;
+  border-radius: 50%;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  background-clip: padding-box;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.friend-name-container {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  line-height: 17px;
+}
+
+.friends-header-button {
+  color: hsla(0,0%,100%,.6);
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: .4px;
+  line-height: 18px;
+  margin: 0 8px;
+  padding: 2px 8px;
+  min-width: 40px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.friends-header-button-active {
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: .4px;
+  line-height: 18px;
+  margin: 0 8px;
+  padding: 2px 8px;
+  min-width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #fff;
+  color: #36393f;
+  cursor: default;
+}
+
+.friends-header-button:hover {
+  background-color: #2f3136;
+}
+
+.friends-button-container {
+  flex: 1 1 auto;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  font-family: main3;
+}
+

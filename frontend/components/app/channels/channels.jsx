@@ -46,8 +46,13 @@ class Channels extends React.Component {
   }
 
   render() {
+    const that = this;
     const channels = this.props.channels.map((channel, idx) => {
-      return <Channel server={this.props.server} channel={channel} key={idx} />;
+      if (channel.server_id == that.props.match.params.serverId) {
+        return <Channel server={that.props.server} channel={channel} key={idx} />;
+      } else {
+        return null;
+      }
     });
 
     return (

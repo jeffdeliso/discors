@@ -23,7 +23,7 @@ class Server extends React.Component {
         on="hover"
         overlayStyle={{
           width: `auto`,
-          backgroundColor: 'black',
+          backgroundColor: 'black', 
         }}
         arrowStyle={{
           backgroundColor: 'black',

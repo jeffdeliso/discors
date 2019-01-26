@@ -11,13 +11,13 @@ Rails.application.routes.draw do
         get 'members'
       end
     end
-    # get '/channels/dm_index', to: 'channels#dm_index'
     resources :channels, only: [:create, :show, :index] do
       collection do
         post 'dm_create'
         get 'dm_index'
       end
     end
+    resources :friend_requests, only: [:create, :destroy, :update, :index]
   end
 
   mount ActionCable.server, at: '/cable'

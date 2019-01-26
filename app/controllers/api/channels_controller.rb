@@ -34,6 +34,9 @@ class Api::ChannelsController < ApplicationController
   def dm_index
     @channels = current_user.dm_channels
     @users = current_user.dm_users
+    @friends = current_user.friends
+    @pending_friends = current_user.pending_friends
+    @incoming_friends = current_user.incoming_friends
     render "api/channels/dm_index"
   end
 

@@ -7,10 +7,15 @@ class ServerMember extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.addFriend = this.addFriend.bind(this);
   }
 
   handleClick() {
     this.props.createDmChannel(this.props.user.id).then((action) => this.props.history.push(`/channels/@me/${action.channel.id}`));
+  }
+
+  addFriend() {
+    this.props.createFriendRequest({ friend_id: this.props.user.id});
   }
 
   render() {
@@ -59,7 +64,13 @@ class ServerMember extends React.Component {
             {this.props.user.id === this.props.currentUser.id ? null : <button id="session-submit" 
               style={{marginBottom: 0}}
               onClick={this.handleClick}
-            >{`Message @${this.props.user.username}`}</button>}
+            >Message</button>}
+          </div>
+          <div className="user-popup-bottom">
+            {this.props.user.id === this.props.currentUser.id ? null : <button id="session-submit" 
+              style={{marginBottom: 0}}
+              onClick={this.addFriend}
+            >Add Friend</button>}
           </div>
         </div>
       </Popup>
