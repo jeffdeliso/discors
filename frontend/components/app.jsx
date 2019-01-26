@@ -14,11 +14,10 @@ import Splash from './splash/splash_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import AppRoot from './app/app_root_container';
 
-
 const App = () => (
   <Switch>
-    <AuthRoute exact path="/login" component={LoginForm} />
-    <AuthRoute exact path="/register" component={SignupForm} />
+    <AuthRoute path="/login" component={LoginForm} />
+    <AuthRoute path="/register" component={SignupForm} />
     <ProtectedRoute path="/channels" component={AppRoot} />
     <Route path="/" component={Splash} />
   </Switch>
