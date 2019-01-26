@@ -1,6 +1,6 @@
 import React from 'react';
 import Channels from '../channels/channels_container';
-import Main from './main';
+import ServerMain from './server_main';
 
 class ServerRoute extends React.Component {
 
@@ -8,7 +8,7 @@ class ServerRoute extends React.Component {
     return (
       <>
         <Channels />
-        <Main />
+        <ServerMain />
       </>
     )
   }

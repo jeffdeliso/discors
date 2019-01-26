@@ -1,14 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Channels from '../channels/channels_container';
-import Header from '../header/header_container';
-import Chat from '../chat/chat_container';
-import ServerMembers from '../server_members/server_members_container';
-import Servers from '../servers/servers_container';
-import MeHeader from '../header/me_header/me_header_container';
-import DMChannels from '../channels/dm_channels/dm_channels_container';
-import Friends from '../friends/friends';
 import FriendsHeader from '../friends/friends_header';
+import Friends from '../friends/friends_list/friends_container';
+import PendingFriends from '../friends/pending_friends/pending_friends_container';
+
 
 class FriendsMain extends React.Component {
   constructor(props) {
@@ -22,12 +16,18 @@ class FriendsMain extends React.Component {
   }
   
   render() {
+    let component;
+    if (this.state.tab === 'all') {
+      component = <Friends />
+    } else if (this.state.tab === 'pending') {
+      component = <PendingFriends />
+    }
     return (
       <>
         <div className="chat-container">
-          <FriendsHeader changeTab={this.changeTab} />
+          <FriendsHeader changeTab={this.changeTab} tab={this.state.tab}/>
           <div className="chat-main-container">
-            <Friends />
+          {component}
           </div>
         </div>
       </>

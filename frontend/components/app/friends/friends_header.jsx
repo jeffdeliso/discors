@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class FriendsHeader extends React.Component {
 
@@ -7,10 +6,14 @@ class FriendsHeader extends React.Component {
     return (
       <header className="chat-header">
         <ul className="friends-button-container">
-          <li className="friends-header-button-active">All</li>
-          <li className="friends-header-button">Pending</li>
+          <li className={this.props.tab === 'all' ? "friends-header-button-active" : "friends-header-button"}
+            onClick={() => this.props.changeTab('all')}
+          >All</li>
+          <li className={this.props.tab === 'pending' ? "friends-header-button-active" : "friends-header-button"}
+            onClick={() => this.props.changeTab('pending')}
+          >Pending</li>
         </ul>
-      </header >
+      </header>
     )
   }
 }
