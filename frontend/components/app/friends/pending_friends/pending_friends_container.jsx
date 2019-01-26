@@ -1,23 +1,28 @@
 import { connect } from 'react-redux';
 import PendingFriends from './pending_friends';
+import { fetchFriendRequests, acceptFriendRequest, deleteFriendRequest } from '../../../../actions/friends_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = state.entities.users[state.session.id];
-  const outgoingFriends = currentUser.outgoing_friend_requests.map((id) => {
-    return state.entities.users[id];
+  const outgoingRequests = Object.values(state.entities.friendRequests).filter((request) => {
+    return request.user_id === state.session.id;
   });
-  const incomingFriends = currentUser.incoming_friend_requests.map((id) => {
-    return state.entities.users[id];
+
+  const incomingRequests = Object.values(state.entities.friendRequests).filter((request) => {
+    return request.friend_id === state.session.id;
   });
+
   return {
-    currentUser: state.entities.users[state.session.id],
-    incomingFriends,
-    outgoingFriends,
+    users: state.entities.users,
+    incomingRequests,
+    outgoingRequests,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchFriendRequests: () => dispatch(fetchFriendRequests()),
+    acceptFriendRequest: (request) => dispatch(acceptFriendRequest(request)),
+    deleteFriendRequest: (request) => dispatch(deleteFriendRequest(request)),
   };
 };
 

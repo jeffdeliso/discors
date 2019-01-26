@@ -3,13 +3,33 @@ import PendingFriend from './pending_friend';
 
 class PendingFriends extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchFriendRequests();
+  }
+
   render() {
-    const incomingFriends = this.props.incomingFriends.map((friend, idx) => {
-      return <PendingFriend user={friend} key={idx} status={'Incoming Friend Request'}/>
+    const outgoingFriends = this.props.outgoingRequests.map((request, idx) => {
+      const user = this.props.users[request.friend_id];
+      return <PendingFriend 
+        user={user} 
+        key={idx} 
+        status={'Outgoing'} 
+        accept={() => this.props.acceptFriendRequest(request)}
+        reject={() => this.props.deleteFriendRequest(request)}
+      />;
     });
-    const outgoingFriends = this.props.outgoingFriends.map((friend, idx) => {
-      return <PendingFriend user={friend} key={idx} status={'Outgoing Friend Request'}/>
+
+    const incomingFriends = this.props.incomingRequests.map((request, idx) => {
+      const user = this.props.users[request.user_id];
+      return <PendingFriend 
+      user={user} 
+      key={idx} 
+      status={'Incoming'} 
+      accept={() => this.props.acceptFriendRequest(request)}
+      reject={() => this.props.deleteFriendRequest(request)}
+      />;
     });
+
     return (
       <div className="friends-list">
         <div className="friends-table-header">

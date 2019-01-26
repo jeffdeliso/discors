@@ -1,9 +1,44 @@
 import * as APIUtil from '../util/friends_api_util';
-import { receiveCurrentUser } from './session_actions';
 
+export const RECEIVE_REQUESTS = 'RECEIVE_REQUESTS';
+export const RECEIVE_REQUEST = 'RECEIVE_REQUEST';
+export const REMOVE_REQUEST = 'REMOVE_REQUEST';
 
-export const createFriendRequest= (friendRequest) => dispatch => (
-  APIUtil.createFriendRequest(friendRequest).then(currentUser => (
-    dispatch(receiveCurrentUser(currentUser))
+export const createFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.createFriendRequest(friendRequest).then(request => (
+    dispatch(receiveFriendRequest(request))
+  ))
+);
+
+export const acceptFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.acceptFriendRequest(friendRequest).then(() => (
+    dispatch(removeFriendRequest(friendRequest.id))
+  ))
+);
+
+export const deleteFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.deleteFriendRequest(friendRequest).then(() => (
+    dispatch(removeFriendRequest(friendRequest.id))
+  ))
+);
+
+export const receiveFriendRequests = friendRequests => ({
+  type: RECEIVE_REQUESTS,
+  friendRequests
+});
+
+export const receiveFriendRequest = friendRequest => ({
+  type: RECEIVE_REQUEST,
+  friendRequest
+});
+
+export const removeFriendRequest = requestId => ({
+  type: REMOVE_REQUEST,
+  requestId
+});
+
+export const fetchFriendRequests = () => dispatch => (
+  APIUtil.fetchFriendRequests().then(requests => (
+    dispatch(receiveFriendRequests(requests))
   ))
 );

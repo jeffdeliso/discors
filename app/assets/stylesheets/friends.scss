@@ -54,26 +54,6 @@
   transform: translateZ(0);
 }
 
-.friends-container {
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  margin-left: 30px;
-  margin-right: 12px;
-  overflow: hidden;
-  height: 62px;
-}
-
-.friend-container {
-  color: hsla(0,0%,100%,.6);
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  width: 180px;
-}
-
 .friend-icon {
   background-position: 50%;
   background-size: 100% 100%;
@@ -92,6 +72,7 @@
   text-overflow: ellipsis;
   vertical-align: middle;
   line-height: 17px;
+  width: 180px;
 }
 
 .friends-header-button {
@@ -144,6 +125,7 @@
 }
 
 .friend-container {
+  align-items: center;
   border-bottom: 1px solid hsla(0,0%,100%,.1);
   display: flex;
   flex-direction: row;
@@ -154,11 +136,11 @@
   margin-right: 30px;
   overflow: hidden;
   box-sizing: border-box;
-   font-family: main3;
+  font-family: main3;
   height: 62px;
-  z-index: 3;
-  width: calc(100vw - 370px);
-  position: relative;
+  // // z-index: 3;
+  // width: calc(100vw - 370px);
+  // position: relative;
 }
 
 .friend-name-container {
@@ -170,35 +152,89 @@
 }
 
 .friend-icon {
-      background-clip: padding-box;
-    background-color: none;
-    background-position: 50%;
-    background-size: 100% 100%;
-    border-radius: 50%;
-    height: 30px;
-    position: relative;
-    width: 30px;
+  background-clip: padding-box;
+  background-color: none;
+  background-position: 50%;
+  background-size: 100% 100%;
+  border-radius: 50%;
+  height: 30px;
+  position: relative;
+  width: 30px;
 }
 
 .friend-name-container h4 {
-      line-height: 17px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  line-height: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .friend-status-container {
-      width: 225px;
-      color: hsla(0,0%,100%,.4);
-          margin-left: 41px;
-          font-weight: 400;
-              display: flex;
-    flex-shrink: 0;
-        align-items: center;
-        font-family: main2;
+  width: 225px;
+  color: hsla(0,0%,100%,.4);
+  margin-left: 41px;
+  font-weight: 400;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  font-family: main2;
 }
 
 .friend-status-container h4 {
-      overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.friend-container:hover {
+  margin-left: 20px;
+  background: rgba(79,84,92,.3);
+  border-color: transparent;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,.1);
+}
+
+.accept-friend {
+  background-color: #2f3136;
+  background-image: image_url('main/check.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 36px;
+  transition: background-color .2s;
+  width: 36px;
+}
+
+.accept-friend:hover {
+  background-color: #43b581;
+}
+
+.reject-friend:hover {
+  background-color: #f04747
+}
+    
+.reject-friend {
+  background-color: #2f3136;
+  background-image: image_url('main/friend-x.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 36px;
+  transition: background-color .2s;
+  width: 36px;
+  margin-left: 10px;
+}
+
+.friend-accept-reject {
+  margin-left: 41px;
+  justify-content: flex-end;
+  padding-right: 30px;
+  justify-self: end;
+  flex-grow: 1;
+  align-items: center;
+  display: flex;
 }

@@ -6,32 +6,23 @@ export const createFriendRequest = friend_request => (
   })
 );
 
-// export const createDmChannel = user_id => (
-//   $.ajax({
-//     method: 'POST',
-//     url: '/api/channels/dm_create',
-//     data: { user_id }
-//   })
-// );
+export const acceptFriendRequest = friend_request => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/friend_requests/${friend_request.id}`,
+  })
+);
 
-// export const fetchChannel = id => (
-//   $.ajax({
-//     method: 'GET',
-//     url: `/api/channels/${id}`,
-//   })
-// );
+export const deleteFriendRequest = friend_request => (
+  $.ajax({
+    method: 'DELETE',
+    url: `/api/friend_requests/${friend_request.id}`,
+  })
+);
 
-// export const fetchChannels = (server_id) => (
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/channels',
-//     data: { channel: { server_id } }
-//   })
-// );
-
-// export const fetchDmChannels = () => (
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/channels/dm_index',
-//   })
-// );
+export const fetchFriendRequests = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/friend_requests',
+  })
+);

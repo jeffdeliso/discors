@@ -10,7 +10,11 @@ class PendingFriend extends React.Component {
           <h4>{this.props.user.username}</h4>
         </div>
         <div className="friend-status-container">
-          <h4>{this.props.status}</h4>
+          <h4>{`${this.props.status} Friend Request`}</h4>
+        </div>
+        <div className="friend-accept-reject">
+          {this.props.status === 'Incoming' ? <button className="accept-friend" onClick={this.props.accept}></button> : null}
+          <button className="reject-friend" onClick={this.props.reject}></button>
         </div>
       </li>
     )
