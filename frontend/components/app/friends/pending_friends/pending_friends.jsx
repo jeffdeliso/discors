@@ -10,10 +10,10 @@ class PendingFriends extends React.Component {
   render() {
     const outgoingFriends = this.props.outgoingRequests.map((request, idx) => {
       const user = this.props.users[request.friend_id];
-      return <PendingFriend 
-        user={user} 
-        key={idx} 
-        status={'Outgoing'} 
+      return <PendingFriend
+        user={user}
+        key={idx}
+        status={'Outgoing'}
         accept={() => this.props.acceptFriendRequest(request)}
         reject={() => this.props.deleteFriendRequest(request)}
       />;
@@ -21,28 +21,21 @@ class PendingFriends extends React.Component {
 
     const incomingFriends = this.props.incomingRequests.map((request, idx) => {
       const user = this.props.users[request.user_id];
-      return <PendingFriend 
-      user={user} 
-      key={idx} 
-      status={'Incoming'} 
-      accept={() => this.props.acceptFriendRequest(request)}
-      reject={() => this.props.deleteFriendRequest(request)}
+      return <PendingFriend
+        user={user}
+        key={idx}
+        status={'Incoming'}
+        accept={() => this.props.acceptFriendRequest(request)}
+        reject={() => this.props.deleteFriendRequest(request)}
       />;
     });
 
     return (
-      <div className="friends-list">
-        <div className="friends-table-header">
-          <div className="friends-column friends-name">Name</div>
-          <div className="friends-column-separator"></div>
-          <div className="friends-column friends-status">Status</div>
-          <div className="friends-column-separator"></div>
-          <div className="friends-column friends-servers"></div>
-          <div className="friends-column-separator"></div>
-          <div className="friends-actions"></div>
-        </div>
-        {incomingFriends}
-        {outgoingFriends}
+      <div className="friends-scroll-wrapper">
+          <ul>
+            {incomingFriends}
+            {outgoingFriends}
+          </ul>
       </div>
     )
   }

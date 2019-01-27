@@ -246,9 +246,24 @@
 .friend-accept-reject {
   margin-left: 41px;
   justify-content: flex-end;
-  padding-right: 30px;
+  padding-right: 6px;
   justify-self: end;
   flex-grow: 1;
   align-items: center;
   display: flex;
+}
+
+.friends-scroll-wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    height: calc(100vh - 91px);
+    position: relative;
+}
+
+.friends-scroll-wrapper ul {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  min-height: 0;
+  overflow-x: hidden;
+  padding-top: 2px;
 }

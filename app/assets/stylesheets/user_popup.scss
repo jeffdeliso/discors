@@ -1,6 +1,6 @@
 .user-popup-top {
   padding: 20px 10px;
-  background-color: #202225;
+  background-color: #2f3136;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -28,9 +28,33 @@
     font-weight: 600;
     color: #fff;
     font-family: main3;
+    font-size: 16px;
 }
 
 .user-popup-bottom {
-    background-color: #2f3136;
-    padding: 10px;
+    background: #18191c;
+    box-shadow: 0 0 1px rgba(0,0,0,.82), 0 1px 4px rgba(0,0,0,.1);
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-popup-button:hover {
+    background: #040405;
+    color: #fff;
+}
+
+.user-popup-button {
+    color: hsla(0,0%,100%,.6);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    margin: 2px 0;
+    overflow: hidden;
+    padding: 6px 9px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }

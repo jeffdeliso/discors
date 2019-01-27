@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { union } from 'lodash';
 
 class UserPopup extends React.Component {
   constructor(props) {
@@ -17,6 +18,19 @@ class UserPopup extends React.Component {
   }
 
   render() {
+    const friendRequestsArray = this.props.friendRequests.map((request) => {
+      if (request.user_id === this.props.currentUserId) {
+        return request.friend_id;
+      } else {
+        return request.user_id;
+      }
+    });
+
+    const showFriendButtonArray = friendRequestsArray.concat(this.props.friends)
+    showFriendButtonArray.push(this.props.currentUserId);
+
+    const showFriendButton = !showFriendButtonArray.includes(this.props.user.id);
+
     return (
       <Popup trigger={this.props.component}
         arrow={false}
@@ -32,7 +46,7 @@ class UserPopup extends React.Component {
           borderRadius: '5px',
           boxShadow: '0 2px 10px 0 rgba(0, 0, 0, .2), 0 0 0 1px rgba(32, 34, 37, .6)',
           overflow: 'hidden',
-          width: '250px',
+          width: '200px',
           whiteSpace: 'nowrap',
           fontFamily: 'main3',
           color: '#fff',
@@ -53,16 +67,13 @@ class UserPopup extends React.Component {
             <h5>{this.props.user.username}</h5>
           </div>
           <div className="user-popup-bottom">
-            {this.props.user.id === this.props.currentUser.id ? null : <button id="session-submit"
-              style={{ marginBottom: 0 }}
+            {this.props.user.id === this.props.currentUserId ? null : <button className="user-popup-button"
               onClick={this.handleClick}
+              id="dm-button"
             >Message</button>}
-          </div>
-          <div className="user-popup-bottom">
-            {this.props.user.id === this.props.currentUser.id ? null : <button id="session-submit"
-              style={{ marginBottom: 0 }}
+            {showFriendButton ? <button className="user-popup-button"
               onClick={this.addFriend}
-            >Add Friend</button>}
+            >Add Friend</button> : null}
           </div>
         </div>
       </Popup>
