@@ -5,16 +5,22 @@ class Friend extends React.Component {
   constructor(props) {
     super(props);
     this.handleClickParent = this.handleClickParent.bind(this);
-    this.handleClickChild = this.handleClickChild.bind(this);
+    this.handleReject = this.handleReject.bind(this);
+    this.handleAccept = this.handleAccept.bind(this);
   }
 
   handleClickParent() {
     this.props.createDmChannel(this.props.user.id).then((action) => this.props.history.push(`/channels/@me/${action.channel.id}`));
   }
 
-  handleClickChild(e) {
+  handleReject(e) {
     e.stopPropagation();
     this.props.reject();
+  }
+
+  handleAccept(e) {
+    e.stopPropagation();
+    this.props.accept();
   }
 
   render() {
@@ -32,8 +38,8 @@ class Friend extends React.Component {
           <h4>{this.props.status}</h4>
         </div>
         <div className="friend-accept-reject">
-          {this.props.status === 'Incoming friend request' ? <button className="accept-friend" onClick={this.props.accept}></button> : null}
-          <button className="reject-friend" onClick={this.handleClickChild}></button>
+          {this.props.status === 'Incoming friend request' ? <button className="accept-friend" onClick={this.handleAccept}></button> : null}
+          <button className="reject-friend" onClick={this.handleReject}></button>
         </div>
       </li>
     )

@@ -1,7 +1,6 @@
 import React from 'react';
 
 class FriendsHeader extends React.Component {
-
   render() {
     return (
       <header className="chat-header">
@@ -9,6 +8,9 @@ class FriendsHeader extends React.Component {
           <li className={this.props.tab === 'all' ? "friends-header-button-active" : "friends-header-button"}
             onClick={() => this.props.changeTab('all')}
           >All</li>
+          <li className={this.props.tab === 'online' ? "friends-header-button-active" : "friends-header-button"}
+            onClick={() => this.props.changeTab('online')}
+          >Online</li>
           <li className={this.props.tab === 'pending' ? "friends-header-button-active" : "friends-header-button"}
             onClick={() => this.props.changeTab('pending')}
           >Pending</li>

@@ -2,6 +2,7 @@ import React from 'react';
 import FriendsHeader from '../friends/friends_header';
 import Friends from '../friends/friends_list/friends_container';
 import PendingFriends from '../friends/pending_friends/pending_friends_container';
+import OnlineFriends from '../friends/friends_list/online_friends_container';
 
 
 class FriendsMain extends React.Component {
@@ -19,7 +20,9 @@ class FriendsMain extends React.Component {
     let component;
     if (this.state.tab === 'all') {
       component = <Friends />
-    } else if (this.state.tab === 'pending') {
+    } else if (this.state.tab === 'online') {
+      component = <OnlineFriends />
+    } else {
       component = <PendingFriends />
     }
     return (
