@@ -25,6 +25,10 @@ class Friend extends React.Component {
           <h4>{this.props.user.username}</h4>
         </div>
         <div className="friend-status-container">
+          <div
+            className="friends-status-indicator"
+            style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
+          ></div>
           <h4>{this.props.status}</h4>
         </div>
         <div className="friend-accept-reject">

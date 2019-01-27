@@ -252,16 +252,29 @@
 }
 
 .friends-scroll-wrapper {
-    display: flex;
-    flex: 1 1 auto;
-    height: calc(100vh - 91px);
-    position: relative;
-  }
+  display: flex;
+  flex: 1 1 auto;
+  height: calc(100vh - 91px);
+  position: relative;
+}
   
-  .friends-scroll-wrapper ul {
-    flex: 1 1 auto;
-    overflow-y: scroll;
-    min-height: 0;
-    overflow-x: hidden;
-    padding-top: 4px;
+.friends-scroll-wrapper ul {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  min-height: 0;
+  overflow-x: hidden;
+  padding-top: 4px;
+}
+
+.friends-status-indicator {
+  flex-shrink: 0;
+  margin-right: 8px;
+  height: 10px;
+  position: relative;
+  width: 10px;
+  right: 0;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  bottom: 0;
 }

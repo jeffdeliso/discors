@@ -9,8 +9,12 @@ class DmChannel extends React.Component {
         activeClassName="selected"
         style={{height: '40px'}}
       >
-        {/* <div className="server-member-img" style={this.props.user.image_url ? { backgroundImage: `url(${this.props.user.image_url})` } : {}}></div> */}
-        <div className="server-member-img" style={{ backgroundImage: `url(${this.props.user.image_url})`, marginLeft: 0 }}></div>
+        <div className="server-member-img" style={{ backgroundImage: `url(${this.props.user.image_url})`, marginLeft: 0 }}>
+          <div
+            className="server-member-status-indicator"
+            style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
+          ></div>
+        </div>
         <div className="channel-name">{this.props.user.username}</div>
       </NavLink >
     )
