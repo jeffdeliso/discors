@@ -22,7 +22,7 @@ class Api::ServersController < ApplicationController
   end
 
   def members
-    @users = current_server.members
+    @users = current_server.members.includes(:sessions, :server_memberships)
     render "api/users/index"
   end
 

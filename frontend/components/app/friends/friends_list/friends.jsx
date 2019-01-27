@@ -12,7 +12,7 @@ class Friends extends React.Component {
         key={idx}
         reject={() => this.props.deleteFriend(friend.id)}
         createDmChannel={this.props.createDmChannel}
-        status='Online'
+        status={friend.online ? 'Online' : 'Offline'}
       />;
     });
 
