@@ -66,9 +66,6 @@ class Chat extends React.Component {
         <Message key={idx}
           message={message}
           user={this.props.users[message.author_id] || {}}
-          currentUser={this.props.currentUser}
-          channel={this.props.channel}
-          createDmChannel={this.props.createDmChannel}
         />
       );
     });

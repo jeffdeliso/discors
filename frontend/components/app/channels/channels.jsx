@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import Channel from './channel';
 import Modal from 'react-modal';
 import CreateChannelForm from './create_channel_form';

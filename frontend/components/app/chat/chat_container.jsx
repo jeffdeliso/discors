@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createDmChannel: userId => dispatch(createDmChannel(userId)),
   };
 };
 

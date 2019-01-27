@@ -18,11 +18,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchChannels: (serverId) => dispatch(fetchChannels(serverId)),
+    fetchChannels: serverId => dispatch(fetchChannels(serverId)),
     createChannel: channel => dispatch(createChannel(channel)),
     logout: () => dispatch(logout()),
     removeChannelErrors: () => dispatch(removeChannelErrors()),
-    deleteServer: (id) => dispatch(deleteServer(id)),
+    deleteServer: id => dispatch(deleteServer(id)),
     fetchFriends: () => dispatch(fetchFriends()),
     fetchFriendRequests: () => dispatch(fetchFriendRequests()),
   };

@@ -21,9 +21,6 @@ class ServerMembers extends React.Component {
     
     const adminEl = <ServerMember
       user={admin}
-      createDmChannel={this.props.createDmChannel}
-      currentUser={this.props.currentUser}
-      createFriendRequest={this.props.createFriendRequest}
     />;
 
     const members = this.props.members.map((member, idx) => {
@@ -32,9 +29,6 @@ class ServerMembers extends React.Component {
       } else {
         return <ServerMember key={idx}
           user={member}
-          createDmChannel={this.props.createDmChannel}
-          currentUser={this.props.currentUser}
-          createFriendRequest={this.props.createFriendRequest}
         />;
       }
     });
