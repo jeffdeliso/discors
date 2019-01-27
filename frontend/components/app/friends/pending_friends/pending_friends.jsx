@@ -1,5 +1,5 @@
 import React from 'react';
-import PendingFriend from './pending_friend';
+import Friend from '../friend';
 
 class PendingFriends extends React.Component {
 
@@ -10,10 +10,10 @@ class PendingFriends extends React.Component {
   render() {
     const outgoingFriends = this.props.outgoingRequests.map((request, idx) => {
       const user = this.props.users[request.friend_id];
-      return <PendingFriend
+      return <Friend
         user={user}
         key={idx}
-        status={'Outgoing'}
+        status={'Outgoing friend request'}
         accept={() => this.props.acceptFriendRequest(request)}
         reject={() => this.props.deleteFriendRequest(request)}
       />;
@@ -21,10 +21,10 @@ class PendingFriends extends React.Component {
 
     const incomingFriends = this.props.incomingRequests.map((request, idx) => {
       const user = this.props.users[request.user_id];
-      return <PendingFriend
+      return <Friend
         user={user}
         key={idx}
-        status={'Incoming'}
+        status={'Incoming friend request'}
         accept={() => this.props.acceptFriendRequest(request)}
         reject={() => this.props.deleteFriendRequest(request)}
       />;

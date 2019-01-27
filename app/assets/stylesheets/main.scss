@@ -435,13 +435,14 @@
   user-select: text;
   word-wrap: break-word;
   padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 21px;
   overflow: hidden;
   display: flex;
   align-items: center;
   margin: 0 20px;
   border-top: 1px solid hsl(215, 13%, 26%);;
   border-bottom: 1px solid hsl(215, 13%, 26%);;
+  margin-top: -1px;
 }
 
 .user-image {
