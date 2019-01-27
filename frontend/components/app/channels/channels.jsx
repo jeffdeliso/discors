@@ -2,6 +2,7 @@ import React from 'react';
 import Channel from './channel';
 import Modal from 'react-modal';
 import CreateChannelForm from './create_channel_form';
+import Popup from 'reactjs-popup';
 
 class Channels extends React.Component {
   constructor(props) {
@@ -60,7 +61,35 @@ class Channels extends React.Component {
         <div className="channels">
           <div className="channel-header">
             <span className="server-name">{this.props.server.name}</span>
-            <svg width="18" height="18" className="leave-server-button" onClick={this.removeServer}><g fill="none" fillRule="evenodd"><path d="M0 0h18v18H0"></path><path stroke="#FFF" d="M4.5 4.5l9 9" strokeLinecap="round"></path><path stroke="#FFF" d="M13.5 4.5l-9 9" strokeLinecap="round"></path></g></svg>
+            <Popup trigger={
+              <svg width="18" height="18" className="leave-server-button" onClick={this.removeServer}><g fill="none" fillRule="evenodd"><path d="M0 0h18v18H0"></path><path stroke="#FFF" d="M4.5 4.5l9 9" strokeLinecap="round"></path><path stroke="#FFF" d="M13.5 4.5l-9 9" strokeLinecap="round"></path></g></svg>
+            }
+              position="left center"
+              on="hover"
+              overlayStyle={{
+                width: `auto`,
+                backgroundColor: 'black',
+              }}
+              arrowStyle={{
+                backgroundColor: 'black',
+                zIndex: 4,
+              }}
+              contentStyle={{
+                zIndex: 4,
+                width: `auto`,
+                whiteSpace: 'nowrap',
+                fontFamily: 'main3',
+                borderRadius: 5,
+                color: '#fff',
+                backgroundColor: 'black',
+                border: 'none',
+                fontSize: '14px',
+                display: 'flex',
+                padding: '10px',
+              }}
+            >
+              <div>{this.props.server.admin_id === this.props.currentUser.id ? 'Delete Server' : 'Unsubscribe'}</div>
+            </Popup>
           </div>
           <div className="channel-scroll-wrapper">
             <div className="channel-overflow-container">

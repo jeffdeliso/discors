@@ -1,6 +1,5 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import { union } from 'lodash';
 
 class UserPopup extends React.Component {
   constructor(props) {

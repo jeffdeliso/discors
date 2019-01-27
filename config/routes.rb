@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server, at: '/cable'
-
   root "static_pages#root"
+  get '*path' => redirect('/')
 end
