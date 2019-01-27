@@ -1,18 +1,18 @@
-class FriendsController < ApplicationController
+class Api::FriendsController < ApplicationController
 
   def index
-    @users = current_user.friends
-    render "api/users/index"
+    @friends = current_user.friends
+    render 'api/friends/index'
   end
 
   def destroy
     current_user.remove_friend(current_friend)
-    render "api/users/show"
+    head :no_content
   end
 
   private
 
   def current_friend
-    @user ||= current_user.friends.find(params[:id])
+    @friend ||= current_user.friends.find(params[:id])
   end
 end

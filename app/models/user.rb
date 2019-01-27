@@ -89,7 +89,7 @@ class User < ApplicationRecord
   end
 
   def remove_friend(friend)
-    current_user.friends.destroy(friend)
+    self.friends.destroy(friend)
   end
 
   private

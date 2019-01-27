@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end
     end
     resources :friend_requests, only: [:create, :destroy, :update, :index]
+    resources :friends, only: [:destroy, :index]
   end
 
   mount ActionCable.server, at: '/cable'

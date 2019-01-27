@@ -4,6 +4,7 @@ import { fetchChannels, createChannel, removeChannelErrors } from '../../../acti
 import { withRouter } from 'react-router-dom';
 import { logout } from '../../../actions/session_actions';
 import { deleteServer } from '../../../actions/server_actions';
+import { fetchFriends, fetchFriendRequests } from '../../../actions/friends_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,6 +23,8 @@ const mapDispatchToProps = dispatch => {
     logout: () => dispatch(logout()),
     removeChannelErrors: () => dispatch(removeChannelErrors()),
     deleteServer: (id) => dispatch(deleteServer(id)),
+    fetchFriends: () => dispatch(fetchFriends()),
+    fetchFriendRequests: () => dispatch(fetchFriendRequests()),
   };
 };
 

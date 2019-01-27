@@ -6,7 +6,7 @@ class Api::FriendRequestsController < ApplicationController
 
     if @friend_request.save
       @user = current_user
-      render 'api/users/show'
+      render 'api/friend_requests/show'
     else
       render json: @friend_request.errors.full_messages, status: :unprocessable_entity
     end
