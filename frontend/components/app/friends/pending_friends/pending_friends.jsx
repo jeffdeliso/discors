@@ -16,6 +16,7 @@ class PendingFriends extends React.Component {
         status={'Outgoing friend request'}
         accept={() => this.props.acceptFriendRequest(request)}
         reject={() => this.props.deleteFriendRequest(request)}
+        createDmChannel={this.props.createDmChannel}
       />;
     });
 
@@ -27,6 +28,7 @@ class PendingFriends extends React.Component {
         status={'Incoming friend request'}
         accept={() => this.props.acceptFriendRequest(request)}
         reject={() => this.props.deleteFriendRequest(request)}
+        createDmChannel={this.props.createDmChannel}
       />;
     });
 

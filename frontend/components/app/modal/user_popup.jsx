@@ -26,11 +26,23 @@ class UserPopup extends React.Component {
       }
     });
 
-    const showFriendButtonArray = friendRequestsArray.concat(this.props.friends)
+    const showFriendButtonArray = friendRequestsArray.concat(this.props.friends);
     showFriendButtonArray.push(this.props.currentUserId);
 
     const showFriendButton = !showFriendButtonArray.includes(this.props.user.id);
 
+    let offsetY = this.props.offsetY;
+    if (offsetY === -90) {
+      if (!showFriendButton) offsetY += 14;
+      if (this.props.currentUserId === this.props.user.id) offsetY += 14;
+    } else if (offsetY === 60) {
+      if (!showFriendButton) offsetY -= 16;
+      if (this.props.currentUserId === this.props.user.id) offsetY -= 16;
+    } else {
+      if (!showFriendButton) offsetY -= 17;
+      if (this.props.currentUserId === this.props.user.id) offsetY -= 17;
+    }
+    
     return (
       <Popup trigger={this.props.component}
         arrow={false}
@@ -38,7 +50,7 @@ class UserPopup extends React.Component {
         closeOnDocumentClick
         on="click"
         offsetX={this.props.offsetX || 0}
-        offsetY={this.props.offsetY || 0}
+        offsetY={offsetY || 0}
         overlayStyle={{
           zIndex: 98,
         }}

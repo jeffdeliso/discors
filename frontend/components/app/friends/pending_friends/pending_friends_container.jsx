@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import PendingFriends from './pending_friends';
 import { fetchFriendRequests, acceptFriendRequest, deleteFriendRequest } from '../../../../actions/friends_actions';
+import { createDmChannel } from '../../../../actions/channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const outgoingRequests = Object.values(state.entities.friendRequests).filter((request) => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch => {
     fetchFriendRequests: () => dispatch(fetchFriendRequests()),
     acceptFriendRequest: (request) => dispatch(acceptFriendRequest(request)),
     deleteFriendRequest: (request) => dispatch(deleteFriendRequest(request)),
+    createDmChannel: userId => dispatch(createDmChannel(userId)),
   };
 };
 

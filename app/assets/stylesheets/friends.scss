@@ -130,12 +130,10 @@
   line-height: 20px;
   margin-left: 30px;
   margin-right: 30px;
-  margin-top: -1px;
   overflow: hidden;
   box-sizing: border-box;
   font-family: main3;
   height: 62px;
-  padding-top: 1px;
 }
 
 .friend-name-container {
@@ -184,7 +182,7 @@
   background: rgba(79,84,92,.3);
   border-color: transparent;
   padding: 10px;
-  padding-top: 11px;
+  padding-top: 10px;
   margin-right: 20px;
   border-radius: 3px;
   box-shadow: 0 2px 1px 0 rgba(0,0,0,.1);
@@ -257,11 +255,11 @@
     flex: 1 1 auto;
     height: calc(100vh - 91px);
     position: relative;
-}
-
-.friends-scroll-wrapper ul {
-  flex: 1 1 auto;
-  overflow-y: scroll;
-  min-height: 0;
-  overflow-x: hidden;
+  }
+  
+  .friends-scroll-wrapper ul {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    min-height: 0;
+    overflow-x: hidden;
 }
