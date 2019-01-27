@@ -68,6 +68,8 @@ class User < ApplicationRecord
   has_many :friends, 
     through: :friendships
 
+  has_many :sessions
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
@@ -83,9 +85,15 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    generate_unique_session_token
-    self.save!
-    self.session_token
+    destroy_session!
+    session_token = generate_unique_session_token
+    session = self.sessions.create(session_token: session_token)
+
+    session_token
+  end
+
+  def destroy_session!
+    self.sessions.first.destroy if self.sessions.first
   end
 
   def remove_friend(friend)
@@ -95,7 +103,7 @@ class User < ApplicationRecord
   private
 
   def ensure_session_token
-    generate_unique_session_token unless self.session_token
+    self.session_token ||= new_session_token
   end
 
   def new_session_token
@@ -103,11 +111,12 @@ class User < ApplicationRecord
   end
 
   def generate_unique_session_token
-    self.session_token = new_session_token
-    while User.find_by(session_token: self.session_token)
-      self.session_token = new_session_token
+    session_token = new_session_token
+    while Session.find_by(session_token: session_token)
+      session_token = new_session_token
     end
-    self.session_token
+
+    session_token
   end
 
   def ensure_icon
