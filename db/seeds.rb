@@ -70,5 +70,5 @@ ServerMembership.create!(user_id: danielle.id, server_id: server1.id)
 ServerMembership.create!(user_id: eric.id, server_id: server1.id)
 ServerMembership.create!(user_id: greg.id, server_id: server2.id)
 
-server1.channels.create!(name: 'general')
-server2.channels.create!(name: 'general')
+server1.channels.create!(name: 'General')
+server2.channels.create!(name: 'General')
