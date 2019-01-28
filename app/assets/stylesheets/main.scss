@@ -650,3 +650,17 @@
 .leave-server-button:hover {
   opacity: 1;
 }
+
+.delete-channel-button {
+  background-image: image_url('main/x-button.svg');
+  cursor: pointer;
+  height: 18px;
+  opacity: .3;
+  width: 18px;
+  justify-self: end;
+  margin-left: auto
+}
+
+.delete-channel-button:hover {
+  opacity: 1;
+}

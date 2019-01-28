@@ -3,7 +3,6 @@ import Friends from './friends';
 import { fetchFriends, deleteFriend } from '../../../../actions/friends_actions';
 import { createDmChannel } from '../../../../actions/channel_actions';
 
-
 const mapStateToProps = (state, ownProps) => {
   const friends = state.entities.friends.map((id) => {
     return state.entities.users[id] || {};

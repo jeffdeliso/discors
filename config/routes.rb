@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get 'members'
       end
     end
-    resources :channels, only: [:create, :show, :index] do
+    resources :channels, only: [:create, :show, :index, :destroy] do
       collection do
         post 'dm_create'
         get 'dm_index'

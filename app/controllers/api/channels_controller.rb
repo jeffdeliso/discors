@@ -40,6 +40,11 @@ class Api::ChannelsController < ApplicationController
     render "api/channels/dm_index"
   end
 
+  def destroy
+    current_channel.destroy
+    render "api/channels/show"
+  end
+
   private
 
   def current_channel

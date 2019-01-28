@@ -20,8 +20,6 @@ class MessageForm extends React.Component {
     // App.cable.subscriptions.subscriptions.find((subscription) => (
     //   subscription.identifier === `{"channel":"ChatChannel","channelId":"${this.props.channelId}"}`
     // ))
-    
-    
     this.props.subscription.speak({message: merge({channel_id: this.props.channelId}, this.state)});
     this.setState({ body: "" });
   }

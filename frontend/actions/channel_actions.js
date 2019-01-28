@@ -3,6 +3,7 @@ import { receiveUsers } from './server_actions';
 
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
+export const REMOVE_CHANNEL = 'REMOVE_CHANNEL';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
 export const REMOVE_CHANNEL_ERRORS = 'REMOVE_CHANNEL_ERRORS';
 
@@ -14,6 +15,11 @@ export const receiveChannels = channels => ({
 export const receiveChannel = channel => ({
   type: RECEIVE_CHANNEL,
   channel
+});
+
+export const removeChannel = channelId => ({
+  type: REMOVE_CHANNEL,
+  channelId
 });
 
 export const receiveErrors = errors => ({
@@ -29,6 +35,12 @@ export const removeChannelErrors = () => ({
 export const fetchChannels = (serverId) => dispatch => (
   APIUtil.fetchChannels(serverId).then(channels => (
     dispatch(receiveChannels(channels))
+  ))
+);
+
+export const deleteChannel = (id) => dispatch => (
+  APIUtil.deleteChannel(id).then(() => (
+    dispatch(removeChannel(id))
   ))
 );
 

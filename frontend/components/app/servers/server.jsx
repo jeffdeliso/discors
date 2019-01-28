@@ -3,9 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 
 class Server extends React.Component {
-  onKeyPress(event) {
-    if (event.which === 13 ) {
-      event.preventDefault();
+  onKeyPress(e) {
+    if (e.which === 13 ) {
+      e.preventDefault();
     }
   }
 

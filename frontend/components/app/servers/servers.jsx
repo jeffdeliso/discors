@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Server from './server';
 import Modal from 'react-modal';
 import CreateServerForm from './create_server_form';
