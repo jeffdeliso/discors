@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import MessageForm from './message_form';
 import Message from './message';
 
@@ -14,25 +13,28 @@ class Chat extends React.Component {
   componentDidMount() {
     const channelId = this.props.match.params.channelId;
     this.subscribe(channelId);
+    this.bottom.current.scrollIntoView();
   }
 
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
     if (channelId && prevProps.channelId !== this.props.match.params.channelId) {
+      this.subscription.unsubscribe();
       this.subscribe(channelId);
     }
     this.bottom.current.scrollIntoView();
   }
 
   subscribe(channelId) {
-    const subscription = App.cable.subscriptions.subscriptions.find((subscription) => (
+    this.subscription = App.cable.subscriptions.subscriptions.find((subscription) => (
       subscription.identifier === `{"channel":"ChatChannel","channelId":"${channelId}"}`
     ));
-    if (subscription) {
-      subscription.load({ channelId });
+
+    if (this.subscription) {
+      this.subscription.load({ channelId });
     } else {
-      App.cable.subscriptions.create(
+      this.subscription = App.cable.subscriptions.create(
         { channel: "ChatChannel", channelId },
         {
           received: data => {
@@ -55,9 +57,10 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    App.cable.subscriptions.subscriptions.forEach(subscription => {
-      App.cable.subscriptions.remove(subscription);
-    });
+    // App.cable.subscriptions.subscriptions.forEach(subscription => {
+    //   App.cable.subscriptions.remove(subscription);
+    // });
+    this.subscription.unsubscribe();
   }
 
   render() {
@@ -80,7 +83,13 @@ class Chat extends React.Component {
             </div>
           </div>
         </div>
-        <MessageForm user={this.props.currentUser} channel={this.props.channel} channelId={this.props.channelId} users={this.props.users} />
+        <MessageForm
+          user={this.props.currentUser}
+          channel={this.props.channel}
+          channelId={this.props.channelId}
+          users={this.props.users}
+          subscription={this.subscription}
+        />
       </div>
     )
   }

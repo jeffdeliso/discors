@@ -16,10 +16,13 @@ class MessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({channel_id: this.props.channelId});
-    App.cable.subscriptions.subscriptions.find((subscription) => (
-      subscription.identifier === `{"channel":"ChatChannel","channelId":"${this.props.channelId}"}`
-    )).speak({message: merge({channel_id: this.props.channelId}, this.state)});
+    // this.setState({channel_id: this.props.channelId});
+    // App.cable.subscriptions.subscriptions.find((subscription) => (
+    //   subscription.identifier === `{"channel":"ChatChannel","channelId":"${this.props.channelId}"}`
+    // ))
+    
+    
+    this.props.subscription.speak({message: merge({channel_id: this.props.channelId}, this.state)});
     this.setState({ body: "" });
   }
 
