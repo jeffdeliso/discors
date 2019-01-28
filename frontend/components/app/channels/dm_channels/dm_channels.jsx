@@ -1,10 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
-import Channel from '..//channel';
-import Modal from 'react-modal';
 import DmChannel from './dm_channel';
-// import CreateChannelForm from './create_channel_form';
+import Tooltip from '../../modal/tooltip';
 
 class DMChannels extends React.Component {
 
@@ -49,9 +45,15 @@ class DMChannels extends React.Component {
               <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }}></div>
               <div className="actions-username">{this.props.currentUser.username}</div>
             </div>
-            <button className="gear" onClick={() => this.props.logout()}>
-              <i className="fas fa-sign-out-alt"></i>
-            </button>
+            <Tooltip component={
+              <button className="gear" onClick={() => this.props.logout()}>
+
+                <i className="fas fa-sign-out-alt"></i>
+              </button>
+            }
+              position="top center"
+              text="Logout"
+            />
           </div>
         </div>
       </div>
