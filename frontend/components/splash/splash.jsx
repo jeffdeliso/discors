@@ -2,9 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin() {
+    this.props.login().then(() => this.props.history.push('/channels/@me'));
+  }
 
   render() {
-
     return (
       <div className="splash-body">
         <header className="splash-header">
@@ -36,9 +43,9 @@ class Splash extends React.Component {
               All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. Stop
               paying
               for TeamSpeak servers and hassling with Skype. Simplify your life.
-      </p>
+            </p>
             <div className="buttons">
-              <a href="" className="downloadMac">Download for macOS</a>
+              <button className="downloadMac" onClick={this.handleLogin}>Try the Demo</button>
               <Link to="/login" className="open-discors-top">{this.props.currentUserId ? 'Open' : 'Open Discors in your browser'}</Link>
             </div>
           </div>
