@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import Tooltip from '../modal/tooltip';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -21,9 +22,9 @@ class Channel extends React.Component {
       this.setState({ active: false });
     }
   }
-  
+
   handleDelete(e) {
-    e.stopPropagation();
+    e.preventDefault();
     this.props.deleteChannel();
   }
 
@@ -40,7 +41,13 @@ class Channel extends React.Component {
             transform="translate(1.333 2)"></path>
         </svg>
         <div className="channel-name">{this.props.channel.name}</div>
-        {this.state.active ? <button className="delete-channel-button" onClick={this.handleDelete}></button> : null}
+        {this.state.active ?
+          (<Tooltip component={
+            <button className="delete-channel-button" onClick={this.handleDelete}></button>
+          }
+            position="top center"
+            text="Delete Channel"
+          />) : null}
       </NavLink >
     )
   };

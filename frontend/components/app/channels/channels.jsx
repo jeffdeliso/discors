@@ -2,7 +2,6 @@ import React from 'react';
 import Channel from './channel';
 import Modal from 'react-modal';
 import CreateChannelForm from './create_channel_form';
-import Popup from 'reactjs-popup';
 import Tooltip from '../modal/tooltip';
 
 class Channels extends React.Component {
