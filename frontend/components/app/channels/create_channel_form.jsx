@@ -27,7 +27,7 @@ class CreateChannelForm extends React.Component {
     return (
       <form className="create-channel-form" onSubmit={this.handleSubmit}>
         <header>
-          <h4>CREATE TEXT CHANNEL</h4>
+          <h4>{`CREATE ${this.props.text} CHANNEL`}</h4>
           <p>in {this.props.server.name}</p>
         </header>
         <main>
