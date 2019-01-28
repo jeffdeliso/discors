@@ -3,6 +3,7 @@ import Channel from './channel';
 import Modal from 'react-modal';
 import CreateChannelForm from './create_channel_form';
 import Tooltip from '../modal/tooltip';
+import VoiceChannel from './voice_channel';
 
 class Channels extends React.Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class Channels extends React.Component {
                   </div>
                 </div>
                 {channels}
+                <VoiceChannel currentUserId={this.props.currentUser.id} />
               </div>
             </div>
           </div>

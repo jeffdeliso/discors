@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Tooltip from '../modal/tooltip';
+import VoiceChannel from './voice_channel';
 
 class Channel extends React.Component {
   constructor(props) {
