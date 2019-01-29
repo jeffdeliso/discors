@@ -123,7 +123,6 @@ class VoiceChannel extends React.Component {
     let pc = new RTCPeerConnection();
     this.pcPeers[userId] = pc;
     pc.addStream(this.localstream);
-    // console.log(pc);
     isOffer &&
       pc
         .createOffer()
@@ -139,6 +138,7 @@ class VoiceChannel extends React.Component {
         .catch(this.logError);
 
     pc.onicecandidate = event => {
+      console.log(event);
       event.candidate &&
         this.voiceSession.broadcastData({
           type: EXCHANGE,
@@ -165,7 +165,7 @@ class VoiceChannel extends React.Component {
         });
       }
     };
-
+    console.log(pc);
     return pc;
   }
 
