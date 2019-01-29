@@ -119,8 +119,8 @@ class VoiceChannel extends React.Component {
   }
 
   createPC(userId, isOffer) {
-    // let pc = new RTCPeerConnection(null);
-    let pc = new RTCPeerConnection({ iceServers: [{ urls: "stun:stun.l.google.com:19302" }] });
+    const ice = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
+    let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
     pc.addStream(this.localstream);
     isOffer &&
