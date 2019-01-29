@@ -20,7 +20,7 @@ class Api::AudioChannelsController < ApplicationController
   end
 
   def destroy
-    current_channel.destroy
+    current_audio_channel.destroy
     render "api/audio_channels/show"
   end
 

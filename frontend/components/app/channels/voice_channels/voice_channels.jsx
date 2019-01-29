@@ -55,7 +55,7 @@ class VoiceChannels extends React.Component {
           currentUserId={that.props.currentUser.id}
           selectVoiceChannel={() => this.selectVoiceChannel(channel.id)}
           selected={this.state.voiceChannelId === channel.id}
-        // deleteChannel={() => that.props.deleteChannel(channel.id)}
+          deleteVoiceChannel={() => that.props.deleteVoiceChannel(channel.id)}
         />;
       } else {
         return null;
