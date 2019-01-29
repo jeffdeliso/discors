@@ -70,6 +70,8 @@ class User < ApplicationRecord
 
   has_many :sessions
 
+  has_one_attached :avatar
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
