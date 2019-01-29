@@ -8,7 +8,7 @@ import VoiceChannel from './voice_channel';
 class VoiceChannels extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false , voiceChannelId: null };
+    this.state = { showModal: false, voiceChannelId: null };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.selectVoiceChannel = this.selectVoiceChannel.bind(this);
@@ -23,7 +23,7 @@ class VoiceChannels extends React.Component {
     const serverId = this.props.match.params.serverId;
     if (prevProps.server.id != serverId) {
       this.props.fetchVoiceChannels(serverId);
-      this.leaveVoiceChannel();
+      if (this.state.voiceChannelId) this.leaveVoiceChannel();
     }
   }
 
@@ -35,10 +35,6 @@ class VoiceChannels extends React.Component {
     this.setState({ showModal: false });
     this.props.removeChannelErrors();
   }
-
-  // updateContent(type) {
-  //   this.setState({ content: type });
-  // }
 
   selectVoiceChannel(voiceChannelId) {
     this.setState({ voiceChannelId });
@@ -59,7 +55,7 @@ class VoiceChannels extends React.Component {
           currentUserId={that.props.currentUser.id}
           selectVoiceChannel={() => this.selectVoiceChannel(channel.id)}
           selected={this.state.voiceChannelId === channel.id}
-          // deleteChannel={() => that.props.deleteChannel(channel.id)}
+        // deleteChannel={() => that.props.deleteChannel(channel.id)}
         />;
       } else {
         return null;
@@ -75,7 +71,12 @@ class VoiceChannels extends React.Component {
           </div>
         </div>
         {voiceChannels}
-        {this.state.voiceChannelId ? <button onClick={this.leaveVoiceChannel}>Leave</button> : null}
+        {this.state.voiceChannelId ? (
+          <div className="voice-connected-popup">
+            <h4>Voice Connected</h4>
+            <button onClick={this.leaveVoiceChannel} className="leave-voice-channel-button"></button>
+          </div>
+        ) : null}
         <Modal
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"

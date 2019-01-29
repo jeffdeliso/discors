@@ -680,3 +680,50 @@
 .voice-selected:hover {
   color: #fff;
 }
+
+.leave-voice-channel-button:hover {
+  opacity: 1;
+}
+
+.leave-voice-channel-button {
+    background-image: image_url('main/hangup.svg');
+    align-items: center;
+    background: no-repeat 50% 50%;
+    background-size: 18px 18px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    opacity: .6;
+    padding: 0;
+    position: relative;
+    width: 32px;
+}
+
+.voice-connected-popup  {
+    align-items: center;
+    background: rgb(43, 44, 49);
+    border-bottom: 1px solid #36393f;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width:240px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.voice-connected-popup h4 {
+    color: #43b581;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: main2;
+}

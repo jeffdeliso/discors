@@ -17,7 +17,7 @@ class VoiceChannel extends React.Component {
   handleClick() {
     this.props.selectVoiceChannel();
   }
-  
+
   componentDidMount() {
     if (this.props.select) {
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -67,7 +67,7 @@ class VoiceChannel extends React.Component {
               return;
           }
         },
-        broadcastData: function(data) { return this.perform("broadcast", { channelId: that.props.channel.id, data }) }
+        broadcastData: function (data) { return this.perform("broadcast", { channelId: that.props.channel.id, data }) }
       });
   }
 
