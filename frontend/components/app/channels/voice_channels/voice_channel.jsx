@@ -123,6 +123,7 @@ class VoiceChannel extends React.Component {
     let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
     pc.addStream(this.localstream);
+    console.log(pc);
     isOffer &&
       pc
         .createOffer()
