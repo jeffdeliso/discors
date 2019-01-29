@@ -23,6 +23,7 @@ class VoiceChannels extends React.Component {
     const serverId = this.props.match.params.serverId;
     if (prevProps.server.id != serverId) {
       this.props.fetchVoiceChannels(serverId);
+      this.leaveVoiceChannel();
     }
   }
 
