@@ -11,6 +11,12 @@ User.delete_all
 Server.delete_all
 ServerMembership.delete_all
 Channel.delete_all
+Session.delete_all
+AudioChannel.delete_all
+DmChannelMembership.delete_all
+FriendRequest.delete_all
+Friendship.delete_all
+Message.delete_all
 
 guest = User.create!(username: 'guest', email: 'guest@guest.com', password: 'starwars')
 jad = User.create!(username: 'jad346', email: 'jeff.deliso@gmail.com', password: 'starwars')
@@ -72,3 +78,5 @@ ServerMembership.create!(user_id: greg.id, server_id: server2.id)
 
 server1.channels.create!(name: 'General')
 server2.channels.create!(name: 'General')
+server1.audio_channels.create!(name: 'General')
+server2.audio_channels.create!(name: 'General')

@@ -5,6 +5,7 @@ class Api::ServersController < ApplicationController
     if @server.save
       current_user.server_memberships.create!(server_id: @server.id)
       @server.channels.create!(name: 'General')
+      @server.audio_channels.create!(name: 'General')
       render "api/servers/show"
     else
       render json: @server.errors.full_messages, status: 422
