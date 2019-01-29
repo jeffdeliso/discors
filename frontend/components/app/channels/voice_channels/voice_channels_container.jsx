@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import VoiceChannels from './voice_channels';
 import { withRouter } from 'react-router-dom';
-import { fetchVoiceChannels, createVoiceChannel, removeVoiceChannelErrors, deleteVoiceChannel } from '../../../../actions/voice_channel_actions';
+import { fetchVoiceChannels, createVoiceChannel, deleteVoiceChannel } from '../../../../actions/voice_channel_actions';
 import { removeChannelErrors } from '../../../../actions/channel_actions';
 
 

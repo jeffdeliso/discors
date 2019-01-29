@@ -11,15 +11,38 @@ class VoiceChannel extends React.Component {
     this.remoteAudioContainer = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.pcPeers = {};
+    // this.handleJoinSession = this.handleJoinSession.bind(this);
   }
 
   handleClick() {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-      this.localstream = stream;
-    }).then(() => this.handleJoinSession());
+    this.props.selectVoiceChannel();
+  }
+  
+  componentDidMount() {
+    if (this.props.select) {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        this.localstream = stream;
+      }).then(() => this.handleJoinSession());
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.selected && !this.props.selected) {
+      this.handleLeaveSession();
+    } else if (!prevProps.selected && this.props.selected) {
+      if (this.voiceSession) this.handleLeaveSession();
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        this.localstream = stream;
+      }).then(() => this.handleJoinSession());
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.voiceSession) this.handleLeaveSession();
   }
 
   handleJoinSession() {
+    const that = this;
     this.voiceSession = App.cable.subscriptions.create(
       { channel: "VoiceChannel", channelId: this.props.channel.id },
       {
@@ -44,7 +67,7 @@ class VoiceChannel extends React.Component {
               return;
           }
         },
-        broadcastData: function (data) { return this.perform("broadcast", { channelId: this.props.channel.id, data }) }
+        broadcastData: function(data) { return this.perform("broadcast", { channelId: that.props.channel.id, data }) }
       });
   }
 
@@ -56,6 +79,9 @@ class VoiceChannel extends React.Component {
 
     this.voiceSession.unsubscribe();
 
+    this.localstream.getAudioTracks().forEach(function (track) {
+      track.stop();
+    });
 
     this.voiceSession.broadcastData({
       type: REMOVE_USER,
@@ -164,8 +190,8 @@ class VoiceChannel extends React.Component {
 
   render() {
     return (
-      <div className="channel" onClick={this.handleClick} ref={this.remoteAudioContainer}>
-        <svg width="16" height="16" viewBox="0 0 16 16"><path class="foreground-2W-aJk" fill="currentColor" d="M9.33333333,2 L9.33333333,3.37333333 C11.26,3.94666667 12.6666667,5.73333333 12.6666667,7.84666667 C12.6666667,9.96 11.26,11.74 9.33333333,12.3133333 L9.33333333,13.6933333 C12,13.0866667 14,10.7 14,7.84666667 C14,4.99333333 12,2.60666667 9.33333333,2 L9.33333333,2 Z M11,7.84666667 C11,6.66666667 10.3333333,5.65333333 9.33333333,5.16 L9.33333333,10.5133333 C10.3333333,10.04 11,9.02 11,7.84666667 L11,7.84666667 Z M2,5.84666667 L2,9.84666667 L4.66666667,9.84666667 L8,13.18 L8,2.51333333 L4.66666667,5.84666667 L2,5.84666667 L2,5.84666667 Z"></path></svg>
+      <div className={this.props.selected ? "channel voice-selected" : "channel"} onClick={this.handleClick} ref={this.remoteAudioContainer}>
+        <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M9.33333333,2 L9.33333333,3.37333333 C11.26,3.94666667 12.6666667,5.73333333 12.6666667,7.84666667 C12.6666667,9.96 11.26,11.74 9.33333333,12.3133333 L9.33333333,13.6933333 C12,13.0866667 14,10.7 14,7.84666667 C14,4.99333333 12,2.60666667 9.33333333,2 L9.33333333,2 Z M11,7.84666667 C11,6.66666667 10.3333333,5.65333333 9.33333333,5.16 L9.33333333,10.5133333 C10.3333333,10.04 11,9.02 11,7.84666667 L11,7.84666667 Z M2,5.84666667 L2,9.84666667 L4.66666667,9.84666667 L8,13.18 L8,2.51333333 L4.66666667,5.84666667 L2,5.84666667 L2,5.84666667 Z"></path></svg>
         <div className="channel-name">{this.props.channel.name}</div>
       </div>
     )

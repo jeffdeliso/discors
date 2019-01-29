@@ -1,6 +1,7 @@
 class VoiceChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "voice_channel"
+    stream_from "voice_channel_#{params['channelId']}"
+    # stream_from "voice_channel"
   end
 
   def unsubscribed
@@ -14,7 +15,7 @@ class VoiceChannel < ApplicationCable::Channel
     sdp = options["data"]["sdp"] || nil
     candidate = options["data"]["candidate"] || nil
 
-    ActionCable.server.broadcast("voice_channel",
+    ActionCable.server.broadcast("voice_channel_#{channel_id}",
         type: type,
         from: from,
         to: to,

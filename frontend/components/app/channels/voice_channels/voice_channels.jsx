@@ -8,9 +8,11 @@ import VoiceChannel from './voice_channel';
 class VoiceChannels extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false };
+    this.state = { showModal: false , voiceChannelId: null };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.selectVoiceChannel = this.selectVoiceChannel.bind(this);
+    this.leaveVoiceChannel = this.leaveVoiceChannel.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +20,7 @@ class VoiceChannels extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const serverId = this.props.match.params.serverId
+    const serverId = this.props.match.params.serverId;
     if (prevProps.server.id != serverId) {
       this.props.fetchVoiceChannels(serverId);
     }
@@ -33,15 +35,17 @@ class VoiceChannels extends React.Component {
     this.props.removeChannelErrors();
   }
 
-  updateContent(type) {
-    this.setState({ content: type });
+  // updateContent(type) {
+  //   this.setState({ content: type });
+  // }
+
+  selectVoiceChannel(voiceChannelId) {
+    this.setState({ voiceChannelId });
   }
 
-  // removeServer() {
-  //   this.props.deleteServer(this.props.server.id).then(() => (
-  //     this.props.history.push('/channels/@me')
-  //   ));
-  // }
+  leaveVoiceChannel() {
+    this.setState({ voiceChannelId: null });
+  }
 
   render() {
     const that = this;
@@ -51,7 +55,9 @@ class VoiceChannels extends React.Component {
           server={that.props.server}
           channel={channel}
           key={idx}
-          currentUserId={that.props.currentUserId}
+          currentUserId={that.props.currentUser.id}
+          selectVoiceChannel={() => this.selectVoiceChannel(channel.id)}
+          selected={this.state.voiceChannelId === channel.id}
           // deleteChannel={() => that.props.deleteChannel(channel.id)}
         />;
       } else {
@@ -68,7 +74,7 @@ class VoiceChannels extends React.Component {
           </div>
         </div>
         {voiceChannels}
-
+        {this.state.voiceChannelId ? <button onClick={this.leaveVoiceChannel}>Leave</button> : null}
         <Modal
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"
