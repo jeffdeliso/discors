@@ -13,19 +13,16 @@ class VoiceChannels extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchFriends();
-  //   this.props.fetchFriendRequests();
-  //   if (this.props.match.params.serverId) {
-  //     this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
-  //   }
-  // }
+  componentDidMount() {
+    this.props.fetchVoiceChannels(this.props.match.params.serverId);
+  }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.server.id != this.props.match.params.serverId) {
-  //     this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    const serverId = this.props.match.params.serverId
+    if (prevProps.server.id != serverId) {
+      this.props.fetchVoiceChannels(serverId);
+    }
+  }
 
   handleOpenModal() {
     this.setState({ showModal: true });
@@ -47,20 +44,20 @@ class VoiceChannels extends React.Component {
   // }
 
   render() {
-    // const that = this;
-    // const channels = this.props.channels.map((channel, idx) => {
-    //   if (channel.server_id == that.props.match.params.serverId) {
-    //     return <Channel
-    //       server={that.props.server}
-    //       channel={channel}
-    //       key={idx}
-    //       currentUser={that.props.currentUser}
-    //       deleteChannel={() => that.props.deleteChannel(channel.id)}
-    //     />;
-    //   } else {
-    //     return null;
-    //   }
-    // });
+    const that = this;
+    const voiceChannels = this.props.voiceChannels.map((channel, idx) => {
+      if (channel.server_id == that.props.match.params.serverId) {
+        return <VoiceChannel
+          server={that.props.server}
+          channel={channel}
+          key={idx}
+          currentUserId={that.props.currentUserId}
+          // deleteChannel={() => that.props.deleteChannel(channel.id)}
+        />;
+      } else {
+        return null;
+      }
+    });
 
     return (
       <>
@@ -70,7 +67,7 @@ class VoiceChannels extends React.Component {
             <h3 id="text-channels">Voice Channels</h3>
           </div>
         </div>
-        <VoiceChannel currentUserId={this.props.currentUser.id} />
+        {voiceChannels}
 
         <Modal
           isOpen={this.state.showModal}
@@ -98,7 +95,7 @@ class VoiceChannels extends React.Component {
         >
           <CreateChannelForm
             server={this.props.server}
-            createChannel={this.props.createChannel}
+            createChannel={this.props.createVoiceChannel}
             closeModal={this.handleCloseModal}
             errors={this.props.errors}
             text="VOICE"

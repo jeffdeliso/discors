@@ -1,0 +1,1 @@
+json.extract! audio_channel, :id, :name, :server_id

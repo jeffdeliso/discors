@@ -7,7 +7,7 @@ class VoiceChannel < ApplicationCable::Channel
   end
 
   def broadcast(options)
-    # channel_id = options["channelId"]
+    channel_id = options["channelId"]
     type = options["data"]["type"]
     from = options["data"]["from"] || nil
     to = options["data"]["to"] || nil

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         get 'dm_index'
       end
     end
+    resources :audio_channels, only: [:create, :show, :index, :destroy] 
     resources :friend_requests, only: [:create, :destroy, :update, :index]
     resources :friends, only: [:destroy, :index]
   end

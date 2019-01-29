@@ -26,4 +26,6 @@ class Server < ApplicationRecord
   has_many :channels,
     dependent: :destroy
 
+  has_many :audio_channels,
+    dependent: :destroy
 end

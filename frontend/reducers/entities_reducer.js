@@ -5,6 +5,7 @@ import servers from './servers_reducer';
 import channels from './channels_reducer';
 import friendRequests from './friend_requests_reducer';
 import friends from './friends_reducer';
+import voiceChannels from './voice_channels_reducer';
 
 export default combineReducers({
   users,
@@ -12,5 +13,5 @@ export default combineReducers({
   channels,
   friendRequests,
   friends,
+  voiceChannels,
 });
-

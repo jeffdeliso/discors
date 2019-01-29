@@ -19,32 +19,33 @@ class VoiceChannel extends React.Component {
     }).then(() => this.handleJoinSession());
   }
 
-
   handleJoinSession() {
-    this.voiceSession = App.cable.subscriptions.create("VoiceChannel", {
-      connected: () => {
-        this.voiceSession.broadcastData({
-          type: JOIN_ROOM,
-          from: this.props.currentUserId
-        });
-      },
-      received: data => {
-        console.log("received", data);
-        if (data.from === this.props.currentUserId) return;
-        switch (data.type) {
-          case JOIN_ROOM:
-            return this.joinRoom(data);
-          case EXCHANGE:
-            if (data.to !== this.props.currentUserId) return;
-            return this.exchange(data);
-          case REMOVE_USER:
-            return this.removeUser(data);
-          default:
-            return;
-        }
-      },
-      broadcastData: function (data) { return this.perform("broadcast", { data }) }
-    });
+    this.voiceSession = App.cable.subscriptions.create(
+      { channel: "VoiceChannel", channelId: this.props.channel.id },
+      {
+        connected: () => {
+          this.voiceSession.broadcastData({
+            type: JOIN_ROOM,
+            from: this.props.currentUserId
+          });
+        },
+        received: data => {
+          console.log("received", data);
+          if (data.from === this.props.currentUserId) return;
+          switch (data.type) {
+            case JOIN_ROOM:
+              return this.joinRoom(data);
+            case EXCHANGE:
+              if (data.to !== this.props.currentUserId) return;
+              return this.exchange(data);
+            case REMOVE_USER:
+              return this.removeUser(data);
+            default:
+              return;
+          }
+        },
+        broadcastData: function (data) { return this.perform("broadcast", { channelId: this.props.channel.id, data }) }
+      });
   }
 
   handleLeaveSession() {
@@ -164,8 +165,8 @@ class VoiceChannel extends React.Component {
   render() {
     return (
       <div className="channel" onClick={this.handleClick} ref={this.remoteAudioContainer}>
-        <svg name="Speaker" class="colorDefaultVoice-3wYlhb icon-sxakjD" background="background-2OVjk_" width="16" height="16" viewBox="0 0 16 16"><path class="foreground-2W-aJk" fill="currentColor" d="M9.33333333,2 L9.33333333,3.37333333 C11.26,3.94666667 12.6666667,5.73333333 12.6666667,7.84666667 C12.6666667,9.96 11.26,11.74 9.33333333,12.3133333 L9.33333333,13.6933333 C12,13.0866667 14,10.7 14,7.84666667 C14,4.99333333 12,2.60666667 9.33333333,2 L9.33333333,2 Z M11,7.84666667 C11,6.66666667 10.3333333,5.65333333 9.33333333,5.16 L9.33333333,10.5133333 C10.3333333,10.04 11,9.02 11,7.84666667 L11,7.84666667 Z M2,5.84666667 L2,9.84666667 L4.66666667,9.84666667 L8,13.18 L8,2.51333333 L4.66666667,5.84666667 L2,5.84666667 L2,5.84666667 Z"></path></svg>
-        <div className="channel-name">Voice</div>
+        <svg width="16" height="16" viewBox="0 0 16 16"><path class="foreground-2W-aJk" fill="currentColor" d="M9.33333333,2 L9.33333333,3.37333333 C11.26,3.94666667 12.6666667,5.73333333 12.6666667,7.84666667 C12.6666667,9.96 11.26,11.74 9.33333333,12.3133333 L9.33333333,13.6933333 C12,13.0866667 14,10.7 14,7.84666667 C14,4.99333333 12,2.60666667 9.33333333,2 L9.33333333,2 Z M11,7.84666667 C11,6.66666667 10.3333333,5.65333333 9.33333333,5.16 L9.33333333,10.5133333 C10.3333333,10.04 11,9.02 11,7.84666667 L11,7.84666667 Z M2,5.84666667 L2,9.84666667 L4.66666667,9.84666667 L8,13.18 L8,2.51333333 L4.66666667,5.84666667 L2,5.84666667 L2,5.84666667 Z"></path></svg>
+        <div className="channel-name">{this.props.channel.name}</div>
       </div>
     )
   };

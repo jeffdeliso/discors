@@ -20,7 +20,7 @@ export const fetchChannel = id => (
     url: `/api/channels/${id}`,
   })
 );
-''
+
 export const deleteChannel = id => (
   $.ajax({
     method: 'DELETE',
