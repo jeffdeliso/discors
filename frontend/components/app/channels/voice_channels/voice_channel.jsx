@@ -119,11 +119,11 @@ class VoiceChannel extends React.Component {
   }
 
   createPC(userId, isOffer) {
-    const ice = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
-    let pc = new RTCPeerConnection(ice);
+    const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
+    let pc = new RTCPeerConnection();
     this.pcPeers[userId] = pc;
     pc.addStream(this.localstream);
-    console.log(pc);
+    // console.log(pc);
     isOffer &&
       pc
         .createOffer()
@@ -171,7 +171,6 @@ class VoiceChannel extends React.Component {
 
   exchange(data) {
     let pc;
-
     if (!this.pcPeers[data.from]) {
       pc = this.createPC(data.from, false);
     } else {
