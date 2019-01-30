@@ -1,0 +1,125 @@
+.edit-user-form {
+  padding: 20px;
+  user-select: none;
+}
+
+.edit-user-form-top {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.avatar-container {
+  margin-right: 10px;
+  flex: 0 1 auto;
+  width: 100px;
+}
+
+.edit-user-username-email {
+  flex: 1 1 auto;
+  margin-left: 10px;
+}
+
+.edit-user-form-bottom {
+  margin-top: 10px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(114,118,125,.3);
+}
+
+.edit-user-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.edit-user-button {
+  background-color: #43b581;
+  color: #fff;
+  cursor: pointer;
+  height: 32px;
+  width: auto;
+  transition: background-color .17s ease,color .17s ease;
+  align-items: center;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 16px;
+  padding: 2px 16px;
+  font-family: main3;
+}
+
+.edit-user-button:hover {
+  background-color: #3ca374;
+}
+
+.avatar-container input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.avatar-wrapper:hover {
+  box-shadow: inset 0 0 120px rgba(0,0,0,.75);
+}
+
+.avatar-wrapper {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    flex-shrink: 0;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    background-image: image_url('main/red.png');
+}
+
+.add-file-icon {
+  align-items: center;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  left: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 28px;
+  background-color: #dcddde;
+  background-image: image_url('main/add-file.svg');
+}
+
+.avatar-wrapper p {
+    align-items: center;
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-family: main3;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    white-space: pre;
+}
