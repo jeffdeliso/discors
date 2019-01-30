@@ -48,7 +48,6 @@ class CreateServerForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('server[name]', this.state.name);
