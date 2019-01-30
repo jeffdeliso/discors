@@ -10,7 +10,7 @@ const mapStateToProps = ({ session }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: () => dispatch(login({ username: 'guest', password: 'starwars' })),
+    login: () => dispatch(login({ username: 'hodor', password: 'hodorhodor' })),
   };
 }
 

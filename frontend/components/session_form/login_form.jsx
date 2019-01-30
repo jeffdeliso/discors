@@ -30,8 +30,8 @@ class LoginForm extends React.Component {
 
   loginAsGuest(e) {
     e.preventDefault();
-    const username = 'guest'.split('');
-    const password = 'starwars'.split('');
+    const username = 'hodor'.split('');
+    const password = 'hodorhodor'.split('');
     const submit = document.getElementById('session-submit');
     this.setState({ username: '', password: '' }, () =>
       this.loginAsGuestHelper(username, password, submit)
