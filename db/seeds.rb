@@ -82,5 +82,3 @@ server2.audio_channels.create!(name: 'General')
 
 file1 = File.open('app/assets/images/main/red.png')
 file2 = File.open('app/assets/images/main/red.png')
-guest.avatar.attach(io: file1, filename: 'red-avatar.png')
-danielle.avatar.attach(io: file2, filename: 'red-avatar.png')
