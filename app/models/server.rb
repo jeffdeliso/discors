@@ -28,4 +28,6 @@ class Server < ApplicationRecord
 
   has_many :audio_channels,
     dependent: :destroy
+
+  has_one_attached :icon
 end

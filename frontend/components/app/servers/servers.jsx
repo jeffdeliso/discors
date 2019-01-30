@@ -4,6 +4,7 @@ import Server from './server';
 import Modal from 'react-modal';
 import CreateServerForm from './create_server_form';
 import JoinServerForm from './join_server_form';
+import Tooltip from '../modal/tooltip';
 
 class Servers extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Servers extends React.Component {
   }
 
   handleCloseModal() {
-    this.setState({ showModal: false , content: ''});
+    this.setState({ showModal: false, content: '' });
     this.props.removeServerErrors();
   }
 
@@ -37,12 +38,12 @@ class Servers extends React.Component {
     Modal.setAppElement('#root');
     let content;
     if (this.state.content === "create") {
-      content = <CreateServerForm 
-        createServer={this.props.createServer} 
-        closeModal={this.handleCloseModal} 
-        errors={this.props.errors}/>;
+      content = <CreateServerForm
+        createServer={this.props.createServer}
+        closeModal={this.handleCloseModal}
+        errors={this.props.errors} />;
     } else if (this.state.content === "join") {
-      content = <JoinServerForm 
+      content = <JoinServerForm
         joinServer={this.props.joinServer}
         closeModal={this.handleCloseModal}
         errors={this.props.errors} />;
@@ -66,20 +67,26 @@ class Servers extends React.Component {
               </div>
             </div>
           </div>
+          <div className="or">or</div>
         </div>
       )
     }
 
     return (
       <div className="side-bar">
-        <NavLink to='/channels/@me' className="home-icon" activeClassName="serverSelected">
-          <div className="server-active-icon"></div>
-        </NavLink>
+        <Tooltip component={
+          <NavLink to='/channels/@me' className="home-icon" activeClassName="serverSelected">
+            <div className="server-active-icon"></div>
+          </NavLink>
+        }
+          position="right center"
+          text="Home"
+        />
         <div className="separator"></div>
         <div className="side-scroll-container">
           <div className="friends-online"></div>
           {servers}
-          <button className="create-server" 
+          <button className="create-server"
             onClick={this.handleOpenModal}
             onKeyDown={(e) => e.preventDefault()}
           ><span>+</span></button>

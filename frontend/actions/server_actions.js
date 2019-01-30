@@ -48,8 +48,8 @@ export const fetchMembers = (id) => dispatch => (
   ))
 );
 
-export const createServer = (server) => dispatch => (
-  APIUtil.createServer(server).then(server => (
+export const createServer = (formData) => dispatch => (
+  APIUtil.createServer(formData).then(server => (
     dispatch(receiveServer(server))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
