@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import CreateChannelForm from './create_channel_form';
 import Tooltip from '../modal/tooltip';
 import VoiceChannels from './voice_channels/voice_channels_container';
-import EditUserForm from './edit_user_form';
 import UserBar from './user_bar_container';
 
 class Channels extends React.Component {

@@ -29,7 +29,7 @@ class UserBar extends React.Component {
               <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }} onClick={this.handleOpenUserModal} ></div>
             }
               position="top center"
-              text="Update User"
+              text="Update Profile"
             />
             <div className="actions-username">{this.props.currentUser.username}</div>
           </div>

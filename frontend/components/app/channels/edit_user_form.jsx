@@ -62,7 +62,7 @@ class EditUserForm extends React.Component {
               style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
             >
               <p>{'CHANGE \n AVATAR'}</p>
-              <input type="file" onChange={this.handleFile} multipleAccept=".jpg,.jpeg,.png,.gif"/>
+              <input type="file" onChange={this.handleFile} multipleaccept=".jpg,.jpeg,.png,.gif"/>
               <div className="add-file-icon"></div>
             </div>
             {this.state.avatarUrl ? <button className="remove-avatar-button" onClick={this.handleRemove}>REMOVE</button> : null}

@@ -1,6 +1,7 @@
 import React from 'react';
 import DmChannel from './dm_channel';
 import Tooltip from '../../modal/tooltip';
+import UserBar from '../user_bar_container';
 
 class DMChannels extends React.Component {
 
@@ -40,7 +41,7 @@ class DMChannels extends React.Component {
               </div>
             </div>
           </div>
-          <div className="user-actions">
+          {/* <div className="user-actions">
             <div className="icon-name-wrapper">
               <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }}></div>
               <div className="actions-username">{this.props.currentUser.username}</div>
@@ -54,7 +55,8 @@ class DMChannels extends React.Component {
               position="top center"
               text="Logout"
             />
-          </div>
+          </div> */}
+          <UserBar />
         </div>
       </div>
     )
