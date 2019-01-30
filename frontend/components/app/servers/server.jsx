@@ -16,6 +16,9 @@ class Server extends React.Component {
           className="home-icon server"
           activeClassName="serverSelected"
           activeStyle={{ pointerEvents: 'none', cursor: 'pointer' }}
+          style={ this.props.server.icon_url ?
+             { backgroundImage: `url(${this.props.server.icon_url})`, backgroundSize: '100%' } :
+             { backgroundSize: '180%' }}
           onKeyDown={(e) => e.preventDefault()}
         ><div className="server-active-icon"></div></NavLink>
       }

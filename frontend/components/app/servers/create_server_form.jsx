@@ -26,11 +26,6 @@ class CreateServerForm extends React.Component {
     });
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.createServer(this.state).then(this.handleRedirect);
-  // }
-
   handleRedirect(action) {
     this.props.closeModal();
     this.props.history.push(`/channels/${action.server.id}`);
@@ -53,6 +48,7 @@ class CreateServerForm extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('server[name]', this.state.name);
@@ -83,7 +79,6 @@ class CreateServerForm extends React.Component {
                 className="avatar-wrapper"
                 id="icon-wrapper"
                 style={this.state.avatarUrl ? { backgroundImage: `url(${this.state.avatarUrl})` } : { backgourndColor: '#7289da'}}
-              // style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
               >
                 <p>{'CHANGE \n ICON'}</p>
                 <input type="file" onChange={this.handleFile} multipleaccept=".jpg,.jpeg,.png,.gif" />
