@@ -45,7 +45,7 @@ class JoinServerForm extends React.Component {
           </div>
         </div>
 
-        <div className="create-server-form-bottom">
+        <div className="create-server-form-bottom" style={{marginTop: '105px'}}>
           <button id="join-server-button">Join</button>
         </div>
       </form>
