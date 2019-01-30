@@ -6,24 +6,16 @@ class EditUserForm extends React.Component {
     this.state = {
       username: this.props.currentUser.username,
       email: this.props.currentUser.email,
-      active: false,
+      avatarFile: null,
+      avatarUrl: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-  }
-
-  handleMouseEnter() {
-      this.setState({ active: true });
-  }
-
-  handleMouseLeave() {
-      this.setState({ active: false });
+    this.handleFile = this.handleFile.bind(this);
   }
 
   update(field) {
     return e => this.setState({
-        [field]: e.currentTarget.value
+      [field]: e.currentTarget.value
     });
   }
 
@@ -32,7 +24,7 @@ class EditUserForm extends React.Component {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
 
-      this.setState({ photoFile: file, photoUrl: fileReader.result });
+      this.setState({ avatarFile: file, avatarUrl: fileReader.result });
     };
     if (file) {
       fileReader.readAsDataURL(file);
@@ -48,13 +40,12 @@ class EditUserForm extends React.Component {
       <form className="edit-user-form" onSubmit={this.handleSubmit}>
         <div className="edit-user-form-top">
           <div className="avatar-container">
-            <div 
-            className="avatar-wrapper"
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
+            <div
+              className="avatar-wrapper"
+              style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
             >
-              <p>{this.state.active ? 'CHANGE \n AVATAR' : ''}</p>
-              <input type="file" />
+              <p>{'CHANGE \n AVATAR'}</p>
+              <input type="file" onChange={this.handleFile}/>
               <div className="add-file-icon"></div>
             </div>
           </div>

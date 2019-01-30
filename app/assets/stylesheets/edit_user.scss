@@ -84,7 +84,7 @@
     height: 100px;
     width: 100px;
     position: relative;
-    background-image: image_url('main/red.png');
+    // background-image: image_url('main/red.png');
 }
 
 .add-file-icon {
@@ -122,4 +122,9 @@
     font-weight: 700;
     line-height: 12px;
     white-space: pre;
+    visibility: hidden;
+}
+
+.avatar-wrapper:hover p {
+  visibility: visible;
 }

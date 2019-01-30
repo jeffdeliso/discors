@@ -44,9 +44,6 @@ zak = User.create!(username: 'zak', email: 'zak@gmail.com', password: 'starwars'
 danielle = User.create!(username: 'danielle', email: 'danielle@gmail.com', password: 'starwars')
 eric = User.create!(username: 'eric', email: 'eric@gmail.com', password: 'starwars')
 
-file = File.open('app/assets/images/main/red.png')
-guest.avatar.attach(io: file, filename: 'red_avatar.png')      
-
 server1 = jeff.admin_servers.create!(name: 'a/A')
 server2 = guest.admin_servers.create!(name: 'not a/A')
 
@@ -82,3 +79,8 @@ server1.channels.create!(name: 'General')
 server2.channels.create!(name: 'General')
 server1.audio_channels.create!(name: 'General')
 server2.audio_channels.create!(name: 'General')
+
+file1 = File.open('app/assets/images/main/red.png')
+file2 = File.open('app/assets/images/main/red.png')
+guest.avatar.attach(io: file1, filename: 'red-avatar.png')
+danielle.avatar.attach(io: file2, filename: 'red-avatar.png')

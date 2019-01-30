@@ -96,7 +96,6 @@ class Channels extends React.Component {
                   </div>
                 </div>
                 {channels}
-                <img src={this.props.currentUser.image_url} />
                 <VoiceChannels />
               </div>
             </div>
