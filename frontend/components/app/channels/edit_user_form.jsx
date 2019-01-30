@@ -11,6 +11,7 @@ class EditUserForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   update(field) {
@@ -31,11 +32,27 @@ class EditUserForm extends React.Component {
     }
   }
 
+  handleRemove(e) {
+    this.setState({ avatarFile: null, avatarUrl: null });
+  }
+  
   handleSubmit(e) {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('user[username]', this.state.username);
+    formData.append('user[email]', this.state.email);
+    formData.append('user[id]', this.props.currentUser.id);
+    if (this.state.avatarFile) {
+
+      formData.append('user[avatar]', this.state.avatarFile);
+    }
+
+    this.props.editUser(formData).then(this.props.closeModal);
   }
 
   render() {
+    const emailError = this.props.errors.find((el) => el.includes('Email'));
+    const usernameError = this.props.errors.find((el) => el.includes('Username'));
     return (
       <form className="edit-user-form" onSubmit={this.handleSubmit}>
         <div className="edit-user-form-top">
@@ -45,31 +62,33 @@ class EditUserForm extends React.Component {
               style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
             >
               <p>{'CHANGE \n AVATAR'}</p>
-              <input type="file" onChange={this.handleFile}/>
+              <input type="file" onChange={this.handleFile} multipleAccept=".jpg,.jpeg,.png,.gif"/>
               <div className="add-file-icon"></div>
             </div>
+            {this.state.avatarUrl ? <button className="remove-avatar-button" onClick={this.handleRemove}>REMOVE</button> : null}
+              
           </div>
           <div className="edit-user-username-email">
             <div className="email-container">
               <div className="session-error-wrapper">
-                <h5 className={`email-label ${this.props.errors[0] ? 'session-error-label' : ''}`}>USERNAME</h5>
-                <span className="session-errors">{this.props.errors[0] ? `- ${this.props.errors[0]}` : ''}</span>
+                <h5 className={`email-label ${usernameError ? 'session-error-label' : ''}`}>USERNAME</h5>
+                <span className="session-errors">{usernameError ? `-  ${usernameError}` : ''}</span>
               </div>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className={this.props.errors[0] ? 'session-error' : 'session-input'}
+                className={usernameError ? 'session-error' : 'session-input'}
               />
             </div>
             <div className="email-container">
               <div className="session-error-wrapper">
-                <h5 className={`email-label ${this.props.errors[0] ? 'session-error-label' : ''}`}>EMAIL</h5>
-                <span className="session-errors">{this.props.errors[0] ? `- ${this.props.errors[0]}` : ''}</span>
+                <h5 className={`email-label ${emailError ? 'session-error-label' : ''}`}>EMAIL</h5>
+                <span className="session-errors">{emailError ? `-  ${emailError}` : ''}</span>
               </div>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className={this.props.errors[0] ? 'session-error' : 'session-input'}
+                className={emailError ? 'session-error' : 'session-input'}
               />
             </div>
           </div>

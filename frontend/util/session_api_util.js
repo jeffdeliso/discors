@@ -20,3 +20,13 @@ export const logout = () => (
     url: '/api/session'
   })
 );
+
+export const editUser = (formData) => (
+  $.ajax({
+    url: `/api/users/${formData.get('user[id]')}`,
+    method: 'PATCH',
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+);

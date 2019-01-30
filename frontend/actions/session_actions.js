@@ -27,6 +27,14 @@ export const signup = user => dispatch => (
   ))
 );
 
+export const editUser = formData => dispatch => (
+  APIUtil.editUser(formData).then(user => (
+    dispatch(receiveCurrentUser(user))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
 export const removeErrors = errors => ({
   type: REMOVE_SESSION_ERRORS,
 });

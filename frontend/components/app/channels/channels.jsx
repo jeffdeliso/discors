@@ -5,6 +5,7 @@ import CreateChannelForm from './create_channel_form';
 import Tooltip from '../modal/tooltip';
 import VoiceChannels from './voice_channels/voice_channels_container';
 import EditUserForm from './edit_user_form';
+import UserBar from './user_bar_container';
 
 class Channels extends React.Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class Channels extends React.Component {
     this.state = { showModal: false, showUserModal: false };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleOpenUserModal = this.handleOpenUserModal.bind(this);
-    this.handleCloseUserModal = this.handleCloseUserModal.bind(this);
+    // this.handleOpenUserModal = this.handleOpenUserModal.bind(this);
+    // this.handleCloseUserModal = this.handleCloseUserModal.bind(this);
     this.removeServer = this.removeServer.bind(this);
   }
 
@@ -40,13 +41,13 @@ class Channels extends React.Component {
     this.props.removeChannelErrors();
   }
 
-  handleOpenUserModal() {
-    this.setState({ showUserModal: true });
-  }
+  // handleOpenUserModal() {
+  //   this.setState({ showUserModal: true });
+  // }
 
-  handleCloseUserModal() {
-    this.setState({ showUserModal: false });
-  }
+  // handleCloseUserModal() {
+  //   this.setState({ showUserModal: false });
+  // }
 
   // updateContent(type) {
   //   this.setState({ content: type });
@@ -100,7 +101,7 @@ class Channels extends React.Component {
               </div>
             </div>
           </div>
-          <div className="user-actions">
+          {/* <div className="user-actions">
             <div className="icon-name-wrapper">
               <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }} onClick={this.handleOpenUserModal} ></div>
               <div className="actions-username">{this.props.currentUser.username}</div>
@@ -113,7 +114,8 @@ class Channels extends React.Component {
               position="top center"
               text="Logout"
             />
-          </div>
+          </div> */}
+          <UserBar />
         </div>
         <Modal
           isOpen={this.state.showModal}
@@ -147,7 +149,7 @@ class Channels extends React.Component {
             text="TEXT"
           />
         </Modal>
-        <Modal
+        {/* <Modal
           isOpen={this.state.showUserModal}
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseUserModal}
@@ -173,10 +175,11 @@ class Channels extends React.Component {
         >
         <EditUserForm 
           closeModal={this.handleCloseUserModal} 
-          errors={[]}
+          errors={this.props.sessionErrors}
           currentUser={this.props.currentUser}
+          editUser={this.props.editUser}
         />
-        </Modal>
+        </Modal> */}
       </div>
     )
   }

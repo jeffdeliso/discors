@@ -84,7 +84,7 @@
     height: 100px;
     width: 100px;
     position: relative;
-    // background-image: image_url('main/red.png');
+    margin-bottom: 10px;
 }
 
 .add-file-icon {
@@ -127,4 +127,20 @@
 
 .avatar-wrapper:hover p {
   visibility: visible;
+}
+
+.remove-avatar-button {
+  color: #b9bbbe;
+  cursor: pointer;
+  display: block;
+  font-size: 12px;
+  text-decoration: none;
+  font-family: main3;
+  transition: opacity .5s,color .5s;
+  margin: auto;
+}
+
+.remove-avatar-button:hover {
+      color: #72767d;
+      text-decoration: underline;
 }
