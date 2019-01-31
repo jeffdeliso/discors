@@ -12,22 +12,23 @@ class Channels extends React.Component {
     this.state = { showModal: false, showUserModal: false };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    // this.handleOpenUserModal = this.handleOpenUserModal.bind(this);
-    // this.handleCloseUserModal = this.handleCloseUserModal.bind(this);
     this.removeServer = this.removeServer.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchFriends();
     this.props.fetchFriendRequests();
-    if (this.props.match.params.serverId) {
-      this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
+
+    const serverId = this.props.match.params.serverId;
+    if (serverId) {
+      this.props.fetchChannels(serverId);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.server.id != this.props.match.params.serverId) {
-      this.props.fetchChannels(this.props.match.params.serverId).then((action) => this.props.history.push(`/channels/${Object.values(action.channels)[0].server_id}/${Object.values(action.channels)[0].id}`));
+    const serverId = this.props.match.params.serverId;
+    if (serverId && prevProps.server.id != serverId) {
+      this.props.fetchChannels(serverId);
     }
   }
 
@@ -39,18 +40,6 @@ class Channels extends React.Component {
     this.setState({ showModal: false });
     this.props.removeChannelErrors();
   }
-
-  // handleOpenUserModal() {
-  //   this.setState({ showUserModal: true });
-  // }
-
-  // handleCloseUserModal() {
-  //   this.setState({ showUserModal: false });
-  // }
-
-  // updateContent(type) {
-  //   this.setState({ content: type });
-  // }
 
   removeServer() {
     this.props.deleteServer(this.props.server.id).then(() => (
@@ -100,20 +89,6 @@ class Channels extends React.Component {
               </div>
             </div>
           </div>
-          {/* <div className="user-actions">
-            <div className="icon-name-wrapper">
-              <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }} onClick={this.handleOpenUserModal} ></div>
-              <div className="actions-username">{this.props.currentUser.username}</div>
-            </div>
-            <Tooltip component={
-              <button className="gear" onClick={() => this.props.logout()}>
-                <i className="fas fa-sign-out-alt"></i>
-              </button>
-            }
-              position="top center"
-              text="Logout"
-            />
-          </div> */}
           <UserBar />
         </div>
         <Modal
@@ -148,37 +123,6 @@ class Channels extends React.Component {
             text="TEXT"
           />
         </Modal>
-        {/* <Modal
-          isOpen={this.state.showUserModal}
-          contentLabel="onRequestClose Example"
-          onRequestClose={this.handleCloseUserModal}
-          style={{
-            overlay: {
-              backgroundColor: 'rgb(0, 0, 0, 0.7)',
-              zIndex: 99,
-            },
-            content: {
-              height: 'fit-content',
-              width: '500px',
-              padding: 0,
-              borderRadius: '5px',
-              margin: 'auto',
-              boxShadow: '0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2)',
-              boxSizing: 'border-box',
-              display: 'flex',
-              flexDirection: 'column',
-              backgroundColor: '#37393f',
-              border: 'none'
-            }
-          }}
-        >
-        <EditUserForm 
-          closeModal={this.handleCloseUserModal} 
-          errors={this.props.sessionErrors}
-          currentUser={this.props.currentUser}
-          editUser={this.props.editUser}
-        />
-        </Modal> */}
       </div>
     )
   }

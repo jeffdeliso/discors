@@ -4,12 +4,12 @@ import { withRouter } from 'react-router-dom';
 class CreateServerForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       name: '',
       avatarFile: null,
       avatarUrl: null,
     };
-    
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -77,13 +77,17 @@ class CreateServerForm extends React.Component {
               <div
                 className="avatar-wrapper"
                 id="icon-wrapper"
-                style={this.state.avatarUrl ? { backgroundImage: `url(${this.state.avatarUrl})` } : { backgourndColor: '#7289da'}}
+                style={this.state.avatarUrl ? { backgroundImage: `url(${this.state.avatarUrl})` } : { backgourndColor: '#7289da' }}
               >
                 <p>{'CHANGE \n ICON'}</p>
-                <input type="file" onChange={this.handleFile} multipleaccept=".jpg,.jpeg,.png,.gif" />
+                <input type="file" onChange={this.handleFile} onKeyDown={(e) => e.preventDefault()} multipleaccept=".jpg,.jpeg,.png,.gif" />
                 <div className="add-file-icon"></div>
               </div>
-              {this.state.avatarUrl ? <button className="remove-avatar-button" onClick={this.handleRemove}>REMOVE</button> : null}
+              {this.state.avatarUrl ? <button
+                className="remove-avatar-button"
+                onClick={this.handleRemove}
+                onKeyDown={(e) => e.preventDefault()}
+              >REMOVE</button> : null}
             </div>
           </div>
         </div>

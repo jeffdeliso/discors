@@ -35,7 +35,7 @@ class EditUserForm extends React.Component {
   handleRemove(e) {
     this.setState({ avatarFile: null, avatarUrl: null });
   }
-  
+
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -62,11 +62,15 @@ class EditUserForm extends React.Component {
               style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
             >
               <p>{'CHANGE \n AVATAR'}</p>
-              <input type="file" onChange={this.handleFile} multipleaccept=".jpg,.jpeg,.png,.gif"/>
+              <input type="file" onChange={this.handleFile} onKeyDown={(e) => e.preventDefault()} multipleaccept=".jpg,.jpeg,.png,.gif" />
               <div className="add-file-icon"></div>
             </div>
-            {this.state.avatarUrl ? <button className="remove-avatar-button" onClick={this.handleRemove}>REMOVE</button> : null}
-              
+            {this.state.avatarUrl ? <button
+              className="remove-avatar-button"
+              onClick={this.handleRemove}
+              onKeyDown={(e) => e.preventDefault()}
+            >REMOVE</button> : null}
+
           </div>
           <div className="edit-user-username-email">
             <div className="email-container">
