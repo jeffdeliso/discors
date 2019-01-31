@@ -151,6 +151,10 @@ sansa = User.create!(username: 'sansa', email: 'sansa@gmail.com', password: '111
 sansafile = EzDownload.open('https://pbs.twimg.com/profile_images/895515853365665792/1Qu_tdvS_400x400.jpg')
 sansa.avatar.attach(io: sansafile, filename: 'sansa.jpg')
 ServerMembership.create!(user_id: sansa.id, server_id: stark.id)
+rickon = User.create!(username: 'rickon', email: 'rickon@gmail.com', password: '111111')
+rickonfile = EzDownload.open('https://i.pinimg.com/236x/ef/34/f3/ef34f3744e17d3cf532f7752eba2c8bd--house-stark-game-of.jpg')
+rickon.avatar.attach(io: rickonfile, filename: 'rickon.jpg')
+ServerMembership.create!(user_id: rickon.id, server_id: stark.id)
 
 joffrey = User.create!(username: 'joffrey', email: 'joffrey@gmail.com', password: '111111')
 joffreyfile = EzDownload.open('http://pa1.narvii.com/6045/9968e5d3dcf97542915e7fbeecc4b51de104c822_00.gif')
@@ -207,6 +211,7 @@ Friendship.create!(user_id: hodor.id, friend_id: ned.id)
 Friendship.create!(user_id: hodor.id, friend_id: sansa.id)
 Friendship.create!(user_id: hodor.id, friend_id: jon.id)
 Friendship.create!(user_id: hodor.id, friend_id: catelyn.id)
+Friendship.create!(user_id: hodor.id, friend_id: rickon.id)
 
 FriendRequest.create!(user_id: joffrey.id, friend_id: hodor.id)
 FriendRequest.create!(user_id: reek.id, friend_id: hodor.id)
