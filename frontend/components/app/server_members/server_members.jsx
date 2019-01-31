@@ -18,12 +18,25 @@ class ServerMembers extends React.Component {
     const admin = this.props.members.find((member) => {
       return member.id === this.props.server.admin_id;
     }) || {};
-    
+
     const adminEl = <ServerMember
       user={admin}
     />;
+    let adminOnline;
+    let adminOffline;
 
-    const members = this.props.members.map((member, idx) => {
+    if (admin.online) {
+      adminOnline = 1;
+      adminOffline = 0;
+    } else {
+      adminOnline = 0;
+      adminOffline = 1;
+    }
+
+    const online = this.props.members.filter(member => member.online);
+    const offline = this.props.members.filter(member => !member.online);
+
+    const onlineMembers = online.map((member, idx) => {
       if (member.id === this.props.server.admin_id) {
         return null
       } else {
@@ -32,14 +45,27 @@ class ServerMembers extends React.Component {
         />;
       }
     });
+
+    const offlineMembers = offline.map((member, idx) => {
+      if (member.id === this.props.server.admin_id) {
+        return null
+      } else {
+        return <ServerMember key={idx}
+          user={member}
+        />;
+      }
+    });
+
     return (
       <div className="server-members" >
         <div className="server-members-scroll">
           <div className="server-members-container">
             <h3>ADMIN</h3>
             {adminEl}
-            <h3>MEMBERS</h3>
-            {members}
+            {online.length > 0 ? <h3>{`ONLINE—${online.length - adminOnline}`}</h3> : null}
+            {onlineMembers}
+            {offline.length > 0 ? <h3>{`OFFLINE—${offline.length - adminOffline}`}</h3> : null}
+            {offlineMembers}
           </div>
         </div>
       </div>

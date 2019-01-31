@@ -362,12 +362,12 @@
 }
 
 .empty {
-  flex: 0 [1 auto;
+  flex: 0 1 auto;
   width: 415px;
   height: 200px;
   background-size: 100% 100%;
   margin-bottom: 40px;
-  }]
+}
 
 .online {
  background-image: image_url('main/online-empty.svg');
