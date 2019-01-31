@@ -17,20 +17,22 @@ class ServerMembers extends React.Component {
   render() {
     const admin = this.props.members.find((member) => {
       return member.id === this.props.server.admin_id;
-    }) || {};
+    });
 
-    const adminEl = <ServerMember
-      user={admin}
-    />;
+    let adminEl;
     let adminOnline;
     let adminOffline;
-
-    if (admin.online) {
-      adminOnline = 1;
-      adminOffline = 0;
+    if (admin) {
+      adminEl = <ServerMember user={admin} />;
+      if (admin.online) {
+        adminOnline = 1;
+        adminOffline = 0;
+      } else {
+        adminOnline = 0;
+        adminOffline = 1;
+      }
     } else {
-      adminOnline = 0;
-      adminOffline = 1;
+      adminEl = null;
     }
 
     const online = this.props.members.filter(member => member.online);
@@ -50,9 +52,7 @@ class ServerMembers extends React.Component {
       if (member.id === this.props.server.admin_id) {
         return null
       } else {
-        return <ServerMember key={idx}
-          user={member}
-        />;
+        return <ServerMember key={idx} user={member} />;
       }
     });
 
