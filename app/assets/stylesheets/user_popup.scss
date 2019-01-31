@@ -61,7 +61,7 @@
 }
 
 .popup-online-indicator {
-    background-size: 12px;
+    background-size: 22px;
     bottom: 3px;
     height: 18px;
     position: absolute;
@@ -69,6 +69,6 @@
     width: 18px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    border: 3px solid #2f3136;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 2px rgba(180,225,205,.6);
 }

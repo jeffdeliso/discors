@@ -72,13 +72,33 @@ class Chat extends React.Component {
         />
       );
     });
-
+    
+    let emptyMessage;
+    if (messageList.length === 0) {
+      if (this.props.channel && this.props.match.params.serverId) {
+        emptyMessage = <h4>Welcome to the beginning of the <strong>{`#${this.props.channel.name}`}</strong> channel.</h4>;
+      } else if (this.props.channel) {
+        const nameArr = this.props.channel.name.split('-');
+        let userId;
+        if (nameArr[0] == this.props.currentUser.id) {
+          userId = nameArr[1];
+        } else {
+          userId = nameArr[0];
+        }
+        emptyMessage = emptyMessage = <h4>This is the beginning of your direct message history with <strong>{`@${this.props.users[userId].username}`}</strong></h4>;;
+      }
+    }
+    
     return (
       <div className="chat-main">
         <div className="message-wrapper">
           <div className="message-scroll-wrapper">
             <div className="message-list">
-              {messageList}
+              {emptyMessage ? (
+                <div className="empty-chat">
+                  {emptyMessage}
+                </div>
+              ) : messageList}
               <div ref={this.bottom} />
             </div>
           </div>

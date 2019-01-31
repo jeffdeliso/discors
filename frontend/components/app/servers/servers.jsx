@@ -82,9 +82,9 @@ class Servers extends React.Component {
           position="right center"
           text="Home"
         />
+        <div className="friends-online">{`${this.props.onlineCount} Online`}</div>
         <div className="separator"></div>
         <div className="side-scroll-container">
-          <div className="friends-online"></div>
           {servers}
           <button className="create-server"
             onClick={this.handleOpenModal}

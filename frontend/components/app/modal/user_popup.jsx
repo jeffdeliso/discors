@@ -75,7 +75,7 @@ class UserPopup extends React.Component {
         <div className="user-popup">
           <div className="user-popup-top">
             <div className="user-popup-img" style={this.props.user.image_url ? { backgroundImage: `url(${this.props.user.image_url})` } : {}}>
-              <div className="popup-online-indicator" style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}></div>
+              <div className="popup-online-indicator" style={this.props.user.online ? { backgroundColor: '#43b581', boxShadow: 'inset 0 0 0 2px rgba(180,225,205,.6)' } : { backgroundColor: '#747f8d', boxShadow: 'inset 0 0 0 2px rgba(199, 204, 209, .6)'}}></div>
             </div>
             <h5>{this.props.user.username}</h5>
           </div>

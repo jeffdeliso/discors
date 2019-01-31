@@ -1,15 +1,21 @@
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import Servers from './servers';
 import { fetchServers, createServer, joinServer } from '../../../actions/server_actions';
 import { removeServerErrors } from '../../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
+  let onlineCount = 0;
+  state.entities.friends.forEach(friendId => {
+    if (state.entities.users[friendId] && state.entities.users[friendId].online) {
+      onlineCount++;
+    }
+  });
   
   return {
     servers: Object.values(state.entities.servers),
     errors: state.errors.server,
+    onlineCount,
   };
 };
 
