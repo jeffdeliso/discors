@@ -28,10 +28,24 @@ class Friend extends React.Component {
   }
 
   render() {
-    const mutualServers = intersection(this.props.currentUser.servers, this.props.user.servers).map((serverId, idx) => {
-      const server = this.props.servers[serverId];
-      return <MutualServer server={server} />;
-    });
+    const mutualServerIds = intersection(this.props.currentUser.servers, this.props.user.servers);
+
+    let mutualServers;
+    if (mutualServerIds.length <= 6) {
+      mutualServers = mutualServerIds.map((serverId, idx) => {
+        const server = this.props.servers[serverId];
+        return <MutualServer server={server} key={idx} />;
+      });
+
+    } else {
+      mutualServers = [];
+      for (let i = 0; i < 5; i++) {
+        const serverId = mutualServerIds[i];
+        const server = this.props.servers[serverId];
+        mutualServers.push(<MutualServer server={server} key={i} />);
+      }
+      mutualServers.push(<div className="extra-servers" key={mutualServerIds.length}>{`+${mutualServerIds.length - 5}`}</div>);
+    }
 
     return (
       <li className="friend-container"

@@ -205,6 +205,10 @@ lysa.avatar.attach(io: lysafile, filename: 'lysa.jpg')
 ServerMembership.create!(user_id: lysa.id, server_id: arryn.id)
 ServerMembership.create!(user_id: lysa.id, server_id: tully.id)
 
+door = User.create!(username: 'door', email: 'door@gmail.com', password: '111111')
+doorfile = EzDownload.open('https://pre00.deviantart.net/c944/th/pre/i/2016/150/a/0/hodor___hold_the_door_by_frank_rod-da4c6oq.jpg')
+door.avatar.attach(io: doorfile, filename: 'door.jpg')
+
 Friendship.create!(user_id: hodor.id, friend_id: bran.id)
 Friendship.create!(user_id: hodor.id, friend_id: arya.id)
 Friendship.create!(user_id: hodor.id, friend_id: ned.id)
@@ -216,6 +220,7 @@ Friendship.create!(user_id: hodor.id, friend_id: rickon.id)
 FriendRequest.create!(user_id: joffrey.id, friend_id: hodor.id)
 FriendRequest.create!(user_id: reek.id, friend_id: hodor.id)
 FriendRequest.create!(user_id: daenerys.id, friend_id: hodor.id)
+FriendRequest.create!(user_id: door.id, friend_id: hodor.id)
 
 stark.channels.create!(name: 'General')
 targaryen.channels.create!(name: 'General')

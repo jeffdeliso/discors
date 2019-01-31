@@ -311,6 +311,7 @@
   background-size: 100% 100%;
   position: relative;
   margin-right: 6px;
+  flex-shrink: 0;
 }
 
 .mutual-servers-container {
@@ -343,4 +344,19 @@
 
 .friends-link-active:hover {
   opacity: 1;
+}
+
+.extra-servers {
+  color: hsla(0,0%,100%,.6);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+  align-items: center;
+  border: 2px solid hsla(0,0%,100%,.1);
+  border-radius: 50%;
+  box-sizing: border-box;
 }

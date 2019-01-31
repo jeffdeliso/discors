@@ -384,36 +384,6 @@
   top: 3px;
 }
 
-.text-area {
-  height: auto;
-  border: none;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  letter-spacing: -0.025rem;
-  line-height: 1.25rem;
-  margin: 2px 2px 2px 0;
-  max-height: 144px;
-  min-height: 20px;
-  padding: 10px;
-  resize: none;
-  width: 100%;
-  color: hsla(0,0%,100%,.7);
-  border-radius: 5px;
-  background-color: rgba(114,118,125,.3);
-}
-
-.message-form {
-  display: flex;
-  position: relative;
-  flex-shrink: 0;
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: #36393f;
-  border-top: 1px solid hsla(0,0%,100%,.06);
-  margin-bottom: 30px;
-  padding-top: 20px;
-}
-
 .message-list {
   width: 100%;
   padding-top: 20px;
