@@ -1,5 +1,4 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
 import { withRouter } from 'react-router-dom';
 import UserPopup from '../modal/user_popup_container';
 

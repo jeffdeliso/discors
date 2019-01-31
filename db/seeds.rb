@@ -201,7 +201,16 @@ lysa.avatar.attach(io: lysafile, filename: 'lysa.jpg')
 ServerMembership.create!(user_id: lysa.id, server_id: arryn.id)
 ServerMembership.create!(user_id: lysa.id, server_id: tully.id)
 
+Friendship.create!(user_id: hodor.id, friend_id: bran.id)
+Friendship.create!(user_id: hodor.id, friend_id: arya.id)
+Friendship.create!(user_id: hodor.id, friend_id: ned.id)
+Friendship.create!(user_id: hodor.id, friend_id: sansa.id)
+Friendship.create!(user_id: hodor.id, friend_id: jon.id)
+Friendship.create!(user_id: hodor.id, friend_id: catelyn.id)
 
+FriendRequest.create!(user_id: joffrey.id, friend_id: hodor.id)
+FriendRequest.create!(user_id: reek.id, friend_id: hodor.id)
+FriendRequest.create!(user_id: daenerys.id, friend_id: hodor.id)
 
 stark.channels.create!(name: 'General')
 targaryen.channels.create!(name: 'General')

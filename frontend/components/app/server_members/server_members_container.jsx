@@ -5,9 +5,10 @@ import { fetchMembers } from '../../../actions/server_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const server = state.entities.servers[ownProps.match.params.serverId] || {};
   return {
-    server: state.entities.servers[ownProps.match.params.serverId] || {},
-    members: Object.values(state.entities.users),
+    server,
+    members: Object.values(state.entities.users).filter(user => user.servers.includes(server.id)),
     currentUser: state.entities.users[state.session.id],
   };
 };
