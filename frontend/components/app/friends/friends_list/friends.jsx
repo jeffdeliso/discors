@@ -23,6 +23,17 @@ class Friends extends React.Component {
       <div className="friends-scroll-wrapper">
         <ul>
           {friends}
+          {friends.length === 0 ? (this.props.allFriends ? (
+            <div className="empty-container">
+              <div className="no-friends empty"></div>
+              <h4>Wumpus has no friends. You could though!</h4>
+            </div>
+          ) : (
+              <div className="empty-container">
+                <div className="online empty"></div>
+                <h4>No one's around to play with Wumpus.</h4>
+              </div>
+            )) : null}
         </ul>
       </div>
     )

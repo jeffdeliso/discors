@@ -360,3 +360,46 @@
   border-radius: 50%;
   box-sizing: border-box;
 }
+
+.empty {
+  flex: 0 [1 auto;
+  width: 415px;
+  height: 200px;
+  background-size: 100% 100%;
+  margin-bottom: 40px;
+  }]
+
+.online {
+ background-image: image_url('main/online-empty.svg');
+}
+
+.pending {
+  background-image: image_url('main/pending-empty.svg');
+}
+
+.no-friends {
+  background-image: image_url('main/friendless.svg');
+}
+
+.empty-container {
+  flex: 1 1 auto;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.empty-container h4 {
+  font-size: 16px;
+  line-height: 20px;
+  color: #72767d;
+  text-align: center;
+  margin-top: 8px;
+  font-family: main2;
+}

@@ -40,10 +40,17 @@ class PendingFriends extends React.Component {
 
     return (
       <div className="friends-scroll-wrapper">
-          <ul>
-            {incomingFriends}
-            {outgoingFriends}
-          </ul>
+        <ul>
+          {incomingFriends}
+          {outgoingFriends}
+          {incomingFriends.length === 0 && outgoingFriends.length === 0 ?
+            <div className="empty-container">
+              <div className="pending empty"></div>
+              <h4>There are no pending friend requests. Here's a Wumpus for now.</h4>
+            </div>
+            : null}
+
+        </ul>
       </div>
     )
   }

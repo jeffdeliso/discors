@@ -57,9 +57,6 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    // App.cable.subscriptions.subscriptions.forEach(subscription => {
-    //   App.cable.subscriptions.remove(subscription);
-    // });
     this.subscription.unsubscribe();
   }
 
