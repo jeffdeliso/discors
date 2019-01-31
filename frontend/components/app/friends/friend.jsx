@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { intersection } from 'lodash';
 import Tooltip from '../modal/tooltip';
+import MutualServer from './mutual_server';
+
 
 class Friend extends React.Component {
   constructor(props) {
@@ -25,8 +28,16 @@ class Friend extends React.Component {
   }
 
   render() {
+    const mutualServers = intersection(this.props.currentUser.servers, this.props.user.servers).map((serverId, idx) => {
+      const server = this.props.servers[serverId];
+      return <MutualServer server={server} />;
+    });
+
     return (
-      <li className="friend-container" onClick={this.handleClickParent}>
+      <li className="friend-container"
+        onClick={this.handleClickParent}
+        style={this.props.first ? { borderColor: 'transparent' } : {}}
+      >
         <div className="friend-name-container">
           <div className="friend-icon" style={this.props.user.image_url ? { backgroundImage: `url(${this.props.user.image_url})` } : {}}></div>
           <h4>{this.props.user.username}</h4>
@@ -37,6 +48,9 @@ class Friend extends React.Component {
             style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
           ></div>
           <h4>{this.props.status}</h4>
+        </div>
+        <div className="mutual-servers-container">
+          {mutualServers}
         </div>
         <div className="friend-accept-reject">
           {this.props.status === 'Incoming friend request' ?
@@ -54,7 +68,7 @@ class Friend extends React.Component {
             ></button>
           }
             position="top center"
-            text={this.props.status.includes('request') ? (this.props.status.includes('Outgoing') ? "Cancel" : "Reject") : "Remove Friend"}
+            text={this.props.status.includes('request') ? (this.props.status.includes('Outgoing') ? "Cancel" : "Ignore") : "Remove Friend"}
           />
 
         </div>

@@ -13,6 +13,9 @@ class Friends extends React.Component {
         reject={() => this.props.deleteFriend(friend.id)}
         createDmChannel={this.props.createDmChannel}
         status={friend.online ? 'Online' : 'Offline'}
+        first={idx === 0}
+        currentUser={this.props.currentUser}
+        servers={this.props.servers}
       />;
     });
 

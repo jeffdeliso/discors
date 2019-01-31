@@ -16,6 +16,8 @@ const mapStateToProps = (state, ownProps) => {
     users: state.entities.users,
     incomingRequests,
     outgoingRequests,
+    currentUser: state.entities.users[state.session.id],
+    servers: state.entities.servers
   };
 };
 

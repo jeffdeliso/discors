@@ -23,7 +23,7 @@
 }
 
 .friends-servers {
-  width: 100%;
+  width: 200px;;
 }
 
 .friends-status {
@@ -135,6 +135,7 @@
   font-family: main3;
   height: 62px;
   cursor: pointer;
+  
 }
 
 .friend-name-container {
@@ -173,7 +174,18 @@
   font-family: main2;
 }
 
-.friend-status-container h4 {
+.friend-servers-container {
+  width: 225px;
+  color: hsla(0,0%,100%,.4);
+  margin-left: 41px;
+  font-weight: 400;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  font-family: main2;
+}
+
+.friend-servers-container h4 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -187,6 +199,10 @@
   margin-right: 20px;
   border-radius: 3px;
   box-shadow: 0 2px 1px 0 rgba(0,0,0,.1);
+}
+
+.friend-container:hover +.friend-container {
+  border-color: transparent;
 }
 
 .accept-friend {
@@ -284,4 +300,23 @@
   margin-right: 18px;
   width: 24px;
   color: #fff;
+}
+
+.mutual-server {
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+  background-clip: padding-box;
+  background-position: 50%;
+  background-size: 100% 100%;
+  position: relative;
+  margin-right: 6px;
+}
+
+.mutual-servers-container {
+  margin-left: 41px;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  width: 200px;
 }

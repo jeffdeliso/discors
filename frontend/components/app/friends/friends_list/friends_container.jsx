@@ -10,6 +10,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     friends,
+    currentUser: state.entities.users[state.session.id],
+    servers: state.entities.servers
   };
 };
 

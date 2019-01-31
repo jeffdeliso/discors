@@ -36,7 +36,7 @@ class FriendsMain extends React.Component {
                 <div className="friends-column-separator"></div>
                 <div className="friends-column friends-status">Status</div>
                 <div className="friends-column-separator"></div>
-                <div className="friends-column friends-servers"></div>
+                <div className="friends-column friends-servers">Mutual Servers</div>
                 <div className="friends-column-separator"></div>
                 <div className="friends-actions"></div>
               </div>
