@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Tooltip from '../modal/tooltip';
 
 class Friend extends React.Component {
   constructor(props) {
@@ -38,8 +39,24 @@ class Friend extends React.Component {
           <h4>{this.props.status}</h4>
         </div>
         <div className="friend-accept-reject">
-          {this.props.status === 'Incoming friend request' ? <button className="accept-friend" onClick={this.handleAccept}></button> : null}
-          <button className="reject-friend" onClick={this.handleReject}></button>
+          {this.props.status === 'Incoming friend request' ?
+            <Tooltip component={
+              <button className="accept-friend" onClick={this.handleAccept}></button>
+            }
+              position="top center"
+              text='Accept'
+            />
+            : null}
+          <Tooltip component={
+            <button
+              className={this.props.status.includes('request') ? "reject-friend" : "remove-friend"}
+              onClick={this.handleReject}
+            ></button>
+          }
+            position="top center"
+            text={this.props.status.includes('request') ? (this.props.status.includes('Outgoing') ? "Cancel" : "Reject") : "Remove Friend"}
+          />
+
         </div>
       </li>
     )
