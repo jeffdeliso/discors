@@ -44,6 +44,12 @@ export const deleteChannel = (id) => dispatch => (
   ))
 );
 
+export const deleteDmChannel = (id) => dispatch => (
+  APIUtil.deleteDmChannel(id).then((membership) => (
+    dispatch(removeChannel(membership.channel_id))
+  ))
+);
+
 export const fetchDmChannels = () => dispatch => (
   APIUtil.fetchDmChannels().then(({channels, users}) => {
     dispatch(receiveUsers(users));

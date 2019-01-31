@@ -320,3 +320,27 @@
   flex-shrink: 0;
   width: 200px;
 }
+
+.friends-link {
+  display: flex;
+  flex: 0 0 auto;
+  height: 48px;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
+  opacity: .4;
+}
+
+.friends-link:hover {
+  opacity: .75;
+}
+
+.friends-link-active {
+  opacity: 1;
+}
+
+.friends-link-active:hover {
+  opacity: 1;
+}

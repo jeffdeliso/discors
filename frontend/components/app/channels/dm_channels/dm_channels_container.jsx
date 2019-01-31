@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../../../../actions/session_actions';
 import DMChannels from './dm_channels';
 import { connect } from 'react-redux';
-import { fetchDmChannels } from '../../../../actions/channel_actions';
+import { fetchDmChannels, deleteDmChannel } from '../../../../actions/channel_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchDmChannels: () => dispatch(fetchDmChannels()),
     logout: () => dispatch(logout()),
+    deleteDmChannel: id => dispatch(deleteDmChannel(id)),
   };
 };
 

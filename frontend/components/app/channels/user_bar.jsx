@@ -62,7 +62,7 @@ class UserBar extends React.Component {
               display: 'flex',
               flexDirection: 'column',
               backgroundColor: '#37393f',
-              border: 'none'
+              border: 'none',
             }
           }}
         >

@@ -28,6 +28,13 @@ export const deleteChannel = id => (
   })
 );
 
+export const deleteDmChannel = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `/api/dm_channel_memberships/${id}`,
+  })
+);
+
 export const fetchChannels = (server_id) => (
   $.ajax({
     method: 'GET',
@@ -42,3 +49,4 @@ export const fetchDmChannels = () => (
     url: '/api/channels/dm_index',
   })
 );
+

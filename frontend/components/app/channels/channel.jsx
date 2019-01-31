@@ -8,7 +8,7 @@ class Channel extends React.Component {
     this.state = { active: false };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleMouseEnter() {
