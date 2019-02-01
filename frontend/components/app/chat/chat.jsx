@@ -19,11 +19,11 @@ class Chat extends React.Component {
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
-    if (channelId && prevProps.channelId !== this.props.match.params.channelId) {
+    if (channelId && prevProps.channelId !== channelId) {
       this.subscription.unsubscribe();
       this.subscribe(channelId);
-      this.bottom.current.scrollIntoView();
     }
+    this.bottom.current.scrollIntoView();
   }
 
   subscribe(channelId) {
