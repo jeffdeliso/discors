@@ -69,10 +69,9 @@ class Chat extends React.Component {
         />
       );
     });
+
     let emptyMessage;
-    if (this.props.channelId == this.props.server.root_channel) {
-      emptyMessage = (
-        <div className="welcome-message">
+    if (this.props.channel.name === "general") {
           <h2>{`welcome to the server, ${this.props.currentUser.username}!`}</h2>
           <div>
             <div className="server-welcome-item">
@@ -85,7 +84,7 @@ class Chat extends React.Component {
             </div>
             <div className="server-welcome-item">
               <div className="phone-icon"></div>
-              <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/">LinkedIn</a> or send an email to <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a></p>
+              <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/">LinkedIn</a> or send me an email at <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a>!</p>
             </div>
           </div>
           <div className="empty-chat">

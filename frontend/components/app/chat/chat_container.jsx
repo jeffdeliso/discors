@@ -8,8 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     channelId,
     users: state.entities.users,
-    channel: state.entities.channels[channelId],
-    server: state.entities.servers[ownProps.match.params.serverId] || {},
+    channel: state.entities.channels[channelId] || {},
   };
 };
 
