@@ -44,7 +44,9 @@ class VoiceChannel extends React.Component {
     if (this.props.select) {
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
         this.localstream = stream;
-      }).then(() => this.handleJoinSession());
+      }).then(() => {
+        if (this.localstream) this.handleJoinSession();
+      });
     }
   }
 
@@ -213,8 +215,8 @@ class VoiceChannel extends React.Component {
 
   render() {
     return (
-      <div 
-        className={this.props.selected ? "channel voice-selected" : "channel"} 
+      <div
+        className={this.props.selected ? "channel voice-selected" : "channel"}
         onClick={this.handleClick} ref={this.remoteAudioContainer}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
