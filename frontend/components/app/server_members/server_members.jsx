@@ -62,9 +62,9 @@ class ServerMembers extends React.Component {
           <div className="server-members-container">
             <h3>ADMIN</h3>
             {adminEl}
-            {online.length > 0 ? <h3>{`ONLINE—${online.length - adminOnline}`}</h3> : null}
+            {online.length - adminOnline > 0 ? <h3>{`ONLINE—${online.length - adminOnline}`}</h3> : null}
             {onlineMembers}
-            {offline.length > 0 ? <h3>{`OFFLINE—${offline.length - adminOffline}`}</h3> : null}
+            {offline.length - adminOffline > 0 ? <h3>{`OFFLINE—${offline.length - adminOffline}`}</h3> : null}
             {offlineMembers}
           </div>
         </div>

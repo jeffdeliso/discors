@@ -327,12 +327,15 @@
   opacity: .6;
   width: 16;
   height: 16;
+  flex-shrink: 0;
 }
 
 .channel-name {
   font-size: 16px;
   font-weight: 500;
   line-height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .selected {
@@ -632,7 +635,8 @@
   opacity: .3;
   width: 18px;
   justify-self: end;
-  margin-left: auto
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .delete-channel-button:hover {
