@@ -72,6 +72,8 @@ class Chat extends React.Component {
 
     let emptyMessage;
     if (this.props.channel.name === "general") {
+      emptyMessage = (
+        <div className="welcome-message">
           <h2>{`welcome to the server, ${this.props.currentUser.username}!`}</h2>
           <div>
             <div className="server-welcome-item">
@@ -80,7 +82,7 @@ class Chat extends React.Component {
             </div>
             <div className="server-welcome-item">
               <div className="comp-icon"></div>
-              <p><strong>See</strong> the Discors github repo <a href="https://github.com/jeffdeliso">here!</a></p>
+              <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso">here!</a></p>
             </div>
             <div className="server-welcome-item">
               <div className="phone-icon"></div>
