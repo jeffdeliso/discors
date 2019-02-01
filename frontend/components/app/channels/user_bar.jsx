@@ -26,7 +26,12 @@ class UserBar extends React.Component {
         <div className="user-actions">
           <div className="icon-name-wrapper">
             <Tooltip component={
-              <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }} onClick={this.handleOpenUserModal}></div>
+              <div className="user-icon" style={{ backgroundImage: `url(${this.props.currentUser.image_url})` }} onClick={this.handleOpenUserModal}>
+                <div
+                  className="server-member-status-indicator"
+                  style={this.props.currentUser.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
+                ></div>
+              </div>
             }
               position="top center"
               text="Update Profile"

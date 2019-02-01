@@ -10,7 +10,7 @@ class ServerMember extends React.Component {
             <div className="server-member-img" style={this.props.user.image_url ? { backgroundImage: `url(${this.props.user.image_url})` } : {}}>
               <div 
                 className="server-member-status-indicator"
-              style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
+                style={this.props.user.online ? { backgroundColor: '#43b581' } : { backgroundColor: '#747f8d' }}
               ></div>
             </div>
           <span>{this.props.user.username}</span>

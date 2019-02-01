@@ -9,7 +9,9 @@ class MessageForm extends React.Component {
       body: "",
       author_id: props.user.id,
     };
+    this.messageInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+
     // this.handleFile = this.handleFile.bind(this);
   }
 
@@ -17,6 +19,17 @@ class MessageForm extends React.Component {
     return e => this.setState({ body: e.currentTarget.value });
   }
 
+  componentDidMount() {
+    this.messageInput.current.focus();
+  }
+
+  componentDidUpdate(prevProps) {
+    const channelId = this.props.match.params.channelId;
+
+    if (prevProps.channel && prevProps.channel.id !== channelId) {
+      this.messageInput.current.focus();
+    }
+  }
   // handleSubmit(e) {
   //   e.preventDefault();
 
@@ -75,6 +88,7 @@ class MessageForm extends React.Component {
             className="text-area"
             value={this.state.body}
             onChange={this.update()}
+            ref={this.messageInput}
           ></input>
         </div>
       </form>
