@@ -12,7 +12,7 @@ class ChatChannel < ApplicationCable::Channel
   end
   def load(data)
     channel = Channel.find(data['channelId'])
-    messages = channel.messages.reverse
+    messages = channel.messages
     socket = { messages: messages, type: 'messages' }
     ChatChannel.broadcast_to(channel, socket)
   end
