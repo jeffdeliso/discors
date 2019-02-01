@@ -60,9 +60,9 @@ class MessageForm extends React.Component {
 
   render() {
     let placeholder = '';
-    if (this.props.channel && this.props.match.params.serverId) {
+    if (this.props.channel.name && this.props.match.params.serverId) {
       placeholder = `Message #${this.props.channel.name}`;
-    } else if (this.props.channel) {
+    } else if (this.props.channel.name) {
       const nameArr = this.props.channel.name.split('-');
       let userId;
       if (nameArr[0] == this.props.user.id) {

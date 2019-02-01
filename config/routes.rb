@@ -11,12 +11,11 @@ Rails.application.routes.draw do
         get 'members'
       end
     end
-    resources :channels, only: [:create, :show, :index, :destroy] do
-      collection do
-        post 'dm_create'
-        get 'dm_index'
-      end
-    end
+
+
+    post '/channels/dm_create', to: 'channels#dm_create'
+    get '/channels/dm_index', to: 'channels#dm_index'
+    resources :channels, only: [:create, :show, :index, :destroy]
     resources :audio_channels, only: [:create, :show, :index, :destroy] 
     resources :friend_requests, only: [:create, :destroy, :update, :index]
     resources :friends, only: [:destroy, :index]

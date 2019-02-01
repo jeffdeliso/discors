@@ -70,7 +70,7 @@ class Chat extends React.Component {
       );
     });
 
-    let emptyMessage;
+    let emptyMessage = null;
     if (this.props.channel.name === "general") {
       emptyMessage = (
         <div className="welcome-message">
@@ -94,9 +94,9 @@ class Chat extends React.Component {
         </div>
       )
     } else {
-      if (this.props.channel && this.props.match.params.serverId) {
+      if (this.props.channel.name && this.props.match.params.serverId) {
         emptyMessage = <div className="empty-chat"><h4>Welcome to the beginning of the <strong>{`#${this.props.channel.name}`}</strong> channel.</h4></div>;
-      } else if (this.props.channel) {
+      } else if (this.props.channel.name) {
         const nameArr = this.props.channel.name.split('-');
         let userId;
         if (nameArr[0] == this.props.currentUser.id) {
