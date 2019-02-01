@@ -467,7 +467,7 @@
   font-family: main2;
 }
 
-.message span {
+.message p {
   font-size: 0.9375rem;
   line-height: 1.3;
   user-select: text;
@@ -476,8 +476,13 @@
   color: #dcddde;
   font-family: main2;
   padding-top: 5px;
+  display: flex;
+  word-break: break-all;
 }
 
+.message-p-wrapper {
+  display: block;
+}
 .username-message {
   display: flex;
   flex-direction: column;

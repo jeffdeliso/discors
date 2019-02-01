@@ -35,7 +35,9 @@ class Message extends React.Component {
             />
             <h5>{this.parseDate()}</h5>
           </div>
-          <span>{this.props.message.body}</span>
+          <div className="message-p-wrapper">
+            <p>{this.props.message.body}</p>
+          </div>
         </div>
       </div>
     );
