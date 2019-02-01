@@ -20,6 +20,7 @@ class Chat extends React.Component {
     const channelId = this.props.match.params.channelId;
 
     if (channelId && prevProps.channelId !== channelId) {
+      this.setState({messages: []});
       this.subscription.unsubscribe();
       this.subscribe(channelId);
     }
