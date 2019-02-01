@@ -27,7 +27,7 @@ class JoinServerForm extends React.Component {
 
   handleRedirect(action) {
     this.props.closeModal();
-    this.props.history.push(`/channels/${action.server.id}`);
+    this.props.history.push(`/channels/${action.server.id}/${action.server.root_channel}`);
   }
 
 
