@@ -22,8 +22,8 @@ class Chat extends React.Component {
     if (channelId && prevProps.channelId !== this.props.match.params.channelId) {
       this.subscription.unsubscribe();
       this.subscribe(channelId);
+      this.bottom.current.scrollIntoView();
     }
-    this.bottom.current.scrollIntoView();
   }
 
   subscribe(channelId) {

@@ -5,7 +5,7 @@ class MeHeader extends React.Component {
 
   render() {
     let title;
-    if (this.props.channel) {
+    if (this.props.channel.name) {
       const nameArr = this.props.channel.name.split('-');
       let userId;
       if (nameArr[0] == this.props.currentUser.id) {

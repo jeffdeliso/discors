@@ -12,7 +12,6 @@ Rails.application.routes.draw do
       end
     end
 
-
     post '/channels/dm_create', to: 'channels#dm_create'
     get '/channels/dm_index', to: 'channels#dm_index'
     resources :channels, only: [:create, :show, :index, :destroy]
