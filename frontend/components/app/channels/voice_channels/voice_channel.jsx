@@ -42,17 +42,15 @@ class VoiceChannel extends React.Component {
 
   componentDidMount() {
     if (this.props.select) {
-      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+      ({ audio: true }).then(stream => {
         this.localstream = stream;
-      }).then(() => {
-        if (this.localstream) this.handleJoinSession();
-      });
+      }).then(() => this.handleJoinSession());
     }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.selected && !this.props.selected) {
-      this.handleLeaveSession();
+      if (this.voiceSession) this.handleLeaveSession();
     } else if (!prevProps.selected && this.props.selected) {
       if (this.voiceSession) this.handleLeaveSession();
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
