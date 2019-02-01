@@ -78,7 +78,7 @@ class Chat extends React.Component {
           <div>
             <div className="server-welcome-item">
               <div className="exclamation-icon"></div>
-              <p><strong>Discors</strong> is a clone of the awesone Discord app! This site is purely for educational purposes.</p>
+              <p><strong>Discors</strong> is a clone of the awesome Discord app! This site is purely for educational purposes.</p>
             </div>
             <div className="server-welcome-item">
               <div className="comp-icon"></div>
