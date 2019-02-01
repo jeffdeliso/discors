@@ -103,6 +103,7 @@
   height: 95px;
   justify-content: flex-end;
   padding-bottom: 14px;
+  width: 100%;
 }
 
 .empty-chat h4 {
@@ -115,4 +116,69 @@
 }
 .empty-chat strong {
     font-family: main5;
+}
+
+.welcome-message {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.welcome-message h2 {
+  color: #7289da;
+  font-size: 18px;
+  font-family: main5;
+  line-height: 8px;
+  margin: 15px 0 30px;
+  text-transform: uppercase;
+}
+
+.server-welcome-item {
+  display: flex;
+  flex-direction: row;
+  height: 73px;
+}
+
+.exclamation-icon {
+  background: image_url('main/exclamation.svg') 50% no-repeat;
+  height: 50px;
+  width: 50px;
+}
+
+.comp-icon {
+  background: image_url('main/welcome-phone.svg') 50% no-repeat;
+  height: 50px;
+  width: 50px;
+}
+
+.phone-icon {
+  background: image_url('main/welcome-comp.svg') 50% no-repeat;
+  height: 50px;
+  width: 50px;
+}
+
+.server-welcome-item p {
+  color: #87909c;
+  font-size: 15px;
+  line-height: 150%;
+  margin-bottom: 20px;
+  margin-left: 22px;
+  margin-top: 9px;
+  width: 334px;
+  font-family: main2;
+}
+
+.server-welcome-item strong {
+  font-family: main5;
+}
+
+.server-welcome-item a {
+  color: #0096cf;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.server-welcome-item a:hover {
+  text-decoration: underline;
 }

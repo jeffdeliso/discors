@@ -4,7 +4,7 @@ class Api::ServersController < ApplicationController
 
     if @server.save
       current_user.server_memberships.create!(server_id: @server.id)
-      @server.channels.create!(name: 'General')
+      @server.channels.create!(name: 'general')
       @server.audio_channels.create!(name: 'General')
       render "api/servers/show"
     else

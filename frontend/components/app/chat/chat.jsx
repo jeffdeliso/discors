@@ -69,29 +69,52 @@ class Chat extends React.Component {
         />
       );
     });
-
     let emptyMessage;
-    if (this.props.channel && this.props.match.params.serverId) {
-      emptyMessage = <h4>Welcome to the beginning of the <strong>{`#${this.props.channel.name}`}</strong> channel.</h4>;
-    } else if (this.props.channel) {
-      const nameArr = this.props.channel.name.split('-');
-      let userId;
-      if (nameArr[0] == this.props.currentUser.id) {
-        userId = nameArr[1];
-      } else {
-        userId = nameArr[0];
+    if (this.props.channelId == this.props.server.root_channel) {
+      emptyMessage = (
+        <div className="welcome-message">
+          <h2>{`welcome to the server, ${this.props.currentUser.username}!`}</h2>
+          <div>
+            <div className="server-welcome-item">
+              <div className="exclamation-icon"></div>
+              <p><strong>Discors</strong> is a clone of the awesone Discord app! This site is purely for educational purposes.</p>
+            </div>
+            <div className="server-welcome-item">
+              <div className="comp-icon"></div>
+              <p><strong>See</strong> the Discors github repo <a href="https://github.com/jeffdeliso">here!</a></p>
+            </div>
+            <div className="server-welcome-item">
+              <div className="phone-icon"></div>
+              <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/">LinkedIn</a> or send an email to <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a></p>
+            </div>
+          </div>
+          <div className="empty-chat">
+          </div>
+        </div>
+      )
+    } else {
+      if (this.props.channel && this.props.match.params.serverId) {
+        emptyMessage = <div className="empty-chat"><h4>Welcome to the beginning of the <strong>{`#${this.props.channel.name}`}</strong> channel.</h4></div>;
+      } else if (this.props.channel) {
+        const nameArr = this.props.channel.name.split('-');
+        let userId;
+        if (nameArr[0] == this.props.currentUser.id) {
+          userId = nameArr[1];
+        } else {
+          userId = nameArr[0];
+        }
+        emptyMessage = emptyMessage = <div className="empty-chat"><h4>This is the beginning of your direct message history with <strong>{`@${this.props.users[userId].username}`}</strong></h4></div>;;
       }
-      emptyMessage = emptyMessage = <h4>This is the beginning of your direct message history with <strong>{`@${this.props.users[userId].username}`}</strong></h4>;;
     }
+
+
 
     return (
       <div className="chat-main">
         <div className="message-wrapper">
           <div className="message-scroll-wrapper">
             <div className="message-list">
-              <div className="empty-chat">
-                {emptyMessage}
-              </div>
+              {emptyMessage}
               {messageList}
               <div ref={this.bottom} />
             </div>
