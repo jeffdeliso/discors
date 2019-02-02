@@ -5,11 +5,25 @@ import { Route, Switch } from 'react-router-dom';
 import MeRoute from './app_routes/me_route';
 import { connect } from 'react-redux';
 import { fetchCurrentUserData } from '../../actions/session_actions';
+import LoadingScreen from './loading_screen';
 
 class AppRoot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: false }
+  }
+  componentWillMount() {
+    this.setState({ loading: 'connecting' });
+  }
+
   componentDidMount() {
     document.body.style = "overflow: hidden;";
-    this.props.fetchCurrentUserData();
+    this.props.fetchCurrentUserData().then(() => {
+      this.setState({ loading: 'ready' });
+      setTimeout(() => {
+        this.setState({ loading: false });
+      }, 1000);
+    });
   }
 
   componentWillUnmount() {
@@ -19,6 +33,7 @@ class AppRoot extends React.Component {
   render() {
     return (
       <div className="main-body">
+        {this.state.loading ? <LoadingScreen text={this.state.loading} /> : null}
         <Servers />
         <Switch >
           <Route path="/channels/@me/:channelId" component={MeRoute} />
@@ -40,5 +55,4 @@ const mapDispatchToProps = dispatch => {
 
 
 export default connect(null, mapDispatchToProps)(AppRoot);
-
 

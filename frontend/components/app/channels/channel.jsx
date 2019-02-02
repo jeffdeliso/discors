@@ -25,9 +25,10 @@ class Channel extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
+    const that = this;
     this.props.deleteChannel().then(() => {
-      if (this.props.channel.id == this.props.match.params.channelId) {
-        this.props.history.push(`/channels/${this.props.server.id}/${this.props.server.root_channel}`);
+      if (that.props.channel.id == that.props.match.params.channelId) {
+        that.props.history.push(`/channels/${that.props.server.id}/${that.props.server.root_channel}`);
       }
     });
   }

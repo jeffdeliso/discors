@@ -20,9 +20,10 @@ class DmChannel extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
+    const that = this;
     this.props.deleteDmChannel().then(() => {
-      if (this.props.channel.id == this.props.match.params.channelId) {
-        this.props.history.push(`/channels/@me`);
+      if (that.props.channel.id == that.props.match.params.channelId) {
+        that.props.history.push(`/channels/@me`);
       }
     });
   }
