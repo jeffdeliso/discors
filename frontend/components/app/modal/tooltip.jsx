@@ -26,7 +26,8 @@ class Tooltip extends React.Component {
           border: 'none',
           fontSize: '14px',
           display: 'flex',
-          padding: '10px',
+          padding: '8px 10px',
+          pointerEvents: 'none',
         }}
       >
         <div>{this.props.text}</div>

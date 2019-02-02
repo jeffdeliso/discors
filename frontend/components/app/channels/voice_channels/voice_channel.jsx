@@ -19,19 +19,21 @@ class VoiceChannel extends React.Component {
   }
 
   handleMouseEnter() {
-    if (this.props.currentUserId === this.props.server.admin_id) {
+    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
       this.setState({ active: true });
     }
   }
 
   handleMouseLeave() {
-    if (this.props.currentUserId === this.props.server.admin_id) {
+    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
       this.setState({ active: false });
     }
   }
 
   handleDelete(e) {
     e.stopPropagation();
+    if (this.voiceSession) this.handleLeaveSession();
+    this.props.leaveVoiceChannel();
     this.props.deleteVoiceChannel();
   }
 
@@ -204,7 +206,7 @@ class VoiceChannel extends React.Component {
   }
 
   logError(error) {
-    console.warn("Whoops! Error:", error);
+    console.warn(error);
   }
 
   joinRoom(data) {

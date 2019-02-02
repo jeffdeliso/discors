@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import Tooltip from '../modal/tooltip';
 
 class Channel extends React.Component {
@@ -12,20 +12,24 @@ class Channel extends React.Component {
   }
 
   handleMouseEnter() {
-    if (this.props.currentUser.id === this.props.server.admin_id) {
+    if (this.props.channel.name !== 'general' && this.props.currentUser.id === this.props.server.admin_id) {
       this.setState({ active: true });
     }
   }
 
   handleMouseLeave() {
-    if (this.props.currentUser.id === this.props.server.admin_id) {
+    if (this.props.channel.name !== 'general' && this.props.currentUser.id === this.props.server.admin_id) {
       this.setState({ active: false });
     }
   }
 
   handleDelete(e) {
     e.preventDefault();
-    this.props.deleteChannel();
+    this.props.deleteChannel().then(() => {
+      if (this.props.channel.id == this.props.match.params.channelId) {
+        this.props.history.push(`/channels/${this.props.server.id}/${this.props.server.root_channel}`);
+      }
+    });
   }
 
   render() {
@@ -53,4 +57,6 @@ class Channel extends React.Component {
   };
 };
 
-export default Channel;
+
+
+export default withRouter(Channel);

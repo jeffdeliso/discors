@@ -17,7 +17,6 @@ class Splash extends React.Component {
         <header className="splash-header">
           <nav className="splash-nav">
             <img src="https://s3.amazonaws.com/discors-dev/Splash/discors.svg" className="discorLogo" alt=""></img>
-
             <ul className="rightNav">
               <li>
                 <a href="https://github.com/jeffdeliso">

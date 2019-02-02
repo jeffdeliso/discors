@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import Tooltip from '../../modal/tooltip';
 
 class DmChannel extends React.Component {
   constructor(props) {
@@ -21,7 +20,11 @@ class DmChannel extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.props.deleteDmChannel().then(() => this.props.history.push(`/channels/@me`));
+    this.props.deleteDmChannel().then(() => {
+      if (this.props.channel.id == this.props.match.params.channelId) {
+        this.props.history.push(`/channels/@me`);
+      }
+    });
   }
 
   render() {
