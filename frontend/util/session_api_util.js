@@ -6,6 +6,13 @@ export const login = user => (
   })
 );
 
+export const fetchCurrentUserData = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/users/data',
+  })
+);
+
 export const signup = user => (
   $.ajax({
     method: 'POST',

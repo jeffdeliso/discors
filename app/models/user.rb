@@ -32,6 +32,10 @@ class User < ApplicationRecord
     through: :server_memberships,
     source: :server
 
+  has_many :server_users,
+    through: :servers,
+    source: :members
+
   has_many :channels,
     through: :servers,
     source: :channels

@@ -46,10 +46,16 @@ export const removeErrors = errors => ({
 });
 
 export const login = user => dispatch => (
-  APIUtil.login(user).then(userData => (
-    dispatch(receiveCurrentUserData(userData))
+  APIUtil.login(user).then(user => (
+    dispatch(receiveCurrentUser(user))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
+export const fetchCurrentUserData = () => dispatch => (
+  APIUtil.fetchCurrentUserData().then(userData => (
+    dispatch(receiveCurrentUserData(userData))
   ))
 );
 
