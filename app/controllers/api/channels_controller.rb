@@ -19,27 +19,6 @@ class Api::ChannelsController < ApplicationController
     render :index
   end
 
-  def dm_create
-    unless current_user.id == params[:user_id].to_i
-      name = current_user.id > params[:user_id].to_i ? "#{params[:user_id]}-#{current_user.id}" : "#{current_user.id}-#{params[:user_id]}"
-      @channel = Channel.find_or_create_by(name: name)
-      @channel.dm_memberships.create(user_id: current_user.id)
-      @channel.dm_memberships.create(user_id: params[:user_id])
-      render "api/channels/show"
-    else
-      render json: ['Cannot DM yourself'], status: 401
-    end
-  end
-
-  def dm_index
-    @channels = current_user.dm_channels
-    @users = current_user.dm_users.includes(:sessions, :server_memberships)
-    @friends = current_user.friends.includes(:sessions, :server_memberships)
-    @pending_friends = current_user.pending_friends.includes(:sessions, :server_memberships)
-    @incoming_friends = current_user.incoming_friends.includes(:sessions, :server_memberships)
-    render "api/channels/dm_index"
-  end
-
   def destroy
     current_channel.destroy
     render "api/channels/show"

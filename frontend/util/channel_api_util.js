@@ -9,8 +9,8 @@ export const createChannel = channel => (
 export const createDmChannel = user_id => (
   $.ajax({
     method: 'POST',
-    url: '/api/channels/dm_create',
-    data: { user_id }
+    url: '/api/dm_channel_memberships',
+    data: {dm_channel: { user_id }}
   })
 );
 
@@ -46,7 +46,7 @@ export const fetchChannels = (server_id) => (
 export const fetchDmChannels = () => (
   $.ajax({
     method: 'GET',
-    url: '/api/channels/dm_index',
+    url: '/api/dm_channel_memberships',
   })
 );
 
