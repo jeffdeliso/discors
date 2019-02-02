@@ -7,10 +7,12 @@ import { fetchFriends, fetchFriendRequests } from '../../../actions/friends_acti
 
 
 const mapStateToProps = (state, ownProps) => {
+  const serverId = ownProps.match.params.serverId;
+  const channels = Object.values(state.entities.channels).filter(channel => channel.server_id == serverId);
   return {
     currentUser: state.entities.users[state.session.id],
-    server: state.entities.servers[ownProps.match.params.serverId] || {},
-    channels: Object.values(state.entities.channels),
+    server: state.entities.servers[serverId] || {},
+    channels,
     errors: state.errors.channel,
   };
 };

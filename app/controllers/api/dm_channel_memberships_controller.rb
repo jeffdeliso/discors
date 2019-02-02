@@ -25,9 +25,6 @@ class Api::DmChannelMembershipsController < ApplicationController
   def index
     @channels = current_user.dm_channels
     @users = current_user.dm_users.includes(:sessions, :server_memberships)
-    @friends = current_user.friends.includes(:sessions, :server_memberships)
-    @pending_friends = current_user.pending_friends.includes(:sessions, :server_memberships)
-    @incoming_friends = current_user.incoming_friends.includes(:sessions, :server_memberships)
     render "api/channels/dm_index"
   end
 

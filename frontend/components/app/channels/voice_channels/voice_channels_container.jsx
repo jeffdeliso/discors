@@ -6,10 +6,12 @@ import { removeChannelErrors } from '../../../../actions/channel_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const serverId = ownProps.match.params.serverId;
+  const voiceChannels = Object.values(state.entities.voiceChannels).filter(channel => channel.server_id == serverId);
   return {
     currentUser: state.entities.users[state.session.id],
-    server: state.entities.servers[ownProps.match.params.serverId] || {},
-    voiceChannels: Object.values(state.entities.voiceChannels),
+    server: state.entities.servers[serverId] || {},
+    voiceChannels,
     errors: state.errors.channel,
   };
 };

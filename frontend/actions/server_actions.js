@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/server_api_utl';
+import { receiveFriendRequests } from './friends_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -43,9 +44,10 @@ export const fetchServers = () => dispatch => (
 );
 
 export const fetchMembers = (id) => dispatch => (
-  APIUtil.fetchMembers(id).then(users => (
-    dispatch(receiveUsers(users))
-  ))
+  APIUtil.fetchMembers(id).then(({users, requests}) => {
+    dispatch(receiveFriendRequests(requests));
+    return dispatch(receiveUsers(users));
+  })
 );
 
 export const createServer = (formData) => dispatch => (

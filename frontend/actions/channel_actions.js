@@ -17,6 +17,11 @@ export const receiveChannel = channel => ({
   channel
 });
 
+export const receiveDmChannel = channel => ({
+  type: RECEIVE_CHANNEL,
+  channel
+});
+
 export const removeChannel = channelId => ({
   type: REMOVE_CHANNEL,
   channelId

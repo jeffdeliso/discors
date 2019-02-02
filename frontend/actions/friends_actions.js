@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/friends_api_util';
+import { receiveUsers } from './server_actions';
 
 export const RECEIVE_REQUESTS = 'RECEIVE_REQUESTS';
 export const RECEIVE_REQUEST = 'RECEIVE_REQUEST';
@@ -37,9 +38,9 @@ export const receiveFriendRequests = friendRequests => ({
   friendRequests
 });
 
-export const receiveFriends = friends => ({
+export const receiveFriends = friendData => ({
   type: RECEIVE_FRIENDS,
-  friends
+  friendData
 });
 
 export const receiveFriend = friendId => ({
@@ -63,9 +64,10 @@ export const removeFriend = friendId => ({
 });
 
 export const fetchFriendRequests = () => dispatch => (
-  APIUtil.fetchFriendRequests().then(requests => (
-    dispatch(receiveFriendRequests(requests))
-  ))
+  APIUtil.fetchFriendRequests().then(({requests, users}) => {
+    dispatch(receiveUsers(users));
+    return dispatch(receiveFriendRequests(requests));
+  })
 );
 
 export const fetchFriends = () => dispatch => (

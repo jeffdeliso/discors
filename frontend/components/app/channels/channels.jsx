@@ -50,7 +50,6 @@ class Channels extends React.Component {
   render() {
     const that = this;
     const channels = this.props.channels.map((channel, idx) => {
-      if (channel.server_id == that.props.match.params.serverId) {
         return <Channel
           server={that.props.server}
           channel={channel}
@@ -58,9 +57,6 @@ class Channels extends React.Component {
           currentUser={that.props.currentUser}
           deleteChannel={() => that.props.deleteChannel(channel.id)}
         />;
-      } else {
-        return null;
-      }
     });
 
     return (

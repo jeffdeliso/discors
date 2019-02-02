@@ -46,10 +46,26 @@ json.users do
   end
 end
 
-@servers.each do |server|
-  json.set! server.id do
-    json.partial! 'api/servers/server', server: server
+json.servers do
+  @servers.each do |server|
+    json.set! server.id do
+      json.partial! 'api/servers/server', server: server
+    end
   end
 end
 
-json.current_user_id @current_user.id
+json.friend_requests do 
+  @outgoing.each do |request|
+    json.set! request.id do
+      json.partial! 'api/friend_requests/friend_request', friend_request: request
+    end
+  end
+
+  @incoming.each do |request|
+    json.set! request.id do
+      json.partial! 'api/friend_requests/friend_request', friend_request: request
+    end
+  end
+end
+
+json.currentUserId current_user.id
