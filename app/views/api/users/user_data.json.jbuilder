@@ -10,6 +10,11 @@ json.channels do
       json.partial! 'api/channels/channel', channel: channel
     end
   end
+  @dm_channels.each do |channel|
+    json.set! channel.id do
+      json.partial! 'api/channels/channel', channel: channel
+    end
+  end
 end
 
 json.voice_channels do 

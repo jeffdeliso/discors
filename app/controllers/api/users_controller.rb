@@ -26,6 +26,7 @@ class Api::UsersController < ApplicationController
 
   def data
     @channels = current_user.channels
+    @dm_channels = current_user.dm_channels
     @audio_channels = current_user.audio_channels
     @servers = current_user.servers
     @users = current_user.dm_users.includes(:sessions, :server_memberships)
