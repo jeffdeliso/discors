@@ -6,6 +6,10 @@ import { createDmChannel } from '../../../../actions/channel_actions';
 const mapStateToProps = (state, ownProps) => {
   const friends = state.entities.friends.map((id) => {
     return state.entities.users[id] || {};
+  }).sort((a, b) => {
+    if (a.username < b.username) { return -1; }
+    if (a.username > b.username) { return 1; }
+    return 0;
   });
 
   return {

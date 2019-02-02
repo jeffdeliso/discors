@@ -8,8 +8,11 @@ const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[ownProps.match.params.serverId] || {};
   return {
     server,
-    members: Object.values(state.entities.users).filter(user => user.servers.includes(server.id)),
-    currentUser: state.entities.users[state.session.id],
+    members: Object.values(state.entities.users).filter(user => user.servers.includes(server.id)).sort((a, b) => {
+      if (a.username < b.username) { return -1; }
+      if (a.username > b.username) { return 1; }
+      return 0;
+    })
   };
 };
 
