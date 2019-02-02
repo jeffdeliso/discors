@@ -32,6 +32,14 @@ class User < ApplicationRecord
     through: :server_memberships,
     source: :server
 
+  has_many :channels,
+    through: :servers,
+    source: :channels
+
+  has_many :audio_channels,
+    through: :servers,
+    source: :audio_channels
+
   has_many :admin_servers,
     class_name: :Server,
     foreign_key: :admin_id
