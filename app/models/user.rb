@@ -98,16 +98,17 @@ class User < ApplicationRecord
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def reset_session_token!
-    destroy_session!
+  def reset_session_token!(user_agent)
+    destroy_session!(user_agent)
     session_token = generate_unique_session_token
-    session = self.sessions.create(session_token: session_token)
+    session = self.sessions.create(session_token: session_token, user_agent: user_agent)
 
     session_token
   end
 
-  def destroy_session!
-    self.sessions.first.destroy if self.sessions.first
+  def destroy_session!(user_agent)
+    user_agent_session = self.sessions.find_by(user_agent: user_agent)
+    user_agent_session.destroy if user_agent_session
   end
 
   def remove_friend(friend)

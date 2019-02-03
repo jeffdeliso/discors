@@ -7,10 +7,12 @@
 #  session_token :string           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_agent    :string           not null
 #
 
 class Session < ApplicationRecord
-  validates :session_token, presence: true, uniqueness: true
+  validates :session_token, :user_agent, presence: true, uniqueness: true
+  validates :session_token, uniqueness: true
 
   belongs_to :user
 end
