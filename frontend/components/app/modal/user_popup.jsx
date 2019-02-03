@@ -71,7 +71,6 @@ class UserPopup extends React.Component {
           backgroundColor: 'black',
           overflow: 'auto',
           zIndex: 99,
-          // transform: 'translate(10px, 0)',
           transition: 'transform 200ms ease-in-out'
         }}
       >

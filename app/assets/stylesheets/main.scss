@@ -514,6 +514,11 @@
   background-color: #2f3136;
   position: relative;
   height: calc(100vh - 48px);
+  transition: transform 200ms ease-in-out;
+}
+
+.members-transition-right {
+  transform: translateX(240px);
 }
 
 .server-members-container {

@@ -94,7 +94,6 @@ class Servers extends React.Component {
         <Modal
           closeTimeoutMS={150}
           isOpen={this.state.showModal}
-          contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseModal}
           style={{
             overlay: {

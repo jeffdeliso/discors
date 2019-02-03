@@ -42,14 +42,14 @@ class LoginForm extends React.Component {
     if (username.length > 0) {
       this.setState(
         { username: this.state.username + username.shift() }, () => {
-          window.setTimeout(() =>
+          setTimeout(() =>
             this.loginAsGuestHelper(username, password, submit), 50);
         }
       );
     } else if (password.length > 0) {
       this.setState(
         { password: this.state.password + password.shift() }, () => {
-          window.setTimeout(() =>
+          setTimeout(() =>
             this.loginAsGuestHelper(username, password, submit), 50);
         }
       );

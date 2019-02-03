@@ -57,7 +57,7 @@ class ServerMembers extends React.Component {
     });
 
     return (
-      <div className="server-members" >
+      <div className={`server-members ${this.props.classText}`} >
         <div className="server-members-scroll">
           <div className="server-members-container">
             <h3>ADMIN</h3>
