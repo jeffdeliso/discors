@@ -746,10 +746,17 @@
     opacity: 0;
 }
 
-#dm-notification {
+.dm-notification {
   margin-top: 0;
   margin-bottom: 8px;
   position: relative;
+  transform: translate(-64px, 0);
+  transition: transform 0.2s;
+  transition-timing-function: cubic-bezier(1, 2, 1, 0);
+}
+
+.dm-notification.right {
+  transform: translate(0, 0);
 }
 
 .dm-notification-badge {
@@ -771,3 +778,4 @@
   text-transform: uppercase;
   font-family: main3;
 }
+
