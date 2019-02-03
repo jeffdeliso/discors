@@ -12,6 +12,11 @@ class Message extends React.Component {
     return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
   }
 
+  transition() {
+    const popUp = document.getElementsByClassName('popup-content');
+    popUp[0].style.transform = 'translate(-10px, 0)';
+  }
+
   render() {
     return (
       <div className="message">
@@ -20,8 +25,9 @@ class Message extends React.Component {
         }
           user={this.props.user}
           position={'right center'}
-          offsetX={12}
+          offsetX={2}
           offsetY={60}
+          onOpen={this.transition}
         />
         <div className="username-message">
           <div className="username-time">
@@ -30,8 +36,9 @@ class Message extends React.Component {
             }
               user={this.props.user}
               position={'right center'}
-              offsetX={12}
+              offsetX={2}
               offsetY={72}
+              onOpen={this.transition}
             />
             <h5>{this.parseDate()}</h5>
           </div>

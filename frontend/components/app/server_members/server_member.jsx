@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom';
 import UserPopup from '../modal/user_popup_container';
 
 class ServerMember extends React.Component {
+
+  transition() {
+    const popUp = document.getElementsByClassName('popup-content');
+    popUp[0].style.transform = 'translate(10px, 0)';
+  }
+  
   render() {
     return (
       <UserPopup component={
@@ -16,9 +22,10 @@ class ServerMember extends React.Component {
           <span>{this.props.user.username}</span>
         </div>
       }
+        onOpen={this.transition}
         user={this.props.user}
         position={"left center"}
-        offsetX={-15}
+        offsetX={-5}
         offsetY={-90}
       />
     )

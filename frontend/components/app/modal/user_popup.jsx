@@ -47,6 +47,7 @@ class UserPopup extends React.Component {
         arrow={false}
         position={this.props.position}
         closeOnDocumentClick
+        onOpen={this.props.onOpen}
         on="click"
         offsetX={this.props.offsetX || 0}
         offsetY={offsetY || 0}
@@ -70,6 +71,8 @@ class UserPopup extends React.Component {
           backgroundColor: 'black',
           overflow: 'auto',
           zIndex: 99,
+          // transform: 'translate(10px, 0)',
+          transition: 'transform 200ms ease-in-out'
         }}
       >
         <div className="user-popup">
