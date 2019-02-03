@@ -11,11 +11,18 @@ const mapStateToProps = state => {
       onlineCount++;
     }
   });
+
+  const dmNotifications = Object.values(state.notifications.dm);
+  const users = dmNotifications.map(notification => {
+    return state.entities.users[notification.authorId];
+  });
   
   return {
     servers: Object.values(state.entities.servers),
     errors: state.errors.server,
     onlineCount,
+    dmNotifications,
+    users,
   };
 };
 

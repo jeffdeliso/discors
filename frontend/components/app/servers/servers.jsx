@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import CreateServerForm from './create_server_form';
 import JoinServerForm from './join_server_form';
 import Tooltip from '../modal/tooltip';
+import DmNotification from './dm_notification';
 
 class Servers extends React.Component {
   constructor(props) {
@@ -32,6 +33,15 @@ class Servers extends React.Component {
   }
 
   render() {
+    const dmNotifications = this.props.dmNotifications.map((notification, idx) => {
+      return <DmNotification 
+        key={idx}
+        notification={notification}
+        user={this.props.users[idx]}
+      />;
+    })
+
+
     const servers = this.props.servers.map((server, idx) => {
       return <Server key={idx} server={server} />
     });
@@ -83,6 +93,7 @@ class Servers extends React.Component {
           text="Home"
         />
         <div className="friends-online">{`${this.props.onlineCount} Online`}</div>
+        {dmNotifications}
         <div className="separator"></div>
         <div className="side-scroll-container">
           {servers}

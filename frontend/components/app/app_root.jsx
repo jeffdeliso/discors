@@ -1,7 +1,7 @@
 import React from 'react';
 import Servers from './servers/servers_container';
 import ServerRoute from './app_routes/server_route';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import MeRoute from './app_routes/me_route';
 import { connect } from 'react-redux';
 import { fetchCurrentUserData, receiveUser } from '../../actions/session_actions';
@@ -28,8 +28,10 @@ class AppRoot extends React.Component {
             case "message":
               const message = JSON.parse(data.message);
               const notification = { channelId: message.channel_id, authorId: message.author_id };
-              this.props.receiveUser(JSON.parse(data.user));
-              this.props.receiveDmNotification(notification);
+              if (this.props.location.pathname !== `/channels/@me/${notification.channelId}`) {
+                this.props.receiveUser(JSON.parse(data.user));
+                this.props.receiveDmNotification(notification);
+              }
               break;
             case "messages":
               this.setState({ messages: data.messages });
@@ -87,5 +89,3 @@ const mapDispatchToProps = dispatch => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppRoot);
-
-receiveUser

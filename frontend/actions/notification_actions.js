@@ -7,6 +7,6 @@ export const receiveDmNotification = (notification) => ({
 });
 
 export const removeDmNotification = (channelId) => ({
-  type: REMOVE_DM_NOTIFICATIONS,
+  type: REMOVE_DM_NOTIFICATION,
   channelId,
 });

@@ -14,17 +14,26 @@ class Chat extends React.Component {
     const channelId = this.props.match.params.channelId;
     this.subscribe(channelId);
     this.bottom.current.scrollIntoView();
+
+    if (channelId && !this.props.channel.serverId) {
+      this.props.removeDmNotification(channelId);
+    }
   }
 
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
     if (channelId && prevProps.channelId !== channelId) {
-      this.setState({messages: []});
+      this.setState({ messages: [] });
       this.subscription.unsubscribe();
       this.subscribe(channelId);
+
+      if (channelId && !this.props.channel.serverId) {
+        this.props.removeDmNotification(channelId);
+      }
     }
     this.bottom.current.scrollIntoView();
+
   }
 
   subscribe(channelId) {
