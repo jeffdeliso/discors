@@ -1,4 +1,4 @@
-icon_url = (server.icon.attached? ? polymorphic_url(server.icon) : '')
+icon_url = (server.icon.attached? ? url_for(server.icon) : '')
 first_channel = server.channels.first
 root_channel = (first_channel ? first_channel.id : '')
 

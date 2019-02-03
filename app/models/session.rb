@@ -11,7 +11,7 @@
 #
 
 class Session < ApplicationRecord
-  validates :session_token, :user_agent, presence: true, uniqueness: true
+  validates :session_token, :user_agent, presence: true
   validates :session_token, uniqueness: true
 
   belongs_to :user

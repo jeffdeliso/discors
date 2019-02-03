@@ -18,4 +18,13 @@ class Message < ApplicationRecord
   belongs_to :author,
     class_name: :User
 
+  def send_notification
+    message_channel = self.channel
+    unless message_channel.server_id
+      user = message_channel.members.where.not(id: self.author_id).first
+      NotificationBroadcastJob.perform_later(self, user)
+    end
+  end
+
+  after_create_commit :send_notification
 end
