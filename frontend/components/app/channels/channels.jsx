@@ -91,6 +91,7 @@ class Channels extends React.Component {
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseModal}
+          closeTimeoutMS={150}
           style={{
             overlay: {
               backgroundColor: 'rgb(0, 0, 0, 0.85)',

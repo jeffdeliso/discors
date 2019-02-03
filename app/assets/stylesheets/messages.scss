@@ -9,7 +9,7 @@
   line-height: 16px;
   position: relative;
   user-select: none;
-  cursor: pointer;
+  // cursor: pointer;
   z-index: 5;
 }
 
@@ -27,6 +27,7 @@
   width: 24;
   height: 24;
 }
+
 .message-form-container {
   color: hsla(0,0%,100%,.7);
   border-radius: 5px;
@@ -53,7 +54,6 @@
   color: hsla(0,0%,100%,.7);
   font-family: main2;
 }
-
 
 .message-form {
   display: flex;
@@ -84,7 +84,7 @@
   height: 100%;
   opacity: 0;
   user-select: none;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .empty-chat {
@@ -114,6 +114,7 @@
   margin: 0;
   font-family: main3;
 }
+
 .empty-chat strong {
     font-family: main5;
 }

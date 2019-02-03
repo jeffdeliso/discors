@@ -22,3 +22,8 @@
   text-transform: uppercase;
   font-family: main3;
 }
+
+.hidden {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}

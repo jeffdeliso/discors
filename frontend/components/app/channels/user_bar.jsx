@@ -51,6 +51,7 @@ class UserBar extends React.Component {
           isOpen={this.state.showUserModal}
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseUserModal}
+          closeTimeoutMS={150}
           style={{
             overlay: {
               backgroundColor: 'rgb(0, 0, 0, 0.7)',

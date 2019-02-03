@@ -10,7 +10,7 @@ import LoadingScreen from './loading_screen';
 class AppRoot extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: false }
+    this.state = { loading: false, class: '' };
   }
   componentWillMount() {
     this.setState({ loading: 'connecting' });
@@ -21,7 +21,10 @@ class AppRoot extends React.Component {
     this.props.fetchCurrentUserData().then(() => {
       this.setState({ loading: 'ready' });
       setTimeout(() => {
-        this.setState({ loading: false });
+        this.setState({ class: 'hidden' });
+        setTimeout(() => {
+          this.setState({ loading: false, class: '' });
+        }, 200)
       }, 1000);
     });
   }
@@ -33,7 +36,7 @@ class AppRoot extends React.Component {
   render() {
     return (
       <div className="main-body">
-        {this.state.loading ? <LoadingScreen text={this.state.loading} /> : null}
+        {this.state.loading ? <LoadingScreen text={this.state.loading} classText={this.state.class}/> : null}
         <Servers />
         <Switch >
           <Route path="/channels/@me/:channelId" component={MeRoute} />

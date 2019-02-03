@@ -92,6 +92,7 @@ class Servers extends React.Component {
           ><span>+</span></button>
         </div>
         <Modal
+          closeTimeoutMS={150}
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseModal}

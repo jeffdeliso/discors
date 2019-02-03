@@ -81,6 +81,7 @@ class VoiceChannels extends React.Component {
         <Modal
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"
+          closeTimeoutMS={150}
           onRequestClose={this.handleCloseModal}
           style={{
             overlay: {
