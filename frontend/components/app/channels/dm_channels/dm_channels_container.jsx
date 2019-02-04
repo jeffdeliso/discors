@@ -6,11 +6,15 @@ import { fetchDmChannels, deleteDmChannel } from '../../../../actions/channel_ac
 
 
 const mapStateToProps = (state, ownProps) => {
+  const incomingRequests = Object.values(state.entities.friendRequests).filter((request) => {
+    return request.friend_id === state.session.id;
+  }).length;
 
   return {
     currentUser: state.entities.users[state.session.id],
     channels: Object.values(state.entities.channels).filter(channel => !channel.server_id),
     users: state.entities.users,
+    requestCount: incomingRequests,
   };
 };
 

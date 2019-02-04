@@ -403,3 +403,36 @@
   margin-top: 8px;
   font-family: main2;
 }
+
+.friends-request-counter {
+  background-clip: padding-box;
+  background-color: #f04747;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.25), inset 0 1px 0 hsla(0,0%,100%,.15);
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  padding: 3px 6px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  text-transform: uppercase;
+  font-family: main3;
+}
+
+.friends-request-header-counter {
+  box-shadow: none;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 4px;
+  padding: 3px 5px;
+  text-shadow: none;
+  vertical-align: top;
+  font-family: main4;
+  background-clip: padding-box;
+  background-color: #f04747;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 12px;
+}

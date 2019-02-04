@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class FriendsHeader extends React.Component {
   render() {
@@ -13,11 +14,23 @@ class FriendsHeader extends React.Component {
           >Online</li>
           <li className={this.props.tab === 'pending' ? "friends-header-button-active" : "friends-header-button"}
             onClick={() => this.props.changeTab('pending')}
-          >Pending</li>
+          >Pending
+          {this.props.requestCount ? <div className="friends-request-header-counter">{this.props.requestCount}</div> : null}
+          </li>
         </ul>
       </header>
     )
   }
 }
 
-export default FriendsHeader;
+const mapStateToProps = (state, ownProps) => {
+  const incomingRequests = Object.values(state.entities.friendRequests).filter((request) => {
+    return request.friend_id === state.session.id;
+  }).length;
+
+  return {
+    requestCount: incomingRequests,
+  };
+};
+
+export default connect(mapStateToProps)(FriendsHeader);
