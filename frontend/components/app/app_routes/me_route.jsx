@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 import FriendsMain from './friends_main';
 
 class MeRoute extends React.Component {
-
   render() {
     return (
       <>

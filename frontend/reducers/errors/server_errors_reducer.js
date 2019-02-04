@@ -1,4 +1,4 @@
-import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, REMOVE_SERVER_ERRORS } from '../actions/server_actions';
+import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, REMOVE_SERVER_ERRORS } from '../../actions/server_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);

@@ -7,6 +7,7 @@ export const REMOVE_VOICE_CHANNEL = 'REMOVE_VOICE_CHANNEL';
 export const RECEIVE_VOICE_CHANNEL_ERRORS = 'RECEIVE_VOICE_CHANNEL_ERRORS';
 export const REMOVE_VOICE_CHANNEL_ERRORS = 'REMOVE_VOICE_CHANNEL_ERRORS';
 
+
 export const receiveVoiceChannels = voiceChannels => ({
   type: RECEIVE_VOICE_CHANNELS,
   voiceChannels
@@ -21,15 +22,6 @@ export const removeVoiceChannel = voiceChannelId => ({
   type: REMOVE_VOICE_CHANNEL,
   voiceChannelId
 });
-
-// export const receiveErrors = errors => ({
-//   type: RECEIVE_VOICE_CHANNEL_ERRORS,
-//   errors
-// });
-
-// export const removeVoiceChannelErrors = () => ({
-//   type: REMOVE_VOICE_CHANNEL_ERRORS,
-// });
 
 
 export const fetchVoiceChannels = (serverId) => dispatch => (

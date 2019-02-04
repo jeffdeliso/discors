@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Tooltip from '../modal/tooltip';
-import EditUserForm from './edit_user_form';
+import Tooltip from '../../modal/tooltip';
+import EditUserForm from '../edit_user_form';
 
 class UserBar extends React.Component {
   constructor(props) {

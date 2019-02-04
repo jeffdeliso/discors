@@ -8,30 +8,6 @@ export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 export const RECEIVE_FRIENDS = 'RECEIVE_FRIENDS';
 export const RECEIVE_FRIEND = 'RECEIVE_FRIEND';
 
-export const createFriendRequest = (friendRequest) => dispatch => (
-  APIUtil.createFriendRequest(friendRequest).then(request => (
-    dispatch(receiveFriendRequest(request))
-  ))
-);
-
-export const acceptFriendRequest = (friendRequest) => dispatch => (
-  APIUtil.acceptFriendRequest(friendRequest).then(() => {
-      dispatch(removeFriendRequest(friendRequest.id));
-      return dispatch(receiveFriend(friendRequest.user_id));
-  })
-);
-
-export const deleteFriendRequest = (friendRequest) => dispatch => (
-  APIUtil.deleteFriendRequest(friendRequest).then(() => (
-    dispatch(removeFriendRequest(friendRequest.id))
-  ))
-);
-
-export const deleteFriend = (id) => dispatch => (
-  APIUtil.deleteFriend(id).then(() => (
-    dispatch(removeFriend(id))
-  ))
-);
 
 export const receiveFriendRequests = friendRequests => ({
   type: RECEIVE_REQUESTS,
@@ -63,8 +39,9 @@ export const removeFriend = friendId => ({
   friendId
 });
 
+
 export const fetchFriendRequests = () => dispatch => (
-  APIUtil.fetchFriendRequests().then(({requests, users}) => {
+  APIUtil.fetchFriendRequests().then(({ requests, users }) => {
     dispatch(receiveUsers(users));
     return dispatch(receiveFriendRequests(requests));
   })
@@ -76,3 +53,27 @@ export const fetchFriends = () => dispatch => (
   ))
 );
 
+export const createFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.createFriendRequest(friendRequest).then(request => (
+    dispatch(receiveFriendRequest(request))
+  ))
+);
+
+export const acceptFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.acceptFriendRequest(friendRequest).then(() => {
+    dispatch(removeFriendRequest(friendRequest.id));
+    return dispatch(receiveFriend(friendRequest.user_id));
+  })
+);
+
+export const deleteFriendRequest = (friendRequest) => dispatch => (
+  APIUtil.deleteFriendRequest(friendRequest).then(() => (
+    dispatch(removeFriendRequest(friendRequest.id))
+  ))
+);
+
+export const deleteFriend = (id) => dispatch => (
+  APIUtil.deleteFriend(id).then(() => (
+    dispatch(removeFriend(id))
+  ))
+);

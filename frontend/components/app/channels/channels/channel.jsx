@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import Tooltip from '../modal/tooltip';
+import Tooltip from '../../modal/tooltip';
 
 class Channel extends React.Component {
   constructor(props) {

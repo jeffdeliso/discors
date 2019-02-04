@@ -2,7 +2,6 @@ import React from 'react';
 import Chat from '../chat/chat_container';
 import MeHeader from '../header/me_header/me_header_container';
 
-
 class MeMain extends React.Component {
   render() {
     return (
@@ -17,6 +16,5 @@ class MeMain extends React.Component {
     )
   }
 }
-
 
 export default MeMain;

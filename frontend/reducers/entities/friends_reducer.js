@@ -1,6 +1,6 @@
-import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from "../actions/friends_actions";
+import { RECEIVE_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from "../../actions/friends_actions";
 import { union } from 'lodash';
-import { RECEIVE_CURRENT_USER_DATA } from "../actions/session_actions";
+import { RECEIVE_CURRENT_USER_DATA } from "../../actions/session_actions";
 
 const friendsReducer = (state = [], action) => {
   Object.freeze(state);

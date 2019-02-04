@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
-import { RECEIVE_SERVERS, RECEIVE_SERVER, REMOVE_SERVER } from '../actions/server_actions';
-import { RECEIVE_CURRENT_USER_DATA } from '../actions/session_actions';
+import { RECEIVE_SERVERS, RECEIVE_SERVER, REMOVE_SERVER } from '../../actions/server_actions';
+import { RECEIVE_CURRENT_USER_DATA } from '../../actions/session_actions';
 
 const serversReducer = (state = {}, action) => {
   Object.freeze(state);

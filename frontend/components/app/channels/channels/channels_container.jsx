@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import Channels from './channels';
-import { fetchChannels, createChannel, removeChannelErrors, deleteChannel } from '../../../actions/channel_actions';
+import { fetchChannels, createChannel, removeChannelErrors, deleteChannel } from '../../../../actions/channel_actions';
 import { withRouter } from 'react-router-dom';
-import { deleteServer } from '../../../actions/server_actions';
-import { fetchFriends, fetchFriendRequests } from '../../../actions/friends_actions';
+import { deleteServer } from '../../../../actions/server_actions';
+import { fetchFriends, fetchFriendRequests } from '../../../../actions/friends_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

@@ -49,5 +49,4 @@ class FriendsMain extends React.Component {
   }
 }
 
-
 export default FriendsMain;

@@ -8,6 +8,7 @@ export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const REMOVE_SERVER_ERRORS = 'REMOVE_SERVER_ERRORS';
 export const REMOVE_SERVER = 'REMOVE_SERVER';
 
+
 export const receiveServers = servers => ({
   type: RECEIVE_SERVERS,
   servers
@@ -42,6 +43,7 @@ export const fetchServers = () => dispatch => (
     dispatch(receiveServers(servers))
   ))
 );
+
 
 export const fetchMembers = (id) => dispatch => (
   APIUtil.fetchMembers(id).then(({users, requests}) => {

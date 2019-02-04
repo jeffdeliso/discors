@@ -1,7 +1,6 @@
 import React from 'react';
 import DmChannel from './dm_channel';
-import Tooltip from '../../modal/tooltip';
-import UserBar from '../user_bar_container';
+import UserBar from '../user_bar/user_bar_container';
 import { NavLink } from 'react-router-dom';
 
 class DMChannels extends React.Component {
