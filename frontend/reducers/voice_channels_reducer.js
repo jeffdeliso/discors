@@ -6,7 +6,7 @@ const voiceChannelsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER_DATA:
-      return action.currentUserData.voice_channels;
+      return action.currentUserData.voice_channels || {};
     case RECEIVE_VOICE_CHANNELS:
       return merge({}, state, action.voiceChannels);
     case RECEIVE_VOICE_CHANNEL:
