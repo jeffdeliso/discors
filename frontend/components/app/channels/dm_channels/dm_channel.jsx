@@ -20,6 +20,14 @@ class DmChannel extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
+    
+    const channelId = this.props.channel.id;
+    const notification = document.getElementById(`dm-notification-${channelId}`);
+    if (notification) {
+      notification.className = 'dm-notification';
+      setTimeout(() => this.props.removeDmNotification(channelId), 200);
+    }
+    
     const that = this;
     this.props.deleteDmChannel().then((action) => {
       if (action.channelId == that.props.match.params.channelId) {

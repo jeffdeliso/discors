@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 
 class DMChannels extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchDmChannels();
-  }
+  // componentDidMount() {
+  //   this.props.fetchDmChannels();
+  // }
 
   render() {
     const that = this;
@@ -25,6 +25,7 @@ class DMChannels extends React.Component {
         user={that.props.users[userId] || {}}
         key={idx}
         deleteDmChannel={() => this.props.deleteDmChannel(channel.id)}
+        removeDmNotification={this.props.removeDmNotification}
       />;
     });
 

@@ -3,6 +3,7 @@ import { logout } from '../../../../actions/session_actions';
 import DMChannels from './dm_channels';
 import { connect } from 'react-redux';
 import { fetchDmChannels, deleteDmChannel } from '../../../../actions/channel_actions';
+import { removeDmNotification } from '../../../../actions/notification_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch => {
     fetchDmChannels: () => dispatch(fetchDmChannels()),
     logout: () => dispatch(logout()),
     deleteDmChannel: id => dispatch(deleteDmChannel(id)),
+    removeDmNotification: channelId => dispatch(removeDmNotification(channelId)),
   };
 };
 

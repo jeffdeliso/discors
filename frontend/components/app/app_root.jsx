@@ -7,12 +7,14 @@ import { connect } from 'react-redux';
 import { fetchCurrentUserData, receiveUser } from '../../actions/session_actions';
 import LoadingScreen from './loading_screen';
 import { receiveDmNotification } from '../../actions/notification_actions';
+import { receiveChannel } from '../../actions/channel_actions';
 
 class AppRoot extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: false, class: '' };
   }
+
   componentWillMount() {
     this.setState({ loading: 'connecting' });
   }
@@ -29,6 +31,7 @@ class AppRoot extends React.Component {
               const message = JSON.parse(data.message);
               const notification = { channelId: message.channel_id, authorId: message.author_id };
               if (this.props.location.pathname !== `/channels/@me/${notification.channelId}`) {
+                this.props.receiveChannel(JSON.parse(data.channel));
                 this.props.receiveUser(JSON.parse(data.user));
                 this.props.receiveDmNotification(notification);
               }
@@ -85,6 +88,7 @@ const mapDispatchToProps = dispatch => {
     fetchCurrentUserData: () => dispatch(fetchCurrentUserData()),
     receiveDmNotification: notification => dispatch(receiveDmNotification(notification)),
     receiveUser: user => dispatch(receiveUser(user)),
+    receiveChannel: channel => dispatch(receiveChannel(channel)),
   };
 };
 

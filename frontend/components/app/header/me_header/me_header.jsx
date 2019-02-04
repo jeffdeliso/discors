@@ -13,7 +13,11 @@ class MeHeader extends React.Component {
       } else {
         userId = nameArr[0];
       }
-      title = this.props.users[userId].username;
+      if (this.props.users[userId]) {
+        title = this.props.users[userId].username;
+      } else {
+        title = '';
+      }
     } else {
       title = this.props.currentUser.username;
     }

@@ -1,11 +1,12 @@
 class NotificationBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(message, user)
+  def perform(message, user, channel)
     NotificationsChannel.broadcast_to(
       user, {type: 'message', 
         message: render_message(message),
-        user: render_user(message.author)
+        user: render_user(message.author),
+        channel: render_channel(channel)
       }
     )
   end
@@ -23,6 +24,13 @@ class NotificationBroadcastJob < ApplicationJob
     ApplicationController.renderer.render(
       partial: 'api/users/user',
       locals: { user: user }
+    )
+  end
+
+  def render_channel(channel)
+    ApplicationController.renderer.render(
+      partial: 'api/channels/channel',
+      locals: { channel: channel }
     )
   end
 end

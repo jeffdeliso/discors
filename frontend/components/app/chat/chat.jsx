@@ -122,11 +122,9 @@ class Chat extends React.Component {
         } else {
           userId = nameArr[0];
         }
-        emptyMessage = emptyMessage = <div className="empty-chat"><h4>This is the beginning of your direct message history with <strong>{`@${this.props.users[userId].username}`}</strong></h4></div>;;
+        emptyMessage = emptyMessage = <div className="empty-chat"><h4>This is the beginning of your direct message history with <strong>{this.props.users[userId] ? `@${this.props.users[userId].username}` : ''}</strong></h4></div>;
       }
     }
-
-
 
     return (
       <div className="chat-main">

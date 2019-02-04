@@ -70,7 +70,7 @@ class MessageForm extends React.Component {
       } else {
         userId = nameArr[0];
       }
-      placeholder = `Message @${this.props.users[userId].username}`;
+      placeholder = `Message @${this.props.users[userId] ? this.props.users[userId].username : null}`;
     }
     return (
       <form onSubmit={this.handleSubmit} className="message-form">
