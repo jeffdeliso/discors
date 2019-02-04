@@ -6,7 +6,7 @@ const serversReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER_DATA:
-      return action.currentUserData.servers;
+      return action.currentUserData.servers || {};
     case RECEIVE_SERVERS:
       return merge({}, state, action.servers);
     case RECEIVE_SERVER:
