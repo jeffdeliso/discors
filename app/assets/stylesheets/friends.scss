@@ -331,19 +331,22 @@
   z-index: 1;
   align-items: center;
   box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
-  opacity: .4;
+  cursor: pointer;
 }
 
-.friends-link:hover {
-  opacity: .75;
+.friends-link span, 
+.friends-link svg {
+  color: #72767d;
 }
 
-.friends-link-active {
-  opacity: 1;
+.friends-link:hover span,
+.friends-link:hover svg {
+  color: #fff;
 }
 
-.friends-link-active:hover {
-  opacity: 1;
+.friends-link-active span, 
+.friends-link-active svg {
+  color: #fff;
 }
 
 .extra-servers {
