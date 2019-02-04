@@ -16,7 +16,7 @@ class DmNotification extends React.Component {
       <Tooltip component={
         <Link to={`/channels/@me/${this.props.notification.channelId}`}
           className={`home-icon ${this.state.classText}`}
-          id={this.state.classText}
+          id={`dm-notification-${this.props.notification.channelId}`}
           style={{ backgroundImage: `url(${this.props.user.image_url})`, backgroundSize: '100%'}}
           onKeyDown={(e) => e.preventDefault()}
         >

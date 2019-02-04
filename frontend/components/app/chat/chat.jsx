@@ -16,7 +16,11 @@ class Chat extends React.Component {
     this.bottom.current.scrollIntoView();
 
     if (channelId && !this.props.channel.serverId) {
-      this.props.removeDmNotification(channelId);
+      const notification = document.getElementById(`dm-notification-${channelId}`);
+      if (notification) {
+        notification.className = 'dm-notification';
+        setTimeout(() => this.props.removeDmNotification(channelId), 200);
+      }
     }
   }
 
@@ -29,7 +33,11 @@ class Chat extends React.Component {
       this.subscribe(channelId);
 
       if (channelId && !this.props.channel.serverId) {
-        this.props.removeDmNotification(channelId);
+        const notification = document.getElementById(`dm-notification-${channelId}`);
+        if (notification) {
+          notification.className = 'dm-notification';
+          setTimeout(() => this.props.removeDmNotification(channelId), 200);
+        }
       }
     }
     this.bottom.current.scrollIntoView();
