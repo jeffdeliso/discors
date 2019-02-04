@@ -9,10 +9,20 @@ import UserBar from './user_bar_container';
 class Channels extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, showUserModal: false };
+    this.state = { showModal: false, showUserModal: false, active: false };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.removeServer = this.removeServer.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  handleMouseEnter() {
+    this.setState({ active: true });
+  }
+
+  handleMouseLeave() {
+    this.setState({ active: false });
   }
 
   componentDidMount() {
@@ -50,26 +60,31 @@ class Channels extends React.Component {
   render() {
     const that = this;
     const channels = this.props.channels.map((channel, idx) => {
-        return <Channel
-          server={that.props.server}
-          channel={channel}
-          key={idx}
-          currentUser={that.props.currentUser}
-          deleteChannel={() => that.props.deleteChannel(channel.id)}
-        />;
+      return <Channel
+        server={that.props.server}
+        channel={channel}
+        key={idx}
+        currentUser={that.props.currentUser}
+        deleteChannel={() => that.props.deleteChannel(channel.id)}
+      />;
     });
 
     return (
       <div className="right-main">
         <div className="channels">
-          <div className="channel-header">
+          <div
+            className="channel-header"
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+          >
             <span className="server-name">{this.props.server.name}</span>
-            <Tooltip component={
-              <svg width="18" height="18" className="leave-server-button" onClick={this.removeServer}><g fill="none" fillRule="evenodd"><path d="M0 0h18v18H0"></path><path stroke="#FFF" d="M4.5 4.5l9 9" strokeLinecap="round"></path><path stroke="#FFF" d="M13.5 4.5l-9 9" strokeLinecap="round"></path></g></svg>
-            }
-              position="left center"
-              text={this.props.server.admin_id === this.props.currentUser.id ? 'Delete Server' : 'Unsubscribe'}
-            />
+            {this.state.active ?
+              (<Tooltip component={
+                <button className="delete-channel-button" onClick={this.removeServer}></button>
+              }
+                position="left center"
+                text={this.props.server.admin_id === this.props.currentUser.id ? 'Delete Server' : 'Unsubscribe'}
+              />) : null}
           </div>
           <div className="channel-scroll-wrapper">
             <div className="channel-overflow-container">
