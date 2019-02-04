@@ -6,9 +6,9 @@ const friendRequestsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER_DATA:
-      return action.currentUserData.friend_requests;
+      return action.currentUserData.friend_requests || {};
     case RECEIVE_REQUESTS:
-      return action.friendRequests;
+      return action.friendRequests || {};
     case RECEIVE_REQUEST:
       return merge({}, state, { [action.friendRequest.id]: action.friendRequest });
     case REMOVE_REQUEST:

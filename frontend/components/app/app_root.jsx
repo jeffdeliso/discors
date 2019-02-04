@@ -53,6 +53,7 @@ class AppRoot extends React.Component {
   }
 
   componentWillUnmount() {
+    this.notificationSubscription.unsubscribe();
     document.body.removeAttribute("style");
   }
 
