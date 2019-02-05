@@ -79,7 +79,7 @@ class Chat extends React.Component {
   }
 
   parseMessage() {
-    
+
   }
 
   parseMessages() {
@@ -92,9 +92,19 @@ class Chat extends React.Component {
       const message = this.state.messages[i];
 
       if (i === 0) {
-        messageStr = message.body;
-        authorId = message.author_id;
-        time = message.created_at;
+        if (this.state.messages.length === 1) {
+          messageArr.push(
+            <Message key={i}
+              message={message.body}
+              user={this.props.users[message.author_id] || {}}
+              time={message.created_at}
+            />
+          )
+        } else {
+          messageStr = message.body;
+          authorId = message.author_id;
+          time = message.created_at;
+        }
       } else if (i === this.state.messages.length - 1) {
         if (message.author_id === authorId) {
           messageStr = messageStr + '\n' + message.body;
