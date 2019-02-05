@@ -55,7 +55,11 @@ If you would like to learn more about Discors you can type "voice", "servers", "
       if friend_request.save
         "Sent! You should now see a red indicator that you have a friend request."
       else
-        "We're already friends. If you would like me to send you a friend request remove me from your friends list and try again."
+        if friend_request.errors.full_messages.first.include?('added')
+          "We're already friends. If you would like me to send you a friend request remove me from your friends list and try again."
+        else
+          "I already sent a request."
+        end
       end
     elsif text == 'test'
       "Was that 5 seconds already?"
