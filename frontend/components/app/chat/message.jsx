@@ -1,11 +1,14 @@
 import React from "react";
 import UserPopup from "../modal/user_popup_container";
 import { withRouter } from 'react-router-dom';
+import moment from 'moment-timezone';
 
 class Message extends React.Component {
   parseDate() {
-    const dateArr = this.props.time.split('T')[0].split('-');
-    return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
+    const time = moment(this.props.time).tz('America/New_York').calendar();
+    // const dateArr = this.props.time.split('T')[0].split('-');
+    // return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
+    return time;
   }
 
   transition() {
