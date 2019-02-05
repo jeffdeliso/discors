@@ -1,7 +1,7 @@
 
 import React from 'react';
-import MessageForm from './message_form';
-import Message from './message';
+import MessageForm from '../message_form';
+import Message from '../message';
 
 class Chat extends React.Component {
   constructor(props) {
@@ -78,6 +78,69 @@ class Chat extends React.Component {
     this.subscription.unsubscribe();
   }
 
+  parseMessage(message) {
+
+  }
+
+  parseMessages() {
+    const messageArr = [];
+    let messageStr;
+    let authorId;
+    let time;
+
+    for (let i = 0; i < this.state.messages.length; i++) {
+      const message = this.state.messages[i];
+
+      if (i === 0) {
+        messageStr = message.body;
+        authorId = message.author_id;
+        time = message.created_at;
+      } else if (i === this.state.messages.length) {
+        if (message.author_id === authorId) {
+          messageStr = messageStr + '/n' + message.body;
+          messageArr.push(
+            <Message key={i}
+              message={messageStr}
+              user={this.props.users[author_id] || {}}
+              time={time}
+            />
+          )
+        } else {
+          messageArr.push(
+            <Message key={i}
+              message={messageStr}
+              user={this.props.users[author_id] || {}}
+              time={time}
+            />
+          )
+
+          messageArr.push(
+            <Message key={i + 1}
+              message={message.body}
+              user={this.props.users[message.author_id] || {}}
+              time={message.created_at}
+            />
+          )
+        }
+      } else if (message.author_id === authorId) {
+        messageStr = messageStr + '\n' + message.body;
+      } else {
+        messageArr.push(
+          <Message key={i}
+            message={messageStr}
+            user={this.props.users[authorId] || {}}
+            time={time}
+          />
+        )
+
+        authorId = message.author_id;
+        messageStr = message.body;
+        time = message.created_at;
+      }
+    }
+    return messageArr
+  }
+
   render() {
     const messageList = this.state.messages.map((message, idx) => {
       return (
@@ -132,7 +195,7 @@ class Chat extends React.Component {
           <div className="message-scroll-wrapper">
             <div className="message-list">
               {emptyMessage}
-              {messageList}
+              {this.parseMessages()}
               <div ref={this.bottom} />
             </div>
           </div>

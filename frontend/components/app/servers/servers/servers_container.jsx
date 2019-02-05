@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Servers from './servers';
-import { fetchServers, createServer, joinServer } from '../../../actions/server_actions';
-import { removeServerErrors } from '../../../actions/server_actions';
+import { fetchServers, createServer, joinServer } from '../../../../actions/server_actions';
+import { removeServerErrors } from '../../../../actions/server_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {

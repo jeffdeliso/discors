@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Chat from './chat';
-import { removeDmNotification } from '../../../actions/notification_actions';
+import { removeDmNotification } from '../../../../actions/notification_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.match.params.channelId;

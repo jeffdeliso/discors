@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ServerMember from './server_member';
+import ServerMember from '../server_member';
 
 class ServerMembers extends React.Component {
 

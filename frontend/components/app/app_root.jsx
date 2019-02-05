@@ -1,5 +1,5 @@
 import React from 'react';
-import Servers from './servers/servers_container';
+import Servers from './servers/servers/servers_container';
 import ServerRoute from './app_routes/server_route';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import MeRoute from './app_routes/me_route';
@@ -29,11 +29,13 @@ class AppRoot extends React.Component {
         received: data => {
           switch (data.type) {
             case "message":
-              const message = JSON.parse(data.message);
-              const notification = { channelId: message.channel_id, authorId: message.author_id };
-              if (this.props.location.pathname !== `/channels/@me/${notification.channelId}`) {
-                this.props.receiveChannel(JSON.parse(data.channel));
-                this.props.receiveUser(JSON.parse(data.user));
+              // const message = JSON.parse(data.message);
+              const channel = JSON.parse(data.channel);
+              const author = JSON.parse(data.user);
+              const notification = { channelId: channel.id, authorId: author.id };
+              if (this.props.location.pathname !== `/channels/@me/${channel.id}`) {
+                this.props.receiveChannel(channel);
+                this.props.receiveUser(author);
                 this.props.receiveDmNotification(notification);
               }
               break;
@@ -42,7 +44,7 @@ class AppRoot extends React.Component {
               this.props.receiveFriendRequest(JSON.parse(data.friend_request));
               break;
             case "friend_request_destroy":
-              const request = JSON.parse(data.friend_request)
+              const request = JSON.parse(data.friend_request);
               this.props.removeFriendRequest(request.id);
               break;
             case "friend":
@@ -91,6 +93,7 @@ class AppRoot extends React.Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
     currentUser: state.entities.users[state.session.id],
@@ -109,6 +112,5 @@ const mapDispatchToProps = dispatch => {
     receiveFriend: friendId => dispatch(receiveFriend(friendId)),
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppRoot);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from '../modal/tooltip';
+import Tooltip from '../../modal/tooltip';
 
 class Header extends React.Component {
 

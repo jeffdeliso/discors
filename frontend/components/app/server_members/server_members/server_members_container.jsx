@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ServerMembers from './server_members';
-import { fetchMembers } from '../../../actions/server_actions';
+import { fetchMembers } from '../../../../actions/server_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

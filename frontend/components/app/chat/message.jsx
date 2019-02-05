@@ -3,12 +3,8 @@ import UserPopup from "../modal/user_popup_container";
 import { withRouter } from 'react-router-dom';
 
 class Message extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   parseDate() {
-    const dateArr = this.props.message.created_at.split('T')[0].split('-');
+    const dateArr = this.props.time.split('T')[0].split('-');
     return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
   }
 
@@ -43,7 +39,7 @@ class Message extends React.Component {
             <h5>{this.parseDate()}</h5>
           </div>
           <div className="message-p-wrapper">
-            <p>{this.props.message.body}</p>
+            <p>{this.props.message}</p>
           </div>
         </div>
       </div>

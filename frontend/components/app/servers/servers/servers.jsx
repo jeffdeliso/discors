@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Server from './server';
+import Server from '../server';
 import Modal from 'react-modal';
-import CreateServerForm from './create_server_form';
-import JoinServerForm from './join_server_form';
-import Tooltip from '../modal/tooltip';
-import DmNotification from './dm_notification';
+import CreateServerForm from '../create_server_form';
+import JoinServerForm from '../join_server_form';
+import Tooltip from '../../modal/tooltip';
+import DmNotification from '../dm_notification';
 
 class Servers extends React.Component {
   constructor(props) {

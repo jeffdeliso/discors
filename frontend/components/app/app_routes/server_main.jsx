@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../header/header_container';
-import Chat from '../chat/chat_container';
-import ServerMembers from '../server_members/server_members_container';
+import Header from '../header/header/header_container';
+import Chat from '../chat/chat/chat_container';
+import ServerMembers from '../server_members/server_members/server_members_container';
 
 class ServerMain extends React.Component {
   constructor(props) {
