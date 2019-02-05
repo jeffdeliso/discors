@@ -21,8 +21,7 @@ If you would like to be friends type "send" and I will send you a friend request
 
 If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
 
-If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends".
-    })
+If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random response type "random".})
 
       render :show
     else
