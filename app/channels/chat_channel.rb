@@ -49,9 +49,9 @@ If you would like to test DM notifications type "test" and I will send you a mes
 
 If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random response type "random".}
 
-    if text.include?('hi') || text.include?('hey') || text.include?('hello')
+    if text == 'hi' || text == 'hey' || text == 'hello'
       "Hello! I'm a bot. I'm here to keep you company and help you test the site."
-    elsif text == 'send'
+    if text == 'send'
       friend_request = FriendRequest.new(user_id: bot_id, friend_id: message.author_id)
       if friend_request.save
         "Sent! You should now see a red indicator that you have a friend request."
@@ -72,7 +72,7 @@ If you would like to learn more about Discors you can type "voice", "servers", "
       "Voice"
     elsif text == 'friends'
       "Friends"
-    elsif text = 'random'
+    elsif text == 'random'
       response_arr.sample
     else
       default_response
