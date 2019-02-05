@@ -26,8 +26,8 @@ class Channels extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchFriends();
-    this.props.fetchFriendRequests();
+    // this.props.fetchFriends();
+    // this.props.fetchFriendRequests();
 
     const serverId = this.props.match.params.serverId;
     if (serverId) {

@@ -23,8 +23,8 @@ const mapDispatchToProps = dispatch => {
     createChannel: channel => dispatch(createChannel(channel)),
     removeChannelErrors: () => dispatch(removeChannelErrors()),
     deleteServer: id => dispatch(deleteServer(id)),
-    fetchFriends: () => dispatch(fetchFriends()),
-    fetchFriendRequests: () => dispatch(fetchFriendRequests()),
+    // fetchFriends: () => dispatch(fetchFriends()),
+    // fetchFriendRequests: () => dispatch(fetchFriendRequests()),
     deleteChannel: (id) => dispatch(deleteChannel(id)),
   };
 };
