@@ -51,7 +51,7 @@ If you would like to learn more about Discors you can type "voice", "servers", "
 
     if text == 'hi' || text == 'hey' || text == 'hello'
       "Hello! I'm a bot. I'm here to keep you company and help you test the site."
-    if text == 'send'
+    elsif text == 'send'
       friend_request = FriendRequest.new(user_id: bot_id, friend_id: message.author_id)
       if friend_request.save
         "Sent! You should now see a red indicator that you have a friend request."
