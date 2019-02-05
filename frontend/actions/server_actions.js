@@ -47,7 +47,7 @@ export const fetchServers = () => dispatch => (
 
 export const fetchMembers = (id) => dispatch => (
   APIUtil.fetchMembers(id).then(({users, requests}) => {
-    dispatch(receiveFriendRequests(requests));
+    // dispatch(receiveFriendRequests(requests));
     return dispatch(receiveUsers(users));
   })
 );
