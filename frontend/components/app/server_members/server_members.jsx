@@ -9,7 +9,7 @@ class ServerMembers extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.server.id != this.props.match.params.serverId) {
+    if (prevProps.server.id && prevProps.server.id != this.props.match.params.serverId) {
       this.props.fetchMembers(this.props.match.params.serverId);
     }
   }

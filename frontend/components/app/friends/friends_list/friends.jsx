@@ -2,9 +2,9 @@ import React from 'react';
 import Friend from '../friend';
 
 class Friends extends React.Component {
-  componentDidMount() {
-    this.props.fetchFriends();
-  }
+  // componentDidMount() {
+  //   this.props.fetchFriends();
+  // }
   render() {
     const friends = this.props.friends.map((friend, idx) => {
       return <Friend

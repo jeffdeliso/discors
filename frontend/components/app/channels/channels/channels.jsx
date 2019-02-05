@@ -37,7 +37,7 @@ class Channels extends React.Component {
 
   componentDidUpdate(prevProps) {
     const serverId = this.props.match.params.serverId;
-    if (serverId && prevProps.server.id != serverId) {
+    if (prevProps.server.id && prevProps.server.id != serverId) {
       this.props.fetchChannels(serverId);
     }
   }

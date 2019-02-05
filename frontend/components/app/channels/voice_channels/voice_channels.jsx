@@ -21,7 +21,7 @@ class VoiceChannels extends React.Component {
 
   componentDidUpdate(prevProps) {
     const serverId = this.props.match.params.serverId;
-    if (prevProps.server.id != serverId) {
+    if (prevProps.server.id && prevProps.server.id != serverId) {
       this.props.fetchVoiceChannels(serverId);
       if (this.state.voiceChannelId) this.leaveVoiceChannel();
     }

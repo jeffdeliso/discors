@@ -22,6 +22,17 @@ class Friendship < ApplicationRecord
   belongs_to :friend, 
     class_name: :User
 
+  def send_friend
+    FriendshipBroadcastJob.perform_later(self.user, self.friend, true)
+  end
+
+  def send_friend_destroy
+    FriendshipBroadcastJob.perform_later(self.user, self.friend, false)
+  end
+
+  after_create_commit :send_friend
+  after_destroy :send_friend_destroy
+
   private
 
   def create_inverse_relationship

@@ -3,9 +3,9 @@ import Friend from '../friend';
 
 class PendingFriends extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchFriendRequests();
-  }
+  // componentDidMount() {
+  //   this.props.fetchFriendRequests();
+  // }
 
   render() {
     const incomingFriends = this.props.incomingRequests.map((request, idx) => {

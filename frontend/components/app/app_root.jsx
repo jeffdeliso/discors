@@ -8,6 +8,7 @@ import { fetchCurrentUserData, receiveUser } from '../../actions/session_actions
 import LoadingScreen from './loading_screen';
 import { receiveDmNotification } from '../../actions/notification_actions';
 import { receiveChannel } from '../../actions/channel_actions';
+import { receiveFriendRequest, removeFriendRequest, removeFriend, receiveFriend } from '../../actions/friends_actions';
 
 class AppRoot extends React.Component {
   constructor(props) {
@@ -36,8 +37,21 @@ class AppRoot extends React.Component {
                 this.props.receiveDmNotification(notification);
               }
               break;
-            case "messages":
-              this.setState({ messages: data.messages });
+            case "friend_request":
+              this.props.receiveUser(JSON.parse(data.user));
+              this.props.receiveFriendRequest(JSON.parse(data.friend_request));
+              break;
+            case "friend_request_destroy":
+              const request = JSON.parse(data.friend_request)
+              this.props.removeFriendRequest(request.id);
+              break;
+            case "friend":
+              const user = JSON.parse(data.user);
+              this.props.receiveUser(user);
+              this.props.receiveFriend(user.id);
+              break;
+            case "friend_destroy":
+              this.props.removeFriend(JSON.parse(data.user_id));
               break;
           }
         },
@@ -89,6 +103,10 @@ const mapDispatchToProps = dispatch => {
     receiveDmNotification: notification => dispatch(receiveDmNotification(notification)),
     receiveUser: user => dispatch(receiveUser(user)),
     receiveChannel: channel => dispatch(receiveChannel(channel)),
+    receiveFriendRequest: request => dispatch(receiveFriendRequest(request)),
+    removeFriendRequest: requestId => dispatch(removeFriendRequest(requestId)),
+    removeFriend: friendId => dispatch(removeFriend(friendId)),
+    receiveFriend: friendId => dispatch(receiveFriend(friendId)),
   };
 };
 

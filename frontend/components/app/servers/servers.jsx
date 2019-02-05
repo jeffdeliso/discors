@@ -15,9 +15,9 @@ class Servers extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchServers();
-  }
+  // componentDidMount() {
+  //   this.props.fetchServers();
+  // }
 
   handleOpenModal() {
     this.setState({ showModal: true });
