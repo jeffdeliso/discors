@@ -38,15 +38,16 @@ class ChatChannel < ApplicationCable::Channel
   def bot_message(message)
     bot_id = 59
     text = message.body.downcase
-    responseArr = [
-      %Q{Welcome to Discors! 
+    response_arr = [
+      "Hello! I'm a bot. I'm here to keep you company and help you test the site."
+    ]
+
+    default_response = %Q{Welcome to Discors! 
 If you would like to be friends type "send" and I will send you a friend request in real time.
 
 If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
 
-If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends".
-    }
-    ]
+If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random response type "random".}
 
     if text.include?('hi') || text.include?('hey') || text.include?('hello')
       "Hello! I'm a bot. I'm here to keep you company and help you test the site."
@@ -71,8 +72,10 @@ If you would like to learn more about Discors you can type "voice", "servers", "
       "Voice"
     elsif text == 'friends'
       "Friends"
+    elsif text = 'random'
+      response_arr.sample
     else
-      responseArr.sample
+      default_response
     end
   end
 end
