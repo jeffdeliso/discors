@@ -41,7 +41,9 @@ class ChatChannel < ApplicationCable::Channel
     responseArr = [
       %Q{Welcome to Discors! 
 If you would like to be friends type "send" and I will send you a friend request in real time.
+
 If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
+
 If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends".
     }
     ]
@@ -51,19 +53,19 @@ If you would like to learn more about Discors you can type "voice", "servers", "
     elsif text == 'send'
       friend_request = FriendRequest.new(user_id: bot_id, friend_id: message.author_id)
       if friend_request.save
-        "Sent"
+        "Sent! You should now see a red indicator that you have a friend request."
       else
         "We're already friends. If you would like me to send you a friend request remove me from your friends list and try again."
       end
-    elsif text = 'text'
+    elsif text == 'test'
       "Was that 5 seconds already?"
-    elsif text = 'channels'
+    elsif text == 'channels'
       "Channels"
-    elsif text = 'servers'
+    elsif text == 'servers'
       "Servers"
-    elsif text = 'voice'
+    elsif text == 'voice'
       "Voice"
-    elsif text = 'friends'
+    elsif text == 'friends'
       "Friends"
     else
       responseArr.sample
