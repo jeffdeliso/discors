@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
       @channel = Channel.find_or_create_by(name: name)
       @channel.dm_memberships.create(user_id: bot_id)
       @channel.dm_memberships.create(user_id: user_id)
-      @channel.messages.create!(author_id: bot_id, body: "I'm a bot.  My commands are")
+      Message.create!(author_id: bot_id, channel_id: @channel.id, body: "I'm a bot.  My commands are")
 
       render :show
     else
