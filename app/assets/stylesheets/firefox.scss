@@ -1,0 +1,48 @@
+@-moz-document url-prefix() {
+  .side-bar {
+    overflow-x: hidden;
+  }
+  
+  .side-scroll-container {
+    width: 86px;
+  }
+
+  .channel-scroll-wrapper {
+    width: 255px;
+  }
+
+  .channels {
+    overflow: hidden
+  }
+
+  .server-members-scroll {
+    width: 255px;
+  }
+
+  .message-scroll-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    padding-right: 15px;
+    box-sizing: content-box;
+  }
+
+  .chat-main {
+    overflow: hidden;
+    height: calc(100vh - 38px);
+  }
+
+  .message-wrapper {
+    display: block !important;
+    overflow: hidden;
+  }
+
+  .right-main {
+    width: 240px;
+  }
+
+  .friends-scroll-wrapper {
+    width: calc(100vw - 294px);
+  }
+}
+
