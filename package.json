@@ -7,7 +7,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

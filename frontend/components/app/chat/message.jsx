@@ -5,10 +5,8 @@ import moment from 'moment-timezone';
 
 class Message extends React.Component {
   parseDate() {
-    const time = moment(this.props.time).tz('America/New_York').calendar();
-    // const dateArr = this.props.time.split('T')[0].split('-');
-    // return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
-    return time;
+    const time = moment(this.props.time).tz('America/New_York');
+    return time.calendar();
   }
 
   transition() {
