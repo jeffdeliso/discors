@@ -9,6 +9,15 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user, request.user_agent)
+      bot_id = 59
+      user_id = @user.id
+      Friendship.create!(user_id: user_id, friend_id: bot_id)
+      name = @user.id > bot_id ? "#{bot_id}-#{user_id}" : "#{user_id}-#{bot_id}"
+      @channel = Channel.find_or_create_by(name: name)
+      @channel.dm_memberships.create(user_id: bot_id)
+      @channel.dm_memberships.create(user_id: user_id)
+      @channel.messages.create!(author_id: bot_id, body: "I'm a bot.  My commands are")
+
       render :show
     else
       render json: @user.errors.full_messages, status: 422

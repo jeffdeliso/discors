@@ -41,7 +41,7 @@ class ChatChannel < ApplicationCable::Channel
     ]
 
     if message.body.downcase.include?('hi') || message.body.downcase.include?('hey') || message.body.downcase.include?('hello')
-      "Hello! I'm a bot. I'm here to mkeep you company and help you test the site."
+      "Hello! I'm a bot. I'm here to keep you company and help you test the site."
     else
       responseArr.sample
     end
