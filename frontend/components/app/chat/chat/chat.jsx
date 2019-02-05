@@ -78,8 +78,8 @@ class Chat extends React.Component {
     this.subscription.unsubscribe();
   }
 
-  parseMessage(message) {
-
+  parseMessage() {
+    
   }
 
   parseMessages() {
@@ -95,13 +95,13 @@ class Chat extends React.Component {
         messageStr = message.body;
         authorId = message.author_id;
         time = message.created_at;
-      } else if (i === this.state.messages.length) {
+      } else if (i === this.state.messages.length - 1) {
         if (message.author_id === authorId) {
-          messageStr = messageStr + '/n' + message.body;
+          messageStr = messageStr + '\n' + message.body;
           messageArr.push(
             <Message key={i}
               message={messageStr}
-              user={this.props.users[author_id] || {}}
+              user={this.props.users[authorId] || {}}
               time={time}
             />
           )
@@ -109,7 +109,7 @@ class Chat extends React.Component {
           messageArr.push(
             <Message key={i}
               message={messageStr}
-              user={this.props.users[author_id] || {}}
+              user={this.props.users[authorId] || {}}
               time={time}
             />
           )
