@@ -17,9 +17,9 @@ class Api::UsersController < ApplicationController
       @channel.dm_memberships.create(user_id: bot_id)
       @channel.dm_memberships.create(user_id: user_id)
       Message.create!(author_id: bot_id, channel_id: @channel.id, body: %Q{Welcome to Discors! 
-      If you would like to be friends type "send" and I will send you a friend request in real time.
-      If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
-      If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends".
+If you would like to be friends type "send" and I will send you a friend request in real time.
+If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
+If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends".
     })
 
       render :show
