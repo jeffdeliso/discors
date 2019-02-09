@@ -176,6 +176,10 @@ class Chat extends React.Component {
               <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso">here!</a></p>
             </div>
             <div className="server-welcome-item">
+              <div className="personal-icon"></div>
+              <p><strong>Learn about the developer</strong> and my other projects by visiting my site <a href="https://www.jeffdeliso.com">here!</a></p>
+            </div>
+            <div className="server-welcome-item">
               <div className="phone-icon"></div>
               <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/">LinkedIn</a> or send me an email at <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a>!</p>
             </div>
