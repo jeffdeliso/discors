@@ -7,6 +7,10 @@ class Splash extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
+  componentDidMount() {
+    document.body.style.overflow = "visible";
+  }
+
   handleLogin() {
     this.props.login().then(() => this.props.history.push('/channels/@me'));
   }
@@ -29,6 +33,11 @@ class Splash extends React.Component {
                 </a>
               </li>
               <li>
+                <a href="https://www.jeffdeliso.com">
+                  <i className="fas fa-user-circle"></i>
+                </a>
+              </li>
+              <li>
                 <Link to="/login" className="openButton">{this.props.currentUserId ? 'Open' : 'Login'}</Link>
               </li>
             </ul>
@@ -45,7 +54,7 @@ class Splash extends React.Component {
             </p>
             <div className="buttons">
               <button className="downloadMac" onClick={this.handleLogin}>Try the Demo</button>
-              <Link to="/login" className="open-discors-top">{this.props.currentUserId ? 'Open' : 'Open Discors in your browser'}</Link>
+              <a href="https://www.jeffdeliso.com" className="open-discors-top">About the Developer</a>
             </div>
           </div>
 

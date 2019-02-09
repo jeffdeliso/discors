@@ -21,7 +21,7 @@ class AppRoot extends React.Component {
   }
 
   componentDidMount() {
-    document.body.style = "overflow: hidden;";
+    document.body.style.overflow = "hidden";
 
     this.notificationSubscription = App.cable.subscriptions.create(
       { channel: "NotificationsChannel", userId: this.props.currentUser.id },
@@ -73,7 +73,6 @@ class AppRoot extends React.Component {
 
   componentWillUnmount() {
     this.notificationSubscription.unsubscribe();
-    document.body.removeAttribute("style");
   }
 
   render() {

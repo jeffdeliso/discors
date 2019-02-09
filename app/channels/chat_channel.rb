@@ -65,13 +65,13 @@ If you would like to learn more about Discors you can type "voice", "servers", "
     elsif text == 'test'
       "Was that 5 seconds already?"
     elsif text == 'channels'
-      "Channels"
+      %Q{Servers have both text and voice channels. You can select or create channels within a server. If you have selected a text channel, you will see all the message for that channel. For more information on voice channels type "voice".}
     elsif text == 'servers'
-      "Servers"
+      %Q{You can create or join a server by clicking the dashed circle with a plus sign. Once you have joined a server you can chat with all the other members of that server. If you are looking for a server to join, try "westeros".}
     elsif text == 'voice'
-      "Voice"
+      "Voice channels use WebSockets and WebRTC to exchange user audio in real time. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect. The solution to this would be to implement a TURN relay server, however, these are expensive to operate."
     elsif text == 'friends'
-      "Friends"
+      "You can send a friend request or direct message to any user by clicking on their username or avatar. Friend requests and messages are sent in real time using WebSockets."
     elsif text == 'random'
       response_arr.sample
     else

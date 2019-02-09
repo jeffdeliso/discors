@@ -14,12 +14,8 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    document.body.style = "overflow: hidden;";
+    document.body.style.overflow = "hidden";
     this.nameInput.focus();
-  }
-
-  componentWillUnmount() {
-    document.body.removeAttribute("style");
   }
 
   update(field) {

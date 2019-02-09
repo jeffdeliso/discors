@@ -66,3 +66,7 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
+body {
+	background-color: #26262b;
+}
