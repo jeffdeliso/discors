@@ -150,7 +150,7 @@ class VoiceChannel extends React.Component {
         });
     };
 
-    pc.ontrack = event => {
+    pc.onaddstream = event => {
       const element = document.createElement("audio");
       element.id = `remoteAudioContainer+${userId}`;
       element.autoplay = "autoplay";
