@@ -173,11 +173,11 @@ class Chat extends React.Component {
             </div>
             <div className="server-welcome-item">
               <div className="comp-icon"></div>
-              <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso">here!</a></p>
+              <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso/discors">here!</a></p>
             </div>
             <div className="server-welcome-item">
               <div className="personal-icon"></div>
-              <p><strong>Learn about the developer</strong> and my other projects by visiting my site <a href="https://www.jeffdeliso.com">here!</a></p>
+              <p><strong>Learn about the developer</strong> and my other projects by visiting my website <a href="https://www.jeffdeliso.com">here!</a></p>
             </div>
             <div className="server-welcome-item">
               <div className="phone-icon"></div>
