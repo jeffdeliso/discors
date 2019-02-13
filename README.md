@@ -24,11 +24,16 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
   - Users can unsubscribe from a server
   - Users can delete a server if they are the admin
   - Users can see all the other members in a server
+  
+![image 2-13-19 at 5 46 pm](https://user-images.githubusercontent.com/4982876/52749802-4d5ded80-2fb8-11e9-9293-9aa7d6dd73ac.jpg)
 
 #### Text Channels
   - Users can create text channels in servers they are members of
   - Only the server admin can delete channels
   - Server members can chat with each other inside of text channels. All new messages will be sent to all users of that text channel in real time
+  
+![image 2-13-19 at 5 48 pm](https://user-images.githubusercontent.com/4982876/52749904-944be300-2fb8-11e9-9145-b0b7949a39aa.jpg)
+
 
 #### Voice Channels
   - Users can talk to other members inside of voice channels
@@ -42,6 +47,8 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
   - Users can remove friends from their friends list
   - Users can see who is online/offline
   
+![image 2-13-19 at 5 56 pm](https://user-images.githubusercontent.com/4982876/52749986-e2f97d00-2fb8-11e9-9a57-ddf26293013e.jpg)
+  
 #### Direct Messaging
   - Users can send direct messages by clicking on a users avatar of username
   - Users can remove direct messages without losing their message history
@@ -51,5 +58,7 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
   - When a new user is created a bot will send them a direct message
   - Users can instruct the bot to send a friend request or a delayed message (to test notifications)
   - The bot can provide useful information about the site
+  
+![image 2-13-19 at 5 59 pm](https://user-images.githubusercontent.com/4982876/52750073-2d7af980-2fb9-11e9-984d-67051e492edf.jpg)
 
 Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more detailed information.
