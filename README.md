@@ -17,17 +17,39 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 ## Features
 
 #### Servers
+  - Users can create a new server (the user is then the admin of that server)
+  - Users can upload a custom server icon when creating a server
+  - Servers are created with default "general" voice and text channels
+  - Users can join an existing server
+  - Users can unsubscribe from a server
+  - Users can delete a server if they are the admin
+  - Users can see all the other members in a server
 
 #### Text Channels
+  - Users can create text channels in servers they are members of
+  - Only the server admin can delete channels
+  - Server members can chat with each other inside of text channels. All new messages will be sent to all users of that text channel in real time
 
 #### Voice Channels
-
+  - Users can talk to other members inside of voice channels
+  - If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate.
+  
 #### Friends & Friend Requests
-
+  - Users can send a friend request by clicking on a users avatar of username
+  - Friend requests are sent in real time
+  - Users can cancel outgoing friend requests
+  - Users can accept or ignore incoming friend requests
+  - Users can remove friends from their friends list
+  - Users can see who is online/offline
+  
 #### Direct Messaging
-
-#### Direct Message Notifications
-
+  - Users can send direct messages by clicking on a users avatar of username
+  - Users can remove direct messages without losing their message history
+  - Users recieve direct message notifications
+  
 #### Bot
+  - When a new user is created a bot will send them a direct message
+  - Users can instruct the bot to send a friend request or a delayed message (to test notifications)
+  - The bot can provide useful information about the site
 
 Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more detailed information.
