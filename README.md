@@ -2,7 +2,7 @@
 
 [Live Site](https://discors.herokuapp.com/#/)
 
-![alt text](https://s3.amazonaws.com/discors-dev/discors.jpg)
+![image 2-12-19 at 10 43 am](https://user-images.githubusercontent.com/4982876/52760440-8c526a00-2fdd-11e9-9c6c-96b68f7da4b1.jpg)
 
 ## Overview
 
