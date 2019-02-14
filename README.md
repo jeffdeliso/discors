@@ -2,7 +2,7 @@
 
 [Live Site](https://discors.herokuapp.com/#/)
 
-![alt text](https://s3.amazonaws.com/discors-dev/discors.jpg)
+![image 2-12-19 at 10 43 am](https://user-images.githubusercontent.com/4982876/52760440-8c526a00-2fdd-11e9-9c6c-96b68f7da4b1.jpg)
 
 ## Overview
 
@@ -19,6 +19,7 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 #### Users
   - Users can edit change their username and email
   - Users can upload a custom avatar
+  - Users can login from multiple devices at the same time
   
 ![image 2-13-19 at 7 37 pm](https://user-images.githubusercontent.com/4982876/52754009-e8f65a80-2fc6-11e9-899f-670fd9bc3534.jpg)
   
@@ -192,4 +193,4 @@ pc.onaddstream = event => {
 ```
 
 
-Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more detailed information.
+Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more information.
