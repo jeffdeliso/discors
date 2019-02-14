@@ -75,13 +75,13 @@ class MessageForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} className="message-form">
         <div className="message-form-container">
-          <div className="message-attachment-container">
+          {/* <div className="message-attachment-container">
             <div className="message-attachment-button">
               <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
             </div>
-            {/* <input type="file" onChange={this.handleFile} onKeyDown={(e) => e.preventDefault()} multipleaccept=".jpg,.jpeg,.png,.gif" /> */}
+            <input type="file" onChange={this.handleFile} onKeyDown={(e) => e.preventDefault()} multipleaccept=".jpg,.jpeg,.png,.gif" />
           </div>
-          <div className="message-form-separator"></div>
+          <div className="message-form-separator"></div> */}
           <input
             type="text"
             placeholder={placeholder}

@@ -22,7 +22,7 @@ class ServerMembers extends React.Component {
     let adminOnline;
     let adminOffline;
     if (admin) {
-      adminEl = <ServerMember user={admin} />;
+      adminEl = <ServerMember user={admin} admin={true} />;
       if (admin.online) {
         adminOnline = 1;
         adminOffline = 0;
