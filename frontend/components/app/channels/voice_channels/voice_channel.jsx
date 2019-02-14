@@ -43,7 +43,7 @@ class VoiceChannel extends React.Component {
 
   componentDidMount() {
     if (this.props.select) {
-      ({ audio: true }).then(stream => {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
         this.localstream = stream;
       }).then(() => this.handleJoinSession());
     }
@@ -124,10 +124,8 @@ class VoiceChannel extends React.Component {
     let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
     pc.addStream(this.localstream);
-    isOffer &&
-      pc
-        .createOffer()
-        .then(offer => {
+    if (isOffer) {
+      pc.createOffer().then(offer => {
           pc.setLocalDescription(offer);
           this.voiceSession.broadcastData({
             type: EXCHANGE,
@@ -135,18 +133,18 @@ class VoiceChannel extends React.Component {
             to: userId,
             sdp: JSON.stringify(pc.localDescription)
           });
-        })
-        .catch(this.logError);
+        }).catch(this.logError);
+    }
 
     pc.onicecandidate = event => {
-      console.log(event);
-      event.candidate &&
+      if (event.candidate) {
         this.voiceSession.broadcastData({
           type: EXCHANGE,
           from: this.props.currentUserId,
           to: userId,
           candidate: JSON.stringify(event.candidate)
         });
+      }
     };
 
     pc.onaddstream = event => {
@@ -179,8 +177,7 @@ class VoiceChannel extends React.Component {
     }
 
     if (data.candidate) {
-      pc
-        .addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)))
+      pc.addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)))
         .then(() => console.log("Ice candidate added"))
         .catch(this.logError);
     }
