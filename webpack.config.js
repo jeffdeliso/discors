@@ -2,7 +2,10 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './frontend/discors.jsx',
+  entry: [
+    'babel-polyfill',
+    './frontend/discors.jsx'
+  ],
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
