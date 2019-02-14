@@ -39,15 +39,20 @@ class ChatChannel < ApplicationCable::Channel
     bot_id = 59
     text = message.body.downcase
     response_arr = [
-      "Hello! I'm a bot. I'm here to keep you company and help you test the site."
+      "Why did the functions stop calling each other? Because they had constant arguments.",
+      "How does a computer scientist order three beers? He holds up two fingers.",
+      "How many programmers does it take to screw in a light bulb? None, it's a hardware problem.",
+      "It should be noted that no ethically-trained software engineer would ever consent to write a DestroyBaghdad procedure. Basic professional ethics would instead require him to write a DestroyCity procedure, to which Baghdad could be given as a parameter.",
+      "A SQL statement walks into a bar and sees two tables. It approaches, and asks may I join you?"
     ]
 
-    default_response = %Q{Welcome to Discors! 
-If you would like to be friends type "send" and I will send you a friend request in real time.
+    default_response = %Q{Welcome to Discors! I'm here to keep you company and help you test the site.
+
+If you would like to be friends type "send" and I will send you a friend request in real-time.
 
 If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
 
-If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random response type "random".}
+If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a joke, type "joke".}
 
     if text == 'hi' || text == 'hey' || text == 'hello'
       "Hello! I'm a bot. I'm here to keep you company and help you test the site."
@@ -69,10 +74,10 @@ If you would like to learn more about Discors you can type "voice", "servers", "
     elsif text == 'servers'
       %Q{You can create or join a server by clicking the dashed circle with a plus sign. Once you have joined a server you can chat with all the other members of that server. If you are looking for a server to join, try "westeros".}
     elsif text == 'voice'
-      "Voice channels use WebSockets and WebRTC to exchange user audio in real time. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect. The solution to this would be to implement a TURN relay server, however, these are expensive to operate."
+      "Voice channels use WebSockets and WebRTC to exchange user audio in real time. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate. A TURN server provides a fallback solution for clients that cannot establish a peer to peer connection and acts as a media server proxy between the two peers."
     elsif text == 'friends'
-      "You can send a friend request or direct message to any user by clicking on their username or avatar. Friend requests and messages are sent in real time using WebSockets."
-    elsif text == 'random'
+      "You can send a friend request or direct message to any user by clicking on their username or avatar. Friend requests and messages are sent in real-time using WebSockets."
+    elsif text == 'joke'
       response_arr.sample
     else
       default_response
