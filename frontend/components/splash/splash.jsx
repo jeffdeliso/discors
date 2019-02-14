@@ -33,6 +33,11 @@ class Splash extends React.Component {
                 </a>
               </li>
               <li>
+                <a href="https://angel.co/jeffreydeliso" target="_blank">
+                  <i className="fab fa-angellist"></i>
+                </a>
+              </li>
+              <li>
                 <a href="https://www.jeffdeliso.com" target="_blank">
                   <i className="fas fa-user-circle"></i>
                 </a>
