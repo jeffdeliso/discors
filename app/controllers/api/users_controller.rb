@@ -11,13 +11,12 @@ class Api::UsersController < ApplicationController
       login(@user, request.user_agent)
       bot_id = 59
       user_id = @user.id
-      # Friendship.create!(user_id: user_id, friend_id: bot_id)
       name = @user.id > bot_id ? "#{bot_id}-#{user_id}" : "#{user_id}-#{bot_id}"
       @channel = Channel.find_or_create_by(name: name)
       @channel.dm_memberships.create(user_id: bot_id)
       @channel.dm_memberships.create(user_id: user_id)
       Message.create!(author_id: bot_id, channel_id: @channel.id, body: %Q{Welcome to Discors! I'm here to keep you company and help you test the site.
-      
+
 If you would like to be friends type "send" and I will send you a friend request in real time.
 
 If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
