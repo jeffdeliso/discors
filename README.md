@@ -58,7 +58,7 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 #### Direct Messaging
   - Users can send direct messages by clicking on a users avatar of username
   - Users can remove direct messages without losing their message history
-  - Users recieve direct message notifications
+  - Users receive direct message notifications
   
 #### Bot
   - When a new user is created a bot will send them a direct message
