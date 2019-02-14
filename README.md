@@ -44,7 +44,7 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 
 #### Voice Channels
   - Users can talk to other members inside of voice channels
-  - If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate. A TURN server provides a fallback solution for clients that cannot establish a Peer to Peer connection and acts as a media server proxy between the two peers.
+  - If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connection with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate. A TURN server provides a fallback solution for clients that cannot establish a Peer to Peer connection and acts as a media server proxy between the two peers.
   
 #### Friends & Friend Requests
   - Users can send a friend request by clicking on a users avatar of username
