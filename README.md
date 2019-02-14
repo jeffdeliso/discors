@@ -19,6 +19,7 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 #### Users
   - Users can edit change their username and email
   - Users can upload a custom avatar
+  - Users can login from multiple devices at the same time
   
 ![image 2-13-19 at 7 37 pm](https://user-images.githubusercontent.com/4982876/52754009-e8f65a80-2fc6-11e9-899f-670fd9bc3534.jpg)
   
