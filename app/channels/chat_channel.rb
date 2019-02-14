@@ -74,7 +74,7 @@ If you would like to learn more about Discors you can type "voice", "servers", "
     elsif text == 'servers'
       %Q{You can create or join a server by clicking the dashed circle with a plus sign. Once you have joined a server you can chat with all the other members of that server. If you are looking for a server to join, try "westeros".}
     elsif text == 'voice'
-      "Voice channels use WebSockets and WebRTC to exchange user audio in real time. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connect with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate. A TURN server provides a fallback solution for clients that cannot establish a peer to peer connection and acts as a media server proxy between the two peers."
+      "Voice channels use WebSockets and WebRTC to exchange user audio in real time. If you are behind a symetric NAT or certain firewalls WebRTC may not be able to create a peer to peer connection with your computer. The solution to this would be to implement a TURN relay server, however, these are expensive to operate. A TURN server provides a fallback solution for clients that cannot establish a peer to peer connection and acts as a media server proxy between the two peers."
     elsif text == 'friends'
       "You can send a friend request or direct message to any user by clicking on their username or avatar. Friend requests and messages are sent in real-time using WebSockets."
     elsif text == 'joke'
