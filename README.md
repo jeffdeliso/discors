@@ -192,4 +192,4 @@ pc.onaddstream = event => {
 ```
 
 
-Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more detailed information.
+Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more information.
