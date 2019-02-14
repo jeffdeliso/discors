@@ -1,4 +1,3 @@
-
 import React from 'react';
 import MessageForm from '../message_form';
 import Message from '../message';
@@ -173,15 +172,15 @@ class Chat extends React.Component {
             </div>
             <div className="server-welcome-item">
               <div className="comp-icon"></div>
-              <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso/discors">here!</a></p>
+              <p><strong>Learn about Discors</strong> by exploring the site or visiting the github repo <a href="https://github.com/jeffdeliso/discors" target="_blank">here!</a></p>
             </div>
             <div className="server-welcome-item">
               <div className="personal-icon"></div>
-              <p><strong>Learn about the developer</strong> and my other projects by visiting my website <a href="https://www.jeffdeliso.com">here!</a></p>
+              <p><strong>Learn about the developer</strong> and my other projects by visiting my website <a href="https://www.jeffdeliso.com" target="_blank">here!</a></p>
             </div>
             <div className="server-welcome-item">
               <div className="phone-icon"></div>
-              <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/">LinkedIn</a> or send me an email at <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a>!</p>
+              <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/" target="_blank">LinkedIn</a> or send me an email at <a href="mailto: jad346@cornell.edu" target="_blank">jad346@cornell.edu</a>!</p>
             </div>
           </div>
           <div className="empty-chat">

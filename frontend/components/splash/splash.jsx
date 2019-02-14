@@ -23,17 +23,17 @@ class Splash extends React.Component {
             <img src="https://s3.amazonaws.com/discors-dev/Splash/discors.svg" className="discorLogo" alt=""></img>
             <ul className="rightNav">
               <li>
-                <a href="https://github.com/jeffdeliso">
+                <a href="https://github.com/jeffdeliso" target="_blank">
                   <i className="fab fa-github"></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/jdeliso/">
+                <a href="https://www.linkedin.com/in/jdeliso/" target="_blank">
                   <i className="fab fa-linkedin"></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.jeffdeliso.com">
+                <a href="https://www.jeffdeliso.com" target="_blank">
                   <i className="fas fa-user-circle"></i>
                 </a>
               </li>
@@ -54,7 +54,7 @@ class Splash extends React.Component {
             </p>
             <div className="buttons">
               <button className="downloadMac" onClick={this.handleLogin}>Try the Demo</button>
-              <a href="https://www.jeffdeliso.com" className="open-discors-top">About the Developer</a>
+              <a href="https://www.jeffdeliso.com" target="_blank" className="open-discors-top">About the Developer</a>
             </div>
           </div>
 

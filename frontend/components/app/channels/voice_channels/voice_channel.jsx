@@ -1,7 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Tooltip from '../../modal/tooltip';
-// import Tooltip from '../../modal/tooltip';
+
 const JOIN_ROOM = "JOIN_ROOM";
 const EXCHANGE = "EXCHANGE";
 const REMOVE_USER = "REMOVE_USER";
