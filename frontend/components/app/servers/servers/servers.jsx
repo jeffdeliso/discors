@@ -119,6 +119,7 @@ class Servers extends React.Component {
               margin: 'auto',
               background: 'rgb(255, 255, 255, 1)',
               boxSizing: 'border-box',
+              backgroundColor: '#fff',
             }
           }}
         >
