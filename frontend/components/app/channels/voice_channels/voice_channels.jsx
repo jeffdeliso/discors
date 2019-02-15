@@ -85,7 +85,7 @@ class VoiceChannels extends React.Component {
           onRequestClose={this.handleCloseModal}
           style={{
             overlay: {
-              backgroundColor: 'rgb(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
               zIndex: 99,
             },
             content: {

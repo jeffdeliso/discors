@@ -108,7 +108,7 @@ class Servers extends React.Component {
           onRequestClose={this.handleCloseModal}
           style={{
             overlay: {
-              backgroundColor: 'rgb(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
               zIndex: 99,
             },
             content: {
@@ -117,9 +117,8 @@ class Servers extends React.Component {
               padding: 0,
               borderRadius: '5px 5px 5px 5px',
               margin: 'auto',
-              background: 'rgb(255, 255, 255, 1)',
+              background: 'rgb(255, 255, 255)',
               boxSizing: 'border-box',
-              backgroundColor: '#fff',
             }
           }}
         >

@@ -54,7 +54,7 @@ class UserBar extends React.Component {
           closeTimeoutMS={150}
           style={{
             overlay: {
-              backgroundColor: 'rgb(0, 0, 0, 0.7)',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
               zIndex: 99,
             },
             content: {

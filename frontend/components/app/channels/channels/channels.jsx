@@ -109,7 +109,7 @@ class Channels extends React.Component {
           closeTimeoutMS={150}
           style={{
             overlay: {
-              backgroundColor: 'rgb(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
               zIndex: 99,
             },
             content: {
