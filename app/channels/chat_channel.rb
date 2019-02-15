@@ -43,7 +43,10 @@ class ChatChannel < ApplicationCable::Channel
       "How does a computer scientist order three beers? He holds up two fingers.",
       "How many programmers does it take to screw in a light bulb? None, it's a hardware problem.",
       "It should be noted that no ethically-trained software engineer would ever consent to write a DestroyBaghdad procedure. Basic professional ethics would instead require him to write a DestroyCity procedure, to which Baghdad could be given as a parameter.",
-      "A SQL statement walks into a bar and sees two tables. It approaches, and asks may I join you?"
+      "A SQL statement walks into a bar and sees two tables. It approaches, and asks may I join you?",
+      "A programmer is at work when his wife calls and asks him to go to the store. She says she needs a gallon of milk, and if they have fresh eggs, buy a dozen. He comes home with 12 gallons of milk.",
+      %Q{A computer scientist named Bob was about to leave to rent a movie. As Bob was heading out, his wife said, "while you're out, pick up some eggs." Bob never came back.},
+      "Why did the programmer quit his job? Because he didn’t get arrays."
     ]
 
     default_response = %Q{Welcome to Discors! I'm here to keep you company and help you test the site.
