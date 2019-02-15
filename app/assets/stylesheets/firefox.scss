@@ -44,5 +44,17 @@
   .friends-scroll-wrapper {
     width: calc(100vw - 294px);
   }
+
+  .ReactModal__Content {
+    overflow: hidden !important;
+  }
+
+  .create-server-form,
+  .join-server-form {
+    display: block !important;
+  }
+  .create-server-form-bottom button {
+    align-items: center;
+  }
 }
 

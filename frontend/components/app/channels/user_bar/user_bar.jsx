@@ -58,7 +58,7 @@ class UserBar extends React.Component {
               zIndex: 99,
             },
             content: {
-              height: 'fit-content',
+              height: '271px',
               width: '500px',
               padding: 0,
               borderRadius: '5px',
