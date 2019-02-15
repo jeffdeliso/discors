@@ -18,38 +18,40 @@ class Message extends React.Component {
     const lines = body.split('\n');
     return lines.map((line, j) => {
       const words = line.split(/\s/);
+      const content = [];
 
-      const content = words.map((word, i) => {
+      words.map((word, i) => {
         let separator = i < (words.length - 1) ? ' ' : '';
 
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
-          return (
+          content.push(
             <span key={i}>
               <a href={word} target="_blank">
                 <img src={word} />
               </a>
-              <br />
             </span>
           );
+
+          content.push(<br key={i + 999} />);
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
-          return (
+          content.push(
             <span key={i}>
-              {/* <a href={word} target="_blank">{word}</a> */}
               <iframe
                 src={word.replace("watch?v=", "embed/")}
                 allowFullScreen></iframe>
-              <br />
             </span>
           );
+
+          content.push(<br key={i + 999} />);
         } else if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
-          return <a key={i} href={word} target="_blank">{word}{separator}</a>;
+          content.push(<a key={i} href={word} target="_blank">{word}{separator}</a>);
         } else {
-          return word + separator;
+          content.push(word + separator);
         }
       });
 
       if (typeof content[content.length - 1] === 'string' && j < lines.length - 1) {
-        return content.concat(<br key={j + 999} />);
+        return content.concat(<br key={j + 499} />);
       } else {
         return content;
       }

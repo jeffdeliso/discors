@@ -166,7 +166,7 @@ class Chat extends React.Component {
           user={this.props.users[this.lastAuthorId] || {}}
           time={this.time}
         />);
-        
+
       this.setState({
         messages: newMessages
       });
@@ -212,7 +212,7 @@ class Chat extends React.Component {
               <p><strong>Reach me</strong> via <a href="https://www.linkedin.com/in/jdeliso/" target="_blank">LinkedIn</a> or send me an email at <a href="mailto: jad346@cornell.edu">jad346@cornell.edu</a>!</p>
             </div>
           </div>
-          <div className="empty-chat">
+          <div className="empty-chat empty-welcome">
           </div>
         </div>
       )
