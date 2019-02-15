@@ -1,8 +1,6 @@
 import React from 'react';
-// import Channel from './channel';
 import Modal from 'react-modal';
 import CreateChannelForm from '../create_channel_form';
-// import Tooltip from '../../modal/tooltip';
 import VoiceChannel from './voice_channel';
 
 class VoiceChannels extends React.Component {
