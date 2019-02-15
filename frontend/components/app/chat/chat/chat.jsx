@@ -1,12 +1,15 @@
 import React from 'react';
 import MessageForm from '../message_form';
 import Message from '../message';
+import { union } from 'lodash';
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
     this.bottom = React.createRef();
+
+    this.parseNewMessage = this.parseNewMessage.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +30,10 @@ class Chat extends React.Component {
     const channelId = this.props.match.params.channelId;
 
     if (channelId && prevProps.channelId !== channelId) {
+      this.messageStr = null;
+      this.time = null;
+      this.lastAuthorId = null;
+      this.messageId = null;
       this.setState({ messages: [] });
       this.subscription.unsubscribe();
       this.subscribe(channelId);
@@ -57,12 +64,10 @@ class Chat extends React.Component {
           received: data => {
             switch (data.type) {
               case "message":
-                this.setState({
-                  messages: this.state.messages.concat(data.message)
-                });
+                this.parseNewMessage(data.message);
                 break;
               case "messages":
-                this.setState({ messages: data.messages });
+                this.setState({ messages: this.parseMessages(data.messages) });
                 break;
             }
           },
@@ -81,86 +86,110 @@ class Chat extends React.Component {
 
   }
 
-  parseMessages() {
+  parseMessages(messages) {
     const messageArr = [];
-    let messageStr;
-    let authorId;
-    let time;
 
-    for (let i = 0; i < this.state.messages.length; i++) {
-      const message = this.state.messages[i];
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
 
       if (i === 0) {
-        if (this.state.messages.length === 1) {
+        if (messages.length === 1) {
           messageArr.push(
-            <Message key={i}
+            <Message key={message.id}
               message={message.body}
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
-            />
-          )
-        } else {
-          messageStr = message.body;
-          authorId = message.author_id;
-          time = message.created_at;
+            />);
         }
-      } else if (i === this.state.messages.length - 1) {
-        if (message.author_id === authorId) {
-          messageStr = messageStr + '\n' + message.body;
+
+        this.messageStr = message.body;
+        this.time = message.created_at;
+        this.lastAuthorId = message.author_id;
+        this.messageId = message.id;
+      } else if (i === messages.length - 1) {
+        if (message.author_id === this.lastAuthorId) {
+          this.messageStr = this.messageStr + '\n' + message.body;
           messageArr.push(
-            <Message key={i}
-              message={messageStr}
-              user={this.props.users[authorId] || {}}
-              time={time}
+            <Message key={this.messageId}
+              message={this.messageStr}
+              user={this.props.users[this.lastAuthorId] || {}}
+              time={this.time}
             />
           )
         } else {
           messageArr.push(
-            <Message key={i}
-              message={messageStr}
-              user={this.props.users[authorId] || {}}
-              time={time}
-            />
-          )
+            <Message key={this.messageId}
+              message={this.messageStr}
+              user={this.props.users[this.lastAuthorId] || {}}
+              time={this.time}
+            />);
 
           messageArr.push(
-            <Message key={i + 1}
+            <Message key={message.id}
               message={message.body}
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
-            />
-          )
+            />);
+
+          this.messageStr = message.body;
+          this.time = message.created_at;
+          this.lastAuthorId = message.author_id;
+          this.messageId = message.id;
         }
-      } else if (message.author_id === authorId) {
-        messageStr = messageStr + '\n' + message.body;
+      } else if (message.author_id === this.lastAuthorId) {
+        this.messageStr = this.messageStr + '\n' + message.body;
       } else {
         messageArr.push(
-          <Message key={i}
-            message={messageStr}
-            user={this.props.users[authorId] || {}}
-            time={time}
-          />
-        )
+          <Message key={this.messageId}
+            message={this.messageStr}
+            user={this.props.users[this.lastAuthorId] || {}}
+            time={this.time}
+          />);
 
-        authorId = message.author_id;
-        messageStr = message.body;
-        time = message.created_at;
+        this.messageStr = message.body;
+        this.time = message.created_at;
+        this.messageId = message.id;
+        this.lastAuthorId = message.author_id;
       }
     }
     return messageArr
   }
 
-  render() {
-    const messageList = this.state.messages.map((message, idx) => {
-      return (
-        <Message key={idx}
-          message={message}
-          user={this.props.users[message.author_id] || {}}
-        />
-      );
-    });
+  parseNewMessage(message) {
+    if (message.author_id === this.lastAuthorId) {
+      this.messageStr = this.messageStr + '\n' + message.body;
+      const newMessages = union([], this.state.messages);
 
+      newMessages[newMessages.length - 1] = (
+        <Message key={this.messageId}
+          message={this.messageStr}
+          user={this.props.users[this.lastAuthorId] || {}}
+          time={this.time}
+        />);
+        
+      this.setState({
+        messages: newMessages
+      });
+    } else {
+      this.messageStr = message.body;
+      this.time = message.created_at;
+      this.lastAuthorId = message.author_id;
+      this.messageId = message.id;
+
+      this.setState({
+        messages: this.state.messages.concat(
+          <Message key={message.id}
+            message={message.body}
+            user={this.props.users[message.author_id] || {}}
+            time={message.created_at}
+          />)
+      });
+    }
+  }
+
+  render() {
     let emptyMessage = null;
+
     if (this.props.channel.name === "general") {
       emptyMessage = (
         <div className="welcome-message">
@@ -208,7 +237,7 @@ class Chat extends React.Component {
           <div className="message-scroll-wrapper">
             <div className="message-list">
               {emptyMessage}
-              {this.parseMessages()}
+              {this.state.messages}
               <div ref={this.bottom} />
             </div>
           </div>
