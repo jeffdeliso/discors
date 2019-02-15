@@ -34,7 +34,7 @@ class Message extends React.Component {
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
           return (
             <span key={i}>
-              <a key={i} href={word}>{word}</a>
+              <a key={i} href={word} target="_blank">{word}</a>
               <iframe
                 key={i + 999}
                 src={word.replace("watch?v=", "embed/")}
