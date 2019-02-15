@@ -1,6 +1,6 @@
 import React from "react";
 import UserPopup from "../modal/user_popup_container";
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import moment from 'moment-timezone';
 
 class Message extends React.Component {
@@ -12,6 +12,29 @@ class Message extends React.Component {
   transition() {
     const popUp = document.getElementsByClassName('popup-content');
     popUp[0].style.transform = 'translate(-10px, 0)';
+  }
+
+  parseLinks(body) {
+    const lines = body.split('\n');
+    return lines.map((line, j) => {
+      const words = line.split(/\s/);
+  
+      const content = words.map((word, i) => {
+        let separator = i < (words.length - 1) ? ' ' : '';
+        
+        if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
+          return <a key={i} href={word}>{word}{separator}</a>;
+        } else {
+          return word + separator;
+        }
+      });
+      
+      if (typeof content[content.length - 1]  === 'string' && j < lines.length - 1) {
+        return content.concat(<br key={j} />);
+      } else {
+        return content;
+      }
+    })
   }
 
   render() {
@@ -40,7 +63,7 @@ class Message extends React.Component {
             <h5>{this.parseDate()}</h5>
           </div>
           <div className="message-p-wrapper">
-            <p>{this.props.message}</p>
+            <p>{this.parseLinks(this.props.message)}</p>
           </div>
         </div>
       </div>

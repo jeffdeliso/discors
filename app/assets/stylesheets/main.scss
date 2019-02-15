@@ -478,7 +478,18 @@
   font-family: main2;
   padding-top: 5px;
   display: flex;
+  flex-direction: column;
   // word-break: break-all;
+}
+
+.message a:hover {
+  text-decoration: underline;
+}
+
+.message a {
+  color: #0096cf;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .message-p-wrapper {
