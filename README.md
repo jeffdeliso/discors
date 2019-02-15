@@ -38,6 +38,8 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
   - Users can create text channels in servers they are members of
   - Only the server admin can delete channels
   - Server members can chat with each other inside of text channels. All new messages will be sent to all users of that text channel in real time
+  - URLs in messages display as links
+  - YouTube and image links show previews and are playable in chat 
   
 ![image 2-13-19 at 5 48 pm](https://user-images.githubusercontent.com/4982876/52749904-944be300-2fb8-11e9-9145-b0b7949a39aa.jpg)
 
