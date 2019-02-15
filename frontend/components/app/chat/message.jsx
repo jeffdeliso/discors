@@ -1,6 +1,6 @@
 import React from "react";
 import UserPopup from "../modal/user_popup_container";
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import moment from 'moment-timezone';
 
 class Message extends React.Component {
