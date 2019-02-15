@@ -25,21 +25,20 @@ class Message extends React.Component {
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           return (
             <span key={i}>
-              <a href={word} key={i} target="_blank">
-                <img src={word} key={i + 999} />
+              <a href={word} target="_blank">
+                <img src={word} />
               </a>
-              <br key={i + 500} />
+              <br />
             </span>
           );
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
           return (
             <span key={i}>
-              <a key={i} href={word} target="_blank">{word}</a>
+              {/* <a href={word} target="_blank">{word}</a> */}
               <iframe
-                key={i + 999}
                 src={word.replace("watch?v=", "embed/")}
                 allowFullScreen></iframe>
-              <br key={i + 500} />
+              <br />
             </span>
           );
         } else if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
@@ -50,7 +49,7 @@ class Message extends React.Component {
       });
 
       if (typeof content[content.length - 1] === 'string' && j < lines.length - 1) {
-        return content.concat(<br key={j + 1500} />);
+        return content.concat(<br key={j + 999} />);
       } else {
         return content;
       }
