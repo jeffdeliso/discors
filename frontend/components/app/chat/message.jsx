@@ -70,6 +70,7 @@ class Message extends React.Component {
           offsetX={2}
           offsetY={60}
           onOpen={this.transition}
+          showMessageButton={this.props.showMessageButton}
         />
         <div className="username-message">
           <div className="username-time">
@@ -81,6 +82,7 @@ class Message extends React.Component {
               offsetX={2}
               offsetY={72}
               onOpen={this.transition}
+              showMessageButton={this.props.showMessageButton}
             />
             <h5>{this.parseDate()}</h5>
           </div>

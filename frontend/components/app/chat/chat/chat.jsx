@@ -112,6 +112,7 @@ class Chat extends React.Component {
               message={message.body}
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
+              showMessageButton={this.props.channel.server_id ? true : false}
             />);
         }
 
@@ -127,6 +128,7 @@ class Chat extends React.Component {
               message={this.messageStr}
               user={this.props.users[this.lastAuthorId] || {}}
               time={this.time}
+              showMessageButton={this.props.channel.server_id ? true : false}
             />
           )
         } else {
@@ -135,6 +137,7 @@ class Chat extends React.Component {
               message={this.messageStr}
               user={this.props.users[this.lastAuthorId] || {}}
               time={this.time}
+              showMessageButton={this.props.channel.server_id ? true : false}
             />);
 
           messageArr.push(
@@ -142,6 +145,7 @@ class Chat extends React.Component {
               message={message.body}
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
+              showMessageButton={this.props.channel.server_id ? true : false}
             />);
 
           this.messageStr = message.body;
@@ -157,6 +161,7 @@ class Chat extends React.Component {
             message={this.messageStr}
             user={this.props.users[this.lastAuthorId] || {}}
             time={this.time}
+            showMessageButton={this.props.channel.server_id ? true : false}
           />);
 
         this.messageStr = message.body;
@@ -179,6 +184,7 @@ class Chat extends React.Component {
           message={this.messageStr}
           user={this.props.users[this.lastAuthorId] || {}}
           time={this.time}
+          showMessageButton={this.props.channel.server_id ? true : false}
         />);
 
       this.setState({
@@ -196,6 +202,7 @@ class Chat extends React.Component {
             message={message.body}
             user={this.props.users[message.author_id] || {}}
             time={message.created_at}
+            showMessageButton={this.props.channel.server_id ? true : false}
           />)
       });
     }

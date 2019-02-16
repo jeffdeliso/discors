@@ -82,7 +82,7 @@ class UserPopup extends React.Component {
             <h5>{this.props.user.username}</h5>
           </div>
           <div className="user-popup-bottom">
-            {this.props.user.id === this.props.currentUserId ? null : <button className="user-popup-button"
+            {this.props.user.id === this.props.currentUserId || !this.props.showMessageButton ? null : <button className="user-popup-button"
               onClick={this.handleClick}
               id="dm-button"
             >Message</button>}
