@@ -128,7 +128,7 @@ class VoiceChannel extends React.Component {
     this.localstream.getTracks().forEach(track => pc.addTrack(track, this.localstream));
     if (isOffer) {
       pc.createOffer().then(offer => {
-        pc.setLocalDescription(new RTCSessionDescription(offer));
+        pc.setLocalDescription(offer);
         this.voiceSession.broadcastData({
           type: EXCHANGE,
           from: this.props.currentUserId,
@@ -187,7 +187,8 @@ class VoiceChannel extends React.Component {
 
     if (data.sdp) {
       const sdp = JSON.parse(data.sdp);
-      pc.setRemoteDescription(new RTCSessionDescription(sdp)).then(() => {
+      debugger
+      pc.setRemoteDescription(sdp).then(() => {
         if (sdp.type === "offer") {
           pc.createAnswer().then(answer => {
             pc.setLocalDescription(answer);
