@@ -117,7 +117,7 @@ class VoiceChannel extends React.Component {
   removeUser(data) {
     console.log("removing user", data.from);
     let audio = document.getElementById(`remoteAudioContainer+${data.from}`);
-    audio && audio.remove();
+    if (audio) audio.remove();
     delete this.pcPeers[data.from];
   }
 
@@ -125,7 +125,7 @@ class VoiceChannel extends React.Component {
     const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
     let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
-    pc.addStream(this.localstream);
+    pc.addTrack(this.localstream);
     if (isOffer) {
       pc.createOffer().then(offer => {
         pc.setLocalDescription(offer);
