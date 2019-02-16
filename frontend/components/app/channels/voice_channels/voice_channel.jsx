@@ -187,7 +187,6 @@ class VoiceChannel extends React.Component {
 
     if (data.sdp) {
       const sdp = JSON.parse(data.sdp);
-      debugger
       pc.setRemoteDescription(sdp).then(() => {
         if (sdp.type === "offer") {
           pc.createAnswer().then(answer => {
