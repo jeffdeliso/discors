@@ -214,11 +214,17 @@ SELECT DISTINCT
 FROM 
   users
 LEFT OUTER JOIN 
-  friend_requests ON friend_requests.user_id = users.id
+  friend_requests 
+ON 
+  friend_requests.user_id = users.id
 LEFT OUTER JOIN 
-  friend_requests AS incoming_friend_requests_users ON incoming_friend_requests_users.friend_id = users.id
+  friend_requests AS incoming_friend_requests_users 
+ON 
+  incoming_friend_requests_users.friend_id = users.id
 LEFT OUTER JOIN 
-  friendships ON friendships.user_id = users.id
+  friendships 
+ON 
+  friendships.user_id = users.id
 WHERE 
   incoming_friend_requests_users.user_id = 1040
   OR friend_requests.friend_id = 1040 
