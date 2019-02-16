@@ -197,7 +197,7 @@ pc.onaddstream = event => {
 
 #### SQL
 
-I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my queries by 4.
+I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my total queries by 8.
 
 ```ruby
 @users = User.distinct.select('users.*').left_outer_joins(:friend_requests)
