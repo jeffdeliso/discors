@@ -125,7 +125,7 @@ class VoiceChannel extends React.Component {
     const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
     let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
-    pc.addTrack(this.localstream);
+    this.localstream.getTracks().forEach(track => pc.addTrack(track, this.localstream));
     if (isOffer) {
       pc.createOffer().then(offer => {
         pc.setLocalDescription(offer);
