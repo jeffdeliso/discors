@@ -47,8 +47,6 @@ class Api::UsersController < ApplicationController
       .left_outer_joins(:incoming_friend_requests).left_outer_joins(:friendships)
       .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR users.id IN (:dm_user_ids)", current_user_id: current_user_id, dm_user_ids: dm_user_ids)
       .includes(:sessions, :server_memberships)
-      # .joins("LEFT OUTER JOIN dm_channel_memberships ON dm_channel_memberships.user_id = users.id").joins("LEFT OUTER JOIN dm_channel_memberships AS dm_channel_memberships2 ON dm_channel_memberships.channel_id = dm_channel_memberships2.channel_id")
-      # .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR dm_channel_memberships2.user_id = :current_user_id", current_user_id: current_user_id).includes(:sessions, :server_memberships)
 
     @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
     @friendships = current_user.friendships.pluck(:friend_id)
