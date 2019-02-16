@@ -10,6 +10,7 @@ class Channels extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showModal: false, showUserModal: false, active: false };
+    
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.removeServer = this.removeServer.bind(this);
@@ -26,9 +27,6 @@ class Channels extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchFriends();
-    // this.props.fetchFriendRequests();
-
     const serverId = this.props.match.params.serverId;
     if (serverId) {
       this.props.fetchChannels(serverId);

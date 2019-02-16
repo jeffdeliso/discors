@@ -4,16 +4,12 @@ import UserBar from '../user_bar/user_bar_container';
 import { NavLink } from 'react-router-dom';
 
 class DMChannels extends React.Component {
-
-  // componentDidMount() {
-  //   this.props.fetchDmChannels();
-  // }
-
   render() {
     const that = this;
     const channels = this.props.channels.map((channel, idx) => {
       const nameArr = channel.name.split('-');
       let userId;
+      
       if (nameArr[0] == this.props.currentUser.id) {
         userId = nameArr[1];
       } else {

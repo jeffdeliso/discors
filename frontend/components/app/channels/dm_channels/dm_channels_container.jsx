@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { fetchDmChannels, deleteDmChannel } from '../../../../actions/channel_actions';
 import { removeDmNotification } from '../../../../actions/notification_actions';
 
-
 const mapStateToProps = (state, ownProps) => {
   const incomingRequests = Object.values(state.entities.friendRequests).filter((request) => {
     return request.friend_id === state.session.id;

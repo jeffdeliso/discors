@@ -21,6 +21,7 @@ class ServerMembers extends React.Component {
     let adminEl;
     let adminOnline;
     let adminOffline;
+
     if (admin) {
       adminEl = <ServerMember user={admin} admin={true} />;
       if (admin.online) {
@@ -39,11 +40,9 @@ class ServerMembers extends React.Component {
 
     const onlineMembers = online.map((member, idx) => {
       if (member.id === this.props.server.admin_id) {
-        return null
+        return null;
       } else {
-        return <ServerMember key={idx}
-          user={member}
-        />;
+        return <ServerMember key={idx} user={member} />;
       }
     });
 

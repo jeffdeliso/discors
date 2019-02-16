@@ -24,12 +24,10 @@ class JoinServerForm extends React.Component {
     this.props.joinServer(this.state).then(this.handleRedirect);
   }
 
-
   handleRedirect(action) {
     this.props.closeModal();
     this.props.history.push(`/channels/${action.server.id}/${action.server.root_channel}`);
   }
-
 
   render() {
     return (
@@ -44,7 +42,7 @@ class JoinServerForm extends React.Component {
             <input id="join-server-text-input" type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
           </div>
         </div>
-
+        
         <div className="create-server-form-bottom" style={{marginTop: '105px'}}>
           <button id="join-server-button">Join</button>
         </div>

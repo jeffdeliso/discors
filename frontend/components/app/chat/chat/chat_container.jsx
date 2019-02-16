@@ -5,6 +5,7 @@ import { removeDmNotification } from '../../../../actions/notification_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.match.params.channelId;
+  
   return {
     currentUser: state.entities.users[state.session.id],
     channelId,

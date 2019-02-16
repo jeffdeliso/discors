@@ -9,6 +9,7 @@ class EditUserForm extends React.Component {
       avatarFile: null,
       avatarUrl: null,
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
@@ -24,9 +25,9 @@ class EditUserForm extends React.Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-
       this.setState({ avatarFile: file, avatarUrl: fileReader.result });
     };
+
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -42,8 +43,8 @@ class EditUserForm extends React.Component {
     formData.append('user[username]', this.state.username);
     formData.append('user[email]', this.state.email);
     formData.append('user[id]', this.props.currentUser.id);
-    if (this.state.avatarFile) {
 
+    if (this.state.avatarFile) {
       formData.append('user[avatar]', this.state.avatarFile);
     }
 
@@ -53,6 +54,7 @@ class EditUserForm extends React.Component {
   render() {
     const emailError = this.props.errors.find((el) => el.includes('Email'));
     const usernameError = this.props.errors.find((el) => el.includes('Username'));
+
     return (
       <form className="edit-user-form" onSubmit={this.handleSubmit}>
         <div className="edit-user-form-top">
@@ -70,7 +72,6 @@ class EditUserForm extends React.Component {
               onClick={this.handleRemove}
               onKeyDown={(e) => e.preventDefault()}
             >REMOVE</button> : null}
-
           </div>
           <div className="edit-user-username-email">
             <div className="email-container">

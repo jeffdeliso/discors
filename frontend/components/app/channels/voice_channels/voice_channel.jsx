@@ -8,10 +8,11 @@ const REMOVE_USER = "REMOVE_USER";
 class VoiceChannel extends React.Component {
   constructor(props) {
     super(props);
-    this.remoteAudioContainer = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
-    this.pcPeers = {};
     this.state = { active: false };
+    this.pcPeers = {};
+    this.remoteAudioContainer = React.createRef();
+
+    this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -36,7 +37,6 @@ class VoiceChannel extends React.Component {
     this.props.deleteVoiceChannel();
   }
 
-
   handleClick() {
     this.props.selectVoiceChannel();
   }
@@ -54,6 +54,7 @@ class VoiceChannel extends React.Component {
       if (this.voiceSession) this.handleLeaveSession();
     } else if (!prevProps.selected && this.props.selected) {
       if (this.voiceSession) this.handleLeaveSession();
+
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
         this.localstream = stream;
       }).then(() => this.handleJoinSession());
@@ -91,7 +92,8 @@ class VoiceChannel extends React.Component {
           }
         },
         broadcastData: function (data) { return this.perform("broadcast", { channelId: that.props.channel.id, data }) }
-      });
+      }
+    );
   }
 
   handleLeaveSession() {
@@ -126,14 +128,14 @@ class VoiceChannel extends React.Component {
     pc.addStream(this.localstream);
     if (isOffer) {
       pc.createOffer().then(offer => {
-          pc.setLocalDescription(offer);
-          this.voiceSession.broadcastData({
-            type: EXCHANGE,
-            from: this.props.currentUserId,
-            to: userId,
-            sdp: JSON.stringify(pc.localDescription)
-          });
-        }).catch(this.logError);
+        pc.setLocalDescription(offer);
+        this.voiceSession.broadcastData({
+          type: EXCHANGE,
+          from: this.props.currentUserId,
+          to: userId,
+          sdp: JSON.stringify(pc.localDescription)
+        });
+      }).catch(this.logError);
     }
 
     pc.onicecandidate = event => {
@@ -164,6 +166,7 @@ class VoiceChannel extends React.Component {
         });
       }
     };
+
     console.log(pc);
     return pc;
   }
@@ -196,8 +199,7 @@ class VoiceChannel extends React.Component {
             });
           });
         }
-      })
-        .catch(this.logError);
+      }).catch(this.logError);
     }
   }
 

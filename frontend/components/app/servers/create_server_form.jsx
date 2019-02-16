@@ -34,10 +34,11 @@ class CreateServerForm extends React.Component {
   handleFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
-    fileReader.onloadend = () => {
 
+    fileReader.onloadend = () => {
       this.setState({ avatarFile: file, avatarUrl: fileReader.result });
     };
+
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -51,13 +52,12 @@ class CreateServerForm extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('server[name]', this.state.name);
-    if (this.state.avatarFile) {
 
+    if (this.state.avatarFile) {
       formData.append('server[icon]', this.state.avatarFile);
     }
 
     this.props.createServer(formData).then(this.handleRedirect);
-    // this.props.editUser(formData).then(this.props.closeModal);
   }
 
   render() {
@@ -91,7 +91,7 @@ class CreateServerForm extends React.Component {
             </div>
           </div>
         </div>
-
+        
         <div className="create-server-form-bottom">
           <button>Create</button>
         </div>

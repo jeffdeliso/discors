@@ -11,6 +11,7 @@ class DmNotification extends React.Component {
   componentDidMount() {
     setTimeout(() => this.setState({classText: 'dm-notification right'}), 200);
   }
+  
   render() {
     return (
       <Tooltip component={

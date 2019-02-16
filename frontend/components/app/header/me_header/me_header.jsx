@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class MeHeader extends React.Component {
-
   render() {
     let title;
     if (this.props.channel.name) {
       const nameArr = this.props.channel.name.split('-');
       let userId;
+      
       if (nameArr[0] == this.props.currentUser.id) {
         userId = nameArr[1];
       } else {
         userId = nameArr[0];
       }
+
       if (this.props.users[userId]) {
         title = this.props.users[userId].username;
       } else {

@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
       username: '',
       password: '',
     };
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
     this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);

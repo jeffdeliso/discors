@@ -7,6 +7,7 @@ class VoiceChannels extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showModal: false, voiceChannelId: null };
+
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.selectVoiceChannel = this.selectVoiceChannel.bind(this);

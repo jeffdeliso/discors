@@ -6,6 +6,7 @@ class Channel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: false };
+    
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -57,7 +58,5 @@ class Channel extends React.Component {
     )
   };
 };
-
-
 
 export default withRouter(Channel);

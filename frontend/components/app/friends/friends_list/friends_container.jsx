@@ -22,7 +22,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // fetchFriends: () => dispatch(fetchFriends()),
     deleteFriend: (id) => dispatch(deleteFriend(id)),
     createDmChannel: userId => dispatch(createDmChannel(userId)),
   };

@@ -5,6 +5,7 @@ class DmChannel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: false };
+
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -20,9 +21,9 @@ class DmChannel extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    
     const channelId = this.props.channel.id;
     const notification = document.getElementById(`dm-notification-${channelId}`);
+    
     if (notification) {
       notification.className = 'dm-notification';
       setTimeout(() => this.props.removeDmNotification(channelId), 200);

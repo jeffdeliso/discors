@@ -4,7 +4,6 @@ import Friends from '../friends/friends_list/friends_container';
 import PendingFriends from '../friends/pending_friends/pending_friends_container';
 import OnlineFriends from '../friends/friends_list/online_friends_container';
 
-
 class FriendsMain extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +17,7 @@ class FriendsMain extends React.Component {
 
   render() {
     let component;
+    
     if (this.state.tab === 'all') {
       component = <Friends />
     } else if (this.state.tab === 'online') {
@@ -25,6 +25,7 @@ class FriendsMain extends React.Component {
     } else {
       component = <PendingFriends />
     }
+
     return (
       <>
         <div className="chat-container">

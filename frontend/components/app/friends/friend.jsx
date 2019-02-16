@@ -4,7 +4,6 @@ import { intersection } from 'lodash';
 import Tooltip from '../modal/tooltip';
 import MutualServer from './mutual_server';
 
-
 class Friend extends React.Component {
   constructor(props) {
     super(props);
@@ -36,14 +35,15 @@ class Friend extends React.Component {
         const server = this.props.servers[serverId] || {};
         return <MutualServer server={server} key={idx} />;
       });
-
     } else {
       mutualServers = [];
+
       for (let i = 0; i < 5; i++) {
         const serverId = mutualServerIds[i];
         const server = this.props.servers[serverId] || {};
         mutualServers.push(<MutualServer server={server} key={i} />);
       }
+
       mutualServers.push(<div className="extra-servers" key={mutualServerIds.length}>{`+${mutualServerIds.length - 5}`}</div>);
     }
 
@@ -84,7 +84,6 @@ class Friend extends React.Component {
             position="top center"
             text={this.props.status.includes('request') ? (this.props.status.includes('Outgoing') ? "Cancel" : "Ignore") : "Remove Friend"}
           />
-
         </div>
       </li>
     )

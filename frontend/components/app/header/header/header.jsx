@@ -2,7 +2,6 @@ import React from 'react';
 import Tooltip from '../../modal/tooltip';
 
 class Header extends React.Component {
-
   render() {
     return (
       <header className="chat-header">

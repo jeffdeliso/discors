@@ -15,10 +15,6 @@ class Servers extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchServers();
-  // }
-
   handleOpenModal() {
     this.setState({ showModal: true });
   }
@@ -41,12 +37,13 @@ class Servers extends React.Component {
       />;
     })
 
-
     const servers = this.props.servers.map((server, idx) => {
       return <Server key={idx} server={server} />
     });
+
     Modal.setAppElement('#root');
     let content;
+    
     if (this.state.content === "create") {
       content = <CreateServerForm
         createServer={this.props.createServer}

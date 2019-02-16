@@ -3,7 +3,6 @@ import Tooltip from '../modal/tooltip';
 import { Link } from 'react-router-dom';
 
 class MutualServer extends React.Component {
-
   render() {
     return (
       <Tooltip component={

@@ -2,11 +2,6 @@ import React from 'react';
 import Friend from '../friend';
 
 class PendingFriends extends React.Component {
-
-  // componentDidMount() {
-  //   this.props.fetchFriendRequests();
-  // }
-
   render() {
     const incomingFriends = this.props.incomingRequests.map((request, idx) => {
       const user = this.props.users[request.user_id];
@@ -49,7 +44,6 @@ class PendingFriends extends React.Component {
               <h4>There are no pending friend requests. Here's a Wumpus for now.</h4>
             </div>
             : null}
-
         </ul>
       </div>
     )

@@ -29,31 +29,36 @@ class AppRoot extends React.Component {
         received: data => {
           switch (data.type) {
             case "message":
-              // const message = JSON.parse(data.message);
               const channel = JSON.parse(data.channel);
               const author = JSON.parse(data.user);
               const notification = { channelId: channel.id, authorId: author.id };
+
               if (this.props.location.pathname !== `/channels/@me/${channel.id}`) {
                 this.props.receiveChannel(channel);
                 this.props.receiveUser(author);
                 this.props.receiveDmNotification(notification);
               }
+
               break;
             case "friend_request":
               this.props.receiveUser(JSON.parse(data.user));
               this.props.receiveFriendRequest(JSON.parse(data.friend_request));
+
               break;
             case "friend_request_destroy":
               const request = JSON.parse(data.friend_request);
               this.props.removeFriendRequest(request.id);
+
               break;
             case "friend":
               const user = JSON.parse(data.user);
               this.props.receiveUser(user);
               this.props.receiveFriend(user.id);
+
               break;
             case "friend_destroy":
               this.props.removeFriend(JSON.parse(data.user_id));
+              
               break;
           }
         },
