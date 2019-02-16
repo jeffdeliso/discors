@@ -30,11 +30,12 @@ class Api::UsersController < ApplicationController
     @servers = current_user.servers.includes(:channels, :audio_channels)
     @channels = @servers.map(&:channels).flatten.uniq
     @audio_channels = @servers.map(&:audio_channels).flatten.uniq
+    @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
+    @friendships = current_user.friendships.pluck(:friend_id)
     @dm_channels = current_user.dm_channels
 
     # This is the code I would actually use; however, to decrease subsequent load times for non-tech people viewing my
     # site, I have temporarily replaced it with a load of all the users.
-    
     dm_user_ids = [current_user_id]
 
     @dm_channels.each do |channel|
@@ -52,8 +53,6 @@ class Api::UsersController < ApplicationController
       .includes(:sessions, :server_memberships)
     
     # @users = User.all.includes(:sessions, :server_memberships)
-    @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
-    @friendships = current_user.friendships.pluck(:friend_id)
     render "api/users/user_data"
   end
 

@@ -52,7 +52,7 @@ class Message extends React.Component {
       });
 
       if (typeof content[content.length - 1] === 'string' && j < lines.length - 1) {
-        return content.concat(<br key={j + 499} />);
+        return content.concat(<br key={j + 1999} />);
       } else {
         return content;
       }

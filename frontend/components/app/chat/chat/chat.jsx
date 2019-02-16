@@ -7,6 +7,7 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
+
     this.bottom = React.createRef();
     this.parseNewMessage = this.parseNewMessage.bind(this);
   }
@@ -18,6 +19,7 @@ class Chat extends React.Component {
 
     if (channelId && !this.props.channel.serverId) {
       const notification = document.getElementById(`dm-notification-${channelId}`);
+
       if (notification) {
         notification.className = 'dm-notification';
         setTimeout(() => this.props.removeDmNotification(channelId), 200);
@@ -45,8 +47,8 @@ class Chat extends React.Component {
         }
       }
     }
-    this.bottom.current.scrollIntoView();
 
+    this.bottom.current.scrollIntoView();
   }
 
   subscribe(channelId) {
@@ -79,10 +81,6 @@ class Chat extends React.Component {
 
   componentWillUnmount() {
     this.subscription.unsubscribe();
-  }
-
-  parseMessage() {
-
   }
 
   parseMessages(messages) {
@@ -151,6 +149,7 @@ class Chat extends React.Component {
         this.lastAuthorId = message.author_id;
       }
     }
+    
     return messageArr
   }
 
@@ -221,11 +220,13 @@ class Chat extends React.Component {
       } else if (this.props.channel.name) {
         const nameArr = this.props.channel.name.split('-');
         let userId;
+
         if (nameArr[0] == this.props.currentUser.id) {
           userId = nameArr[1];
         } else {
           userId = nameArr[0];
         }
+
         emptyMessage = emptyMessage = <div className="empty-chat"><h4>This is the beginning of your direct message history with <strong>{this.props.users[userId] ? `@${this.props.users[userId].username}` : ''}</strong></h4></div>;
       }
     }
