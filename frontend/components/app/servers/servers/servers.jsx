@@ -95,8 +95,8 @@ class Servers extends React.Component {
         <div className="side-scroll-container">
           {servers}
           <button className="create-server"
+            type="button"
             onClick={this.handleOpenModal}
-            onKeyDown={(e) => e.preventDefault()}
           ><span>+</span></button>
         </div>
         <Modal

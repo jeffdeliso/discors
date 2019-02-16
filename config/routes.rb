@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :friend_requests, only: [:create, :destroy, :update]
     resources :friends, only: [:destroy]
     resources :dm_channel_memberships, only: [:destroy, :create]
-    resources :servers, only: [:create, :index, :destroy] do 
+    resources :servers, only: [:create, :destroy] do 
       collection do
         post 'join'
       end
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   mount ActionCable.server, at: '/cable'
   root "static_pages#root"
-  # get '*path' => redirect('/')
+  
 end

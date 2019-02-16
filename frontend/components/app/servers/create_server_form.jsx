@@ -85,8 +85,8 @@ class CreateServerForm extends React.Component {
               </div>
               {this.state.avatarUrl ? <button
                 className="remove-avatar-button"
+                type="button"
                 onClick={this.handleRemove}
-                onKeyDown={(e) => e.preventDefault()}
               >REMOVE</button> : null}
             </div>
           </div>

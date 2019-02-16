@@ -68,6 +68,7 @@ class EditUserForm extends React.Component {
               <div className="add-file-icon"></div>
             </div>
             {this.state.avatarUrl ? <button
+              type="button"
               className="remove-avatar-button"
               onClick={this.handleRemove}
               onKeyDown={(e) => e.preventDefault()}

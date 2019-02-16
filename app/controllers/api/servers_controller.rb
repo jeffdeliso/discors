@@ -32,9 +32,9 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  def index
-    @servers = current_user.servers
-  end
+  # def index
+  #   @servers = current_user.servers
+  # end
 
   def destroy
     if current_user.id == current_server.admin_id
