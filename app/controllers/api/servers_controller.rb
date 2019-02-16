@@ -24,13 +24,17 @@ class Api::ServersController < ApplicationController
   end
 
   def members
-    @users = current_server.members.includes(:sessions, :server_memberships)
-    render "api/users/index"
+    if current_server
+      @users = current_server.members.includes(:sessions, :server_memberships)
+      render "api/users/index"
+    else
+      render json: ["Server does not exist"], status: 422
+    end
   end
 
-  def show
-    current_server
-  end
+  # def show
+  #   current_server
+  # end
 
   def index
     @servers = current_user.servers
@@ -49,7 +53,7 @@ class Api::ServersController < ApplicationController
   private
 
   def current_server
-    @server ||= Server.find(params[:id])
+    @server ||= Server.find_by(id: params[:id])
   end
 
   def server_params

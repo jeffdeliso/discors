@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/channel_api_util';
-import { receiveUsers } from './server_actions';
+import { receiveUsers, removeServer } from './server_actions';
 
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
@@ -41,6 +41,8 @@ export const removeChannelErrors = () => ({
 export const fetchChannels = (serverId) => dispatch => (
   APIUtil.fetchChannels(serverId).then(channels => (
     dispatch(receiveChannels(channels))
+  ), () => (
+      dispatch(removeServer(serverId))
   ))
 );
 

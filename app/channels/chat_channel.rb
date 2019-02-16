@@ -1,36 +1,50 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    channel = Channel.find(params['channelId'])
-    stream_for channel
-    load({'channelId' => params['channelId']})
+    channel_id = params['channelId']
+    stream_for channel_id
+    load({'channelId' => channel_id})
   end
 
   def speak(data)
-    message = Message.create!(data['message'])
-    channel = Channel.find(message.channel_id)
-    socket = { message: message, type: 'message' }
-    ChatChannel.broadcast_to(channel, socket)
-
-    unless channel.server_id
-      bot_id = 59
-      dmArray = channel.name.split('-')
-      
-      if dmArray.include?(bot_id.to_s)
-        sleep(5) if message.body.downcase == 'test'
+    channel_id = data['message']['channel_id']
+    channel = Channel.find_by(channel_id)
     
-        bot_response = bot_message(message)
-        bot_message = Message.create!(author_id: bot_id, body: bot_response, channel_id: channel.id)
-        bot_socket = { message: bot_message, type: 'message' }
-        ChatChannel.broadcast_to(channel, bot_socket)
+    if channel
+      message = Message.create!(data['message'])
+      socket = { message: message, type: 'message' }
+      ChatChannel.broadcast_to(channel_id, socket)
+  
+      unless channel.server_id
+        bot_id = 59
+        dmArray = channel.name.split('-')
+        
+        if dmArray.include?(bot_id.to_s)
+          sleep(5) if message.body.downcase == 'test'
+      
+          bot_response = bot_message(message)
+          bot_message = Message.create!(author_id: bot_id, body: bot_response, channel_id: channel.id)
+          bot_socket = { message: bot_message, type: 'message' }
+          ChatChannel.broadcast_to(channel_id, bot_socket)
+        end
       end
+    else
+      socket = { type: 'error', id: channel_id }
+      ChatChannel.broadcast_to(channel_id, socket)
     end
   end
 
   def load(data)
-    channel = Channel.find(data['channelId'])
-    messages = channel.messages.sort_by(&:created_at)
-    socket = { messages: messages, type: 'messages' }
-    ChatChannel.broadcast_to(channel, socket)
+    channel_id = data['channelId']
+    channel = Channel.find_by(id: channel_id)
+
+    if channel
+      messages = channel.messages.sort_by(&:created_at)
+      socket = { messages: messages, type: 'messages' }
+      ChatChannel.broadcast_to(channel_id, socket)
+    else
+      socket = { type: 'error', id: channel_id }
+      ChatChannel.broadcast_to(channel_id, socket)
+    end
   end
 
   def unsubscribed; end
@@ -46,7 +60,10 @@ class ChatChannel < ApplicationCable::Channel
       "A SQL statement walks into a bar and sees two tables. It approaches, and asks may I join you?",
       "A programmer is at work when his wife calls and asks him to go to the store. She says she needs a gallon of milk, and if they have fresh eggs, buy a dozen. He comes home with 12 gallons of milk.",
       %Q{A computer scientist named Bob was about to leave to rent a movie. As Bob was heading out, his wife said, "while you're out, pick up some eggs." Bob never came back.},
-      "Why did the programmer quit his job? Because he didn’t get arrays."
+      "Why did the programmer quit his job? Because he didn’t get arrays.",
+      "Code never lies, comments do.",
+      "A programmer puts two glasses on his bedside table before going to sleep. A full one, in case he gets thirsty, and an empty one, in case he doesn't.",
+      %Q{A son asked his father(a programmer) why the sun rises in the east, and sets in the west. His response? "It works, don't touch!"}
     ]
 
     default_response = %Q{Welcome to Discors! I'm here to keep you company and help you test the site.

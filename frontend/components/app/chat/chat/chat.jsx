@@ -59,6 +59,7 @@ class Chat extends React.Component {
     if (this.subscription) {
       this.subscription.load({ channelId });
     } else {
+      const that = this;
       this.subscription = App.cable.subscriptions.create(
         { channel: "ChatChannel", channelId },
         {
@@ -69,6 +70,12 @@ class Chat extends React.Component {
                 break;
               case "messages":
                 this.setState({ messages: this.parseMessages(data.messages) });
+                break;
+              case "error":
+                debugger
+                const server = that.props.server;
+                that.props.removeChannel(channelId);
+                that.props.history.push(`/channels/${server.id}/${server.root_channel}`);
                 break;
             }
           },
@@ -149,7 +156,7 @@ class Chat extends React.Component {
         this.lastAuthorId = message.author_id;
       }
     }
-    
+
     return messageArr
   }
 

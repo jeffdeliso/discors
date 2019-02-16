@@ -22,10 +22,10 @@ class Api::DmChannelMembershipsController < ApplicationController
     end
   end
 
-  def index
-    @channels = current_user.dm_channels
-    render "api/channels/dm_index"
-  end
+  # def index
+  #   @channels = current_user.dm_channels
+  #   render "api/channels/dm_index"
+  # end
 
   private
 
