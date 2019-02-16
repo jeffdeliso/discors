@@ -27,6 +27,7 @@ class ServerMember extends React.Component {
         position={"left center"}
         offsetX={-5}
         offsetY={this.props.admin ? 10 : -90}
+        showMessageButton={true}
       />
     )
   }

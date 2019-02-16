@@ -28,13 +28,9 @@ class Api::ServersController < ApplicationController
       @users = current_server.members.includes(:sessions, :server_memberships)
       render "api/users/index"
     else
-      render json: ["Server does not exist"], status: 422
+      render json: ["Server does not exist"], status: 401
     end
   end
-
-  # def index
-  #   @servers = current_user.servers
-  # end
 
   def destroy
     if current_user.id == current_server.admin_id
