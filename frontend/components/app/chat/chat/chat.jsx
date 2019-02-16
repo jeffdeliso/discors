@@ -8,7 +8,6 @@ class Chat extends React.Component {
     super(props);
     this.state = { messages: [] };
     this.bottom = React.createRef();
-
     this.parseNewMessage = this.parseNewMessage.bind(this);
   }
 

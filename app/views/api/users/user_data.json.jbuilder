@@ -1,15 +1,24 @@
-friends_array = @friends.map { |friend| friend.id }
+friends_array = @friendships
+outgoing = []
+incoming = []
 
-json.friends do 
-  json.array! friends_array
+@requests.each do |request|
+  if request.user_id == current_user.id
+    outgoing << request
+  else
+    incoming << request
+  end
 end
 
+
 json.channels do
+
   @channels.each do |channel|
     json.set! channel.id do
       json.partial! 'api/channels/channel', channel: channel
     end
   end
+
   @dm_channels.each do |channel|
     json.set! channel.id do
       json.partial! 'api/channels/channel', channel: channel
@@ -23,30 +32,34 @@ json.voice_channels do
       json.partial! 'api/audio_channels/audio_channel', audio_channel: audio_channel
     end
   end
+
 end
 
 json.users do
-  @users.each do |user|
+  @users.with_attached_avatar.each do |user|
     json.set! user.id do
       json.partial! 'api/users/user', user: user
     end
   end
+  # @dm_users.each do |user|
+  #   json.set! user.id do
+  #     json.partial! 'api/users/user', user: user
+  #   end
+  # end
   # @friends.each do |user|
+  #   friends_array << user.id
   #   json.set! user.id do
   #     json.partial! 'api/users/user', user: user
   #   end
   # end
-  # @incoming_friends.each do |user|
+  # @incoming.each do |request|
+  #   user = request.user
   #   json.set! user.id do
   #     json.partial! 'api/users/user', user: user
   #   end
   # end
-  # @pending_friends.each do |user|
-  #   json.set! user.id do
-  #     json.partial! 'api/users/user', user: user
-  #   end
-  # end
-  # @server_users.each do |user|
+  # @outgoing.each do |request|
+  #   user = request.friend
   #   json.set! user.id do
   #     json.partial! 'api/users/user', user: user
   #   end
@@ -57,7 +70,7 @@ json.users do
 end
 
 json.servers do
-  @servers.each do |server|
+  @servers.with_attached_icon.each do |server|
     json.set! server.id do
       json.partial! 'api/servers/server', server: server
     end
@@ -65,17 +78,24 @@ json.servers do
 end
 
 json.friend_requests do 
-  @outgoing.each do |request|
+
+  outgoing.each do |request|
     json.set! request.id do
       json.partial! 'api/friend_requests/friend_request', friend_request: request
     end
   end
 
-  @incoming.each do |request|
+  incoming.each do |request|
     json.set! request.id do
       json.partial! 'api/friend_requests/friend_request', friend_request: request
     end
   end
+
 end
+
+json.friends do 
+  json.array! friends_array
+end
+
 
 json.currentUserId current_user.id

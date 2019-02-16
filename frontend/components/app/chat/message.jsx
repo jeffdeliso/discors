@@ -16,6 +16,7 @@ class Message extends React.Component {
 
   parseLinks(body) {
     const lines = body.split('\n');
+    
     return lines.map((line, j) => {
       const words = line.split(/\s/);
       const content = [];

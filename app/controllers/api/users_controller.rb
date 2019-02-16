@@ -39,19 +39,32 @@ If you would like to learn more about Discors you can type "voice", "servers", "
   end
 
   def data
-    @channels = current_user.channels
+    current_user_id = current_user.id
+      
+    @servers = current_user.servers.includes(:channels, :audio_channels)
+    @channels = @servers.map(&:channels).flatten.uniq
+    @audio_channels = @servers.map(&:audio_channels).flatten.uniq
+
     @dm_channels = current_user.dm_channels
-    @audio_channels = current_user.audio_channels
-    @servers = current_user.servers
-    @users = User.all.includes(:sessions, :server_memberships)
-    @friends = current_user.friends
-    # @users = current_user.dm_users.includes(:sessions, :server_memberships)
-    # @friends = current_user.friends.includes(:sessions, :server_memberships)
-    # @pending_friends = current_user.pending_friends.includes(:sessions, :server_memberships)
-    # @incoming_friends = current_user.incoming_friends.includes(:sessions, :server_memberships)
-    # @server_users = current_user.server_users.includes(:sessions, :server_memberships)
-    @incoming = FriendRequest.where(friend: current_user)
-    @outgoing = current_user.friend_requests
+    dm_user_ids = [current_user_id]
+
+    @dm_channels.each do |channel|
+      dm_arr = channel.name.split('-')
+      if dm_arr[0].to_i == current_user_id
+        dm_user_ids << dm_arr[1].to_i
+      else
+        dm_user_ids << dm_arr[0].to_i
+      end
+    end
+    
+    @users = User.distinct.select('users.*').left_outer_joins(:friend_requests).left_outer_joins(:incoming_friend_requests).left_outer_joins(:friendships)
+    .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR users.id IN (:dm_user_ids)", current_user_id: current_user_id, dm_user_ids: dm_user_ids).includes(:sessions, :server_memberships)
+      # .joins("LEFT OUTER JOIN dm_channel_memberships ON dm_channel_memberships.user_id = users.id").joins("LEFT OUTER JOIN dm_channel_memberships AS dm_channel_memberships2 ON dm_channel_memberships.channel_id = dm_channel_memberships2.channel_id")
+      # .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR dm_channel_memberships2.user_id = :current_user_id", current_user_id: current_user_id).includes(:sessions, :server_memberships)
+
+    @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
+    @friendships = current_user.friendships.pluck(:friend_id)
+    # @users = User.all.includes(:sessions, :server_memberships)
     render "api/users/user_data"
   end
 
