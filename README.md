@@ -193,5 +193,33 @@ pc.onaddstream = event => {
 };
 ```
 
+I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my queries by 4.
+
+```ruby
+@users = User.distinct.select('users.*').left_outer_joins(:friend_requests)
+  .left_outer_joins(:incoming_friend_requests).left_outer_joins(:friendships)
+  .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR users.id IN (:dm_user_ids)", current_user_id: current_user_id, dm_user_ids: dm_user_ids)
+  .includes(:sessions, :server_memberships)
+```
+
+Which in SQL would be:
+
+```sql
+SELECT DISTINCT 
+  users.* 
+FROM 
+  users
+LEFT OUTER JOIN 
+  friend_requests ON friend_requests.user_id = users.id
+LEFT OUTER JOIN 
+  friend_requests AS incoming_friend_requests_users ON incoming_friend_requests_users.friend_id = users.id
+LEFT OUTER JOIN 
+  friendships ON friendships.user_id = users.id
+WHERE 
+  incoming_friend_requests_users.user_id = 1040
+  OR friend_requests.friend_id = 1040 
+  OR friendships.friend_id = 1040 
+  OR users.id IN (1040,1054,1041,1052,1051,1053,1046);
+```
 
 Please see the [wiki](https://github.com/jeffdeliso/discors/wiki) for more information.
