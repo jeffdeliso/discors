@@ -42,8 +42,11 @@ class Chat extends React.Component {
       this.lastAuthorId = null;
       this.messageId = null;
       this.setState({ messages: [] });
-      this.subscription.unsubscribe();
-      if (!this.props.loading) this.subscribe(channelId);
+      this.messagesLoaded = false;
+
+      if (this.subscription) this.subscription.unsubscribe();
+
+      if (!this.props.loading && !this.messagesLoaded) this.subscribe(channelId);
 
       if (channelId && !this.props.channel.serverId) {
         const notification = document.getElementById(`dm-notification-${channelId}`);
@@ -75,10 +78,10 @@ class Chat extends React.Component {
                 this.parseNewMessage(data.message);
                 break;
               case "messages":
+                this.messagesLoaded = true;
                 this.setState({ messages: this.parseMessages(data.messages) });
                 break;
               case "error":
-                debugger
                 const server = that.props.server;
                 that.props.removeChannel(channelId);
                 that.props.history.push(`/channels/${server.id}/${server.root_channel}`);

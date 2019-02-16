@@ -3,15 +3,23 @@ import ServerMember from '../server_member';
 
 class ServerMembers extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.beginLoading();
-    this.props.fetchMembers(this.props.match.params.serverId).then(this.props.finsihLoading);
+  }
+
+  componentDidMount() {
+    this.props.fetchMembers(this.props.match.params.serverId).then(this.props.finishLoading);
+  }
+
+  componentWillUpdate(prevProps) {
+    if (prevProps.server.id && prevProps.server.id != this.props.match.params.serverId) {
+      this.props.beginLoading();
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.server.id && prevProps.server.id != this.props.match.params.serverId) {
-      this.props.beginLoading();
-      this.props.fetchMembers(this.props.match.params.serverId).then(this.props.finsihLoading);
+      this.props.fetchMembers(this.props.match.params.serverId).then(this.props.finishLoading);
     }
   }
 
