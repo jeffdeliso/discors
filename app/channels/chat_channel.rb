@@ -38,7 +38,7 @@ class ChatChannel < ApplicationCable::Channel
     channel = Channel.find_by(id: channel_id)
 
     if channel
-      messages = channel.messages.order(:created_at)
+      messages = channel.messages.order(created_at: :asc)
       socket = { messages: messages, type: 'messages' }
       ChatChannel.broadcast_to(channel_id, socket)
     else

@@ -14,8 +14,10 @@ class Chat extends React.Component {
 
   componentDidMount() {
     const channelId = this.props.match.params.channelId;
-    this.subscribe(channelId);
-    this.bottom.current.scrollIntoView();
+    if (!this.props.loading) {
+      this.subscribe(channelId);
+      this.bottom.current.scrollIntoView();
+    }
 
     if (channelId && !this.props.channel.serverId) {
       const notification = document.getElementById(`dm-notification-${channelId}`);
@@ -30,6 +32,10 @@ class Chat extends React.Component {
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
+    if (prevProps.loading && !this.props.loading) {
+      this.subscribe(channelId);
+    }
+
     if (channelId && prevProps.channelId !== channelId) {
       this.messageStr = null;
       this.time = null;
@@ -37,7 +43,7 @@ class Chat extends React.Component {
       this.messageId = null;
       this.setState({ messages: [] });
       this.subscription.unsubscribe();
-      this.subscribe(channelId);
+      if (!this.props.loading) this.subscribe(channelId);
 
       if (channelId && !this.props.channel.serverId) {
         const notification = document.getElementById(`dm-notification-${channelId}`);

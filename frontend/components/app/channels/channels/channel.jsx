@@ -51,7 +51,7 @@ class Channel extends React.Component {
           (<Tooltip component={
             <button className="delete-channel-button" onClick={this.handleDelete}></button>
           }
-            position="top center"
+            position="top right"
             text="Delete Channel"
           />) : null}
       </NavLink >

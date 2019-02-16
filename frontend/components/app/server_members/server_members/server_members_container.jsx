@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ServerMembers from './server_members';
 import { fetchMembers } from '../../../../actions/server_actions';
+import { beginLoading, finishLoading } from '../../../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[ownProps.match.params.serverId] || {};
@@ -18,7 +19,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMembers: id => dispatch(fetchMembers(id)),
+    beginLoading: () => dispatch(beginLoading()),
+    finishLoading: () => dispatch(finishLoading()),
   };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerMembers));
+

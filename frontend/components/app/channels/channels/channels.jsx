@@ -84,7 +84,7 @@ class Channels extends React.Component {
               (<Tooltip component={
                 <button className="delete-channel-button" onClick={this.removeServer}></button>
               }
-                position="left center"
+                position="bottom right"
                 text={this.props.server.admin_id === this.props.currentUser.id ? 'Delete Server' : 'Unsubscribe'}
               />) : null}
           </div>

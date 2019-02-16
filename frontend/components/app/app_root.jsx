@@ -9,6 +9,7 @@ import LoadingScreen from './loading_screen';
 import { receiveDmNotification } from '../../actions/notification_actions';
 import { receiveChannel } from '../../actions/channel_actions';
 import { receiveFriendRequest, removeFriendRequest, removeFriend, receiveFriend } from '../../actions/friends_actions';
+import { beginLoading, finishLoading } from '../../actions/ui_actions';
 
 class AppRoot extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class AppRoot extends React.Component {
 
   componentWillMount() {
     this.setState({ loading: 'connecting' });
+    this.props.beginLoading();
   }
 
   componentDidMount() {
@@ -67,6 +69,7 @@ class AppRoot extends React.Component {
 
     this.props.fetchCurrentUserData().then(() => {
       this.setState({ loading: 'ready' });
+      this.props.finishLoading();
       setTimeout(() => {
         this.setState({ class: 'hidden' });
         setTimeout(() => {
@@ -114,6 +117,8 @@ const mapDispatchToProps = dispatch => {
     removeFriendRequest: requestId => dispatch(removeFriendRequest(requestId)),
     removeFriend: friendId => dispatch(removeFriend(friendId)),
     receiveFriend: friendId => dispatch(receiveFriend(friendId)),
+    beginLoading: () => dispatch(beginLoading()),
+    finishLoading: () => dispatch(finishLoading()),
   };
 };
 

@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     users: state.entities.users,
     channel,
     server,
+    loading: state.ui.loading,
   };
 };
 
