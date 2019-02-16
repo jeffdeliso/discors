@@ -34,6 +34,7 @@ class Api::UsersController < ApplicationController
 
     # This is the code I would actually use; however, to decrease subsequent load times for non-tech people viewing my
     # site, I have temporarily replaced it with a load of all the users.
+    
     dm_user_ids = [current_user_id]
 
     @dm_channels.each do |channel|
