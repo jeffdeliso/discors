@@ -84,6 +84,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  after_create :create_bot
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
@@ -136,5 +138,21 @@ class User < ApplicationRecord
 
   def ensure_icon
     self.image_url ||= "https://s3.amazonaws.com/discors-dev/User+Icons/#{DEFAULT_ICONS.sample}.png"
+  end
+
+  def create_bot
+    bot_id = 59
+    user_id = self.id
+    name = user_id > bot_id ? "#{bot_id}-#{user_id}" : "#{user_id}-#{bot_id}"
+    channel = Channel.find_or_create_by(name: name)
+    channel.dm_memberships.create(user_id: bot_id)
+    channel.dm_memberships.create(user_id: user_id)
+    Message.create!(author_id: bot_id, channel_id: channel.id, body: %Q{Welcome to Discors! I'm here to keep you company and help you test the site.
+
+If you would like to be friends type "send" and I will send you a friend request in real time.
+
+If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
+
+If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random joke, type "joke".})
   end
 end

@@ -6,6 +6,7 @@ class Api::ServersController < ApplicationController
       current_user.server_memberships.create!(server_id: @server.id)
       @server.channels.create!(name: 'general')
       @server.audio_channels.create!(name: 'General')
+      
       render "api/servers/show"
     else
       render json: @server.errors.full_messages, status: 422
@@ -24,11 +25,6 @@ class Api::ServersController < ApplicationController
 
   def members
     @users = current_server.members.includes(:sessions, :server_memberships)
-    # @friends = current_user.friends.includes(:sessions, :server_memberships)
-    # @pending_friends = current_user.pending_friends.includes(:sessions, :server_memberships)
-    # @incoming_friends = current_user.incoming_friends.includes(:sessions, :server_memberships)
-    # @incoming = FriendRequest.where(friend: current_user)
-    # @outgoing = current_user.friend_requests
     render "api/users/index"
   end
 

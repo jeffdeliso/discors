@@ -13,8 +13,7 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   def index
-    @incoming = FriendRequest.where(friend: current_user).includes(user: [:sessions, :server_memberships])
-    @outgoing = current_user.friend_requests.includes(friend: [:sessions, :server_memberships])
+    @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
   end
 
   def destroy

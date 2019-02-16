@@ -9,20 +9,6 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user, request.user_agent)
-      bot_id = 59
-      user_id = @user.id
-      name = @user.id > bot_id ? "#{bot_id}-#{user_id}" : "#{user_id}-#{bot_id}"
-      @channel = Channel.find_or_create_by(name: name)
-      @channel.dm_memberships.create(user_id: bot_id)
-      @channel.dm_memberships.create(user_id: user_id)
-      Message.create!(author_id: bot_id, channel_id: @channel.id, body: %Q{Welcome to Discors! I'm here to keep you company and help you test the site.
-
-If you would like to be friends type "send" and I will send you a friend request in real time.
-
-If you would like to test DM notifications type "test" and I will send you a message in 5 seconds.  Make sure to navigate away from this channel to receive the notification.
-
-If you would like to learn more about Discors you can type "voice", "servers", "channels", or "friends". For a random joke, type "joke".})
-
       render :show
     else
       render json: @user.errors.full_messages, status: 422
@@ -57,8 +43,10 @@ If you would like to learn more about Discors you can type "voice", "servers", "
       end
     end
     
-    @users = User.distinct.select('users.*').left_outer_joins(:friend_requests).left_outer_joins(:incoming_friend_requests).left_outer_joins(:friendships)
-    .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR users.id IN (:dm_user_ids)", current_user_id: current_user_id, dm_user_ids: dm_user_ids).includes(:sessions, :server_memberships)
+    @users = User.distinct.select('users.*').left_outer_joins(:friend_requests)
+      .left_outer_joins(:incoming_friend_requests).left_outer_joins(:friendships)
+      .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR users.id IN (:dm_user_ids)", current_user_id: current_user_id, dm_user_ids: dm_user_ids)
+      .includes(:sessions, :server_memberships)
       # .joins("LEFT OUTER JOIN dm_channel_memberships ON dm_channel_memberships.user_id = users.id").joins("LEFT OUTER JOIN dm_channel_memberships AS dm_channel_memberships2 ON dm_channel_memberships.channel_id = dm_channel_memberships2.channel_id")
       # .where("incoming_friend_requests_users.user_id = :current_user_id OR friend_requests.friend_id = :current_user_id OR friendships.friend_id = :current_user_id OR dm_channel_memberships2.user_id = :current_user_id", current_user_id: current_user_id).includes(:sessions, :server_memberships)
 

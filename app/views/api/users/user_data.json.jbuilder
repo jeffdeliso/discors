@@ -1,4 +1,3 @@
-friends_array = @friendships
 outgoing = []
 incoming = []
 
@@ -9,7 +8,6 @@ incoming = []
     incoming << request
   end
 end
-
 
 json.channels do
 
@@ -41,32 +39,6 @@ json.users do
       json.partial! 'api/users/user', user: user
     end
   end
-  # @dm_users.each do |user|
-  #   json.set! user.id do
-  #     json.partial! 'api/users/user', user: user
-  #   end
-  # end
-  # @friends.each do |user|
-  #   friends_array << user.id
-  #   json.set! user.id do
-  #     json.partial! 'api/users/user', user: user
-  #   end
-  # end
-  # @incoming.each do |request|
-  #   user = request.user
-  #   json.set! user.id do
-  #     json.partial! 'api/users/user', user: user
-  #   end
-  # end
-  # @outgoing.each do |request|
-  #   user = request.friend
-  #   json.set! user.id do
-  #     json.partial! 'api/users/user', user: user
-  #   end
-  # end
-  # json.set! @current_user.id do
-  #   json.partial! 'api/users/user', user: @current_user
-  # end
 end
 
 json.servers do
@@ -94,8 +66,7 @@ json.friend_requests do
 end
 
 json.friends do 
-  json.array! friends_array
+  json.array! @friendships
 end
-
 
 json.currentUserId current_user.id

@@ -1,7 +1,7 @@
 class Api::FriendsController < ApplicationController
 
   def index
-    @friends = current_user.friends
+    @friendships = current_user.friendships.pluck(:friend_id)
     render 'api/friends/index'
   end
 
