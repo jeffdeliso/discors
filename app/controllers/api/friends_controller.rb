@@ -1,10 +1,5 @@
 class Api::FriendsController < ApplicationController
 
-  def index
-    @friendships = current_user.friendships.pluck(:friend_id)
-    render 'api/friends/index'
-  end
-
   def destroy
     current_user.remove_friend(current_friend)
     head :no_content

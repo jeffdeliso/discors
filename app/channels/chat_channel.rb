@@ -7,7 +7,7 @@ class ChatChannel < ApplicationCable::Channel
 
   def speak(data)
     channel_id = data['message']['channel_id']
-    channel = Channel.find_by(channel_id)
+    channel = Channel.find_by(id: channel_id)
     
     if channel
       message = Message.create!(data['message'])
@@ -38,7 +38,7 @@ class ChatChannel < ApplicationCable::Channel
     channel = Channel.find_by(id: channel_id)
 
     if channel
-      messages = channel.messages.sort_by(&:created_at)
+      messages = channel.messages.order(:created_at)
       socket = { messages: messages, type: 'messages' }
       ChatChannel.broadcast_to(channel_id, socket)
     else

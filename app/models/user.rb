@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_session_token, :ensure_icon
+  after_create :create_bot
 
   attr_reader :password
 
@@ -83,8 +84,6 @@ class User < ApplicationRecord
   has_many :sessions
 
   has_one_attached :avatar
-
-  after_create :create_bot
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
