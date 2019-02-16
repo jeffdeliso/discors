@@ -32,10 +32,6 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  # def show
-  #   current_server
-  # end
-
   def index
     @servers = current_user.servers
   end

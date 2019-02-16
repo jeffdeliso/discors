@@ -9,10 +9,6 @@ class Api::AudioChannelsController < ApplicationController
     end
   end
 
-  # def show
-  #   current_audio_channel
-  # end
-
   def index
     server = Server.find_by(id: audio_channel_params[:server_id])
 

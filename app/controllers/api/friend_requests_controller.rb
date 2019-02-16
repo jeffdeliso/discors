@@ -12,10 +12,6 @@ class Api::FriendRequestsController < ApplicationController
     end
   end
 
-  # def index
-  #   @requests = FriendRequest.where(friend_id: current_user.id).or(FriendRequest.where(user_id: current_user_id))
-  # end
-
   def destroy
     current_friend_request.destroy
     render :show

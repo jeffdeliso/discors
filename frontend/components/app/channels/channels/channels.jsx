@@ -29,7 +29,7 @@ class Channels extends React.Component {
   componentDidMount() {
     const serverId = this.props.match.params.serverId;
     if (serverId) {
-      this.props.fetchChannels(serverId).then(() => { }, () => (
+      this.props.fetchChannels(serverId).then(() => {}, () => (
         this.props.history.push('/channels/@me')
       ));
     }

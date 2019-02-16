@@ -9,10 +9,6 @@ class Api::ChannelsController < ApplicationController
     end
   end
 
-  # def show
-  #   current_channel
-  # end
-
   def index
     server = Server.find_by(id: channel_params[:server_id])
     
