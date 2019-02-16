@@ -71,6 +71,8 @@ Discors was built using React/Redux for the frontend and Ruby on Rails and Postg
 
 ## Challenges
 
+#### WebRTC
+
 Working with WebRTC proved to be very challenging. The core of WebRTC is `RTCPeerConnection`. In order to establish peer to peer media exchange, `RTCPeerConnection` provides an API to complete a handshake between two browsers. During this handshake, the browsers share the information necessary to set up their peer-to-peer connection: session descriptions (browser capabilities) and ICE candidates (publicly accessible IP and port information).
 
 The steps are:
@@ -192,6 +194,8 @@ pc.onaddstream = event => {
   this.remoteAudioContainer.current.appendChild(element);
 };
 ```
+
+#### SQL
 
 I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my queries by 4.
 
