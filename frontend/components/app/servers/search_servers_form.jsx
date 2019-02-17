@@ -11,11 +11,7 @@ class SearchServersForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchServers();
-    this.nameInput.focus();
-  }
-
-  componentDidUpdate() {
-    this.nameInput.focus();
+    // this.nameInput.focus();
   }
 
   update() {
@@ -39,6 +35,8 @@ class SearchServersForm extends React.Component {
     let servers;
     if (this.state.servers.length === 0 && this.state.name) {
       servers = <div className="server-search-empty">{`No servers match "${this.state.name}"`}</div>;
+    } else if (this.state.servers.length === 0 && !this.state.name) {
+      servers = <div className="server-search-pic"></div>;
     } else {
       servers = this.state.servers.map((server, idx) => {
         return <SearchServerItem
@@ -54,7 +52,7 @@ class SearchServersForm extends React.Component {
     return (
       <section className="create-channel-form" onSubmit={this.handleSubmit}>
         <header>
-          <h4 style={{ marginBottom: '4px' }}>Server Discovery</h4>
+          <h4 style={{ marginBottom: '6px' }}>Server Discovery</h4>
           <input type="text"
             placeholder={`Try searching for a server like "westeros"`}
             value={this.state.name}

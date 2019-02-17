@@ -814,7 +814,7 @@
 }
 
 .search-results ul {
-  height: 230px;
+  height: 228px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -835,4 +835,11 @@
   margin-top: 80px;
   width: 100%;
   text-align: center;
+}
+
+.server-search-pic {
+  background-image: image_url('main/search.svg');
+  background-size: 100% 100%;
+  width: 100%;
+  height: 228px;
 }
