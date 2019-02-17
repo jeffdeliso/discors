@@ -2,6 +2,7 @@ import React from "react";
 import UserPopup from "../modal/user_popup_container";
 import { withRouter } from 'react-router-dom';
 import moment from 'moment-timezone';
+import MicrolinkCard from '@microlink/react';
 
 class Message extends React.Component {
   parseDate() {
@@ -16,7 +17,7 @@ class Message extends React.Component {
 
   parseLinks(body) {
     const lines = body.split('\n');
-    
+
     return lines.map((line, j) => {
       const words = line.split(/\s/);
       const content = [];
@@ -26,33 +27,32 @@ class Message extends React.Component {
 
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           content.push(
-            <span key={i}>
-              <a href={word} target="_blank">
+            <span key={i + 4999}>
+              <a href={word} target="_blank" className="message-media">
                 <img src={word} />
               </a>
             </span>
           );
-
-          content.push(<br key={i + 999} />);
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
           content.push(
-            <span key={i}>
+            <span key={i + 4999} >
               <iframe
                 src={word.replace("watch?v=", "embed/")}
                 allowFullScreen></iframe>
             </span>
           );
-
-          content.push(<br key={i + 999} />);
         } else if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
-          content.push(<a key={i} href={word} target="_blank">{word}{separator}</a>);
+          content.push(<MicrolinkCard
+            url={word}
+            target='_blank'
+          />);
         } else {
           content.push(word + separator);
         }
       });
 
       if (typeof content[content.length - 1] === 'string' && j < lines.length - 1) {
-        return content.concat(<br key={j + 1999} />);
+        return content.concat(<br key={j + 9999} />);
       } else {
         return content;
       }

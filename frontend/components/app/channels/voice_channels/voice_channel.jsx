@@ -129,6 +129,7 @@ class VoiceChannel extends React.Component {
     if (isOffer) {
       pc.createOffer().then(offer => {
         pc.setLocalDescription(offer);
+        debugger
         this.voiceSession.broadcastData({
           type: EXCHANGE,
           from: this.props.currentUserId,
@@ -190,6 +191,7 @@ class VoiceChannel extends React.Component {
       pc.setRemoteDescription(sdp).then(() => {
         if (sdp.type === "offer") {
           pc.createAnswer().then(answer => {
+            debugger
             pc.setLocalDescription(answer);
             this.voiceSession.broadcastData({
               type: EXCHANGE,

@@ -192,3 +192,58 @@
 .server-welcome-item a:hover {
   text-decoration: underline;
 }
+
+.microlink_card:hover {
+  background-color: #202225 !important;
+}
+
+.microlink_card {
+  background-color: rgba(46,48,54,.3) !important;
+  border-color: rgba(46,48,54,.6) !important;
+  background: hsla(0,0%,97.6%,.3);
+  border: 1px solid hsla(0,0%,80.4%,.3);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+
+.message-media {
+  padding: 10px 0;
+}
+
+iframe {
+  padding: 10px 0;
+}
+
+.microlink_card__content header {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-family: main4;
+  text-decoration: none;
+}
+
+.message a:hover footer{
+  text-decoration: underline;
+}
+
+
+.microlink_card__content_description {
+  color: hsla(0,0%,100%,.6);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  line-height: 1rem;
+  white-space: pre-line;
+  font-family: main3;
+}
+
+.message-link:hover {
+  text-decoration: underline;
+}
+
+.message a {
+  color: #0096cf;
+  text-decoration: none;
+  cursor: pointer;
+}
