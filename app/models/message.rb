@@ -23,7 +23,6 @@ class Message < ApplicationRecord
     unless message_channel.server_id
       user_id = message_channel.name.split('-').find { |el| el != self.author_id.to_s }.to_i
       DmChannelMembership.create(user_id: user_id, channel_id: message_channel.id)
-      # user = message_channel.members.where.not(id: self.author_id).first
       user = User.find(user_id)
       NotificationBroadcastJob.perform_later(self, user, message_channel)
     end

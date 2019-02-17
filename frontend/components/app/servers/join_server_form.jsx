@@ -21,7 +21,7 @@ class JoinServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.joinServer(this.state).then(this.handleRedirect);
+    this.props.joinServer(this.state, this.props.currentUserId).then(this.handleRedirect);
   }
 
   handleRedirect(action) {

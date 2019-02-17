@@ -28,6 +28,7 @@ const mapStateToProps = state => {
     onlineCount,
     dmNotifications,
     users,
+    currentUser
   };
 };
 
@@ -35,7 +36,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchServers: () => dispatch(fetchServers()),
     createServer: (formData) => dispatch(createServer(formData)),
-    joinServer: (server) => dispatch(joinServer(server)),
+    joinServer: (server, userId) => dispatch(joinServer(server, userId)),
     removeServerErrors: () => dispatch(removeServerErrors()),
   };
 };

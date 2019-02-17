@@ -71,7 +71,9 @@ class Servers extends React.Component {
       content = <JoinServerForm
         joinServer={this.props.joinServer}
         closeModal={this.handleCloseModal}
-        errors={this.props.errors} />;
+        errors={this.props.errors} 
+        currentUserId={this.props.currentUser.id}
+      />;
     } else {
       content = (
         <div className="server-modal-content-wrapper">

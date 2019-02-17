@@ -9,8 +9,9 @@ class SearchServerItem extends React.Component {
   }
 
   handleSubmit(e) {
+    debugger
     e.preventDefault();
-    this.props.joinServer({name: this.props.server.name}).then(this.handleRedirect);
+    this.props.joinServer({name: this.props.server.name}, this.props.currentUserId).then(this.handleRedirect);
   }
 
   handleRedirect(action) {

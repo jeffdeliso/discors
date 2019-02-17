@@ -26,7 +26,7 @@ hodor = User.create!(username: 'hodor', email: 'hodor@hodor.com', password: 'hod
 hodorfile = EzDownload.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2kTIdWjVn2QyQ-ZwDHE5iWsims2y4YsQ_73IeWl84JQtH1TOD')
 hodor.avatar.attach(io: hodorfile, filename: 'hodor.jpg')
 
-westeros = hodor.admin_servers.create!(name: 'westeros')
+westeros = pod.admin_servers.create!(name: 'westeros')
 westerosfile = EzDownload.open('https://vignette.wikia.nocookie.net/gameofthrones/images/7/71/Westeros_HBO.png/revision/latest?cb=20111113154717')
 westeros.icon.attach(io: westerosfile, filename: 'westeros.jpg')
 ServerMembership.create!(user_id: pod.id, server_id: westeros.id)

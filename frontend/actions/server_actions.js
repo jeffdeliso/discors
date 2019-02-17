@@ -1,5 +1,4 @@
 import * as APIUtil from '../util/server_api_utl';
-import { receiveFriendRequests } from './friends_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -19,9 +18,10 @@ export const receiveUsers = users => ({
   users
 });
 
-export const receiveServer = server => ({
+export const receiveServer = (server, userId) => ({
   type: RECEIVE_SERVER,
-  server
+  server,
+  userId
 });
 
 export const removeServer = (serverId, userId) => ({
@@ -53,7 +53,7 @@ export const fetchMembers = (id) => dispatch => (
 
 export const createServer = (formData) => dispatch => (
   APIUtil.createServer(formData).then(server => (
-    dispatch(receiveServer(server))
+    dispatch(receiveServer(server, server.admin_id))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
@@ -66,9 +66,9 @@ export const deleteServer = (serverId, userId) => dispatch => (
   )
 );
 
-export const joinServer = (server) => dispatch => (
+export const joinServer = (server, userId) => dispatch => (
   APIUtil.joinServer(server).then(server => (
-    dispatch(receiveServer(server))
+    dispatch(receiveServer(server, userId))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

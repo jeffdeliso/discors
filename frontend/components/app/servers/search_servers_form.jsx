@@ -46,6 +46,7 @@ class SearchServersForm extends React.Component {
           key={idx}
           closeModal={this.props.closeModal}
           joinServer={this.props.joinServer}
+          currentUserId={this.props.currentUserId}
         />;
       });
     }
@@ -78,8 +79,9 @@ class SearchServersForm extends React.Component {
 
 
 const mapStateToProps = state => {
-  const currentUserServers = state.entities.users[state.session.id].servers;
+  const currentUserId = state.session.id
 
+  // const currentUserServers = state.entities.users[currentUserId].servers;
   // const servers = Object.values(state.entities.servers).filter(server => {
   //   return !currentUserServers.includes(server.id);
   // });
@@ -87,14 +89,15 @@ const mapStateToProps = state => {
   const servers = Object.values(state.entities.servers)
 
   return {
-    servers
+    servers,
+    currentUserId,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    joinServer: id => dispatch(joinServer(id)),
-    fetchServers: (server) => dispatch(fetchServers(server)),
+    joinServer: (server, userId) => dispatch(joinServer(server, userId)),
+    fetchServers: (server, userId) => dispatch(fetchServers(server, userId)),
   };
 };
 
