@@ -54,7 +54,7 @@ class Channels extends React.Component {
   }
 
   removeServer() {
-    this.props.deleteServer(this.props.server.id).then(() => (
+    this.props.deleteServer(this.props.server.id, this.props.currentUser.id).then(() => (
       this.props.history.push('/channels/@me')
     ));
   }

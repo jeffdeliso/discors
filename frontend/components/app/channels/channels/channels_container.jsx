@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => {
     fetchChannels: serverId => dispatch(fetchChannels(serverId)),
     createChannel: channel => dispatch(createChannel(channel)),
     removeChannelErrors: () => dispatch(removeChannelErrors()),
-    deleteServer: id => dispatch(deleteServer(id)),
+    deleteServer: (serverId, userId) => dispatch(deleteServer(serverId, userId)),
     deleteChannel: (id) => dispatch(deleteChannel(id)),
   };
 };

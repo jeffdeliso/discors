@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import merge from 'lodash/merge';
 import { joinServer, fetchServers } from '../../../actions/server_actions';
 import SearchServerItem from './search_server_item';
 
@@ -12,6 +11,10 @@ class SearchServersForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchServers();
+    this.nameInput.focus();
+  }
+
+  componentDidUpdate() {
     this.nameInput.focus();
   }
 
@@ -33,21 +36,26 @@ class SearchServersForm extends React.Component {
   }
 
   render() {
-    const servers = this.state.servers.map((server, idx) => {
-      return <SearchServerItem
-        server={server}
-        key={idx}
-        closeModal={this.props.closeModal}
-        joinServer={this.props.joinServer}
-      />;
-    });
+    let servers;
+    if (this.state.servers.length === 0 && this.state.name) {
+      servers = <div className="server-search-empty">{`No servers match "${this.state.name}"`}</div>;
+    } else {
+      servers = this.state.servers.map((server, idx) => {
+        return <SearchServerItem
+          server={server}
+          key={idx}
+          closeModal={this.props.closeModal}
+          joinServer={this.props.joinServer}
+        />;
+      });
+    }
 
     return (
       <section className="create-channel-form" onSubmit={this.handleSubmit}>
         <header>
           <h4 style={{ marginBottom: '4px' }}>Server Discovery</h4>
           <input type="text"
-            placeholder="Try searching for a server like westeros"
+            placeholder={`Try searching for a server like "westeros"`}
             value={this.state.name}
             onChange={this.update()}
             className='session-input'

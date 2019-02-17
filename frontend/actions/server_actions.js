@@ -24,9 +24,10 @@ export const receiveServer = server => ({
   server
 });
 
-export const removeServer = serverId => ({
+export const removeServer = (serverId, userId) => ({
   type: REMOVE_SERVER,
-  serverId
+  serverId,
+  userId
 });
 
 export const receiveErrors = errors => ({
@@ -58,9 +59,9 @@ export const createServer = (formData) => dispatch => (
   ))
 );
 
-export const deleteServer = id => dispatch => (
-  APIUtil.deleteServer(id).then(() => (
-    dispatch(removeServer(id))
+export const deleteServer = (serverId, userId) => dispatch => (
+  APIUtil.deleteServer(serverId).then(() => (
+    dispatch(removeServer(serverId, userId))
     )
   )
 );

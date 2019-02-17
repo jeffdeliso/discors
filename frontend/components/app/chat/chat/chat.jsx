@@ -96,7 +96,7 @@ class Chat extends React.Component {
   }
 
   componentWillUnmount() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   parseMessages(messages) {
