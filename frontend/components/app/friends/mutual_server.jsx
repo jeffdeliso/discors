@@ -11,7 +11,7 @@ class MutualServer extends React.Component {
           className="mutual-server"
           style={this.props.server.icon_url ?
             { backgroundImage: `url(${this.props.server.icon_url})`, backgroundSize: '100%' } :
-            { backgroundSize: '180%' }}
+            { backgroundSize: '100%' }}
           onKeyDown={(e) => e.preventDefault()}
         ></Link>
       }

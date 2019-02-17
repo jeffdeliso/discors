@@ -27,7 +27,7 @@ class Message extends React.Component {
 
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           content.push(
-            <span key={i + 4999}>
+            <span key={i}>
               <a href={word} target="_blank" className="message-media">
                 <img src={word} />
               </a>
@@ -35,17 +35,21 @@ class Message extends React.Component {
           );
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
           content.push(
-            <span key={i + 4999} >
+            <span key={i} >
               <iframe
                 src={word.replace("watch?v=", "embed/")}
                 allowFullScreen></iframe>
             </span>
           );
         } else if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
-          content.push(<MicrolinkCard
-            url={word}
-            target='_blank'
-          />);
+          content.push(
+            <span key={i} >
+              <MicrolinkCard
+                url={word}
+                target='_blank'
+              />
+            </span>
+          );
         } else {
           content.push(word + separator);
         }
@@ -87,7 +91,7 @@ class Message extends React.Component {
             <h5>{this.parseDate()}</h5>
           </div>
           <div className="message-p-wrapper">
-            <p>{this.parseLinks(this.props.message)}</p>
+            <div className="message-content">{this.parseLinks(this.props.message)}</div>
           </div>
         </div>
       </div>

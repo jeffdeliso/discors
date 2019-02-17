@@ -425,7 +425,6 @@
 .user-image {
   height: 40px;
   width: 40px;
-  // background-image: url(https://s3.amazonaws.com/discors-dev/Main/green.png);
   background-position: 50%;
   background-size: 100%;
   background-clip: padding-box;
@@ -472,7 +471,7 @@
   display: contents;
 }
 
-.message p {
+.message-content {
   font-size: 0.9375rem;
   line-height: 1.3;
   user-select: text;
@@ -601,6 +600,7 @@
   background-clip: padding-box;
   background-position: 50%;
   background-size: 100%;
+  background-image: image_url('main/blue.png');
 }
 
 .server-member span {
@@ -795,3 +795,35 @@
   font-family: main3;
 }
 
+#search-server-item:hover {
+  background: rgba(79, 84, 92, 0.3);
+  width: 100%;
+}
+
+#search-server-item {
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  width: 100%;
+}
+
+.search-results {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0px !important;
+}
+
+.search-results ul {
+  height: 230px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#search-input {
+  margin-bottom: 0px;
+}
+
+#search-bottom {
+  padding: 0 20px;
+  height: 48px;
+}

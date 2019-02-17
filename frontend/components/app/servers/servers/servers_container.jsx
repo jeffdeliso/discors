@@ -16,9 +16,14 @@ const mapStateToProps = state => {
   const users = dmNotifications.map(notification => {
     return state.entities.users[notification.authorId];
   });
-  
+  const currentUser = state.entities.users[state.session.id];
+
+  const servers = currentUser.servers.map(serverId => {
+    return state.entities.servers[serverId] || {};
+  });
+
   return {
-    servers: Object.values(state.entities.servers),
+    servers,
     errors: state.errors.server,
     onlineCount,
     dmNotifications,

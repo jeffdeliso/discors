@@ -13,6 +13,10 @@ class Api::ServersController < ApplicationController
     end
   end
 
+  def index
+    @servers = Server.all.includes(:channels)
+  end
+
   def join
     @server = Server.find_by(name: server_params[:name])
     if @server 
