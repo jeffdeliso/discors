@@ -15,7 +15,7 @@ class ChatChannel < ApplicationCable::Channel
       ChatChannel.broadcast_to(channel_id, socket)
   
       unless channel.server_id
-        bot_id = 59
+        bot_id = 97
         dmArray = channel.name.split('-')
         
         if dmArray.include?(bot_id.to_s)
