@@ -28,6 +28,14 @@ class Server < ApplicationRecord
 
   has_many :audio_channels,
     dependent: :destroy
+  
+  has_many :server_messages,
+    through: :channels,
+    source: :messages
+
+  has_many :message_users,
+    through: :server_messages,
+    source: :author
 
   has_one_attached :icon
 end

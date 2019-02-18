@@ -29,7 +29,10 @@ class Api::ServersController < ApplicationController
 
   def members
     if current_server
-      @users = current_server.members.includes(:sessions, :server_memberships)
+      @users = User.distinct.select('users.*').left_outer_joins(:message_channels).left_outer_joins(:server_memberships)
+        .where("server_memberships.server_id = :current_server_id OR channels.server_id = :current_server_id", current_server_id: current_server.id)
+        .includes(:sessions, :server_memberships)
+      # @users = current_server.members.includes(:sessions, :server_memberships)
       render "api/users/index"
     else
       render json: ["Server does not exist"], status: 401

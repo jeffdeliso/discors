@@ -1,5 +1,6 @@
 icon_url = (server.icon.attached? ? url_for(server.icon) : '')
-first_channel = server.channels.find_by(name: 'general')
+channels = server.channels
+first_channel = channels.select { |channel| channel.name == "general" }.first
 root_channel = (first_channel ? first_channel.id : '')
 
 json.extract! server, :id, :name, :admin_id

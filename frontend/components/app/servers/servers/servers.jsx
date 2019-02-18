@@ -39,7 +39,6 @@ class Servers extends React.Component {
 
   handleCloseSearchModal() {
     this.setState({ showSearchModal: false });
-    this.props.removeServerErrors();
   }
 
   updateContent(type) {
@@ -177,7 +176,6 @@ class Servers extends React.Component {
         >
           <SearchServersForm
             closeModal={this.handleCloseSearchModal}
-            errors={this.props.errors}
           />
         </Modal>
       </div>

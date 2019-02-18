@@ -37,7 +37,7 @@ class User < ApplicationRecord
     through: :servers,
     source: :members
 
-  has_many :channels,
+  has_many :server_channels,
     through: :servers,
     source: :channels
 
@@ -51,6 +51,10 @@ class User < ApplicationRecord
 
   has_many :messages,
     foreign_key: :author_id
+
+  has_many :message_channels,
+    through: :messages,
+    source: :channel
 
   has_many :dm_channel_memberships
 
