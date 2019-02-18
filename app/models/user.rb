@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_icon
-  # after_create :create_bot
+  after_create :create_bot
 
   attr_reader :password
 
@@ -143,7 +143,7 @@ class User < ApplicationRecord
   end
 
   def create_bot
-    bot_id = 59
+    bot_id = 97
     user_id = self.id
     name = user_id > bot_id ? "#{bot_id}-#{user_id}" : "#{user_id}-#{bot_id}"
     channel = Channel.find_or_create_by(name: name)

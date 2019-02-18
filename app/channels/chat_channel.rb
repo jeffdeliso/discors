@@ -50,7 +50,7 @@ class ChatChannel < ApplicationCable::Channel
   def unsubscribed; end
 
   def bot_message(message)
-    bot_id = 59
+    bot_id = 97
     text = message.body.downcase
     response_arr = [
       "Why did the functions stop calling each other? Because they had constant arguments.",
