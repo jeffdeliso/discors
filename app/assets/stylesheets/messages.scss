@@ -205,15 +205,17 @@
   border-radius: 5px;
   box-sizing: border-box;
   padding: 8px 10px;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .message-media {
-  padding: 10px 0;
+  margin: 8px 0;
+  border-radius: 3px;
+  width: 50%;
 }
 
-iframe {
-  padding: 10px 0;
+.message-media img {
+  border-radius: 3px;
 }
 
 .microlink_card__content header {
@@ -246,4 +248,37 @@ iframe {
   color: #0096cf;
   text-decoration: none;
   cursor: pointer;
+}
+
+.youtube-container {
+  max-width: 426px;
+  display: flex;
+  position: relative;
+  margin: 8px 0;
+  border-radius: 3px;
+}
+
+.red-bar {
+  background-color: rgb(255, 0, 0);
+  border-radius: 3px 0 0 3px;
+  flex-shrink: 0;
+  width: 4px;
+}
+
+.youtube-container main {
+  background: hsla(0,0%,97.6%,.3);
+  border: 1px solid hsla(0,0%,80.4%,.3);
+  background-color: rgba(46,48,54,.3);
+  border-color: rgba(46,48,54,.6);
+  border-radius: 0 3px 3px 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 8px 10px;
+}
+
+.youtube-container h2 {
+  color: #87909c;
+  display: inline-block;
+  font-size: 0.75rem;
+  user-select: none;
 }

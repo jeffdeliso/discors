@@ -486,13 +486,14 @@
 }
 
 .message img {
-  width: 50%;
+  width: 100%;
   height: auto;
 }
 
 .message iframe {
-  width: 480px;
-  height: 270px;
+  width: 400px;
+  height: 225px;
+  margin-top: 8px;
 }
 
 .message-p-wrapper {

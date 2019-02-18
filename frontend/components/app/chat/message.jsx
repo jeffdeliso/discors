@@ -27,28 +27,29 @@ class Message extends React.Component {
 
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           content.push(
-            <span key={i}>
-              <a href={word} target="_blank" className="message-media">
-                <img src={word} />
-              </a>
-            </span>
+            <a href={word} target="_blank" className="message-media" key={i}>
+              <img src={word} />
+            </a>
           );
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
           content.push(
-            <span key={i} >
-              <iframe
-                src={word.replace("watch?v=", "embed/")}
-                allowFullScreen></iframe>
-            </span>
+            <div className="youtube-container" key={i}>
+              <div className="red-bar"></div>
+              <main>
+                <h2>YouTube</h2>
+                <iframe
+                  src={word.replace("watch?v=", "embed/")}
+                  allowFullScreen></iframe>
+              </main>
+            </div>
           );
         } else if (word.match(/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/)) {
           content.push(
-            <span key={i} >
-              <MicrolinkCard
-                url={word}
-                target='_blank'
-              />
-            </span>
+            <MicrolinkCard
+              url={word}
+              target='_blank'
+              key={i}
+            />
           );
         } else {
           content.push(word + separator);
