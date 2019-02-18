@@ -60,6 +60,7 @@ class SearchServersForm extends React.Component {
             className='session-input'
             ref={(input) => { this.nameInput = input; }}
             id="search-input"
+            autocomplete="off"
           />
         </header>
         <main className="search-results">
