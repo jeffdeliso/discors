@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
     @user = current_user
 
     if @user.id == 71
-      render json: ['Can not edit the demo user.'], status: 422
+      render json: ['Can not edit the demo user'], status: 422
     else
       if current_user.update_attributes(user_params)
         render :show
