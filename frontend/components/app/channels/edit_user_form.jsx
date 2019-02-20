@@ -52,8 +52,8 @@ class EditUserForm extends React.Component {
   }
 
   render() {
-    const emailError = this.props.errors.find((el) => el.includes('Email'));
-    const usernameError = this.props.errors.find((el) => el.includes('Username'));
+    const emailError = this.props.errors.find((el) => el.includes('Email') || el.includes('demo'));
+    const usernameError = this.props.errors.find((el) => el.includes('Username') || el.includes('demo'));
 
     return (
       <form className="edit-user-form" onSubmit={this.handleSubmit}>
