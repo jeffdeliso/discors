@@ -27,22 +27,15 @@ class FriendRequest < ApplicationRecord
   end
 
   def send_request
-    user = User.find(self.friend_id)
-    FriendRequestBroadcastJob.perform_later(self, user, true)
+    FriendRequestBroadcastJob.perform_later(self, true)
   end
 
   def send_request_destroy
-    user = User.find(self.friend_id)
-    FriendRequestBroadcastJob.perform_later(self, user, false)
-  end
-
-  def send_request_destroy_friend
-    user = User.find(self.user_id)
-    FriendRequestBroadcastJob.perform_later(self, user, false)
+    FriendRequestBroadcastJob.perform_later(self, false)
   end
 
   after_create_commit :send_request
-  after_destroy :send_request_destroy, :send_request_destroy_friend
+  after_destroy :send_request_destroy
   
   private
 
