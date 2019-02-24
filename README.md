@@ -126,17 +126,18 @@ createPC(userId, isOffer) {
 const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
 let pc = new RTCPeerConnection(ice);
 this.pcPeers[userId] = pc;
-pc.addStream(this.localstream);
+this.localstream.getTracks().forEach(track => pc.addTrack(track, this.localstream));
 if (isOffer) {
   pc.createOffer().then(offer => {
-      pc.setLocalDescription(offer);
+    pc.setLocalDescription(offer).then(() => {
       this.voiceSession.broadcastData({
         type: EXCHANGE,
         from: this.props.currentUserId,
         to: userId,
         sdp: JSON.stringify(pc.localDescription)
       });
-    }).catch(this.logError);
+    });
+  }).catch(this.logError);
 }
 ```
 
@@ -145,20 +146,20 @@ if (isOffer) {
 ```javascript
 if (data.sdp) {
   const sdp = JSON.parse(data.sdp);
-  pc.setRemoteDescription(new RTCSessionDescription(sdp)).then(() => {
+  pc.setRemoteDescription(sdp).then(() => {
     if (sdp.type === "offer") {
       pc.createAnswer().then(answer => {
-        pc.setLocalDescription(answer);
-        this.voiceSession.broadcastData({
-          type: EXCHANGE,
-          from: this.props.currentUserId,
-          to: data.from,
-          sdp: JSON.stringify(pc.localDescription)
+        pc.setLocalDescription(answer).then(() => {
+          this.voiceSession.broadcastData({
+            type: EXCHANGE,
+            from: this.props.currentUserId,
+            to: data.from,
+            sdp: JSON.stringify(pc.localDescription)
+          });
         });
       });
     }
-  })
-    .catch(this.logError);
+  }).catch(this.logError);
 }
 ```
 
@@ -186,18 +187,18 @@ pc.onicecandidate = event => {
   }
 };
 
-pc.onaddstream = event => {
+pc.ontrack = event => {
   const element = document.createElement("audio");
   element.id = `remoteAudioContainer+${userId}`;
   element.autoplay = "autoplay";
-  element.srcObject = event.stream;
+  element.srcObject = event.streams[0];
   this.remoteAudioContainer.current.appendChild(element);
 };
 ```
 
 #### SQL
 
-I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my total queries by 8.
+I also wanted to decrease my initial load times as much as possible, so I worte the following custom query, decreasing my total database queries by 9.
 
 ```ruby
 @users = User.distinct.select('users.*').left_outer_joins(:friend_requests)
