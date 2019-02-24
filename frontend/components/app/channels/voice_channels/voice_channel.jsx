@@ -1,6 +1,5 @@
 import React from 'react';
 import Tooltip from '../../modal/tooltip';
-// import adapter from 'webrtc-adapter';
 
 const JOIN_ROOM = "JOIN_ROOM";
 const EXCHANGE = "EXCHANGE";
