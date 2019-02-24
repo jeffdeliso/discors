@@ -3,7 +3,7 @@ import PendingFriends from './pending_friends';
 import { fetchFriendRequests, acceptFriendRequest, deleteFriendRequest } from '../../../../actions/friends_actions';
 import { createDmChannel } from '../../../../actions/channel_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   const outgoingRequests = Object.values(state.entities.friendRequests).filter((request) => {
     return request.user_id === state.session.id;
   });

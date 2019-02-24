@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import Friends from './friends';
-import { fetchFriends, deleteFriend } from '../../../../actions/friends_actions';
+import { deleteFriend } from '../../../../actions/friends_actions';
 import { createDmChannel } from '../../../../actions/channel_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   const friends = state.entities.friends.map((id) => {
     return state.entities.users[id] || {};
   }).sort((a, b) => {

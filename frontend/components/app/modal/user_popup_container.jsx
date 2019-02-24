@@ -4,7 +4,7 @@ import { createFriendRequest } from '../../../actions/friends_actions';
 import UserPopup from './user_popup';
 import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentUserId: state.session.id,
     friendRequests: Object.values(state.entities.friendRequests),
