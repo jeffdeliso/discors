@@ -54,6 +54,7 @@ class EditUserForm extends React.Component {
   render() {
     const emailError = this.props.errors.find((el) => el.includes('Email') || el.includes('demo'));
     const usernameError = this.props.errors.find((el) => el.includes('Username') || el.includes('demo'));
+    const { avatarUrl, username, email } = this.state;
 
     return (
       <form className="edit-user-form" onSubmit={this.handleSubmit}>
@@ -61,13 +62,13 @@ class EditUserForm extends React.Component {
           <div className="avatar-container">
             <div
               className="avatar-wrapper"
-              style={{ backgroundImage: `url(${this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.image_url})` }}
+              style={{ backgroundImage: `url(${avatarUrl ? avatarUrl : this.props.currentUser.image_url})` }}
             >
               <p>{'CHANGE \n AVATAR'}</p>
               <input type="file" onChange={this.handleFile} onKeyDown={(e) => e.preventDefault()} multipleaccept=".jpg,.jpeg,.png,.gif" />
               <div className="add-file-icon"></div>
             </div>
-            {this.state.avatarUrl ? <button
+            {avatarUrl ? <button
               type="button"
               className="remove-avatar-button"
               onClick={this.handleRemove}
@@ -81,7 +82,7 @@ class EditUserForm extends React.Component {
                 <span className="session-errors">{usernameError ? `-  ${usernameError}` : ''}</span>
               </div>
               <input type="text"
-                value={this.state.username}
+                value={username}
                 onChange={this.update('username')}
                 className={usernameError ? 'session-error' : 'session-input'}
               />
@@ -92,7 +93,7 @@ class EditUserForm extends React.Component {
                 <span className="session-errors">{emailError ? `-  ${emailError}` : ''}</span>
               </div>
               <input type="text"
-                value={this.state.email}
+                value={email}
                 onChange={this.update('email')}
                 className={emailError ? 'session-error' : 'session-input'}
               />

@@ -24,8 +24,6 @@ class User < ApplicationRecord
   after_initialize :ensure_icon
   after_create :create_bot
 
-  attr_reader :password
-
   has_many :server_memberships
 
   has_many :servers,

@@ -1,5 +1,6 @@
 import React from 'react';
 import Tooltip from '../../modal/tooltip';
+import adapter from 'webrtc-adapter';
 
 const JOIN_ROOM = "JOIN_ROOM";
 const EXCHANGE = "EXCHANGE";
@@ -43,7 +44,7 @@ class VoiceChannel extends React.Component {
 
   componentDidMount() {
     if (this.props.select) {
-      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(stream => {
         this.localstream = stream;
       }).then(() => this.handleJoinSession());
     }
@@ -128,12 +129,13 @@ class VoiceChannel extends React.Component {
     this.localstream.getTracks().forEach(track => pc.addTrack(track, this.localstream));
     if (isOffer) {
       pc.createOffer().then(offer => {
-        pc.setLocalDescription(offer);
-        this.voiceSession.broadcastData({
-          type: EXCHANGE,
-          from: this.props.currentUserId,
-          to: userId,
-          sdp: JSON.stringify(pc.localDescription)
+        pc.setLocalDescription(offer).then(() => {
+          this.voiceSession.broadcastData({
+            type: EXCHANGE,
+            from: this.props.currentUserId,
+            to: userId,
+            sdp: JSON.stringify(pc.localDescription)
+          });
         });
       }).catch(this.logError);
     }
@@ -190,12 +192,13 @@ class VoiceChannel extends React.Component {
       pc.setRemoteDescription(sdp).then(() => {
         if (sdp.type === "offer") {
           pc.createAnswer().then(answer => {
-            pc.setLocalDescription(answer);
-            this.voiceSession.broadcastData({
-              type: EXCHANGE,
-              from: this.props.currentUserId,
-              to: data.from,
-              sdp: JSON.stringify(pc.localDescription)
+            pc.setLocalDescription(answer).then(() => {
+              this.voiceSession.broadcastData({
+                type: EXCHANGE,
+                from: this.props.currentUserId,
+                to: data.from,
+                sdp: JSON.stringify(pc.localDescription)
+              });
             });
           });
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Servers from './servers/servers/servers_container';
 import ServerRoute from './app_routes/server_route';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MeRoute from './app_routes/me_route';
 import { connect } from 'react-redux';
 import { fetchCurrentUserData, receiveUser } from '../../actions/session_actions';
@@ -60,7 +60,7 @@ class AppRoot extends React.Component {
               break;
             case "friend_destroy":
               this.props.removeFriend(JSON.parse(data.user_id));
-              
+
               break;
           }
         },
@@ -84,9 +84,11 @@ class AppRoot extends React.Component {
   }
 
   render() {
+    const { loading } = this.state;
+
     return (
       <div className="main-body">
-        {this.state.loading ? <LoadingScreen text={this.state.loading} classText={this.state.class} /> : null}
+        {this.state.loading ? <LoadingScreen text={loading} classText={this.state.class} /> : null}
         <Servers />
         <Switch >
           <Route path="/channels/@me/:channelId" component={MeRoute} />
