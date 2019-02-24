@@ -82,8 +82,8 @@ class Chat extends React.Component {
                 break;
               case "messages":
                 this.scrolled = false;
-                this.setState({ messages: this.parseMessages(data.messages) });
                 this.messagesLoaded = true;
+                this.setState({ messages: this.parseMessages(data.messages) });
                 break;
               case "error":
                 const server = that.props.server;
