@@ -133,9 +133,13 @@
   color: #7289da;
   font-size: 18px;
   font-family: main5;
-  line-height: 8px;
+  line-height: 18px;
   margin: 15px 0 30px;
   text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+  white-space: nowrap;
 }
 
 .server-welcome-item {

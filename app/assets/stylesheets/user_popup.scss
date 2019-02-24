@@ -31,6 +31,9 @@
     color: #fff;
     font-family: main3;
     font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
 }
 
 .user-popup-bottom {

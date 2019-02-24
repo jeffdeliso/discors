@@ -157,6 +157,9 @@
   color: #fff;
   user-select: none;
   margin-left: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
 }
 
 .home-icon {
@@ -360,8 +363,9 @@
 
 .actions-username {
   display: block;
-  max-width: 84px;
+  max-width: 140px;
   font-size: 18px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: main3;
@@ -390,6 +394,7 @@
 .message-list {
   width: 100%;
   padding-top: 20px;
+  overflow-x: hidden;
 }
   
 .message-scroll-wrapper {
@@ -451,6 +456,10 @@
   font-family: main3;
   color: #fff;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+  white-space: nowrap;
 }
 
 .username-time h4:hover {
