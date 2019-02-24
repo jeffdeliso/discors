@@ -16,7 +16,6 @@ class Chat extends React.Component {
     const channelId = this.props.match.params.channelId;
     if (!this.props.loading) {
       this.subscribe(channelId);
-      this.bottom.current.scrollIntoView();
     }
 
     if (channelId && !this.props.channel.serverId) {
@@ -32,7 +31,7 @@ class Chat extends React.Component {
   componentDidUpdate(prevProps) {
     const channelId = this.props.match.params.channelId;
 
-    if (prevProps.loading && !this.props.loading) {
+    if (prevProps.loading && !this.props.loading && !this.messagesLoaded) {
       this.subscribe(channelId);
     }
 
@@ -57,7 +56,10 @@ class Chat extends React.Component {
       }
     }
 
-    this.bottom.current.scrollIntoView();
+    if (this.messagesLoaded && !this.scrolled) {
+      this.bottom.current.scrollIntoView();
+      this.scrolled = true;
+    }
   }
 
   subscribe(channelId) {
@@ -75,11 +77,13 @@ class Chat extends React.Component {
           received: data => {
             switch (data.type) {
               case "message":
+                this.scrolled = false;
                 this.parseNewMessage(data.message);
                 break;
               case "messages":
-                this.messagesLoaded = true;
+                this.scrolled = false;
                 this.setState({ messages: this.parseMessages(data.messages) });
+                this.messagesLoaded = true;
                 break;
               case "error":
                 const server = that.props.server;
