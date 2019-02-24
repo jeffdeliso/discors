@@ -113,6 +113,7 @@ class Chat extends React.Component {
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
               showMessageButton={this.props.channel.server_id ? true : false}
+              bottom={this.bottom.current}
             />);
         }
 
@@ -129,6 +130,7 @@ class Chat extends React.Component {
               user={this.props.users[this.lastAuthorId] || {}}
               time={this.time}
               showMessageButton={this.props.channel.server_id ? true : false}
+              bottom={this.bottom.current}
             />
           )
         } else {
@@ -138,6 +140,7 @@ class Chat extends React.Component {
               user={this.props.users[this.lastAuthorId] || {}}
               time={this.time}
               showMessageButton={this.props.channel.server_id ? true : false}
+              bottom={this.bottom.current}
             />);
 
           messageArr.push(
@@ -146,6 +149,7 @@ class Chat extends React.Component {
               user={this.props.users[message.author_id] || {}}
               time={message.created_at}
               showMessageButton={this.props.channel.server_id ? true : false}
+              bottom={this.bottom.current}
             />);
 
           this.messageStr = message.body;
@@ -162,6 +166,7 @@ class Chat extends React.Component {
             user={this.props.users[this.lastAuthorId] || {}}
             time={this.time}
             showMessageButton={this.props.channel.server_id ? true : false}
+            bottom={this.bottom.current}
           />);
 
         this.messageStr = message.body;
@@ -185,6 +190,7 @@ class Chat extends React.Component {
           user={this.props.users[this.lastAuthorId] || {}}
           time={this.time}
           showMessageButton={this.props.channel.server_id ? true : false}
+          bottom={this.bottom.current}
         />);
 
       this.setState({

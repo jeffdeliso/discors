@@ -21,14 +21,14 @@ class Message extends React.Component {
     return lines.map((line, j) => {
       const words = line.split(/\s/);
       const content = [];
+      const that = this;
 
       words.map((word, i) => {
         let separator = i < (words.length - 1) ? ' ' : '';
-
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           content.push(
             <a href={word} target="_blank" className="message-media" key={i}>
-              <img src={word} />
+              <img src={word} onLoad={() => that.props.bottom.scrollIntoView()}/>
             </a>
           );
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
