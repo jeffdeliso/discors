@@ -7,11 +7,12 @@ class SearchServersForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '', servers: [] };
+    this.searchInput = React.createRef();
   }
 
   componentDidMount() {
     this.props.fetchServers();
-    // this.nameInput.focus();
+    this.searchInput.current.focus();
   }
 
   update() {
@@ -58,9 +59,9 @@ class SearchServersForm extends React.Component {
             value={this.state.name}
             onChange={this.update()}
             className='session-input'
-            ref={(input) => { this.nameInput = input; }}
+            ref={this.searchInput}
             id="search-input"
-            autocomplete="off"
+            autoComplete="off"
           />
         </header>
         <main className="search-results">
