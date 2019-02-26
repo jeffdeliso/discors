@@ -52,6 +52,10 @@
   .create-server-form-bottom button {
     align-items: center;
   }
+
+  .message-list {
+    overflow-x: visible !important;
+  }
 }
 
 @supports (-ms-accelerator:true) {
@@ -115,6 +119,10 @@
     width: 435px;
     padding-right: 20px;
     box-sizing: border-box;
+  }
+
+  .message-list {
+    overflow-x: visible !important;
   }
 }
 
