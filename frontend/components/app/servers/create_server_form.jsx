@@ -20,8 +20,8 @@ class CreateServerForm extends React.Component {
     this.nameInput.focus();
   }
 
-  update() {
-    return e => this.setState({
+  update(e) {
+    this.setState({
       name: e.currentTarget.value
     });
   }
@@ -71,7 +71,7 @@ class CreateServerForm extends React.Component {
               <label id={this.props.errors[0] ? 'server-errors' : ''}>SERVER NAME
               <span>{this.props.errors[0] ? `  -  ${this.props.errors[0]}` : ''}</span>
               </label>
-              <input type="text" placeholder="Enter a server name" onChange={this.update()} ref={(input) => { this.nameInput = input; }} />
+              <input type="text" placeholder="Enter a server name" onChange={this.update} ref={(input) => { this.nameInput = input; }} />
             </div>
             <div className="avatar-container" id="icon-container">
               <div

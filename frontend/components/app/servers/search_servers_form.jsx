@@ -15,21 +15,19 @@ class SearchServersForm extends React.Component {
     this.searchInput.current.focus();
   }
 
-  update() {
-    return e => {
-      const name = e.currentTarget.value;
-      let servers;
+  update(e) {
+    const name = e.currentTarget.value;
+    let servers;
 
-      if (name) {
-        servers = this.props.servers.filter(server => {
-          return server.name.match(new RegExp(`^.*${name}.*$`, 'i'));
-        });
-      } else {
-        servers = [];
-      }
+    if (name) {
+      servers = this.props.servers.filter(server => {
+        return server.name.match(new RegExp(`^.*${name}.*$`, 'i'));
+      });
+    } else {
+      servers = [];
+    }
 
-      this.setState({ name, servers });
-    };
+    this.setState({ name, servers });
   }
 
   render() {
@@ -57,7 +55,7 @@ class SearchServersForm extends React.Component {
           <input type="text"
             placeholder={`Try searching for a server like "westeros"`}
             value={this.state.name}
-            onChange={this.update()}
+            onChange={this.update}
             className='session-input'
             ref={this.searchInput}
             id="search-input"

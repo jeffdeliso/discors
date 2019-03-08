@@ -14,8 +14,8 @@ class MessageForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  update() {
-    return e => this.setState({ body: e.currentTarget.value });
+  update(e) {
+    this.setState({ body: e.currentTarget.value });
   }
 
   componentDidMount() {
@@ -62,7 +62,7 @@ class MessageForm extends React.Component {
             placeholder={placeholder}
             className="text-area"
             value={this.state.body}
-            onChange={this.update()}
+            onChange={this.update}
             ref={this.messageInput}
           ></input>
         </div>

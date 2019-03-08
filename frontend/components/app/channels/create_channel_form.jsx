@@ -12,8 +12,8 @@ class CreateChannelForm extends React.Component {
     this.nameInput.focus();
   }
 
-  update() {
-    return e => this.setState({
+  update(e) {
+    this.setState({
       name: e.currentTarget.value
     });
   }
@@ -37,7 +37,7 @@ class CreateChannelForm extends React.Component {
           </div>
           <input type="text"
             value={this.state.name}
-            onChange={this.update()}
+            onChange={this.update}
             className={this.props.errors[0] ? 'session-error' : 'session-input'}
             ref={(input) => { this.nameInput = input; }}
           />
