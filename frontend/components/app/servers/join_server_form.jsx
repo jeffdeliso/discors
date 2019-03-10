@@ -7,6 +7,7 @@ class JoinServerForm extends React.Component {
     this.state = { name: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {

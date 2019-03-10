@@ -6,6 +6,7 @@ class CreateChannelForm extends React.Component {
     super(props);
     this.state = { name: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {

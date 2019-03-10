@@ -14,6 +14,7 @@ class CreateServerForm extends React.Component {
     this.handleRedirect = this.handleRedirect.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {

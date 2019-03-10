@@ -8,6 +8,7 @@ class SearchServersForm extends React.Component {
     super(props);
     this.state = { name: '', servers: [] };
     this.searchInput = React.createRef();
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
