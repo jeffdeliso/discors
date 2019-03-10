@@ -77,7 +77,6 @@ class VoiceChannel extends React.Component {
           });
         },
         received: data => {
-          console.log("received", data);
           if (data.from === this.props.currentUserId) return;
           switch (data.type) {
             case JOIN_ROOM:
@@ -115,7 +114,6 @@ class VoiceChannel extends React.Component {
   }
 
   removeUser(data) {
-    console.log("removing user", data.from);
     let audio = document.getElementById(`remoteAudioContainer+${data.from}`);
     if (audio) audio.remove();
     delete this.pcPeers[data.from];
@@ -136,7 +134,7 @@ class VoiceChannel extends React.Component {
             sdp: JSON.stringify(pc.localDescription)
           });
         });
-      }).catch(this.logError);
+      });
     }
 
     pc.onicecandidate = event => {
@@ -160,7 +158,6 @@ class VoiceChannel extends React.Component {
 
     pc.oniceconnectionstatechange = event => {
       if (pc.iceConnectionState == "disconnected") {
-        console.log("Disconnected:", userId);
         this.voiceSession.broadcastData({
           type: REMOVE_USER,
           from: userId
@@ -168,7 +165,6 @@ class VoiceChannel extends React.Component {
       }
     };
 
-    console.log(pc);
     return pc;
   }
 
@@ -181,9 +177,7 @@ class VoiceChannel extends React.Component {
     }
 
     if (data.candidate) {
-      pc.addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)))
-        .then(() => console.log("Ice candidate added"))
-        .catch(this.logError);
+      pc.addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)));
     }
 
     if (data.sdp) {
@@ -201,7 +195,7 @@ class VoiceChannel extends React.Component {
             });
           });
         }
-      }).catch(this.logError);
+      });
     }
   }
 
