@@ -12,6 +12,7 @@ class MessageForm extends React.Component {
 
     this.messageInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   update(e) {
