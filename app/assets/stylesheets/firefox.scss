@@ -30,7 +30,7 @@
 
   .chat-main {
     overflow: hidden;
-    height: calc(100vh - 38px);
+    height: calc(100vh - 48px) !important;
   }
 
   .message-wrapper {

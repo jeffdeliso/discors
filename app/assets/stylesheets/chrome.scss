@@ -1,5 +1,4 @@
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  and (min-resolution:.001dpcm) {
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
   .chat-main {
     height: calc(100vh - 143px) !important;
   }
