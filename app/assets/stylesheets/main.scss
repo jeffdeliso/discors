@@ -408,7 +408,7 @@
 .message-wrapper {
     display: flex;
     flex: 1 1 auto;
-    height: 100%;
+    height: calc(100vh - 143px);
     position: relative;
 }
 
