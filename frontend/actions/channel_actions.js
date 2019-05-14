@@ -38,11 +38,11 @@ export const removeChannelErrors = () => ({
 });
 
 
-export const fetchChannels = (serverId) => dispatch => (
+export const fetchChannels = (serverId, userId) => dispatch => (
   APIUtil.fetchChannels(serverId).then(channels => (
     dispatch(receiveChannels(channels))
   ), () => (
-      dispatch(removeServer(serverId))
+      dispatch(removeServer(serverId, userId))
   ))
 );
 
