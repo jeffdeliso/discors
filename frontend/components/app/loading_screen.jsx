@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingScreen = (props) => {
+function LoadingScreen(props) {
   return (
     <div className={`loading-screen ${props.classText}`}>
       <video height="200" width="200" autoPlay loop muted>

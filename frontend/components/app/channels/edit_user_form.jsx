@@ -9,19 +9,15 @@ class EditUserForm extends React.Component {
       avatarFile: null,
       avatarUrl: null,
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
   }
 
-  update(field) {
+  update = (field) => {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
 
-  handleFile(e) {
+  handleFile = (e) => {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
@@ -33,11 +29,11 @@ class EditUserForm extends React.Component {
     }
   }
 
-  handleRemove(e) {
+  handleRemove = (e) => {
     this.setState({ avatarFile: null, avatarUrl: null });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('user[username]', this.state.username);

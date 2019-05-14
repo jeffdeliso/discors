@@ -3,7 +3,7 @@ import Friends from './friends';
 import { deleteFriend } from '../../../../actions/friends_actions';
 import { createDmChannel } from '../../../../actions/channel_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const friends = state.entities.friends.map((id) => {
     return state.entities.users[id] || {};
   }).sort((a, b) => {

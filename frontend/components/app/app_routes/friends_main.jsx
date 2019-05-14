@@ -8,10 +8,9 @@ class FriendsMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tab: 'all' };
-    this.changeTab = this.changeTab.bind(this);
   }
 
-  changeTab(tabName) {
+  changeTab = (tabName) => {
     this.setState({ tab: tabName });
   }
 

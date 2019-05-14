@@ -5,21 +5,19 @@ class CreateChannelForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '' };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
     this.nameInput.focus();
   }
 
-  update(e) {
+  update = (e) => {
     this.setState({
       name: e.currentTarget.value
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.createChannel(merge(this.state, {server_id: this.props.server.id})).then(this.props.closeModal);
   }

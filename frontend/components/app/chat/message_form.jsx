@@ -11,14 +11,8 @@ class MessageForm extends React.Component {
     };
 
     this.messageInput = React.createRef();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
   }
-
-  update(e) {
-    this.setState({ body: e.currentTarget.value });
-  }
-
+  
   componentDidMount() {
     this.messageInput.current.focus();
   }
@@ -31,7 +25,12 @@ class MessageForm extends React.Component {
     }
   }
 
-  handleSubmit(e) {
+  update = (e) => {
+    this.setState({ body: e.currentTarget.value });
+  }
+
+
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.subscription.speak({ message: merge({ channel_id: this.props.channelId }, this.state) });
     this.setState({ body: "" });

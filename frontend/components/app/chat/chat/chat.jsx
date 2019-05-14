@@ -9,7 +9,6 @@ class Chat extends React.Component {
     this.state = { messages: [] };
 
     this.bottom = React.createRef();
-    this.parseNewMessage = this.parseNewMessage.bind(this);
   }
 
   componentDidMount() {
@@ -62,7 +61,11 @@ class Chat extends React.Component {
     }
   }
 
-  subscribe(channelId) {
+  componentWillUnmount() {
+    if (this.subscription) this.subscription.unsubscribe();
+  }
+
+  subscribe = (channelId) => {
     this.subscription = App.cable.subscriptions.subscriptions.find((subscription) => (
       subscription.identifier === `{"channel":"ChatChannel","channelId":"${channelId}"}`
     ));
@@ -99,11 +102,7 @@ class Chat extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    if (this.subscription) this.subscription.unsubscribe();
-  }
-
-  parseMessages(messages) {
+  parseMessages = (messages) => {
     const messageArr = [];
 
     for (let i = 0; i < messages.length; i++) {
@@ -183,7 +182,7 @@ class Chat extends React.Component {
     return messageArr
   }
 
-  parseNewMessage(message) {
+  parseNewMessage = (message) => {
     if (message.author_id === this.lastAuthorId) {
       this.messageStr = this.messageStr + '\n' + message.body;
       const newMessages = union([], this.state.messages);

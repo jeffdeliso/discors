@@ -6,12 +6,10 @@ import VoiceChannel from './voice_channel';
 class VoiceChannels extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, voiceChannelId: null };
-
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.selectVoiceChannel = this.selectVoiceChannel.bind(this);
-    this.leaveVoiceChannel = this.leaveVoiceChannel.bind(this);
+    this.state = { 
+      showModal: false,
+      voiceChannelId: null 
+    };
   }
 
   componentDidMount() {
@@ -26,20 +24,20 @@ class VoiceChannels extends React.Component {
     }
   }
 
-  handleOpenModal() {
+  handleOpenModal = () => {
     this.setState({ showModal: true });
   }
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({ showModal: false });
     this.props.removeChannelErrors();
   }
 
-  selectVoiceChannel(voiceChannelId) {
+  selectVoiceChannel = (voiceChannelId) => {
     this.setState({ voiceChannelId });
   }
 
-  leaveVoiceChannel() {
+  leaveVoiceChannel = () => {
     this.setState({ voiceChannelId: null });
   }
 

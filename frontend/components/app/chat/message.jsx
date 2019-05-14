@@ -4,31 +4,30 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment-timezone';
 import MicrolinkCard from '@microlink/react';
 
-class Message extends React.Component {
-  parseDate() {
-    const time = moment(this.props.time).tz('America/New_York');
+function Message(props) {
+  const parseDate = () => {
+    const time = moment(props.time).tz('America/New_York');
     return time.calendar();
   }
 
-  transition() {
+  const transition = () => {
     const popUp = document.getElementsByClassName('popup-content');
     popUp[0].style.transform = 'translate(-10px, 0)';
   }
 
-  parseLinks(body) {
+  const parseLinks = (body) => {
     const lines = body.split('\n');
 
     return lines.map((line, j) => {
       const words = line.split(/\s/);
       const content = [];
-      const that = this;
 
       words.map((word, i) => {
         let separator = i < (words.length - 1) ? ' ' : '';
         if (word.match(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)) {
           content.push(
             <a href={word} target="_blank" className="message-media" key={i}>
-              <img src={word} onLoad={() => that.props.bottom.scrollIntoView()}/>
+              <img src={word} onLoad={() => props.bottom.scrollIntoView()} />
             </a>
           );
         } else if (word.match('^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$')) {
@@ -64,40 +63,38 @@ class Message extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <div className="message">
-        <UserPopup component={
-          <div className="user-image" style={this.props.user.image_url ? { backgroundImage: `url(${this.props.user.image_url})` } : {}}></div>
-        }
-          user={this.props.user}
-          position={'right center'}
-          offsetX={2}
-          offsetY={60}
-          onOpen={this.transition}
-          showMessageButton={this.props.showMessageButton}
-        />
-        <div className="username-message">
-          <div className="username-time">
-            <UserPopup component={
-              <h4>{this.props.user.username}</h4>
-            }
-              user={this.props.user}
-              position={'right center'}
-              offsetX={2}
-              offsetY={72}
-              onOpen={this.transition}
-              showMessageButton={this.props.showMessageButton}
-            />
-            <h5>{this.parseDate()}</h5>
-          </div>
-          <div className="message-p-wrapper">
-            <div className="message-content">{this.parseLinks(this.props.message)}</div>
-          </div>
+  return (
+    <div className="message">
+      <UserPopup component={
+        <div className="user-image" style={props.user.image_url ? { backgroundImage: `url(${props.user.image_url})` } : {}}></div>
+      }
+        user={props.user}
+        position={'right center'}
+        offsetX={2}
+        offsetY={60}
+        onOpen={transition}
+        showMessageButton={props.showMessageButton}
+      />
+      <div className="username-message">
+        <div className="username-time">
+          <UserPopup component={
+            <h4>{props.user.username}</h4>
+          }
+            user={props.user}
+            position={'right center'}
+            offsetX={2}
+            offsetY={72}
+            onOpen={transition}
+            showMessageButton={props.showMessageButton}
+          />
+          <h5>{parseDate()}</h5>
+        </div>
+        <div className="message-p-wrapper">
+          <div className="message-content">{parseLinks(props.message)}</div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default withRouter(Message);

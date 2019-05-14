@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 class Splash extends React.Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
   }
 
   componentDidMount() {
     document.body.style.overflow = "visible";
   }
 
-  handleLogin() {
+  handleLogin = () => {
     this.props.login().then(() => this.props.history.push('/channels/@me'));
   }
 

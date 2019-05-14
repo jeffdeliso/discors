@@ -9,7 +9,6 @@ class SignupForm extends React.Component {
       password: '',
       email: '',
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +26,7 @@ class SignupForm extends React.Component {
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.signup(this.state).then(() => this.props.history.push('/channels/@me'));
   }

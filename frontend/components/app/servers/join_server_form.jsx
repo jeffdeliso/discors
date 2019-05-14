@@ -5,27 +5,24 @@ class JoinServerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: '' };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRedirect = this.handleRedirect.bind(this);
-    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
     this.nameInput.focus();
   }
 
-  update(e) {
+  update = (e) => {
     this.setState({
       name: e.currentTarget.value
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.joinServer(this.state, this.props.currentUserId).then(this.handleRedirect);
   }
 
-  handleRedirect(action) {
+  handleRedirect = (action) => {
     this.props.closeModal();
     this.props.history.push(`/channels/${action.server.id}/${action.server.root_channel}`);
   }

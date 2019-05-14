@@ -5,21 +5,17 @@ class DmChannel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: false };
-
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleMouseEnter() {
+  handleMouseEnter = () => {
     this.setState({ active: true });
   }
 
-  handleMouseLeave() {
+  handleMouseLeave = () => {
     this.setState({ active: false });
   }
 
-  handleDelete(e) {
+  handleDelete = (e) => {
     e.preventDefault();
     const channelId = this.props.channel.id;
     const notification = document.getElementById(`dm-notification-${channelId}`);

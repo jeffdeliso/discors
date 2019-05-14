@@ -8,10 +8,6 @@ class LoginForm extends React.Component {
       username: '',
       password: '',
     };
-    
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginAsGuest = this.loginAsGuest.bind(this);
-    this.loginAsGuestHelper = this.loginAsGuestHelper.bind(this);
   }
 
   componentDidMount() {
@@ -19,13 +15,13 @@ class LoginForm extends React.Component {
     this.nameInput.focus();
   }
 
-  update(field) {
+  update = (field) => {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
 
-  loginAsGuest(e) {
+  loginAsGuest = (e) => {
     e.preventDefault();
     const username = 'hodor'.split('');
     const password = 'hodorhodor'.split('');
@@ -35,7 +31,7 @@ class LoginForm extends React.Component {
     );
   }
 
-  loginAsGuestHelper(username, password, submit) {
+  loginAsGuestHelper = (username, password, submit) => {
     if (username.length > 0) {
       this.setState(
         { username: this.state.username + username.shift() }, () => {
@@ -55,7 +51,7 @@ class LoginForm extends React.Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.login(this.state).then(() => this.props.history.push('/channels/@me'));
   }

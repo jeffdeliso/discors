@@ -14,7 +14,10 @@ import { beginLoading, finishLoading } from '../../actions/ui_actions';
 class AppRoot extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: false, class: '' };
+    this.state = { 
+      loading: false, 
+      class: '' 
+    };
   }
 
   componentWillMount() {

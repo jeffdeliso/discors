@@ -6,11 +6,13 @@ import ServerMembers from '../server_members/server_members/server_members_conta
 class ServerMain extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showMembers: true, classText: 'members-transition-left' };
-    this.toggleShowMembers = this.toggleShowMembers.bind(this);
+    this.state = { 
+      showMembers: true, 
+      classText: 'members-transition-left' 
+    };
   }
 
-  toggleShowMembers() {
+  toggleShowMembers = () => {
     const { showMembers } = this.state;
 
     if (showMembers) {

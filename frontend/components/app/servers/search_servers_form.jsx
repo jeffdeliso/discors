@@ -8,7 +8,6 @@ class SearchServersForm extends React.Component {
     super(props);
     this.state = { name: '', servers: [] };
     this.searchInput = React.createRef();
-    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
@@ -16,7 +15,7 @@ class SearchServersForm extends React.Component {
     this.searchInput.current.focus();
   }
 
-  update(e) {
+  update = (e) => {
     const name = e.currentTarget.value;
     let servers;
 

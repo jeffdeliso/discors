@@ -7,15 +7,13 @@ class UserBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showUserModal: false };
-    this.handleOpenUserModal = this.handleOpenUserModal.bind(this);
-    this.handleCloseUserModal = this.handleCloseUserModal.bind(this);
   }
 
-  handleOpenUserModal() {
+  handleOpenUserModal = () => {
     this.setState({ showUserModal: true });
   }
 
-  handleCloseUserModal() {
+  handleCloseUserModal = () => {
     this.setState({ showUserModal: false });
     this.props.removeErrors();
   }

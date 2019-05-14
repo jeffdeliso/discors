@@ -16,32 +16,27 @@ class Servers extends React.Component {
       showSearchModal: false,
       content: ''
     };
-
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleOpenSearchModal = this.handleOpenSearchModal.bind(this);
-    this.handleCloseSearchModal = this.handleCloseSearchModal.bind(this);
   }
 
-  handleOpenModal() {
+  handleOpenModal = () => {
     this.setState({ showModal: true });
   }
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({ showModal: false });
     setTimeout(() => this.setState({ content: '' }), 150);
     this.props.removeServerErrors();
   }
 
-  handleOpenSearchModal() {
+  handleOpenSearchModal = () => {
     this.setState({ showSearchModal: true });
   }
 
-  handleCloseSearchModal() {
+  handleCloseSearchModal = () => {
     this.setState({ showSearchModal: false });
   }
 
-  updateContent(type) {
+  updateContent = (type) => {
     this.setState({ content: type });
   }
 

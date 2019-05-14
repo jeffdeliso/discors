@@ -9,21 +9,11 @@ import UserBar from '../user_bar/user_bar_container';
 class Channels extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false, showUserModal: false, active: false };
-    
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.removeServer = this.removeServer.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-  }
-
-  handleMouseEnter() {
-    this.setState({ active: true });
-  }
-
-  handleMouseLeave() {
-    this.setState({ active: false });
+    this.state = { 
+      showModal: false, 
+      showUserModal: false, 
+      active: false 
+    };
   }
 
   componentDidMount() {
@@ -34,7 +24,7 @@ class Channels extends React.Component {
       ));
     }
   }
-
+  
   componentDidUpdate(prevProps) {
     const serverId = this.props.match.params.serverId;
     if (prevProps.server.id && prevProps.server.id != serverId) {
@@ -44,16 +34,24 @@ class Channels extends React.Component {
     }
   }
 
-  handleOpenModal() {
+  handleMouseEnter = () => {
+    this.setState({ active: true });
+  }
+
+  handleMouseLeave = () => {
+    this.setState({ active: false });
+  }
+
+  handleOpenModal = () => {
     this.setState({ showModal: true });
   }
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({ showModal: false });
     this.props.removeChannelErrors();
   }
 
-  removeServer() {
+  removeServer = () => {
     this.props.deleteServer(this.props.server.id, this.props.currentUser.id).then(() => (
       this.props.history.push('/channels/@me')
     ));

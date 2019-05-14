@@ -6,25 +6,21 @@ class Channel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: false };
-    
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleMouseEnter() {
+  handleMouseEnter = () => {
     if (this.props.channel.name !== 'general' && this.props.currentUser.id === this.props.server.admin_id) {
       this.setState({ active: true });
     }
   }
 
-  handleMouseLeave() {
+  handleMouseLeave = () => {
     if (this.props.channel.name !== 'general' && this.props.currentUser.id === this.props.server.admin_id) {
       this.setState({ active: false });
     }
   }
 
-  handleDelete(e) {
+  handleDelete = (e) => {
     e.preventDefault();
     const that = this;
     this.props.deleteChannel().then((action) => {

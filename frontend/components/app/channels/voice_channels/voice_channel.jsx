@@ -11,34 +11,6 @@ class VoiceChannel extends React.Component {
     this.state = { active: false };
     this.pcPeers = {};
     this.remoteAudioContainer = React.createRef();
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  handleMouseEnter() {
-    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
-      this.setState({ active: true });
-    }
-  }
-
-  handleMouseLeave() {
-    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
-      this.setState({ active: false });
-    }
-  }
-
-  handleDelete(e) {
-    e.stopPropagation();
-    if (this.voiceSession) this.handleLeaveSession();
-    this.props.leaveVoiceChannel();
-    this.props.deleteVoiceChannel();
-  }
-
-  handleClick() {
-    this.props.selectVoiceChannel();
   }
 
   componentDidMount() {
@@ -65,7 +37,7 @@ class VoiceChannel extends React.Component {
     if (this.voiceSession) this.handleLeaveSession();
   }
 
-  handleJoinSession() {
+  handleJoinSession = () => {
     const that = this;
     this.voiceSession = App.cable.subscriptions.create(
       { channel: "VoiceChannel", channelId: this.props.channel.id },
@@ -95,7 +67,30 @@ class VoiceChannel extends React.Component {
     );
   }
 
-  handleLeaveSession() {
+  handleMouseEnter = () => {
+    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
+      this.setState({ active: true });
+    }
+  }
+
+  handleMouseLeave = () => {
+    if (this.props.channel.name !== 'General' && this.props.currentUserId === this.props.server.admin_id) {
+      this.setState({ active: false });
+    }
+  }
+
+  handleDelete = (e) => {
+    e.stopPropagation();
+    if (this.voiceSession) this.handleLeaveSession();
+    this.props.leaveVoiceChannel();
+    this.props.deleteVoiceChannel();
+  }
+
+  handleClick = () => {
+    this.props.selectVoiceChannel();
+  }
+
+  handleLeaveSession = () => {
     for (let user in this.pcPeers) {
       this.pcPeers[user].close();
     }
@@ -113,13 +108,13 @@ class VoiceChannel extends React.Component {
     });
   }
 
-  removeUser(data) {
+  removeUser = (data) => {
     let audio = document.getElementById(`remoteAudioContainer+${data.from}`);
     if (audio) audio.remove();
     delete this.pcPeers[data.from];
   }
 
-  createPC(userId, isOffer) {
+  createPC = (userId, isOffer) => {
     const ice = { iceServers: [{ urls: "stun:stun1.l.google.com:19302" }, { urls: "stun:stun2.l.google.com:19302" }] };
     let pc = new RTCPeerConnection(ice);
     this.pcPeers[userId] = pc;
@@ -168,7 +163,7 @@ class VoiceChannel extends React.Component {
     return pc;
   }
 
-  exchange(data) {
+  exchange = (data) => {
     let pc;
     if (!this.pcPeers[data.from]) {
       pc = this.createPC(data.from, false);
@@ -199,11 +194,11 @@ class VoiceChannel extends React.Component {
     }
   }
 
-  logError(error) {
+  logError = (error) => {
     console.warn(error);
   }
 
-  joinRoom(data) {
+  joinRoom = (data) => {
     this.createPC(data.from, true);
   }
 
